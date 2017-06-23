@@ -1,18 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
- GoogleMaps,
- GoogleMap,
- GoogleMapsEvent,
- LatLng,
- CameraPosition,
- MarkerOptions,
- Marker
-} from '@ionic-native/google-maps';
-
 
 import { RoomyApi } from '../../shared/shared';
-import { InvitePage,MapPage } from '../../pages/pages';
+import { InvitePage } from '../../pages/pages';
 
 /**
  * Generated class for the HomePage page.
@@ -26,7 +16,7 @@ import { InvitePage,MapPage } from '../../pages/pages';
   templateUrl: 'home.html'
 })
 export class HomePage {
-	constructor(public navCtrl: NavController, public navParams: NavParams, private roomyApi: RoomyApi, private googleMaps: GoogleMaps) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, private roomyApi: RoomyApi) {
 	}
 
 	// Load map only after view is initialized
