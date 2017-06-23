@@ -49,7 +49,8 @@ import { AgmCoreModule } from '@agm/core';
     InvitePage,
     PaymentPage,
     PromotionsPage,
-    SettingsPage
+    SettingsPage,
+    MapPage
   ],
   providers: [
     StatusBar,
@@ -58,7 +59,8 @@ import { AgmCoreModule } from '@agm/core';
     RoomyApi,
     Geolocation,
     GoogleMaps,
-    AgmCoreModule, 
+    AgmCoreModule,
+    MapPage,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })

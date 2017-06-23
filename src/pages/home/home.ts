@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+ GoogleMaps,
+ GoogleMap,
+ GoogleMapsEvent,
+ LatLng,
+ CameraPosition,
+ MarkerOptions,
+ Marker
+} from '@ionic-native/google-maps';
+
+
 import { RoomyApi } from '../../shared/shared';
-import { InvitePage } from '../../pages/pages';
-import { AgmCoreModule } from '@agm/core';
-import { Geolocation } from '@ionic-native/geolocation';
+import { InvitePage,MapPage } from '../../pages/pages';
+
 /**
  * Generated class for the HomePage page.
  *
@@ -13,36 +23,15 @@ import { Geolocation } from '@ionic-native/geolocation';
 @IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
+  templateUrl: 'home.html'
 })
 export class HomePage {
-	lat: number;
-  	lng: number;
-  	zoom: number;
-  	zoomControl:boolean;
-  	streetViewControl:boolean;
-  	compass:boolean;
-  	myLocationButton:boolean;
-  	indoorPicker:boolean;
-	constructor(public navCtrl: NavController, public navParams: NavParams, private roomyApi: RoomyApi, public geolocation: Geolocation) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, private roomyApi: RoomyApi, private googleMaps: GoogleMaps) {
 	}
 
-	ionViewDidLoad(){
-		let self:any= this;
-  		this.geolocation.getCurrentPosition().then((position) => { 
-			self.lat=position.coords.latitude;
-			self.lng=position.coords.longitude;
-			self.zoom=17;
-			self.zoomControl=false;
-			self.streetViewControl=false;
-			self.compass= true,
-			self.myLocationButton= true, // GEOLOCATION BUTTON 
-			self.indoorPicker= true
-	  	}, (err) => {
-	      console.log(err);
-	    });
+	// Load map only after view is initialized
+	ionViewDidLoad() {
 	}
-
 	goToInviteFriends(){
 		this.navCtrl.push(InvitePage);
 	}
