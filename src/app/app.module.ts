@@ -59,7 +59,7 @@ import { AgmCoreModule } from '@agm/core';
     Geolocation,
     GoogleMaps,
     AgmCoreModule, 
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}
