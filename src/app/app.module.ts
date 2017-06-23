@@ -3,9 +3,18 @@ import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule  } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
+import {
+ GoogleMaps,
+ GoogleMap,
+ GoogleMapsEvent,
+ LatLng,
+ CameraPosition,
+ MarkerOptions,
+ Marker
+} from '@ionic-native/google-maps';
 
 import { RoomyApp } from './app.component';
-import { HomePage, HowitworksPage, InvitePage, PaymentPage, PromotionsPage, SettingsPage} from '../pages/pages';
+import { HomePage, HowitworksPage, InvitePage, PaymentPage, PromotionsPage, SettingsPage, MapPage} from '../pages/pages';
 import { RoomyApi } from '../shared/shared';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,7 +29,8 @@ import { AgmCoreModule } from '@agm/core';
     InvitePage,
     PaymentPage,
     PromotionsPage,
-    SettingsPage
+    SettingsPage,
+    MapPage
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -47,6 +57,7 @@ import { AgmCoreModule } from '@agm/core';
     HttpModule,
     RoomyApi,
     Geolocation,
+    GoogleMaps,
     AgmCoreModule, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
