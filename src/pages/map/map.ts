@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation,Geoposition } from '@ionic-native/geolocation';
+
 /**
  * Generated class for the MapPage page.
  *
@@ -15,16 +16,32 @@ import { Geolocation } from '@ionic-native/geolocation';
 })
 export class MapPage {
 
-  map:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation) {
-  	this.loadMap();
+  private map:any;
+  
+  constructor(
+  	public navCtrl: NavController, 
+  	public navParams: NavParams, 
+  	public geolocation: Geolocation) {
+  	
   }
-
-  loadMap(){
-  var self = this;
-  let options = {timeout: 10000, enableHighAccuracy: true};
-    //ENABLE THE FOLLOWING:
-    this.geolocation.getCurrentPosition(options).then((position) => {
+  
+  ngAfterViewInit() {
+  	this.loadCurrenLocation();
+  }
+  
+  loadCurrenLocation(){
+	let options = {timeout: 10000, enableHighAccuracy: true};
+	//ENABLE THE FOLLOWING:
+	this.geolocation.getCurrentPosition(options).then((res) => {
+	  console.log(res);
+	  this.loadMap(res);
+	})
+	.catch((error) =>{
+	  console.log(error);
+	});
+  }
+  
+  loadMap(position: Geoposition){
 		let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		let mapOptions = {
 			center: latLng,
@@ -38,13 +55,12 @@ export class MapPage {
 			myLocationButton: true, // GEOLOCATION BUTTON 
 			indoorPicker: true
 		}
-
-		self.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+		this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 		var marker = new google.maps.Marker({
 			position: latLng,
-			map: self.map,
+			map: this.map,
+			animation: google.maps.Animation.DROP,
 			title: 'Click to zoom'
 		});
-    });
-  }
+  	}
 }
