@@ -13,11 +13,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'howitworks.html'
 })
 export class HowitworksPage {
-	slideOptions={
-		"pager":true,
-		"paginationType":"bullet",
-		"direction":"horizontal" /*Swipe direction: 'horizontal'or vertical'.*/
-	};
 	slides =[
 	     {
 	        "image":"https://www.gstatic.com/webp/gallery3/1.png"
@@ -35,7 +30,6 @@ export class HowitworksPage {
 	     	"image":"https://www.gstatic.com/webp/gallery3/5.png"
 	     }
      ];
-	haveData:boolean = true;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
 	

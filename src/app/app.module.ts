@@ -10,7 +10,6 @@ import { RoomyApi } from '../shared/shared';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -27,10 +26,7 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(RoomyApp),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDRkKSDHE-AvGKLjoIoymRZIaQGQ2sUEAs'
-    })
+    IonicModule.forRoot(RoomyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +45,6 @@ import { AgmCoreModule } from '@agm/core';
     HttpModule,
     RoomyApi,
     Geolocation,
-    AgmCoreModule,
     MapPage,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
