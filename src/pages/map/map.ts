@@ -31,7 +31,7 @@ export class MapPage {
 	}
   
 	loadCurrenLocation(){
-		let options = {timeout: 10000, enableHighAccuracy: true};
+		let options = {enableHighAccuracy: true};
 		//ENABLE THE FOLLOWING:
 		this.geolocation.getCurrentPosition(options).then((res) => {
 			console.log(res);
@@ -61,13 +61,7 @@ export class MapPage {
 	}
 
 	mapLoaded(){
-		//immediately remove the listener (or this thing fires for every tile that gets loaded, which is a lot when you start to pan)
-  		this.addMarker(true);
-		google.maps.event.addListener(this.marker,'dragend',function(event) {
-	        console.log('DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
-	        let newLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
-	        this.map.setCenter(newLocation);
-    	});
+		this.addMarker(true);		
 	}
 	
 	// Adds a marker to the map.
@@ -83,6 +77,11 @@ export class MapPage {
 			title: 'Drage me!',
 			draggable:true
 		});
+		google.maps.event.addListener(this.marker,'dragend',function(event) {
+	        console.log('DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
+	        let newLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
+	        this.map.setCenter(newLocation);
+    	});
 	}
 	
 	compasClicked(){
@@ -94,5 +93,5 @@ export class MapPage {
 			this.addMarker(false);
 		}
 	}
-	
+
 }
