@@ -18,6 +18,7 @@ export class MapPage {
 
 	private map:any;
 	private location:any;
+	private marker:any;
 
 	constructor(
 		public navCtrl: NavController, 
@@ -30,10 +31,10 @@ export class MapPage {
 	}
   
 	loadCurrenLocation(){
-	let options = {timeout: 10000, enableHighAccuracy: true};
-	//ENABLE THE FOLLOWING:
-	this.geolocation.getCurrentPosition(options).then((res) => {
-		console.log(res);
+		let options = {timeout: 10000, enableHighAccuracy: true};
+		//ENABLE THE FOLLOWING:
+		this.geolocation.getCurrentPosition(options).then((res) => {
+			console.log(res);
 			this.loadMap(res);
 		})
 		.catch((error) =>{
@@ -61,17 +62,37 @@ export class MapPage {
 
 	mapLoaded(){
 		//immediately remove the listener (or this thing fires for every tile that gets loaded, which is a lot when you start to pan)
-  		let marker = new google.maps.Marker({
-			position: this.location,
-			map: this.map,
-			animation: google.maps.Animation.DROP,
-			title: 'Click to zoom',
-			draggable:true
-		});
-		google.maps.event.addListener(marker,'dragend',function(event) {
+  		this.addMarker(true);
+		google.maps.event.addListener(this.marker,'dragend',function(event) {
 	        console.log('DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
 	        let newLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
 	        this.map.setCenter(newLocation);
     	});
 	}
+	
+	// Adds a marker to the map.
+	addMarker(animate:boolean){
+		let animationType:any = null;
+		if(animate == true){
+			animationType = google.maps.Animation.DROP;
+		}
+		this.marker = new google.maps.Marker({
+			position: this.location,
+			map: this.map,
+			animation: animationType,
+			title: 'Drage me!',
+			draggable:true
+		});
+	}
+	
+	compasClicked(){
+		if(this.marker !== undefined){
+			this.marker.setMap(null);	
+		}
+		if ((this.map !== undefined)&&(this.location !== undefined)) {
+			this.map.setCenter(this.location);
+			this.addMarker(false);
+		}
+	}
+	
 }
