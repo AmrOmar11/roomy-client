@@ -77,11 +77,13 @@ export class MapPage {
 			title: 'Drage me!',
 			draggable:true
 		});
-		google.maps.event.addListener(this.marker,'dragend',function(event) {
-	        console.log('DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
-	        let newLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
-	        this.map.setCenter(newLocation);
-    	});
+		google.maps.event.addListener(this.marker,'dragend',this.markerDragEnd.bind(this));
+	}
+	
+	markerDragEnd(event){
+	    console.log('DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
+        let newLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
+        this.map.panTo(newLocation);
 	}
 	
 	compasClicked(){
@@ -89,7 +91,7 @@ export class MapPage {
 			this.marker.setMap(null);	
 		}
 		if ((this.map !== undefined)&&(this.location !== undefined)) {
-			this.map.setCenter(this.location);
+			this.map.panTo(this.location);
 			this.addMarker(false);
 		}
 	}
