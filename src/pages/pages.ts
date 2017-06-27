@@ -6,3 +6,4 @@ export * from './promotions/promotions';
 export * from './settings/settings';
 export * from './map/map';
 export * from './search/search';
+export * from './hotelslider/hotelslider';
