@@ -5,7 +5,7 @@ import { HttpModule  } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { RoomyApp } from './app.component';
-import { HomePage, HowitworksPage, InvitePage, PaymentPage, PromotionsPage, SettingsPage, MapPage} from '../pages/pages';
+import { HomePage, HowitworksPage, InvitePage, PaymentPage, PromotionsPage, SettingsPage, MapPage,SearchPage} from '../pages/pages';
 import { RoomyApi } from '../shared/shared';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,7 +20,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PaymentPage,
     PromotionsPage,
     SettingsPage,
-    MapPage
+    MapPage,
+    SearchPage
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -37,7 +38,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PaymentPage,
     PromotionsPage,
     SettingsPage,
-    MapPage
+    MapPage,
+    SearchPage
   ],
   providers: [
     StatusBar,
