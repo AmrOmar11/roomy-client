@@ -1,11 +1,14 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone,Directive, Renderer, ElementRef } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 
 declare var google: any;
 
 @Component({
-    selector: 'search',
+    selector : 'search',
     templateUrl: 'search.html'
+})
+@Directive({
+  selector : '[focuser]'
 })
 export class SearchPage implements OnInit{
 
@@ -14,17 +17,32 @@ export class SearchPage implements OnInit{
     acService:any;
     placesService: any;
 
-    constructor(public viewCtrl: ViewController,private zone:NgZone) { 
+    constructor(public viewCtrl: ViewController,
+        private zone:NgZone,
+        public renderer: Renderer,
+        public elementRef: ElementRef) { 
     }
 
     ngOnInit() {
-        this.acService = new google.maps.places.AutocompleteService();        
+        this.acService = new google.maps.places.AutocompleteService();
         this.autocompleteItems = [];
         this.autocomplete = {
             query: ''
-        };        
+        };
     }
-
+    
+    ngAfterViewInit() {
+        console.log('ngAfterViewInit');        
+        //search bar is wrapped with a div so we get the child input
+        let searchInput = this.elementRef.nativeElement.querySelector('input');
+        if (!searchInput) {
+            searchInput = this.elementRef.nativeElement.querySelector('textarea');
+        }
+        setTimeout(() => {
+          //delay required or ionic styling gets finicky
+          this.renderer.invokeElementMethod(searchInput, 'focus', []);
+        }, 500);
+    }
     dismiss() {
         this.viewCtrl.dismiss();
     }

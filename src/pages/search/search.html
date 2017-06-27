@@ -1,5 +1,5 @@
 <ion-content> 
-    <ion-searchbar 
+    <ion-searchbar [focuser]
         [(ngModel)]="autocomplete.query" 
         [showCancelButton]="true" 
         (ionInput)="updateSearch()" 
