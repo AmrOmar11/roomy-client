@@ -70,21 +70,24 @@ export class MapPage implements OnInit{
 			indoorPicker: true
 		}
 		this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-		google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this));
+		google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.location));
 	}
 
-	private mapLoaded(){
-		this.addMarker(true);		
+	private mapLoaded(location){
+		this.addMarker(true,location);		
 	}
 	
 	// Adds a marker to the map.
-	private addMarker(animate:boolean){
+	private addMarker(animate:boolean,location){
+        if(this.marker !== undefined){
+            this.marker.setMap(null);
+        }        
 		let animationType:any = null;
 		if(animate == true){
 			animationType = google.maps.Animation.DROP;
 		}
 		this.marker = new google.maps.Marker({
-			position: this.location,
+			position: location,
 			map: this.map,
 			animation: animationType,
 			title: 'Drage me!',
@@ -100,12 +103,9 @@ export class MapPage implements OnInit{
 	}
 	
 	private compasClicked(){
-		if(this.marker !== undefined){
-			this.marker.setMap(null);
-		}
 		if ((this.map !== undefined)&&(this.location !== undefined)) {
 			this.map.panTo(this.location);
-			this.addMarker(false);
+			this.addMarker(false,this.location);
 		}
 	}
 	
@@ -159,13 +159,11 @@ export class MapPage implements OnInit{
                         self.placedetails.components[addressType].set = true;
                         self.placedetails.components[addressType].short = place.address_components[i]['short_name'];
                         self.placedetails.components[addressType].long = place.address_components[i]['long_name'];
-                    }                                     
-                }                  
+                    }
+                }
                 // set place in map
-                self.map.setCenter(place.geometry.location);
-                // self.createMapMarker(place);
-                self.location = place
-                self.addMarker(false);
+                self.map.panTo(place.geometry.location);
+                self.addMarker(false,place.geometry.location);
                 // populate
                 self.address.set = true;
                 console.log('page > getPlaceDetail > details > ', self.placedetails);

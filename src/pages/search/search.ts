@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 
 declare var google: any;
@@ -14,7 +14,7 @@ export class SearchPage implements OnInit{
     acService:any;
     placesService: any;
 
-    constructor(public viewCtrl: ViewController) { 
+    constructor(public viewCtrl: ViewController,private zone:NgZone) { 
     }
 
     ngOnInit() {
@@ -42,15 +42,16 @@ export class SearchPage implements OnInit{
         }
         let self = this;
         let config = { 
-            types:  ['geocode'], // other types available in the API: 'establishment', 'regions', and 'cities'
-            input: this.autocomplete.query, 
-            componentRestrictions: { country: 'AR' } 
+            // types:  ['geocode'], // other types available in the API: 'establishment', 'regions', and 'cities'
+            input: this.autocomplete.query
         }
         this.acService.getPlacePredictions(config, function (predictions, status) {
             console.log('modal > getPlacePredictions > status > ', status);
-            self.autocompleteItems = [];            
-            predictions.forEach(function (prediction) {              
-                self.autocompleteItems.push(prediction);
+            self.autocompleteItems = [];
+            self.zone.run(function(){
+                predictions.forEach(function (prediction) {
+                    self.autocompleteItems.push(prediction);
+                });
             });
         });
     }
