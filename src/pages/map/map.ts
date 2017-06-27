@@ -19,12 +19,14 @@ export class MapPage implements OnInit{
 	private map:any;
 	private location:any;
 	private marker:any;
-	address:any = {
+	private address:any = {
         place: '',
         set: false,
     };
-    placesService:any;
-    placedetails: any;
+    private placesService:any;
+    private directionsService:any;
+    private directionsDisplay:any;
+    private destination:any;
 
 	constructor(
 		public navCtrl: NavController, 
@@ -35,17 +37,15 @@ export class MapPage implements OnInit{
 
 	ngOnInit() {
        console.log('ngOnInit');
-       this.loadCurrenLocation();
-       this.initPlacedetails();
+       this.getCurrenLocation();
     }
 
 	ngAfterViewInit() {
 		console.log('ngAfterViewInit');
 	}
   
-	private loadCurrenLocation(){
+	private getCurrenLocation(){
 		let options = {enableHighAccuracy: true};
-		//ENABLE THE FOLLOWING:
 		this.geolocation.getCurrentPosition(options).then((res) => {
 			console.log(res);
 			this.loadMap(res);
@@ -71,10 +71,15 @@ export class MapPage implements OnInit{
 		}
 		this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 		google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.location));
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.directionsDisplay.setMap(this.map);
 	}
 
 	private mapLoaded(location){
-		this.addMarker(true,location);		
+		// this.addMarker(true,location);
+        this.destination = new google.maps.LatLng(17.4574212025986, 78.3720215372955);
+        this.displayRoute(location,this.destination,this.directionsService,this.directionsDisplay);
 	}
 	
 	// Adds a marker to the map.
@@ -93,7 +98,7 @@ export class MapPage implements OnInit{
 			title: 'Drage me!',
 			draggable:true
 		});
-		google.maps.event.addListener(this.marker,'dragend',this.markerDragEnd.bind(this));
+		google.maps.event.addListener(this.marker,'dragend',this.markerDragEnd.bind(this));        
 	}
 	
 	private markerDragEnd(event){
@@ -105,21 +110,17 @@ export class MapPage implements OnInit{
 	private compasClicked(){
 		if ((this.map !== undefined)&&(this.location !== undefined)) {
 			this.map.panTo(this.location);
-			this.addMarker(false,this.location);
+			// this.addMarker(false,this.location);
 		}
 	}
 	
 	private searchClicked(){
-        this.showModal();
-	}
-	
-	showModal() {
         // reset 
-        this.reset();
-        // show modal|
+        this.resetSearch();
+        // show modal
         let modal = this.modalCtrl.create(SearchPage);
         modal.onDidDismiss(data => {
-            console.log('page > modal dismissed > data > ', data);
+            console.log('search > modal dismissed > data > ', data);
             if(data){
                 this.address.place = data.description;
                 // get details
@@ -129,8 +130,7 @@ export class MapPage implements OnInit{
         modal.present();
     }
 
-    private reset() {
-        this.initPlacedetails();
+    private resetSearch() {
         this.address.place = '';
         this.address.set = false;
     }
@@ -144,51 +144,33 @@ export class MapPage implements OnInit{
         this.placesService.getDetails(request, callback);
         function callback(place, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
-                console.log('page > getPlaceDetail > place > ', place);
-                // set full address
-                self.placedetails.address = place.formatted_address;
-                self.placedetails.lat = place.geometry.location.lat();
-                self.placedetails.lng = place.geometry.location.lng();
-                for (var i = 0; i < place.address_components.length; i++) {
-                    let addressType = place.address_components[i].types[0];
-                    let values = {
-                        short_name: place.address_components[i]['short_name'],
-                        long_name: place.address_components[i]['long_name']
-                    }
-                    if(self.placedetails.components[addressType]) {
-                        self.placedetails.components[addressType].set = true;
-                        self.placedetails.components[addressType].short = place.address_components[i]['short_name'];
-                        self.placedetails.components[addressType].long = place.address_components[i]['long_name'];
-                    }
-                }
+                console.log('page > getPlaceDetail > place > ', place);                
                 // set place in map
                 self.map.panTo(place.geometry.location);
-                self.addMarker(false,place.geometry.location);
+                // self.addMarker(false,place.geometry.location);
+                self.displayRoute(place.geometry.location,self.destination,self.directionsService,self.directionsDisplay);
                 // populate
                 self.address.set = true;
-                console.log('page > getPlaceDetail > details > ', self.placedetails);
             }else{
                 console.log('page > getPlaceDetail > status > ', status);
             }
         }
     }
-
-	private initPlacedetails() {
-        this.placedetails = {
-            address: '',
-            lat: '',
-            lng: '',
-            components: {
-                route: { set: false, short:'', long:'' },                           // calle 
-                street_number: { set: false, short:'', long:'' },                   // numero
-                sublocality_level_1: { set: false, short:'', long:'' },             // barrio
-                locality: { set: false, short:'', long:'' },                        // localidad, ciudad
-                administrative_area_level_2: { set: false, short:'', long:'' },     // zona/comuna/partido 
-                administrative_area_level_1: { set: false, short:'', long:'' },     // estado/provincia 
-                country: { set: false, short:'', long:'' },                         // pais
-                postal_code: { set: false, short:'', long:'' },                     // codigo postal
-                postal_code_suffix: { set: false, short:'', long:'' },              // codigo postal - sufijo
-            }    
-        };        
+    
+    private displayRoute(origin, destination, service, display) {
+        service.route({
+          origin: origin,
+          destination: destination,
+          // waypoints: [{location: 'Adelaide, SA'}, {location: 'Broken Hill, NSW'}],
+          travelMode: 'DRIVING',
+          avoidTolls: false
+        }, function(response, status) {
+          if (status === 'OK') {
+            // console.log(response);
+             display.setDirections(response);
+          } else {
+            console.log('Could not display directions due to: ' + status);
+          }
+        });
     }
 }
