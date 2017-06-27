@@ -1,6 +1,6 @@
 {
     "data": [{
-        "hotelname": "harbor Court",
+        "hotelname": "Harbor Court",
         "address1": "16s steurart",
         "address2": "132 line",
         "city": "ST",
@@ -12,7 +12,7 @@
         "lattitue": "17.3850° N",
         "longitude": "78.4867° E"
     }, {
-        "hotelname": "harbor Court1",
+        "hotelname": "Harbor Court1",
         "address1": "16s steurart1",
         "address2": "132 line1",
         "city": "ST1",
@@ -24,7 +24,7 @@
         "lattitue": "17.3850° N",
         "longitude": "78.4867° E"
     }, {
-        "hotelname": "harbor Court2",
+        "hotelname": "Harbor Court2",
         "address1": "16s steurart2",
         "address2": "132 line2",
         "city": "ST2",
@@ -44,7 +44,7 @@
         "category": "luxury",
         "mincost": "50INR",
         "hourcost": "50INR",
-        "img": "harbor-court3-displaywall3",
+        "img": "Harbor-court3-displaywall3",
         "lattitue": "17.3850° N",
         "longitude": "78.4867° E"
     }]

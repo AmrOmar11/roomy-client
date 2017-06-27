@@ -18,14 +18,58 @@ export class HotelsliderPage {
 		"paginationType":"bullet",
 		"direction":"horizontal" /*Swipe direction: 'horizontal'or vertical'.*/
 	};
-	slides = [
-      {desc: 'The Ramones', image:'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSulfJcjBhxxW2NBBn9KbE3B4BSeh0R7mQ38wUi_zpJlQrMoDWh_qFcMelE_tjtAERUPTc'},
-      {desc: 'The Beatles', image:'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTGpH07f9zeucoOs_stZyIFtBncU-Z8TDYmJgoFnlnxYmXjJEaitmxZNDkNvYnCzwWTySM'},
-      {desc: 'Pink Floyd', image:'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT-FbU5dD_Wz472srRIvoZAhyGTEytx9HWGusbhYgSc2h0N6AqqRrDwzApmyxZoIlyxDcU'},
-      {desc: 'The Rolling Stones', image:'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT6uwPPBnHfAAUcSzxr3iq9ou1CZ4f_Zc2O76i5A4IyoymIVwjOMXwUFTGSrVGcdGT9vQY'},
-      {desc: 'The Jimi Hendrix Experience', image:'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRA3jz0uhVypONAKWUve80Q6HASvuvZiohl4Sru5ZihkAsjWiaGjocfxd0aC3H7EeFk5-I'},
-      {desc: 'Van Halen', image:'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRIslVN9cJJ6YuV0y7JihAyA63JDhXGhkCVxHIRE-IoaF-rpefjIXO5osA24QvN9iCptC8'}
-    ];
+	slides = {
+    "data": [{
+        "hotelname": "Harbor Court",
+        "address1": "16s steurart",
+        "address2": "132 line",
+        "city": "ST",
+        "state": "ASDF",
+        "category": "Premium",
+        "mincost": "50INR",
+        "hourcost": "50INR",
+        "img": "../../assets/img/Hotel4.jpg",
+        "lattitue": "17.3850° N",
+        "longitude": "78.4867° E"
+    }, {
+        "hotelname": "Harbor Court1",
+        "address1": "16s steurart1",
+        "address2": "132 line1",
+        "city": "ST1",
+        "state": "ASDF1",
+        "category": "Luxury",
+        "mincost": "40INR",
+        "hourcost": "40INR",
+        "img": "../../assets/img/Hotel1.jpg",
+        "lattitue": "17.3850° N",
+        "longitude": "78.4867° E"
+    }, {
+        "hotelname": "Harbor Court2",
+        "address1": "16s steurart2",
+        "address2": "132 line2",
+        "city": "ST2",
+        "state": "ASDF2",
+        "category": "Premium",
+        "mincost": "50INR",
+        "hourcost": "50INR",
+        "img": "../../assets/img/Hotel2.jpg",
+        "lattitue": "17.3850° N",
+        "longitude": "78.4867° E"
+    }, {
+        "hotelname": "Harbor Court3",
+        "address1": "16s steurart3",
+        "address2": "132 line3",
+        "city": "ST3",
+        "state": "ASDF3",
+        "category": "Luxury",
+        "mincost": "50INR",
+        "hourcost": "50INR",
+        "img": "../../assets/img/Hotel3.jpg",
+        "lattitue": "17.3850° N",
+        "longitude": "78.4867° E"
+    }]
+}
+;
     haveData:boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
