@@ -8,7 +8,9 @@
     </ion-searchbar>
     <ion-list>
         <ion-item tappable *ngFor="let item of autocompleteItems" 
-            (click)="chooseItem(item)">
+            (click)="chooseItem(item)" text-wrap>
+            <ion-icon name="pin">
+            </ion-icon>
             {{ item.description }}
         </ion-item>
     </ion-list>
