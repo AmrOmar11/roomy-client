@@ -20,7 +20,7 @@ export class SearchPage implements OnInit{
     constructor(public viewCtrl: ViewController,
         private zone:NgZone,
         public renderer: Renderer,
-        public elementRef: ElementRef) { 
+        public elementRef: ElementRef) {
     }
 
     ngOnInit() {
@@ -60,6 +60,7 @@ export class SearchPage implements OnInit{
         }
         let self = this;
         let config = { 
+            componentRestrictions: { country: 'IN' },
             // types:  ['geocode'], // other types available in the API: 'establishment', 'regions', and 'cities'
             input: this.autocomplete.query
         }
