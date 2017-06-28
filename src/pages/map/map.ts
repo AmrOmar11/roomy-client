@@ -113,7 +113,12 @@ export class MapPage implements OnInit{
                 console.log(res);
                 this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
                 this.map.panTo(this.userLocation);
-                this.addSourceMarker(false,this.userLocation);
+                if(this.destinationLocation !== undefined){
+                   this.sourceMarker.setMap(null);
+                   this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
+                }else{
+                    this.addSourceMarker(false,this.userLocation);    
+                }
             })
             .catch((error) =>{
                 console.log(error);
@@ -155,8 +160,12 @@ export class MapPage implements OnInit{
                 // set place in map
                 self.userLocation = place.geometry.location;
                 self.map.panTo(place.geometry.location);
-                self.addSourceMarker(false,place.geometry.location);
-                // self.displayRoute(place.geometry.location,self.destinationLocation,self.directionsService,self.directionsDisplay);
+                if(self.destinationLocation !== undefined){
+                   self.sourceMarker.setMap(null);
+                   self.displayRoute(place.geometry.location,self.destinationLocation,self.directionsService,self.directionsDisplay);
+                }else{
+                    self.addSourceMarker(false,place.geometry.location);
+                }
                 // populate
                 self.address.set = true;
             }else{
@@ -188,6 +197,5 @@ export class MapPage implements OnInit{
         }
         this.destinationLocation = new google.maps.LatLng(Lat, Lng);
         this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
-        // this.addMarker(true,this.userLocation,this.getDirections(location));
     }
 }
