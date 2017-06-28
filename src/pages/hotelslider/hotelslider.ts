@@ -84,7 +84,8 @@ export class HotelsliderPage {
     }
 
     slideChanged($event){
-    	let currentIndex = this.slidesObj.getActiveIndex();
-    	this.mapPage.displayDirection(this.slides.data[currentIndex].lattitue,this.slides.data[currentIndex].longitude);
+    	if(this.slides.data[$event._activeIndex] !== undefined){
+            this.mapPage.displayDirection(this.slides.data[$event._activeIndex].lattitue,this.slides.data[$event._activeIndex].longitude);
+        }    	
     }
 }

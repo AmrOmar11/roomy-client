@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule  } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
+import { SocialSharing } from '@ionic-native/social-sharing'
 
 import { RoomyApp } from './app.component';
 import { HomePage, HowitworksPage, InvitePage, PaymentPage, PromotionsPage, SettingsPage, MapPage,SearchPage, HotelsliderPage} from '../pages/pages';
@@ -49,7 +50,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HttpModule,
     RoomyApi,
     Geolocation,
-    MapPage,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
