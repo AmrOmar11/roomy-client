@@ -4,20 +4,21 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content padding>
-    <ion-slides [options]="slideOptions" *ngIf="haveData">
+<ion-content padding class="masters">
+    <ion-slides [options]="slideOptions" (ionSlideDidChange)="slideChanged($event)">
 	    <ion-slide *ngFor="let slide of slides.data">
-	      <div class="HotelSlider">
+	      <!-- <div class="HotelSlider" [ngStyle]="{background: 'url(' + slide.img + ')'}"><!--  -->
+	      <div class="HotelSlider"><!-- 
 	      	<div class="HotelThumbnail">
 	      		<img [src]="slide.img">
-	      	</div>
+	      	</div> -->
 	      	<div class="HotelName">{{slide.hotelname}}</div>
 	      	<div class="HotelAddress"><span>{{slide.address1}}</span><span>{{slide.address2}}</span><span>{{slide.city}}</span><span>{{slide.state}}</span></div>
 	      	<div class="HotelDetails">
 	      		<div class="HotelCategory">{{slide.category}}</div>
 	      		<div class="HotelFare">
-	      			<div class="HotelMinCost">{{slide.mincost}}</div>
-	      			<div class="HotelHourCost">{{slide.hourcost}}</div>
+	      			<div class="HotelMinCost">{{slide.mincost}} MINIMUM</div>
+	      			<div class="HotelHourCost">{{slide.hourcost}}/HR</div>
 	      		</div>
 	      	</div>
 	      </div>

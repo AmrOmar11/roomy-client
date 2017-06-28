@@ -8,7 +8,7 @@ import { SearchPage } from '../search/search';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
- declare var google:any;
+declare var google:any;
 @IonicPage()
 @Component({
   selector: 'page-map',
@@ -17,8 +17,8 @@ import { SearchPage } from '../search/search';
 export class MapPage implements OnInit{
 
 	private map:any;
-	private location:any;
-	private marker:any;
+	private userLocation:any;
+	private sourceMarker:any;
 	private address:any = {
         place: '',
         set: false,
@@ -26,7 +26,7 @@ export class MapPage implements OnInit{
     private placesService:any;
     private directionsService:any;
     private directionsDisplay:any;
-    private destination:any;
+    private destinationLocation:any;
 
 	constructor(
 		public navCtrl: NavController, 
@@ -56,9 +56,9 @@ export class MapPage implements OnInit{
 	}
   
   	private loadMap(position: Geoposition){
-		this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		let mapOptions = {
-			center: this.location,
+			center: this.userLocation,
 			zoom: 17,
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			mapTypeControl: false,
@@ -70,47 +70,54 @@ export class MapPage implements OnInit{
 			indoorPicker: true
 		}
 		this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-		google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.location));
+		google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.userLocation));
         this.directionsService = new google.maps.DirectionsService;
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(this.map);
 	}
 
 	private mapLoaded(location){
-		// this.addMarker(true,location);
-        this.destination = new google.maps.LatLng(17.4574212025986, 78.3720215372955);
-        this.displayRoute(location,this.destination,this.directionsService,this.directionsDisplay);
+		this.addSourceMarker(true,location);
 	}
 	
 	// Adds a marker to the map.
-	private addMarker(animate:boolean,location){
-        if(this.marker !== undefined){
-            this.marker.setMap(null);
+	private addSourceMarker(animate:boolean,location){
+        if(this.sourceMarker !== undefined){
+            this.sourceMarker.setMap(null);
         }        
 		let animationType:any = null;
 		if(animate == true){
 			animationType = google.maps.Animation.DROP;
 		}
-		this.marker = new google.maps.Marker({
+		this.sourceMarker = new google.maps.Marker({
 			position: location,
 			map: this.map,
 			animation: animationType,
 			title: 'Drage me!',
 			draggable:true
 		});
-		google.maps.event.addListener(this.marker,'dragend',this.markerDragEnd.bind(this));        
-	}
+        google.maps.event.addListener(this.sourceMarker,'dragend',this.sourceMarkerDragEnd.bind(this));
+    }
 	
-	private markerDragEnd(event){
-	    console.log('DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
-        let newLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
-        this.map.panTo(newLocation);
+	private sourceMarkerDragEnd(event){
+	    console.log('Marker:DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
+        this.userLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
+        this.map.panTo(this.userLocation);
 	}
 	
 	private compasClicked(){
-		if ((this.map !== undefined)&&(this.location !== undefined)) {
-			this.map.panTo(this.location);
+        if (this.map !== undefined) {
 			// this.addMarker(false,this.location);
+            let options = {enableHighAccuracy: true};
+            this.geolocation.getCurrentPosition(options).then((res) => {
+                console.log(res);
+                this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
+                this.map.panTo(this.userLocation);
+                this.addSourceMarker(false,this.userLocation);
+            })
+            .catch((error) =>{
+                console.log(error);
+            });
 		}
 	}
 	
@@ -144,11 +151,12 @@ export class MapPage implements OnInit{
         this.placesService.getDetails(request, callback);
         function callback(place, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
-                console.log('page > getPlaceDetail > place > ', place);                
+                console.log('page > getPlaceDetail > place > ', place);
                 // set place in map
+                self.userLocation = place.geometry.location;
                 self.map.panTo(place.geometry.location);
-                // self.addMarker(false,place.geometry.location);
-                self.displayRoute(place.geometry.location,self.destination,self.directionsService,self.directionsDisplay);
+                self.addSourceMarker(false,place.geometry.location);
+                // self.displayRoute(place.geometry.location,self.destinationLocation,self.directionsService,self.directionsDisplay);
                 // populate
                 self.address.set = true;
             }else{
@@ -172,5 +180,14 @@ export class MapPage implements OnInit{
             console.log('Could not display directions due to: ' + status);
           }
         });
+    }
+
+    public displayDirection(Lat,Lng){
+        if(this.sourceMarker !== undefined){
+            this.sourceMarker.setMap(null);
+        }
+        this.destinationLocation = new google.maps.LatLng(Lat, Lng);
+        this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
+        // this.addMarker(true,this.userLocation,this.getDirections(location));
     }
 }
