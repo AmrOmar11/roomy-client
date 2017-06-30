@@ -11,6 +11,7 @@ import { RoomyApi } from '../shared/shared';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HotelsProvider } from '../providers/hotels/hotels';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Geolocation,
     SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HotelsProvider,
   ]
 })
 export class AppModule {}
