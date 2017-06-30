@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { RoomyApi } from '../../shared/shared';
 import { InvitePage } from '../../pages/pages';
 
 /**
@@ -16,7 +14,7 @@ import { InvitePage } from '../../pages/pages';
   templateUrl: 'home.html'
 })
 export class HomePage {
-	constructor(public navCtrl: NavController, public navParams: NavParams, private roomyApi: RoomyApi) {
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
 	}
 
 	// Load map only after view is initialized

@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage, HowitworksPage, InvitePage, PaymentPage, PromotionsPage, SettingsPage} from '../pages/pages';
+import { HomePage, HowitworksPage, InvitePage, PaymentPage, PromotionsPage, SettingsPage,LoginPage} from '../pages/pages';
 
 @Component({
   templateUrl: 'app.html'
@@ -40,5 +40,8 @@ export class RoomyApp {
   }
   goToInviteFriends(){
     this.nav.push(InvitePage);
+  }
+  goToLogin(){
+    this.nav.push(LoginPage)
   }
 }

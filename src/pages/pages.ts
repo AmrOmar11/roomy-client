@@ -7,3 +7,6 @@ export * from './settings/settings';
 export * from './map/map';
 export * from './search/search';
 export * from './hotelslider/hotelslider';
+export * from './login/login';
+export * from './facebook-login/facebook-login';
+export * from './google-login/google-login';
