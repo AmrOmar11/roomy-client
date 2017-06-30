@@ -122,7 +122,7 @@ export class MapPage implements OnInit{
         this.map.panTo(this.userLocation);
 	}
 	
-	private compasClicked(){
+	compasClicked(){
         if (this.map !== undefined) {
 			// this.addMarker(false,this.location);
             let options = {enableHighAccuracy: true};
@@ -143,7 +143,7 @@ export class MapPage implements OnInit{
 		}
 	}
 	
-	private searchClicked(){
+	searchClicked(){
         // reset 
         this.resetSearch();
         // show modal
