@@ -1,7 +1,8 @@
 import { Component,OnInit } from '@angular/core';
-import { IonicPage,NavController,NavParams,ModalController} from 'ionic-angular';
+import { IonicPage,NavController,NavParams,ModalController, LoadingController} from 'ionic-angular';
 import { Geolocation,Geoposition } from '@ionic-native/geolocation';
-import { SearchPage } from '../search/search';
+import { SearchPage} from '../../pages/pages';
+import { HotelsProvider } from '../../providers/hotels/hotels';
 /**
  * Generated class for the MapPage page.
  *
@@ -23,6 +24,7 @@ export class MapPage implements OnInit{
         place: '',
         set: false,
     };
+    public hotelsInfo:any;
     private placesService:any;
     private directionsService:any;
     private directionsDisplay:any;
@@ -32,7 +34,9 @@ export class MapPage implements OnInit{
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
 		public geolocation: Geolocation,
-		public modalCtrl: ModalController) {
+		public modalCtrl: ModalController,
+        public loadingController:LoadingController,
+        public hotelsProvider: HotelsProvider) {
 	}
 
 	ngOnInit() {
@@ -77,7 +81,20 @@ export class MapPage implements OnInit{
 	}
 
 	private mapLoaded(location){
-		this.addSourceMarker(true,location);
+        this.addSourceMarker(true,location);
+        let loader = this.loadingController.create({
+        	content:"Fetching Hotels..."
+        });
+
+        loader.present().then(()=>{
+            this.hotelsProvider.load().then(data => {
+                  this.hotelsInfo = data;
+                  if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
+                     this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
+                  }
+                  loader.dismiss();
+            });
+        });
 	}
 	
 	// Adds a marker to the map.

@@ -6,21 +6,18 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RoomyApi{
-
-	currentTourney:any={};
-	
 	private baseUrl = 'https://project-roomy.firebaseio.com/';
 	constructor(private http: Http) {
 		
 	}
-	getTournaments(){
+	getHotels(){
 		return new Promise(resolve =>{
-			this.http.get(`${this.baseUrl}/tournaments.json`)
+			this.http.get(`${this.baseUrl}/data.json`)
 			.subscribe(res => resolve(res.json()));
 		});
 	}
-	getTourneyData(tourneyId):Observable<any>{
-		return this.http.get(`${this.baseUrl}/tournaments-data/${tourneyId}.json`)
+	getHotelData(hotelId):Observable<any>{
+		return this.http.get(`${this.baseUrl}/hotels/${hotelId}.json`)
 		.map((response:Response)=>{
 			this.currentTourney = response.json();
 			return this.currentTourney;
