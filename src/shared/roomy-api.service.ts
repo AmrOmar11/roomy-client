@@ -19,8 +19,7 @@ export class RoomyApi{
 	getHotelData(hotelId):Observable<any>{
 		return this.http.get(`${this.baseUrl}/hotels/${hotelId}.json`)
 		.map((response:Response)=>{
-			this.currentTourney = response.json();
-			return this.currentTourney;
+			return response.json();
 		});
 	}
 }
