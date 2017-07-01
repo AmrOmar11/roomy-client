@@ -1,18 +1,18 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title><ion-icon padding name="person"></ion-icon> PROFILE NAME</ion-title>
+      <ion-title start><ion-icon name="ios-contact"style="zoom:2.0;" ></ion-icon> PROFILE NAME</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item (click)="goToPayment()"><ion-icon padding name="card"></ion-icon>  PAYMENT</button>
-      <button menuClose ion-item (click)="goToPromotions()"><ion-icon padding name="beer"></ion-icon>  PROMOTIONS</button>
-      <button menuClose ion-item (click)="goToSettings()"><ion-icon padding name="settings"></ion-icon> SETTINGS</button>
-      <button menuClose ion-item (click)="goToHowItWorks()"><ion-icon padding name="help-circle"></ion-icon>  HOW IT WORKS</button>
-      <button menuClose ion-item (click)="goToInviteFriends()"><ion-icon padding name="people"></ion-icon>  INVITE FRIENDS</button>
-      <button menuClose ion-item (click)="goToLogin()"><ion-icon padding name="people"></ion-icon>  Login</button>
+  <ion-content class="hotel-sidemenu-item">
+    <ion-list class="hotel-sidemenu-item" no-lines>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPayment()"><ion-icon name="card"></ion-icon>  PAYMENT</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPromotions()"><ion-icon name="beer"></ion-icon>  PROMOTIONS</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToSettings()"><ion-icon name="settings"></ion-icon> SETTINGS</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToHowItWorks()"><ion-icon name="help-circle"></ion-icon>  HOW IT WORKS</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToInviteFriends()"><ion-icon  name="people"></ion-icon>  INVITE FRIENDS</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToLogin()"><ion-icon name="people"></ion-icon>  Login</button>
     </ion-list>
   </ion-content>
 
