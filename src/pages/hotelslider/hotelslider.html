@@ -13,8 +13,8 @@
 	      	<div class="HotelDetails">
 	      		<div class="HotelCategory">{{hotel.category}}</div>
 	      		<div class="HotelFare">
-	      			<div class="HotelMinCost">{{hotel.mincost}} MINIMUM</div>
-	      			<div class="HotelHourCost">{{hotel.hourcost}}/HR</div>
+	      			<div class="HotelMinCost"><span>{{hotel.mincost}}</span><span class="farecurrency">{{hotel.currency}}</span><span class="minumum"> MINIMUM</span></div>
+	      			<div class="HotelHourCost">{{hotel.hourcost}}<span class="farecurrency">{{hotel.currency}}</span><span class="farecurrency">/{{hotel.farechargetype}}</span></div>
 	      		</div>
 	      	</div>
 	      </div>
