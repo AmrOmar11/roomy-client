@@ -4,32 +4,19 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule  } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { NativeStorage } from '@ionic-native/native-storage';
-import { Facebook } from '@ionic-native/facebook';
-import { GooglePlus } from '@ionic-native/google-plus';
+// import { NativeStorage } from '@ionic-native/native-storage';
+// import { Facebook } from '@ionic-native/facebook';
+// import { GooglePlus } from '@ionic-native/google-plus';
 
 import { RoomyApp } from './app.component';
-import { HomePage, HowitworksPage, InvitePage, PaymentPage, PromotionsPage, SettingsPage, MapPage,SearchPage, HotelsliderPage,LoginPage,FacebookLoginPage,GoogleLoginPage} from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HotelsProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
+import { AuthenticateProvider,HotelsProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
 
 @NgModule({
   declarations: [
-    RoomyApp,
-    HomePage,
-    HowitworksPage,
-    InvitePage,
-    PaymentPage,
-    PromotionsPage,
-    SettingsPage,
-    MapPage,
-    SearchPage,
-    HotelsliderPage,
-    LoginPage,
-    FacebookLoginPage,
-    GoogleLoginPage
+    RoomyApp
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -39,19 +26,7 @@ import { HotelsProvider,FacebookLoginService,GoogleLoginService } from '../provi
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    RoomyApp,
-    HomePage,
-    HowitworksPage,
-    InvitePage,
-    PaymentPage,
-    PromotionsPage,
-    SettingsPage,
-    MapPage,
-    SearchPage,
-    HotelsliderPage,
-    LoginPage,
-    FacebookLoginPage,
-    GoogleLoginPage
+    RoomyApp
 
   ],
   providers: [
@@ -62,11 +37,12 @@ import { HotelsProvider,FacebookLoginService,GoogleLoginService } from '../provi
     SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HotelsProvider,
-    FacebookLoginService,
-    GoogleLoginService,
-    NativeStorage,
-    Facebook,
-    GooglePlus
+    // FacebookLoginService,
+    // GoogleLoginService,
+    // NativeStorage,
+    // Facebook,
+    // GooglePlus,
+    AuthenticateProvider
   ]
 })
 export class AppModule {}

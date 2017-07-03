@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { InvitePage } from '../../pages/pages';
+
 
 /**
  * Generated class for the HomePage page.
@@ -21,6 +21,6 @@ export class HomePage {
 	ionViewDidLoad() {
 	}
 	goToInviteFriends(){
-		this.navCtrl.push(InvitePage);
+		this.navCtrl.push('InvitePage');
 	}
 }
