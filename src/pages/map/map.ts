@@ -192,20 +192,20 @@ export class MapPage implements OnInit{
     }
     
     private displayRoute(origin, destination, service, display) {
-        service.route({
-          origin: origin,
-          destination: destination,
-          // waypoints: [{location: 'Adelaide, SA'}, {location: 'Broken Hill, NSW'}],
-          travelMode: 'DRIVING',
-          avoidTolls: false
-        }, function(response, status) {
-          if (status === 'OK') {
-            // console.log(response);
-             display.setDirections(response);
-          } else {
-            console.log('Could not display directions due to: ' + status);
-          }
-        });
+        // service.route({
+        //   origin: origin,
+        //   destination: destination,
+        //   // waypoints: [{location: 'Adelaide, SA'}, {location: 'Broken Hill, NSW'}],
+        //   travelMode: 'DRIVING',
+        //   avoidTolls: false
+        // }, function(response, status) {
+        //   if (status === 'OK') {
+        //     // console.log(response);
+        //      display.setDirections(response);
+        //   } else {
+        //     console.log('Could not display directions due to: ' + status);
+        //   }
+        // });
     }
 
     public displayDirection(Lat,Lng){

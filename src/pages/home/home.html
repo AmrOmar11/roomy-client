@@ -21,3 +21,21 @@
 <ion-content class="map-page">
 	<page-map></page-map>
 </ion-content>
+
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title start><ion-icon name="ios-contact"style="zoom:2.0;" ></ion-icon> PROFILE NAME</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="hotel-sidemenu-item">
+    <ion-list class="hotel-sidemenu-item" no-lines>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPayment()"><ion-icon name="card"></ion-icon>  PAYMENT</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPromotions()"><ion-icon name="beer"></ion-icon>  PROMOTIONS</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToSettings()"><ion-icon name="settings"></ion-icon> SETTINGS</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToHowItWorks()"><ion-icon name="help-circle"></ion-icon>  HOW IT WORKS</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToInviteFriends()"><ion-icon  name="people"></ion-icon>  INVITE FRIENDS</button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #content swipeBackEnabled="false"></ion-nav>

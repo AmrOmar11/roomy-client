@@ -20,6 +20,19 @@ export class HomePage {
 	// Load map only after view is initialized
 	ionViewDidLoad() {
 	}
+	
+	goToPayment(){
+    	this.navCtrl.push('PaymentPage');
+	}
+	goToPromotions(){
+		this.navCtrl.push('PromotionsPage');
+	}
+	goToSettings(){
+		this.navCtrl.push('SettingsPage');
+	}
+	goToHowItWorks(){
+		this.navCtrl.push('HowitworksPage');
+	}
 	goToInviteFriends(){
 		this.navCtrl.push('InvitePage');
 	}
