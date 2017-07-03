@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { IonicPage,NavController,NavParams,ModalController, LoadingController} from 'ionic-angular';
 import { Geolocation,Geoposition } from '@ionic-native/geolocation';
-import { SearchPage} from '../../pages/pages';
 import { HotelsProvider } from '../../providers/hotels/hotels';
 /**
  * Generated class for the MapPage page.
@@ -147,7 +146,7 @@ export class MapPage implements OnInit{
         // reset 
         this.resetSearch();
         // show modal
-        let modal = this.modalCtrl.create(SearchPage);
+        let modal = this.modalCtrl.create('SearchPage');
         modal.onDidDismiss(data => {
             console.log('search > modal dismissed > data > ', data);
             if(data){

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SearchPage } from './search';
 
@@ -6,6 +6,7 @@ import { SearchPage } from './search';
   declarations: [
     SearchPage,
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
     IonicPageModule.forChild(SearchPage),
   ],

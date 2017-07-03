@@ -1,8 +1,9 @@
 import { Component, OnInit, NgZone,Directive, Renderer, ElementRef } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { IonicPage, ViewController } from 'ionic-angular';
 
 declare var google: any;
 
+@IonicPage()
 @Component({
     selector : 'search',
     templateUrl: 'search.html'
