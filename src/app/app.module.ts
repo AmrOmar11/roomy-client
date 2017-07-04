@@ -27,7 +27,6 @@ import { AuthenticateProvider,HotelsProvider,FacebookLoginService,GoogleLoginSer
   bootstrap: [IonicApp],
   entryComponents: [
     RoomyApp
-
   ],
   providers: [
     StatusBar,

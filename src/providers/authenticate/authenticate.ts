@@ -23,7 +23,7 @@ export class User {
 export class AuthenticateProvider {
   currentUser: User;
   constructor(public http: Http) {
-   console.log('Hello AuthenticateProvider Provider');
+   console.log('Hello AuthenticateProvider');
   }
   
   public login(credentials) {
