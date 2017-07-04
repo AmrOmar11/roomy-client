@@ -22,6 +22,10 @@
 
 
 <ion-content class="login-content" padding>
+  <ion-buttons>
+      <button ion-button block class="facebook-auth-button" (click)="doFacebookLogin()">Log in with Facebook</button>
+      <button ion-button block class="google-auth-button" (click)="doGoogleLogin()">Log in with Google</button>
+  </ion-buttons>
   <ion-row class="logo-row">
     <ion-col></ion-col>
     <ion-col width-67>

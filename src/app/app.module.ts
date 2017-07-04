@@ -4,9 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule  } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialSharing } from '@ionic-native/social-sharing';
-// import { NativeStorage } from '@ionic-native/native-storage';
-// import { Facebook } from '@ionic-native/facebook';
-// import { GooglePlus } from '@ionic-native/google-plus';
+import { NativeStorage } from '@ionic-native/native-storage';
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 import { RoomyApp } from './app.component';
 
@@ -37,11 +37,11 @@ import { AuthenticateProvider,HotelsProvider,FacebookLoginService,GoogleLoginSer
     SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HotelsProvider,
-    // FacebookLoginService,
-    // GoogleLoginService,
-    // NativeStorage,
-    // Facebook,
-    // GooglePlus,
+    FacebookLoginService,
+    GoogleLoginService,
+    NativeStorage,
+    Facebook,
+    GooglePlus,
     AuthenticateProvider
   ]
 })
