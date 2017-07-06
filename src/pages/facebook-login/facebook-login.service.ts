@@ -24,9 +24,9 @@ export class FacebookLoginService {
 
     return new Promise<FacebookUserModel>((resolve, reject) => {
       //["public_profile"] is the array of permissions, you can add more if you need
-      this.fb.login(["public_profile"]).then(function(response){
+      this.fb.login(["public_profile","email"]).then(function(response){
         //Getting name and gender properties
-        env.fb.api("/me?fields=name,gender", [])
+        env.fb.api("/me?fields=name,gender,email", [])
         .then(function(user) {
           //now we have the users info, let's save it in the NativeStorage
           env.setFacebookUser(user)
@@ -66,19 +66,20 @@ export class FacebookLoginService {
     let env = this;
 
     return new Promise<FacebookUserModel>((resolve, reject) => {
-      this.getFriendsFakeData()
-      .then(data => {
-        resolve(env.nativeStorage.setItem('facebook_user',
-          {
-            userId: user.id,
-            name: user.name,
-            gender: user.gender,
-            image: "https://graph.facebook.com/" + user.id + "/picture?type=large",
-            friends: data.friends,
-            photos: data.photos
-          })
-        );
-      });
+      env.nativeStorage.setItem('facebook_user',
+      {
+        userId: user.id,
+        name: user.name,
+        gender: user.gender,
+        email: user.email,
+        image: "https://graph.facebook.com/" + user.id + "/picture?type=large"        
+      }).then(
+        function() {
+          resolve();
+        },function(error){
+          reject(error);
+        }
+      );
     });
   }
 

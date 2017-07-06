@@ -3,6 +3,7 @@ export class FacebookUserModel {
   gender: string;
   name: string;
   userId: string;
-  friends: Array<string> = [];
-  photos: Array<string> = [];
+  email: string;
+  // friends: Array<string> = [];
+  // photos: Array<string> = [];
 }
