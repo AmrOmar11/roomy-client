@@ -86,11 +86,11 @@
     </plugin>
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3" />
     <plugin name="cordova-plugin-googlemaps" spec="^1.4.0">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDRkKSDHE-AvGKLjoIoymRZIaQGQ2sUEAs" />
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyDRkKSDHE-AvGKLjoIoymRZIaQGQ2sUEAs" />
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyD3sX8pettPjsFmCP8DeBRVnznwrjUS5z4" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyD3sX8pettPjsFmCP8DeBRVnznwrjUS5z4" />
     </plugin>
     <plugin name="cordova-plugin-googleplus" spec="git+https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git">
-        <variable name="REVERSED_CLIENT_ID" value="486964075894-5d67dblk8fef4hm2mn6vcl9c4078vs9i.apps.googleusercontent.com" />
+        <variable name="REVERSED_CLIENT_ID" value="154208733448-d2rqtun28i11eeimgc4alt3cj574lf6v.apps.googleusercontent.com" />
     </plugin>
     <plugin name="cordova-plugin-nativestorage" spec="^2.2.2" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />

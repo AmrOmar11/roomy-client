@@ -72,8 +72,8 @@
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
             "cordova-plugin-googlemaps": {
-                "API_KEY_FOR_ANDROID": "AIzaSyDRkKSDHE-AvGKLjoIoymRZIaQGQ2sUEAs",
-                "API_KEY_FOR_IOS": "AIzaSyDRkKSDHE-AvGKLjoIoymRZIaQGQ2sUEAs"
+                "API_KEY_FOR_ANDROID": "AIzaSyD3sX8pettPjsFmCP8DeBRVnznwrjUS5z4",
+                "API_KEY_FOR_IOS": "AIzaSyD3sX8pettPjsFmCP8DeBRVnznwrjUS5z4"
             },
             "cordova-plugin-x-socialsharing": {},
             "cordova-plugin-nativestorage": {},
@@ -86,7 +86,7 @@
                 "APP_NAME": "roomy"
             },
             "cordova-plugin-googleplus": {
-                "REVERSED_CLIENT_ID": "486964075894-5d67dblk8fef4hm2mn6vcl9c4078vs9i.apps.googleusercontent.com"
+                "REVERSED_CLIENT_ID": "154208733448-d2rqtun28i11eeimgc4alt3cj574lf6v.apps.googleusercontent.com"
             }
         },
         "platforms": [

@@ -8,7 +8,7 @@ import { GoogleUserModel } from './google-user.model';
 @Injectable()
 export class GoogleLoginService {
 
-  webClientId: string = "170114024235-otrhf33606csiqjj1pu44hgeop5k540g.apps.googleusercontent.com";
+  webClientId: string = "154208733448-d2rqtun28i11eeimgc4alt3cj574lf6v.apps.googleusercontent.com";
 
   constructor(
     public http: Http,
@@ -84,19 +84,18 @@ export class GoogleLoginService {
   {
     let env = this;
     return new Promise<GoogleUserModel>((resolve, reject) => {
-      this.getFriendsFakeData()
-      .then(data => {
-        resolve(env.nativeStorage.setItem('google_user',
+      env.nativeStorage.setItem('google_user',
           {
             userId: user.userId,
             name: user.displayName,
             email: user.email,
-            image: user.imageUrl,
-            friends: data.friends,
-            photos: data.photos
-          })
-        );
-      });
+            image: user.imageUrl
+          }).then(
+        function() {
+          resolve();
+        },function(error){
+          reject(error);
+        });
     });
   }
 
