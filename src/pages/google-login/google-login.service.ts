@@ -8,7 +8,7 @@ import { GoogleUserModel } from './google-user.model';
 @Injectable()
 export class GoogleLoginService {
 
-  webClientId: string = "1001905109734-cnkoa7unjev55lii0rftbfm0kvb37gqr.apps.googleusercontent.com";
+  webClientId: string = "170114024235-otrhf33606csiqjj1pu44hgeop5k540g.apps.googleusercontent.com";
 
   constructor(
     public http: Http,
@@ -51,6 +51,7 @@ export class GoogleLoginService {
       .then(function (user) {
         env.setGoogleUser(user)
         .then(function(res){
+          console.log("google logged in " ,res);
           resolve(res);
         });
       }, function (error) {

@@ -8,7 +8,7 @@ import { FacebookUserModel } from './facebook-user.model';
 
 @Injectable()
 export class FacebookLoginService {
-  FB_APP_ID: number = 1966346583609237;
+  FB_APP_ID: number = 188141358385811;
 
   constructor(
     public http: Http,

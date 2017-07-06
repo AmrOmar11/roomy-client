@@ -50,6 +50,7 @@ export class GoogleLoginPage {
 
     this.googleLoginService.doGoogleLogin()
     .then(function(user){
+      console.log("Login success",user);
       env.user = user;
     }, function(err){
       console.log("Google Login error", err);
