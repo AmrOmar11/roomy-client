@@ -22,7 +22,7 @@ export class LoginPage {
   loading:Loading;
   loginForm:FormGroup;
   submitAttempt:boolean=false;
-  registerCredentials = { email: '', password: '' };
+  userCredentials = { email: '', password: '' };
 
   constructor(public nav: NavController,
   public navParams: NavParams, private auth: AuthenticateProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController,
@@ -81,33 +81,25 @@ export class LoginPage {
       });
     });
   }
-
   public createAccount() {
     this.nav.push('RegisterPage');
   }
  
   login() {
-    let self = this;
     this.submitAttempt = true;
-    console.log(this.loginForm.value);
-    console.log(this.loginForm.valid);
     if(this.loginForm.valid){
-      this.showLoading();
-      setTimeout(()=>{
-        self.showError("Invalid username/password");
-      },2000);
-      //this.auth.login(this.registerCredentials)
+      this.showLoading()
+      this.auth.login(this.userCredentials).subscribe(allowed => {
+        if (allowed) {        
+          this.nav.setRoot('HomePage');
+        } else {
+          this.showError("Access Denied");
+        }
+      },
+      error => {
+        this.showError(error);
+      });
     }
-    // .subscribe(allowed => {
-    //   if (allowed) {        
-    //     this.nav.setRoot('HomePage');
-    //   } else {
-    //     this.showError("Access Denied");
-    //   }
-    // },
-    //   error => {
-    //     this.showError(error);
-    //   });
   }
  
   showLoading() {

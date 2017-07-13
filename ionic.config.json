@@ -1,5 +1,19 @@
 {
   "name": "RoomyIonicApp",
   "app_id": "51d16447",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/login",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/login"
+    },
+    {
+      "path": "/registration",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/registration"
+    },
+    {
+      "path": "/autheticateUserRequest",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/autheticateUserRequest"
+    }
+  ]
 }
