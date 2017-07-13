@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component,Injectable } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { IonicPage, NavController, NavParams, LoadingController,AlertController,Loading } from 'ionic-angular';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
+import { UsernameValidator } from  '../../validators/username';
 
 /**
  * Generated class for the LoginPage page.
@@ -9,6 +11,7 @@ import { FacebookLoginService,GoogleLoginService } from '../../providers/provide
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+@Injectable()
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -17,14 +20,23 @@ import { FacebookLoginService,GoogleLoginService } from '../../providers/provide
 export class LoginPage {
   
   loading:Loading;
+  loginForm:FormGroup;
+  submitAttempt:boolean=false;
   userCredentials = { email: '', password: '' };
 
   constructor(public nav: NavController,
   public navParams: NavParams, private auth: AuthenticateProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController,
   public facebookLoginService: FacebookLoginService,
-	public googleLoginService: GoogleLoginService
+	public googleLoginService: GoogleLoginService,
+  public formBuilder:  FormBuilder
   ) {
+
+    this.loginForm = this.formBuilder.group({
+      username: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z0-9\.\@]+'), Validators.required,UsernameValidator.isValid]),''],
+      password: ['',Validators.compose([Validators.required]),'']
+    });
   }
+  
 
   doFacebookLogin() {
     this.loading = this.loadingCtrl.create();
@@ -69,23 +81,25 @@ export class LoginPage {
       });
     });
   }
-  
   public createAccount() {
     this.nav.push('RegisterPage');
   }
  
-  public login() {
-    this.showLoading()
-    this.auth.login(this.userCredentials).subscribe(allowed => {
-      if (allowed) {        
-        this.nav.setRoot('HomePage');
-      } else {
-        this.showError("Access Denied");
-      }
-    },
+  login() {
+    this.submitAttempt = true;
+    if(this.loginForm.valid){
+      this.showLoading()
+      this.auth.login(this.userCredentials).subscribe(allowed => {
+        if (allowed) {        
+          this.nav.setRoot('HomePage');
+        } else {
+          this.showError("Access Denied");
+        }
+      },
       error => {
         this.showError(error);
       });
+    }
   }
  
   showLoading() {

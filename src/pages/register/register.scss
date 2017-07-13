@@ -13,13 +13,25 @@ page-register {
        align-items: center;
        text-align: center;
      }
- 
+
+     .item-md{
+      background-color:transparent;
+     }
+
+     .label{
+      padding-left:15px;
+      text-align:left;
+     }
+
+     .list-md .item-block .item-inner{
+      border:none;
+     }
      ion-item {
-         border-radius: 30px !important;
-         padding-left: 30px !important;
+         //border-radius: 30px !important;
+         //padding-left: 30px !important;
          font-size: 0.9em;
-         margin-bottom: 10px;
-         border: 1px solid #ffffff;
+         //margin-bottom: 10px;
+         //border: 1px solid #ffffff;
          border-bottom: 0px !important;
          box-shadow: none !important;
      }
@@ -33,7 +45,15 @@ page-register {
        border-bottom-color: #ffffff !important;
        box-shadow: none !important;
      }
- 
+      
+     ion-input, ion-select, ion-textarea {
+          background-color: #f2f2f2;
+          padding: 5px 10px;
+      }
+      
+      .invalid {
+          border: 1px solid #ea6153;
+      }  
      .submit-btn {
        background: #51CFB1;
        border-radius: 30px !important;
