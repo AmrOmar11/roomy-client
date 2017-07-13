@@ -17,7 +17,7 @@ import { FacebookLoginService,GoogleLoginService } from '../../providers/provide
 export class LoginPage {
   
   loading:Loading;
-  registerCredentials = { email: '', password: '' };
+  userCredentials = { email: '', password: '' };
 
   constructor(public nav: NavController,
   public navParams: NavParams, private auth: AuthenticateProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController,
@@ -69,16 +69,14 @@ export class LoginPage {
       });
     });
   }
-
-  // constructor(private nav: NavController, private auth: AuthenticateProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController,public navParams: NavParams) { }
- 
+  
   public createAccount() {
     this.nav.push('RegisterPage');
   }
  
   public login() {
     this.showLoading()
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
+    this.auth.login(this.userCredentials).subscribe(allowed => {
       if (allowed) {        
         this.nav.setRoot('HomePage');
       } else {
