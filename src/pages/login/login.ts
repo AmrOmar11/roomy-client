@@ -22,7 +22,7 @@ export class LoginPage {
   loading:Loading;
   loginForm:FormGroup;
   submitAttempt:boolean=false;
-  userCredentials = { email: '', password: '' };
+  userCredentials = { email: '', password: '', mobile:'' };
 
   constructor(public nav: NavController,
   public navParams: NavParams, private auth: AuthenticateProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController,

@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="dark">
+  <ion-navbar>
     <ion-title>Register</ion-title>
   </ion-navbar>
 </ion-header>
@@ -18,32 +18,32 @@
         <ion-col>
           <ion-list inset>            
             <ion-item>
-              <ion-label floating>Enter Firstname</ion-label>
-              <ion-input type="text" [class.invalid]= "!registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="firstname" ></ion-input>
+              <ion-label floating>FirstName</ion-label>
+              <ion-input type="text" [class.invalid]= "!registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="registerCredentials.firstName" ></ion-input>
             </ion-item>
             
             <ion-item>
-              <ion-label floating>Enter Lastname</ion-label>
-              <ion-input type="text" [class.invalid]= "!registerForm.controls.lastname.valid && (registerForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="lastname"></ion-input>
+              <ion-label floating>LastName</ion-label>
+              <ion-input type="text" [class.invalid]= "!registerForm.controls.lastname.valid && (registerForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="registerCredentials.lastName"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-label floating>Enter Mobile number</ion-label>
-              <ion-input type="text" [class.invalid]= "!registerForm.controls.mobile.valid && (registerForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="mobile"></ion-input> 
+              <ion-label floating>Mobile</ion-label>
+              <ion-input type="text" [class.invalid]= "!registerForm.controls.mobile.valid && (registerForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="registerCredentials.contactNumber"></ion-input> 
             </ion-item>
             <ion-label *ngIf="!registerForm.controls.mobile.valid && (registerForm.controls.mobile.dirty || registerAttempt)">
                 <p>Please enter valid Mobile</p>
             </ion-label>
             <ion-item>
-              <ion-label floating>Enter your email id</ion-label>
-              <ion-input type="text"  [class.invalid]= "!registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerAttempt)" formControlName="email" name="email" [(ngModel)]="email"></ion-input> 
+              <ion-label floating>Email</ion-label>
+              <ion-input type="text"  [class.invalid]= "!registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerAttempt)" formControlName="email" name="email" [(ngModel)]="registerCredentials.emailAddress"></ion-input> 
             </ion-item>
             <ion-label *ngIf="!registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerAttempt)">
                 <p>Please enter valid email</p>
             </ion-label>
             <ion-item>
-              <ion-label floating>Enter Password</ion-label>
-              <ion-input type="password" [class.invalid]= "!registerForm.controls.password.valid && (registerForm.controls.password.dirty || registerAttempt)" formControlName="password" name="password" [(ngModel)]="password"></ion-input>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" [class.invalid]= "!registerForm.controls.password.valid && (registerForm.controls.password.dirty || registerAttempt)" formControlName="password" name="password" [(ngModel)]="registerCredentials.loginPassword"></ion-input>
             </ion-item>
             
           </ion-list>

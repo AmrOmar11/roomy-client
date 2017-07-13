@@ -19,15 +19,18 @@
         <ion-col>
           <ion-list inset>
             <ion-item>
-              <ion-label floating>Enter your Email or Mobile</ion-label>
-              <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="text" formControlName="username" name="email"></ion-input>
+              <ion-label floating>Email/Mobile</ion-label>
+              <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="text" formControlName="username" name="email" [(ngModel)]="userCredentials.email">                
+              </ion-input>
             </ion-item>
             <ion-label *ngIf="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)">
-                <p>Please enter valid user</p>
+                <p>Please enter valid Email/Mobile</p>
             </ion-label> 
             <ion-item>
-              <ion-label floating>Roomy Password</ion-label>
-              <ion-input type="password" formControlName="password" [class.invalid]="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt)" name="password"></ion-input>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" formControlName="password" [class.invalid]="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt)" name="password"
+              [(ngModel)]="userCredentials.password">
+              </ion-input>
             </ion-item>
             <ion-label *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt)">
                 <p>Please enter valid password</p>
@@ -43,7 +46,7 @@
       </ion-row>
       
     </form>
-    <ion-row>
+    <!-- <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" block clear (click)="doFacebookLogin()">Log in with Facebook</button>
         </ion-col>
@@ -52,7 +55,7 @@
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" block clear (click)="doGoogleLogin()">Log in with Google</button>
         </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button>

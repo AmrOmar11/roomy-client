@@ -18,23 +18,14 @@ export class RegisterPage {
   createSuccess = false;
   registerForm:FormGroup;
   registerAttempt:boolean=false;
-  firstname:string;
-  lastname:string;
-  email:string;
-  mobile:string;
-  password:string;
   registerCredentials = {
-              contactNumber: "string",
-              createdOn: "string",
-              emailAddress: "string",
-              firstName: "string",
-              lastName: "string",
-              loginPassword: "string",
-              middleName: "string",
-              passwordChangedOn: "string",
-              userId: "string",
-              userType: "string"
-            };
+    contactNumber: "",
+    emailAddress: "",
+    firstName: "",
+    lastName: "",
+    loginPassword: "",
+    middleName: ""
+  };
  
   constructor(private nav: NavController, public navParams: NavParams, private auth: AuthenticateProvider, private alertCtrl: AlertController, public formBuilder: FormBuilder) { 
     this.registerForm = this.formBuilder.group({
@@ -52,28 +43,21 @@ export class RegisterPage {
   }
 
   register() {
-
-  this.registerAttempt = true;
-  if(this.registerForm.valid){
-    this.registerCredentials.firstName = this.firstname;
-    this.registerCredentials.lastName = this.lastname;
-    this.registerCredentials.emailAddress = this.email;
-    this.registerCredentials.contactNumber = this.mobile;
-    this.registerCredentials.loginPassword = this.password;
-
-    console.log(this.registerCredentials);
-    this.auth.register(this.registerCredentials).subscribe(success => {
-      if (success) {
-        this.createSuccess = true;
-        this.showPopup("Success", "Account created.");
-      } else {
-        this.showPopup("Error", "Problem creating account.");
-      }
-    },
+    this.registerAttempt = true;
+    if(this.registerForm.valid){
+      console.log('registration:req:'+this.registerCredentials);
+      this.auth.register(this.registerCredentials).subscribe(success => {
+        if (success) {
+          this.createSuccess = true;
+          this.nav.setRoot('HomePage');
+        } else {
+          this.showPopup("Error", "Problem creating account.");
+        }
+      },
       error => {
         this.showPopup("Error", error);
       });
-  }
+    }
 }
 
   showPopup(title, text) {

@@ -8,12 +8,12 @@
       "proxyUrl": "https://roomy-midtier.herokuapp.com/login"
     },
     {
-      "path": "/registration",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/registration"
+      "path": "/registerUser",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/registerUser"
     },
     {
-      "path": "/autheticateUserRequest",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/autheticateUserRequest"
+      "path": "/authenticateUser",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/authenticateUser"
     }
   ]
 }
