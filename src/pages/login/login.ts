@@ -25,7 +25,10 @@ export class LoginPage {
   userCredentials = { email: '', password: '', mobile:'' };
 
   constructor(public nav: NavController,
-  public navParams: NavParams, private auth: AuthenticateProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController,
+  public navParams: NavParams, 
+  private auth: AuthenticateProvider, 
+  private alertCtrl: AlertController, 
+  private loadingCtrl: LoadingController,
   public facebookLoginService: FacebookLoginService,
 	public googleLoginService: GoogleLoginService,
   public formBuilder:  FormBuilder
