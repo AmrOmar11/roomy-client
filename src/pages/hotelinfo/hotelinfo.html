@@ -5,24 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>hotelinfo</ion-title>
+    <ion-title>Hotel Information</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-<!--   <div [(ngModel)]="hotelInfo" >
-  <div *ngFor="let image of hotelInfo.images" >
-    {{image}}
-  </div>
-</div> -->
-<!-- {{hotelInfo?.images | json}} -->
-<ion-item text-wrap *ngFor="let item of hotelInfo">
-  <p >{{item}}</p>
-</ion-item> 
-
-
+    <ion-slides pager="true">
+      <ion-slide *ngFor="let hotelImage of hotelInfo.images">
+        <!-- <div class="HotelSlider"  [ngStyle]="{ 'background-image': 'url(' + hotelImage+ ')'}">
+        </div> -->
+        <img [src]="hotelImage">
+      </ion-slide>
+    </ion-slides>
 </ion-content>

@@ -1,10 +1,25 @@
 page-hotelslider {
+
+	$contact-card-slides-height: 45%;
+	$white: #FFFFFF;
+	$black: rgba(#000000, .8);
+	$black-a: lighten($black, 10%);
+
+
 	width:100%;
 	height:22%;
 	position:absolute;
 	bottom:0;
 	text-align:left;
 	background:transparent;
+
+
+	.HotelHourCost{
+		background : $black-a;
+		.hourcost-bottom{
+			background: $black;
+		}
+	}
 
 	.HotelSlider{
 		background-color:#ffad33;
@@ -16,7 +31,7 @@ page-hotelslider {
 		padding-top:0;
 		padding-bottom:0;
 	}
-	.HotelName, .HotelCategory, .HotelHourCost{
+	.HotelName, .HotelCategory{
 		text-align:left;
 		font-weight:bold;
 		color:#444547;
@@ -31,6 +46,10 @@ page-hotelslider {
 		text-align:left;
 		color:#fff;
 		padding: 2px 8px;
+		span{
+			background: $black;
+		}
+		
 	}
 
 	.HotelDetails{
@@ -57,13 +76,6 @@ page-hotelslider {
 		font-weight:bold;
 		font-size:1.8vmax;
 	}
-	.farecurrency, .minumum{
-		font-size:1.5vmax;
-	}
-	.HotelHourCost{
-		text-align:center;
-		font-size:1.8vmax;
-		font-weight:bold;
-	}
+
 }
 

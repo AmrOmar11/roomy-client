@@ -1,3 +1,37 @@
 page-hotelinfo {
 
+.box1, box2, box3 {
+   height: 300px;
+   border: 2px solid blue;
+}
+
+.hotelinfo-slides
+		{
+			height: 45%;
+
+			ion-slide.hotelinfo
+			{
+				.slide-zoom
+				{
+					height: 100%;
+				}
+			}
+
+			.swiper-pagination
+			{
+				.swiper-pagination-bullet
+				{
+					opacity: 1;
+					background: #FFFFFF;
+					width: 10px;
+					height: 10px;
+				}
+
+				.swiper-pagination-bullet-active
+				{
+					background: #00e9d5;
+				}
+			}
+		}
+
 }

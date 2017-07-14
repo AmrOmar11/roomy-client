@@ -16,7 +16,7 @@ import { HotelsProvider } from '../../providers/hotels/hotels';
   templateUrl: 'hotelslider.html',
 })
 export class HotelsliderPage {
-    public detailedHotelInfo:any;
+    
 	@ViewChild(Slides) slidesObj: Slides;
     
     @Input()hotels:any
@@ -40,10 +40,9 @@ export class HotelsliderPage {
         let loader = this.loadingController.create({
             content:"Fetching Hotels..."
         });
-         loader.present().then(()=>{
+        loader.present().then(()=>{
             this.hotelsProvider.getHotelDetailedInfo().then(data => {
-                  this.detailedHotelInfo = data;
-                  let modal = this.modalController.create('HotelinfoPage',{"hotelInfo":this.detailedHotelInfo} );
+                  let modal = this.modalController.create('HotelinfoPage',{"hotelInfo":data} );
                   loader.dismiss();
                   modal.present();
             });
