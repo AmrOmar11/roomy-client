@@ -1,0 +1,11 @@
+ {
+        "images":["xxx","yyy","zzz"],
+        "aminities":["wifi","ac","longue","alchol","xxx"],
+        "address":{
+                "address1":"xxx",
+                "address2":"yyy",
+                "hotel longitude":"xxx",
+                "hotel latitue":"yyy",
+                "phonenumber":"xxxxxx"
+                }
+}
