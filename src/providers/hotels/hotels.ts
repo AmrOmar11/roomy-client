@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { Http,Headers,RequestOptions } from '@angular/http';
+import 'rxjs/Rx';
 
 /*
   Generated class for the HotelsProvider provider.
@@ -32,7 +33,7 @@ export class HotelsProvider {
 	  });
 	}
 
-  public getHotelDetailedInfo() {
+  	public getHotelDetailedInfo() {
 	  return new Promise(resolve => {
 	    // We're using Angular HTTP provider to request the data,
 	    // then on the response, it'll map the JSON data to a parsed JS object.
@@ -46,6 +47,43 @@ export class HotelsProvider {
 	        resolve(this.data);
 	      });
 	  });
+	}
+
+	public getHotels(data) {
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json' );
+		let options = new RequestOptions({ headers: headers });
+		let body = JSON.stringify({
+			cityName: data.cityName,
+			customerToken: data.customerToken
+		});
+		return this.http.post('https://roomy-midtier.herokuapp.com/getListofHotelsByCity',body,options)
+		.map(res => {
+		console.log('hotels:res:'+res.json().toString());
+		return res.json();
+		})
+		.catch(this.handleError);
+	}
+
+	public getHotelInfo(data) {
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json' );
+		let options = new RequestOptions({ headers: headers });
+		let body = JSON.stringify({
+			hotelId: data.hotelId,
+			customerToken: data.customerToken
+		});
+		return this.http.post('https://roomy-midtier.herokuapp.com/getHotelInfo',body,options)
+		.map(res => {
+			console.log('hotelInfo:res:'+res.json().toString());
+			return res.json();
+		})
+		.catch(this.handleError);
+	}
+	  
+	handleError(error) {
+		console.error(error);
+		return Observable.throw(error.json().error || 'Server error');
 	}
 
 }

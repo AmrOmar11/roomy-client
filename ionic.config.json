@@ -14,6 +14,14 @@
     {
       "path": "/authenticateUser",
       "proxyUrl": "https://roomy-midtier.herokuapp.com/authenticateUser"
-    }
+    },
+    {
+      "path": "/getListofHotelsByCity",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/getListofHotelsByCity"
+    },
+    {
+      "path": "/getHotelInfo",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/getHotelInfo"
+    }    
   ]
 }

@@ -58,7 +58,7 @@ export class AuthenticateProvider {
       mobileNumber: credentials.mobileNumber,
       password: credentials.password
     });
-    return this.http.post('/login',body,options)
+    return this.http.post('https://roomy-midtier.herokuapp.com/login',body,options)
     .map(res => {
       console.log('login:res:'+res.json().toString());
       this.setUser(res.json());
@@ -84,7 +84,7 @@ export class AuthenticateProvider {
       loginPassword: credentials.loginPassword,
       middleName: ""
     });
-    return this.http.post('/registerUser',body,options)
+    return this.http.post('https://roomy-midtier.herokuapp.com/registerUser',body,options)
     .map(res => {
       console.log('registration:res:'+res.json().toString());
       return this.authenticateUser(res.json(),credentials);
@@ -100,7 +100,7 @@ export class AuthenticateProvider {
       customerToken: data.customerToken,
       otp: data.otp
     });
-    return this.http.post('/authenticateUser',body,options)
+    return this.http.post('https://roomy-midtier.herokuapp.com/authenticateUser',body,options)
     .map(res => {
       console.log('autheticate:res:'+res.json().toString());
       credentials.customerToken = res.json().customerToken;

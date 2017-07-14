@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage,NavParams,ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the HotelinfoPage page.
@@ -15,13 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class HotelinfoPage {
 
   hotelInfo:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
   	this.hotelInfo = this.navParams.get("hotelInfo");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HotelinfoPage');
+  }
 
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
 }
