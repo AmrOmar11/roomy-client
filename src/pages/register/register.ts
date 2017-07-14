@@ -54,10 +54,10 @@ export class RegisterPage {
     if(this.registerForm.valid){
       this.showLoading();
       console.log('registration:req:'+this.registerCredentials);
-      this.auth.register(this.registerCredentials).subscribe(success => {
+      this.auth.registerUser(this.registerCredentials).subscribe(success => {
         if (success) {
           this.createSuccess = true;
-          this.nav.setRoot('HomePage');
+          this.nav.setRoot('HomePage',{userInfo:success});
         } else {
           this.showPopup("Error", "Problem creating account.");
         }

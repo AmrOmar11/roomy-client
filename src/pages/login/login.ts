@@ -92,9 +92,9 @@ export class LoginPage {
     this.submitAttempt = true;
     if(this.loginForm.valid){
       this.showLoading()
-      this.auth.login(this.userCredentials).subscribe(allowed => {
-        if (allowed) {        
-          this.nav.setRoot('HomePage');
+      this.auth.login(this.userCredentials).subscribe(success => {
+        if (success) {        
+          this.nav.setRoot('HomePage',{userInfo:success});
         } else {
           this.showError("Access Denied");
         }

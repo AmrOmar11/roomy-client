@@ -62,16 +62,8 @@ export class AuthenticateProvider {
     .map(res => {
       console.log('login:res:'+res.json().toString());
       let data = res.json();
-      this.currentUser = new User(data.responseData,
-                                  data.userId,
-                                  data.emailAddress,
-                                  data.contactNumber,
-                                  data.firstName,
-                                  data.middleName,
-                                  data.lastName,
-                                  data.userType,
-                                  data.customerToken);
-      return true;        
+      this.setUser(res.json());
+      return this.currentUser;
     })
     .catch(this.handleError);
   }
@@ -81,7 +73,7 @@ export class AuthenticateProvider {
     return Observable.throw(error.json().error || 'Server error');
   }
   
-  public register(credentials) {
+  public registerUser(credentials) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
@@ -96,12 +88,12 @@ export class AuthenticateProvider {
     return this.http.post('https://roomy-midtier.herokuapp.com/registerUser',body,options)
     .map(res => {
       console.log('registration:res:'+res.json().toString());
-      return this.authenticate(res.json());
+      return this.authenticateUser(res.json(),credentials);
     })
     .catch(this.handleError);
   }
   
-  authenticate(data){
+  authenticateUser(data,credentials){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
@@ -112,13 +104,28 @@ export class AuthenticateProvider {
     return this.http.post('https://roomy-midtier.herokuapp.com/authenticateUser',body,options)
     .map(res => {
       console.log('autheticate:res:'+res.json().toString());
-      return true;
+      credentials.customerToken = res.json().customerToken;
+      credentials.responseData = res.json().responseMessage;
+      this.setUser(credentials);
+      return this.currentUser;
     })
     .catch(this.handleError); 
   }
   
   public getUserInfo() : User {
     return this.currentUser;
+  }
+  
+  setUser(data){
+    this.currentUser = new User(data.responseData,
+                                  data.userId,
+                                  data.emailAddress,
+                                  data.contactNumber,
+                                  data.firstName,
+                                  data.middleName,
+                                  data.lastName,
+                                  data.userType,
+                                  data.customerToken);
   }
  
   public logout() {

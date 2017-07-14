@@ -25,7 +25,10 @@
 <ion-menu [content]="content" type="overlay">
   <ion-header>
     <ion-toolbar>
-      <ion-title start><ion-icon name="ios-contact"style="zoom:2.0;" ></ion-icon> PROFILE NAME</ion-title>
+      <ion-icon name="ios-contact"style="zoom:2.0;" ></ion-icon>
+      <ion-title start >
+        {{userInfo.firstName +' '+userInfo.lastName}}
+      </ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="hotel-sidemenu-item">
