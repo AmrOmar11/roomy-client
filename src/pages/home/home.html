@@ -5,14 +5,14 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-	<ion-navbar color="primary">
+	<ion-navbar>
 			<button ion-button icon-only menuToggle large>
 				<ion-icon name="menu"></ion-icon>
 			</button>
 		<ion-title>ROOMY</ion-title>
 		<ion-buttons end>
 			<button ion-button icon-only (click)="goToInviteFriends()">
-				<ion-icon name="people" style="zoom:1.5;"></ion-icon>
+				<ion-icon name="people"></ion-icon>
 			</button>
 		</ion-buttons>
 	</ion-navbar>
@@ -33,11 +33,11 @@
   </ion-header>
   <ion-content class="hotel-sidemenu-item">
     <ion-list class="hotel-sidemenu-item" no-lines>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPayment()"><ion-icon name="card"></ion-icon>  PAYMENT</button>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPromotions()"><ion-icon name="beer"></ion-icon>  PROMOTIONS</button>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToSettings()"><ion-icon name="settings"></ion-icon> SETTINGS</button>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToHowItWorks()"><ion-icon name="help-circle"></ion-icon>  HOW IT WORKS</button>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToInviteFriends()"><ion-icon  name="people"></ion-icon>  INVITE FRIENDS</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPayment()"><ion-icon name="card"></ion-icon>  Payment</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPromotions()"><ion-icon name="beer"></ion-icon>  Rewards</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToSettings()"><ion-icon name="settings"></ion-icon> Settings</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToHowItWorks()"><ion-icon name="help-circle"></ion-icon>  How it works</button>
+      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToInviteFriends()"><ion-icon  name="people"></ion-icon>  Invite Freinds</button>
     </ion-list>
   </ion-content>
 </ion-menu>
