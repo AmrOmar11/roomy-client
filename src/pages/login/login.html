@@ -20,7 +20,7 @@
           <ion-list inset>
             <ion-item>
               <ion-label floating>Email/Mobile</ion-label>
-              <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="text" formControlName="username" name="email" [(ngModel)]="userCredentials.email">                
+              <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="text" formControlName="username" name="email" [(ngModel)]="userCredentials.emailId">                
               </ion-input>
             </ion-item>
             <ion-label *ngIf="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)">

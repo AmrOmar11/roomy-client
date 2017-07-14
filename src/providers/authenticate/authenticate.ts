@@ -54,14 +54,13 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({
-      emailId: "",
-      mobileNumber: credentials.email,
+      emailId: credentials.emailId,
+      mobileNumber: credentials.mobileNumber,
       password: credentials.password
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/login',body,options)
     .map(res => {
       console.log('login:res:'+res.json().toString());
-      let data = res.json();
       this.setUser(res.json());
       return this.currentUser;
     })
