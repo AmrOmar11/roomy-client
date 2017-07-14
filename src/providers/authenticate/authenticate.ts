@@ -50,17 +50,6 @@ export class AuthenticateProvider {
   }
   
   public login(credentials) {
-    // if (credentials.email === null || credentials.password === null) {
-    //   return Observable.throw("Please insert credentials");
-    // } else {
-    //   return Observable.create(observer => {
-    //     // At this point make a request to your backend to make a real check!
-    //     let access = (credentials.password === "roomy" && credentials.email === "roomy@roomy.com");
-    //     this.currentUser = new User('roomy', 'roomy@roomy.com');
-    //     observer.next(access);
-    //     observer.complete();
-    //   });
-    // }
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
@@ -69,20 +58,12 @@ export class AuthenticateProvider {
       mobileNumber: credentials.email,
       password: credentials.password
     });
-    return this.http.post('/login',body,options)
+    return this.http.post('https://roomy-midtier.herokuapp.com/login',body,options)
     .map(res => {
-      console.log('user:'+res.json().toString());
+      console.log('login:res:'+res.json().toString());
       let data = res.json();
-      this.currentUser = new User(data.responseData,
-                                  data.userId,
-                                  data.emailAddress,
-                                  data.contactNumber,
-                                  data.firstName,
-                                  data.middleName,
-                                  data.lastName,
-                                  data.userType,
-                                  data.customerToken);      
-      return true;        
+      this.setUser(res.json());
+      return this.currentUser;
     })
     .catch(this.handleError);
   }
@@ -92,20 +73,59 @@ export class AuthenticateProvider {
     return Observable.throw(error.json().error || 'Server error');
   }
   
-  public register(credentials) {
-    if (credentials.email === null || credentials.password === null) {
-      return Observable.throw("Please insert credentials");
-    } else {
-      // At this point store the credentials to your backend!
-      return Observable.create(observer => {
-        observer.next(true);
-        observer.complete();
-      });
-    }
+  public registerUser(credentials) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify({      
+      contactNumber:credentials.contactNumber,
+      emailAddress: credentials.emailAddress,
+      firstName: credentials.firstName,
+      lastName: credentials.lastName,
+      loginPassword: credentials.loginPassword,
+      middleName: ""
+    });
+    return this.http.post('https://roomy-midtier.herokuapp.com/registerUser',body,options)
+    .map(res => {
+      console.log('registration:res:'+res.json().toString());
+      return this.authenticateUser(res.json(),credentials);
+    })
+    .catch(this.handleError);
   }
- 
+  
+  authenticateUser(data,credentials){
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify({      
+      customerToken: data.customerToken,
+      otp: data.otp
+    });
+    return this.http.post('https://roomy-midtier.herokuapp.com/authenticateUser',body,options)
+    .map(res => {
+      console.log('autheticate:res:'+res.json().toString());
+      credentials.customerToken = res.json().customerToken;
+      credentials.responseData = res.json().responseMessage;
+      this.setUser(credentials);
+      return this.currentUser;
+    })
+    .catch(this.handleError); 
+  }
+  
   public getUserInfo() : User {
     return this.currentUser;
+  }
+  
+  setUser(data){
+    this.currentUser = new User(data.responseData,
+                                  data.userId,
+                                  data.emailAddress,
+                                  data.contactNumber,
+                                  data.firstName,
+                                  data.middleName,
+                                  data.lastName,
+                                  data.userType,
+                                  data.customerToken);
   }
  
   public logout() {

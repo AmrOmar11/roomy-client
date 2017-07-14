@@ -14,7 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+	userInfo:any;
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
+		this.userInfo = this.navParams.get('userInfo');
 	}
 
 	// Load map only after view is initialized
