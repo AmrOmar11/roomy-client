@@ -84,19 +84,15 @@ export class LoginPage {
       });
     });
   }
-  public createAccount() {
+  
+  SignUp() {
     this.nav.push('RegisterPage');
   }
  
-  login() {
+  SignIn() {
     this.submitAttempt = true;
     if(this.loginForm.valid){
       this.showLoading();
-      let mobileRegex = /^[0-9]+$/;
-      if(this.userCredentials.emailId.match(mobileRegex)){
-         this.userCredentials.mobileNumber = this.userCredentials.emailId;
-         this.userCredentials.emailId = '';
-      }
       this.auth.login(this.userCredentials).subscribe(success => {
         if (success) {        
           this.nav.setRoot('HomePage',{userInfo:success});

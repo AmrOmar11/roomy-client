@@ -10,13 +10,11 @@
   </ion-navbar>
 </ion-header>
  
-<ion-content class="login-content" padding>
-  <div class="login-box">
-    
+<ion-content padding>
+  <div >
     <form (ngSubmit)="register()" [formGroup] = "registerForm">
       <ion-row>
         <ion-col>
-          <ion-list inset>            
             <ion-item>
               <ion-label floating>FirstName</ion-label>
               <ion-input type="text" [class.invalid]= "!registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="registerCredentials.firstName" ></ion-input>
@@ -45,17 +43,13 @@
               <ion-label floating>Password</ion-label>
               <ion-input type="password" [class.invalid]= "!registerForm.controls.password.valid && (registerForm.controls.password.dirty || registerAttempt)" formControlName="password" name="password" [(ngModel)]="registerCredentials.loginPassword"></ion-input>
             </ion-item>
-            
-          </ion-list>
         </ion-col>
       </ion-row>
-      
       <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit">Register</button>
+        <ion-col>
+          <button ion-button full type="submit">Register</button>
         </ion-col>
       </ion-row>
-      
     </form>
   </div>
 </ion-content>

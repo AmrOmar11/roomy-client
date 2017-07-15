@@ -14,10 +14,9 @@
     <ion-col></ion-col>
   </ion-row>
   <div>
-    <form (ngSubmit)="login()" [formGroup] ="loginForm">
+    <form [formGroup] ="loginForm">
       <ion-row>
         <ion-col>
-          <ion-list inset>
             <ion-item>
               <ion-label floating>Email/Mobile</ion-label>
               <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="text" formControlName="username" name="email" [(ngModel)]="userCredentials.emailId">                
@@ -35,17 +34,19 @@
             <ion-label *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt)">
                 <p>Please enter valid password</p>
             </ion-label>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-      
-      <ion-row>
-        <ion-col>
-          <button ion-button full type="submit">Sign in
-          </button>          
         </ion-col>
       </ion-row>
     </form>
+    <ion-row>
+      <ion-col>
+        <button ion-button full (click)="SignIn()">Sign in
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="SignUp()">Sign Up
+        </button>
+      </ion-col>
+    </ion-row>
     <!-- <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" block clear (click)="doFacebookLogin()">Log in with Facebook</button>
@@ -56,10 +57,5 @@
           <button ion-button class="submit-btn" block clear (click)="doGoogleLogin()">Log in with Google</button>
         </ion-col>
     </ion-row> -->
-    <ion-row>
-        <ion-col>
-          <button ion-button block clear (click)="createAccount()">Sign Up</button>
-        </ion-col>
-    </ion-row>    
   </div>
 </ion-content>

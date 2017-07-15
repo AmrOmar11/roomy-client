@@ -24,7 +24,7 @@
 
 <ion-menu [content]="content" type="overlay">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar (click)="goToSettings()">
       <ion-icon name="ios-contact"style="zoom:2.0;" ></ion-icon>
       <ion-title start >
         {{userInfo.firstName +' '+userInfo.lastName}}
