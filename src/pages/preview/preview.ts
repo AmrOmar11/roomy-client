@@ -40,6 +40,6 @@ export class PreviewPage {
   }
   
   SignUp(){
-  	this.navCtrl.setRoot('RegisterPage');
+  	this.navCtrl.push('RegisterPage');
   }
 }
