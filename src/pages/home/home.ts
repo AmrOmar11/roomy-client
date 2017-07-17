@@ -18,8 +18,7 @@ export class HomePage {
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
 		this.userInfo = this.navParams.get('userInfo');
 	}
-
-	// Load map only after view is initialized
+	
 	ionViewDidLoad() {
 	}
 	

@@ -57,7 +57,7 @@ export class HotelsProvider {
 			cityName: data.cityName,
 			customerToken: data.customerToken
 		});
-		return this.http.post('https://roomy-midtier.herokuapp.com/getListofHotelsByCity',body,options)
+		return this.http.post('https://roomy-midtier.herokuapp.com/getHotels',body,options)
 		.map(res => {
 		console.log('hotels:res:'+res.json().toString());
 		return res.json();
@@ -65,15 +65,15 @@ export class HotelsProvider {
 		.catch(this.handleError);
 	}
 
-	public getHotelInfo(data) {
+	public getHotelDetails(data) {
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json' );
 		let options = new RequestOptions({ headers: headers });
 		let body = JSON.stringify({
-			hotelId: data.hotelId,
+			hotelId: data.hotel_id,
 			customerToken: data.customerToken
 		});
-		return this.http.post('https://roomy-midtier.herokuapp.com/getHotelInfo',body,options)
+		return this.http.post('https://roomy-midtier.herokuapp.com/getHotelDetails',body,options)
 		.map(res => {
 			console.log('hotelInfo:res:'+res.json().toString());
 			return res.json();
