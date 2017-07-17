@@ -93,11 +93,21 @@ export class LoginPage {
     this.submitAttempt = true;
     if(this.loginForm.valid){
       this.showLoading();
-      this.auth.login(this.userCredentials).subscribe(success => {
-        if (success) {        
+      let mobileRegex = /^[0-9]+$/;
+      let input = {
+        emailId: this.userCredentials.emailId,
+        mobileNumber: this.userCredentials.mobileNumber,
+        password: this.userCredentials.password
+      };
+      if(input.emailId.match(mobileRegex)){
+        input.mobileNumber = this.userCredentials.emailId;
+        input.emailId = '';
+      }
+      this.auth.login(input).subscribe(success => {
+        if((success.customerToken !== undefined)&&((success.customerToken !== null))) {        
           this.navCtrl.setRoot('HomePage',{userInfo:success});
         } else {
-          this.showError("Access Denied");
+          this.showError(success.responseData);
         }
       },
       error => {
