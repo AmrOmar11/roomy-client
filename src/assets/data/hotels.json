@@ -10,7 +10,7 @@
             "hourcost": "50",
             "currency" : "INR",
             "farechargetype":"HR",
-            "img": "assets/img/Hotel4.jpg",
+            "img": "assets/img/hotels/Hotel4.jpg",
             "lattitue": "17.447020",
             "longitude": "78.383683"
       }, {
@@ -24,7 +24,7 @@
             "hourcost": "40",            
             "currency" : "INR",
             "farechargetype":"HR",
-            "img": "assets/img/Hotel1.jpg",
+            "img": "assets/img/hotels/Hotel1.jpg",
             "lattitue": "17.449918",
             "longitude": "78.378951"
       }, {
@@ -38,7 +38,7 @@
             "hourcost": "50",
             "currency" : "INR",
             "farechargetype":"HR",         
-            "img": "assets/img/Hotel2.jpg",
+            "img": "assets/img/hotels/Hotel2.jpg",
             "lattitue": "17.472835",
             "longitude": "78.372799"
       }, {
@@ -52,7 +52,7 @@
             "hourcost": "50",
             "currency" : "INR",
             "farechargetype":"HR",
-            "img": "assets/img/Hotel3.jpg",
+            "img": "assets/img/hotels/Hotel3.jpg",
             "lattitue": "17.443244",
             "longitude": "78.376690"
       }]

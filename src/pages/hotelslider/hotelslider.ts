@@ -1,5 +1,5 @@
 import { Component,Input, ViewChild  } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController,Slides,  LoadingController  } from 'ionic-angular';
+import { NavController, NavParams, ModalController,Slides,  LoadingController  } from 'ionic-angular';
 import { MapPage } from '../../pages/pages';
 import { HotelsProvider } from '../../providers/hotels/hotels';
 
@@ -10,7 +10,6 @@ import { HotelsProvider } from '../../providers/hotels/hotels';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-hotelslider',
   templateUrl: 'hotelslider.html',

@@ -24,7 +24,7 @@ export class LoginPage {
   submitAttempt:boolean=false;
   userCredentials = { emailId: '',mobileNumber: '',password:'' };
 
-  constructor(public nav: NavController,
+  constructor(public navCtrl: NavController,
   public navParams: NavParams, 
   private auth: AuthenticateProvider, 
   private alertCtrl: AlertController, 
@@ -50,13 +50,13 @@ export class LoginPage {
     this.facebookLoginService.getFacebookUser()
     .then(function(data) {
        // user is previously logged with FB and we have his data we will let him access the app
-      env.nav.popToRoot();
+      env.navCtrl.popToRoot();
     }, function(error){
       //we don't have the user data so we will ask him to log in
       env.facebookLoginService.doFacebookLogin()
       .then(function(res){
         env.loading.dismiss();
-        env.nav.popToRoot();
+        env.navCtrl.popToRoot();
       }, function(err){
         console.log("Facebook Login error", err);
       });
@@ -72,13 +72,13 @@ export class LoginPage {
     this.googleLoginService.trySilentLogin()
     .then(function(data) {
        // user is previously logged with Google and we have his data we will let him access the app
-      env.nav.popToRoot();
+      env.navCtrl.popToRoot();
     }, function(error){
       //we don't have the user data so we will ask him to log in
       env.googleLoginService.doGoogleLogin()
       .then(function(res){
         env.loading.dismiss();
-        env.nav.popToRoot();
+        env.navCtrl.popToRoot();
       }, function(err){
         console.log("Google Login error", err);
       });
@@ -86,7 +86,7 @@ export class LoginPage {
   }
   
   SignUp() {
-    this.nav.push('RegisterPage');
+    this.navCtrl.push('RegisterPage');
   }
  
   SignIn() {
@@ -95,7 +95,7 @@ export class LoginPage {
       this.showLoading();
       this.auth.login(this.userCredentials).subscribe(success => {
         if (success) {        
-          this.nav.setRoot('HomePage',{userInfo:success});
+          this.navCtrl.setRoot('HomePage',{userInfo:success});
         } else {
           this.showError("Access Denied");
         }
