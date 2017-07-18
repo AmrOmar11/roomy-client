@@ -1,7 +1,7 @@
 {
       "hotels": [{
             "hotelname": "HOTEL AVASA",
-            "address1": "PLOT No. 15",
+            "address1": "PLOT NO:15",
             "address2": "HITEC CITY",
             "city": "HYD",
             "state": "TS",
@@ -17,7 +17,7 @@
             "statusText":""
       }, {
             "hotelname": "TRIDENT HOTEL",
-            "address1": "SURVEY No.64",
+            "address1": "SURVEY NO:64",
             "address2": "HITEC CITY",
             "city": "HYD",
             "state": "TS",
@@ -49,7 +49,7 @@
             "statusText":"TEMPORARILY FULL"
       }, {
             "hotelname": "REDFOX",
-            "address1": "PLOT No. 1 & 2",
+            "address1": "PLOT NO: 1 & 2",
             "address2": "HITEC CITY",
             "city": "HYD",
             "state": "TS",

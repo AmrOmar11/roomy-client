@@ -98,7 +98,7 @@ export class RegisterPage {
         {
           text: 'DONE',
           handler: data => {
-            this.auth.authenticateUser(inputData);
+            this.auth.authenticateUser(inputData,inputData);
           }
         }
       ]
