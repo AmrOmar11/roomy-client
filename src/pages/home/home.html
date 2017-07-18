@@ -23,8 +23,8 @@
 </ion-content>
 
 <ion-menu [content]="content" type="overlay">
-  <ion-header>
-    <ion-toolbar menuClose (click)="goToSettings()">
+  <ion-header (click)="goToSettings()">
+    <ion-toolbar menuClose>
       <ion-list no-lines>
         <ion-row>
           <ion-col class="menu-header">
@@ -54,7 +54,7 @@
         <ion-icon name="settings"></ion-icon>  SETTINGS
       </button>
       <button menuClose ion-item (click)="goToHowItWorks()">
-        <ion-icon name="help-circle"></ion-icon> How It WORKS
+        <ion-icon name="help-circle"></ion-icon> HOW IT WORKS
       </button>
       <button menuClose ion-item (click)="goToInviteFriends()">
         <ion-icon  name="people"></ion-icon>  INVITE FRIENDS
@@ -67,7 +67,7 @@
           <ion-icon  name="call"></ion-icon>  CONTACTUS
         </button>
         <button menuClose ion-item (click)="logOut()">
-          <ion-icon  name="power"></ion-icon>LOGOUT
+          <ion-icon  name="power"></ion-icon>  LOGOUT
         </button>
     </ion-toolbar>
   </ion-footer>
