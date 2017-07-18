@@ -49,14 +49,14 @@ export class AuthenticateProvider {
    console.log('Hello AuthenticateProvider');
   }
   
-  public login(credentials) {
+  public login(inputData) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({
-      emailId: credentials.emailId,
-      mobileNumber: credentials.mobileNumber,
-      password: credentials.password
+      emailId: inputData.emailId,
+      mobileNumber: inputData.mobileNumber,
+      password: inputData.password
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/login',body,options)
     .map(res => {
@@ -67,45 +67,40 @@ export class AuthenticateProvider {
     .catch(this.handleError);
   }
   
-  handleError(error) {
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
-  }
-  
-  public registerUser(credentials) {
+  public registerUser(inputData) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({      
-      contactNumber:credentials.contactNumber,
-      emailAddress: credentials.emailAddress,
-      firstName: credentials.firstName,
-      lastName: credentials.lastName,
-      loginPassword: credentials.loginPassword,
+      contactNumber:inputData.contactNumber,
+      emailAddress: inputData.emailAddress,
+      firstName: inputData.firstName,
+      lastName: inputData.lastName,
+      loginPassword: inputData.loginPassword,
       middleName: ""
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/registerUser',body,options)
     .map(res => {
       console.log('registration:res:'+res.json().toString());
-      return this.authenticateUser(res.json(),credentials);
+      return this.authenticateUser(res.json(),inputData);
     })
     .catch(this.handleError);
   }
   
-  authenticateUser(data,credentials){
+  authenticateUser(inputData,credentials){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({      
-      customerToken: data.customerToken,
-      otp: data.otp
+      customerToken: inputData.customerToken,
+      otp: inputData.otp
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/authenticateUser',body,options)
     .map(res => {
       console.log('autheticate:res:'+res.json().toString());
-      credentials.customerToken = res.json().customerToken;
-      credentials.responseData = res.json().responseMessage;
-      this.setUser(credentials);
+      inputData.customerToken = res.json().customerToken;
+      inputData.responseData = res.json().responseMessage;
+      this.setUser(inputData);
       return this.currentUser;
     })
     .catch(this.handleError); 
@@ -133,5 +128,42 @@ export class AuthenticateProvider {
       observer.next(true);
       observer.complete();
     });
+  } 
+  
+  public updateProfile(data){
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify({
+      customerToken: data.customerToken
+    });
+    return this.http.post('https://roomy-midtier.herokuapp.com/updateProfile',body,options)
+    .map(res => {
+      console.log('updateProfile:res:'+res.json().toString());
+      this.setUser(res.json());
+      return this.currentUser;
+    })
+    .catch(this.handleError);
+  }
+
+  public singOut(data){
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify({
+      customerToken: data.customerToken
+    });
+    return this.http.post('https://roomy-midtier.herokuapp.com/logout',body,options)
+    .map(res => {
+      console.log('logout:res:'+res.json().toString());
+      this.setUser(res.json());
+      return this.currentUser;
+    })
+    .catch(this.handleError);
+  }
+
+  handleError(error) {
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
   }
 }

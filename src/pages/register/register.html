@@ -12,36 +12,36 @@
  
 <ion-content padding>
   <div >
-    <form (ngSubmit)="register()" [formGroup] = "registerForm">
+    <form (ngSubmit)="singUpSubmit()" [formGroup] = "signUpForm">
       <ion-row>
         <ion-col>
             <ion-item>
               <ion-label floating>FirstName</ion-label>
-              <ion-input type="text" [class.invalid]= "!registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="registerCredentials.firstName" ></ion-input>
+              <ion-input type="text" [class.invalid]= "!signUpForm.controls.firstname.valid && (signUpForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="signUpData.firstName" ></ion-input>
             </ion-item>
             
             <ion-item>
               <ion-label floating>LastName</ion-label>
-              <ion-input type="text" [class.invalid]= "!registerForm.controls.lastname.valid && (registerForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="registerCredentials.lastName"></ion-input>
+              <ion-input type="text" [class.invalid]= "!signUpForm.controls.lastname.valid && (signUpForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="signUpData.lastName"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label floating>Mobile</ion-label>
-              <ion-input type="text" [class.invalid]= "!registerForm.controls.mobile.valid && (registerForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="registerCredentials.contactNumber"></ion-input> 
+              <ion-input type="text" [class.invalid]= "!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="signUpData.contactNumber"></ion-input> 
             </ion-item>
-            <ion-label *ngIf="!registerForm.controls.mobile.valid && (registerForm.controls.mobile.dirty || registerAttempt)">
+            <ion-label *ngIf="!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)">
                 <p>Please enter valid Mobile</p>
             </ion-label>
             <ion-item>
               <ion-label floating>Email</ion-label>
-              <ion-input type="text"  [class.invalid]= "!registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerAttempt)" formControlName="email" name="email" [(ngModel)]="registerCredentials.emailAddress"></ion-input> 
+              <ion-input type="text"  [class.invalid]= "!signUpForm.controls.email.valid && (signUpForm.controls.email.dirty || registerAttempt)" formControlName="email" name="email" [(ngModel)]="signUpData.emailAddress"></ion-input> 
             </ion-item>
-            <ion-label *ngIf="!registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerAttempt)">
+            <ion-label *ngIf="!signUpForm.controls.email.valid && (signUpForm.controls.email.dirty || registerAttempt)">
                 <p>Please enter valid email</p>
             </ion-label>
             <ion-item>
               <ion-label floating>Password</ion-label>
-              <ion-input type="password" [class.invalid]= "!registerForm.controls.password.valid && (registerForm.controls.password.dirty || registerAttempt)" formControlName="password" name="password" [(ngModel)]="registerCredentials.loginPassword"></ion-input>
+              <ion-input type="password" [class.invalid]= "!signUpForm.controls.password.valid && (signUpForm.controls.password.dirty || registerAttempt)" formControlName="password" name="password" [(ngModel)]="signUpData.loginPassword"></ion-input>
             </ion-item>
         </ion-col>
       </ion-row>

@@ -16,10 +16,10 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
 export class RegisterPage {
   
   loading:Loading;
-  createSuccess = false;
-  registerForm:FormGroup;
-  registerAttempt:boolean=false;
-  registerCredentials = {
+  signUpSuccess = false;
+  signUpForm:FormGroup;
+  signUpAttempt:boolean=false;
+  signUpData = {
     contactNumber: "",
     emailAddress: "",
     firstName: "",
@@ -35,7 +35,7 @@ export class RegisterPage {
     private alertCtrl: AlertController, 
     public formBuilder: FormBuilder,
     private loadingCtrl: LoadingController) {
-      this.registerForm = this.formBuilder.group({
+      this.signUpForm = this.formBuilder.group({
         firstname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
         lastname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
         mobile: ['',Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]+'), Validators.required]),''],
@@ -49,14 +49,14 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  register() {
-    this.registerAttempt = true;
-    if(this.registerForm.valid){
+  singUpSubmit() {
+    this.signUpAttempt = true;
+    if(this.signUpForm.valid){
       this.showLoading();
-      console.log('registration:req:'+this.registerCredentials);
-      this.auth.registerUser(this.registerCredentials).subscribe(success => {
+      console.log('singUpSubmit:req:'+this.signUpData);
+      this.auth.registerUser(this.signUpData).subscribe(success => {
         if (success) {
-          this.createSuccess = true;
+          this.signUpSuccess = true;
           this.nav.setRoot('HomePage',{userInfo:success});
         } else {
           this.showPopup("Error", "Problem creating account.");
@@ -75,6 +75,36 @@ export class RegisterPage {
     });
     this.loading.present();
   }
+  
+  showOtpPoup(inputData){
+    if(this.loading !== undefined){
+      this.loading.dismiss();
+    }
+    let alert = this.alertCtrl.create({
+      message: 'Please enter OTP:'+inputData.otp+' sent to your Mobile Number:'+inputData.contactNumber,
+      inputs: [
+        {
+          name: 'OTP',
+          placeholder: 'OTP'
+        },
+      ],
+      buttons: [
+        {
+          text: 'ReSend OTP?',
+          handler: data => {
+            console.log('ReSend clicked');
+          }
+        },
+        {
+          text: 'DONE',
+          handler: data => {
+            this.auth.authenticateUser(inputData);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
   showPopup(title, text) {
     let alert = this.alertCtrl.create({
@@ -84,7 +114,7 @@ export class RegisterPage {
         {
           text: 'OK',
           handler: data => {
-            if (this.createSuccess) {
+            if (this.signUpSuccess) {
               this.nav.popToRoot();
             }
           }
