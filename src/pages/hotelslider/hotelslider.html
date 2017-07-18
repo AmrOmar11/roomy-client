@@ -7,21 +7,23 @@
 <ion-content padding class="masters">
     <ion-slides (ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
+	      <div [class.hotelStatus]="hotel.status" class="hotelStatusStatic">{{hotel.statusText}}</div>	
 	      <div class="HotelSlider"  [ngStyle]="{ 'background-image': 'url(' + hotel.img + ')'}" (click)="hotelDetailedInfo(hotel)">
 	      	<div class="HotelName">{{hotel.hotelname}}</div>
 	      	<div class="HotelAddress"><span>{{hotel.address1}}</span><span>{{hotel.address2}}</span><span>{{hotel.city}}</span><span>{{hotel.state}}</span></div>
 	      	<div class="HotelDetails">
-	      		<div class="HotelCategory">{{hotel.category}}</div>
+	      		<div class="HotelCategory"><span class="hotel-category-child">{{hotel.category}}</span></div>
 	      		<div class="HotelFare">
 	      			<div class="HotelMinCost"><span>{{hotel.mincost}}</span><span class="farecurrency">{{hotel.currency}}</span><span class="minumum"> MINIMUM</span></div>
 	      		</div>
 	      	</div>
 	      	<div class="HotelHourCost">
-	      		<p class="hourcost-bottom">
+	      		<div class="HotelBlank"></div>
+	      		<div class="hourcost-bottom">
 		      		<span>{{hotel.hourcost}}</span>
 		      		<span class="farecurrency">{{hotel.currency}}</span>
 		      		<span class="farecurrency">/{{hotel.farechargetype}}</span>
-	      		</p>
+	      		</div>
 	      	</div>
 	      </div>
 	    </ion-slide>

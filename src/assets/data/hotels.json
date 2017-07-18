@@ -5,55 +5,63 @@
             "address2": "132 line",
             "city": "ST",
             "state": "ASDF",
-            "category": "Premium",
+            "category": "PREMIUM",
             "mincost": "50",
             "hourcost": "50",
             "currency" : "INR",
             "farechargetype":"HR",
             "img": "assets/img/Hotel4.jpg",
             "lattitue": "17.447020",
-            "longitude": "78.383683"
+            "longitude": "78.383683",
+            "status":1,
+            "statusText":"TEMPORARILY FULL"
       }, {
             "hotelname": "Trident Hotel",
             "address1": "16s steurart1",
             "address2": "132 line1",
             "city": "ST1",
             "state": "ASDF1",
-            "category": "Luxury",
+            "category": "LUXURY",
             "mincost": "40",
             "hourcost": "40",            
             "currency" : "INR",
             "farechargetype":"HR",
             "img": "assets/img/Hotel1.jpg",
             "lattitue": "17.449918",
-            "longitude": "78.378951"
+            "longitude": "78.378951",
+            "status":0,
+            "statusText":""
       }, {
             "hotelname": "Novotel",
             "address1": "16s steurart2",
             "address2": "132 line2",
             "city": "ST2",
             "state": "ASDF2",
-            "category": "Premium",
+            "category": "PREMIUM",
             "mincost": "50",
             "hourcost": "50",
             "currency" : "INR",
             "farechargetype":"HR",         
             "img": "assets/img/Hotel2.jpg",
             "lattitue": "17.472835",
-            "longitude": "78.372799"
+            "longitude": "78.372799",
+            "status":1,
+            "statusText":"TEMPORARILY FULL"
       }, {
             "hotelname": "Redfox",
             "address1": "16s steurart3",
             "address2": "132 line3",
             "city": "ST3",
             "state": "ASDF3",
-            "category": "Luxury",
+            "category": "LUXURY",
             "mincost": "50",
             "hourcost": "50",
             "currency" : "INR",
             "farechargetype":"HR",
             "img": "assets/img/Hotel3.jpg",
             "lattitue": "17.443244",
-            "longitude": "78.376690"
+            "longitude": "78.376690",
+            "status": 0,
+            "statusText":""
       }]
 }
