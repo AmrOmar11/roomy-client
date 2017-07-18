@@ -1,8 +1,8 @@
  {
         "images":[
-        	"assets/img/Hotel4.jpg",
-        	"assets/img/Hotel2.jpg",
-        	"assets/img/Hotel3.jpg"
+        	"assets/img/hotels/hotel4.jpg",
+        	"assets/img/hotels/hotel2.jpg",
+        	"assets/img/hotels/hotel3.jpg"
         ],
         "aminities":["wifi","ac","longue","alchol","xxx"],
         "address":{

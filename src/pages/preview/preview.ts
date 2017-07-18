@@ -14,6 +14,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PreviewPage {
 
+  slides =[
+     {
+        "image":"assets/img/preview/screen1.png"
+     },
+     {
+        "image":"assets/img/preview/screen2.png"
+     },
+     {
+     	"image":"assets/img/preview/screen3.png"
+     },
+     {
+     	"image":"assets/img/preview/screen4.png"
+     }
+  ];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -21,4 +35,11 @@ export class PreviewPage {
     console.log('ionViewDidLoad PreviewPage');
   }
 
+  LoginIn(){
+  	this.navCtrl.setRoot('LoginPage');
+  }
+  
+  SignUp(){
+  	this.navCtrl.push('RegisterPage');
+  }
 }

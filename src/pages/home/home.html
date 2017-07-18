@@ -24,21 +24,52 @@
 
 <ion-menu [content]="content" type="overlay">
   <ion-header>
-    <ion-toolbar (click)="goToSettings()">
-      <ion-icon name="ios-contact"style="zoom:2.0;" ></ion-icon>
-      <ion-title start >
-        {{userInfo.firstName +' '+userInfo.lastName}}
-      </ion-title>
+    <ion-toolbar menuClose (click)="goToSettings()">
+      <ion-list no-lines>
+        <ion-row>
+          <ion-col>
+            <ion-icon name="ios-contact"style="zoom:2.0;" ></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>{{userInfo.firstName +' '+userInfo.lastName}}</ion-label>
+            <!-- <ion-title>
+            {{userInfo.firstName +' '+userInfo.lastName}}
+            </ion-title> -->
+          </ion-col>
+        </ion-row>      
+      </ion-list>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="hotel-sidemenu-item">
-    <ion-list class="hotel-sidemenu-item" no-lines>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPayment()"><ion-icon name="card"></ion-icon>  Payment</button>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToPromotions()"><ion-icon name="beer"></ion-icon>  Rewards</button>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToSettings()"><ion-icon name="settings"></ion-icon> Settings</button>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToHowItWorks()"><ion-icon name="help-circle"></ion-icon>  How it works</button>
-      <button menuClose ion-item class="hotel-sidemenu-item" (click)="goToInviteFriends()"><ion-icon  name="people"></ion-icon>  Invite Freinds</button>
+  <ion-content >
+    <ion-list no-lines>
+      <button menuClose ion-item (click)="goToPayment()">
+        <ion-icon name="card"></ion-icon>  PAYMENT
+      </button>
+      <button menuClose ion-item (click)="goToPromotions()">
+        <ion-icon name="beer"></ion-icon>  REWARDS
+      </button>
+      <button menuClose ion-item (click)="goToSettings()">
+        <ion-icon name="settings"></ion-icon>  SETTINGS
+      </button>
+      <button menuClose ion-item (click)="goToHowItWorks()">
+        <ion-icon name="help-circle"></ion-icon> How It WORKS
+      </button>
+      <button menuClose ion-item (click)="goToInviteFriends()">
+        <ion-icon  name="people"></ion-icon>  INVITE FRIENDS
+      </button>
     </ion-list>
   </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+        <button menuClose ion-item (click)="contactUs()">
+          <ion-icon  name="call"></ion-icon>  ContactUs
+        </button>
+        <button menuClose ion-item (click)="logOut()">
+          <ion-icon  name="power"></ion-icon>LogOut
+        </button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-menu>
 <ion-nav #content swipeBackEnabled="false"></ion-nav>

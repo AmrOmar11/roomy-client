@@ -20,5 +20,9 @@ export class WelcomePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
   }
+  
+  getStarted(){
+  	this.navCtrl.setRoot('PreviewPage');
+  }
 
 }

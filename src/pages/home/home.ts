@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 
 
 /**
@@ -15,7 +15,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 	userInfo:any;
-	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	constructor(
+		private loadingCtrl: LoadingController,
+		public navCtrl: NavController, 
+		public navParams: NavParams) {
 		this.userInfo = this.navParams.get('userInfo');
 	}
 	
@@ -36,5 +39,16 @@ export class HomePage {
 	}
 	goToInviteFriends(){
 		this.navCtrl.push('InvitePage');
+	}
+	contactUs(){
+
+	}
+	logOut(){
+	    let loader = this.loadingCtrl.create({
+	      content: 'Please wait...',
+	      dismissOnPageChange: true
+	    });
+	    loader.present();
+		this.navCtrl.setRoot('WelcomePage');	
 	}
 }

@@ -22,6 +22,14 @@
     {
       "path": "/getHotelDetails",
       "proxyUrl": "https://roomy-midtier.herokuapp.com/getHotelDetails"
-    }    
+    },
+    {
+      "path": "/logout",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/logout"
+    },
+    {
+      "path": "/updateProfile",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/updateProfile"
+    }
   ]
 }

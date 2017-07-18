@@ -53,11 +53,6 @@ export class AuthenticateProvider {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
-    let mobileRegex = /^[0-9]+$/;
-    if(credentials.emailId.match(mobileRegex)){
-        credentials.mobileNumber = credentials.emailId;
-        credentials.emailId = '';
-    }
     let body = JSON.stringify({
       emailId: credentials.emailId,
       mobileNumber: credentials.mobileNumber,
