@@ -19,10 +19,6 @@ export class HotelinfoPage {
   	this.hotelInfo = this.navParams.get("hotelInfo");
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HotelinfoPage');
-  }
-
   dismiss() {
     this.viewCtrl.dismiss();
   }

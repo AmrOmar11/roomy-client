@@ -17,12 +17,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-slides pager="true">
-      <ion-slide *ngFor="let hotelImage of hotelInfo.images">
-        <!-- <div class="HotelSlider"  [ngStyle]="{ 'background-image': 'url(' + hotelImage+ ')'}">
-        </div> -->
-        <img [src]="hotelImage">
-      </ion-slide>
-    </ion-slides>
+<ion-content class="hotelInfo">
+  <ion-slides class="hotelSlides" pager="true" loop="false">
+    <ion-slide class="contact-slide" *ngFor="let image of hotelInfo.images">
+        <img [src]="image">
+        <div class="SliderBlackOverlay"></div>
+    </ion-slide>
+  </ion-slides>
+  <div class="sliderContent">
+    <div class="HotelCategory">
+      <span class="hotel-category-child">{{hotelInfo.category}}
+      </span>
+    </div>
+    <div class="HotelName">{{hotelInfo.hotelname}}
+    </div>    
+  </div>
+  <div class="amenities">
+      <ion-label>AMENITIES:</ion-label>
+      <ion-row >
+        <ion-col *ngFor="let amenity of hotelInfo.amenities">
+          <ion-icon name="wifi" style="zoom:2.0"></ion-icon>
+          <ion-label>{{amenity}}</ion-label>
+        </ion-col>
+    </ion-row>
+  </div>
 </ion-content>
+
+<ion-footer class="reserve-now">
+  <ion-toolbar>
+    <button ion-button (click)="reserveNow()"  full>RESERVE NOW</button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,8 +1,7 @@
 page-hotelslider {
 
-	$contact-card-slides-height: 45%;
 	$white: #FFFFFF;
-	$black: rgba(#000000, .4);
+	$black: rgba(#000000, .2);
 	$black-a: lighten($black, 10%);
 	$orange: #F39941;
 
@@ -58,7 +57,7 @@ page-hotelslider {
     	height: 100%;
 
 	}
-	.masters{
+	.hotels{
 		background:transparent;
 		padding-top:0;
 		padding-bottom:0;
