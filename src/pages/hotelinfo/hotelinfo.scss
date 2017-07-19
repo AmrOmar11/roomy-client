@@ -1,37 +1,64 @@
 page-hotelinfo {
+	$black: rgba(#000000, .2);
+	$orange: #F39941;
+	$white:#FFFFFF;
+	height:100%;	
+	
+	.hotelInfo{
+		padding-top:0;
+		padding-bottom:0;
+	}
+	.hotelSlides{
+		height:40%;
+	}
 
-.box1, box2, box3 {
-   height: 300px;
-   border: 2px solid blue;
-}
-
-.hotelinfo-slides
-		{
-			height: 45%;
-
-			ion-slide.hotelinfo
-			{
-				.slide-zoom
-				{
-					height: 100%;
-				}
-			}
-
-			.swiper-pagination
-			{
-				.swiper-pagination-bullet
-				{
-					opacity: 1;
-					background: #FFFFFF;
-					width: 10px;
-					height: 10px;
-				}
-
-				.swiper-pagination-bullet-active
-				{
-					background: #00e9d5;
-				}
-			}
-		}
-
+	.HotelSlider{
+		background-color:#ffad33;
+		width:100%;
+		height:100%;
+		background-size:100%;
+		background-repeat:no-repeat;
+		position:relative;
+	}
+	.SliderBlackOverlay{
+		background-color:$black;
+		width:100%;
+		height:100%;
+		background-size:100%;
+		background-repeat:no-repeat;
+		position: absolute;
+		top:0px;
+	}
+	.sliderContent{
+		position: absolute;
+	    z-index: inherit;
+	    top: 20%;
+	    width: auto;
+	    height: auto;
+	    left: 5%;
+	    color: $white;
+	    font-weight: bold;
+	}
+	.HotelName{
+		font-size: 4vmax;
+    	padding: 2px 8px;
+    	height: auto;
+	}
+	.HotelCategory{
+		display: inline-block; 
+	    font-size:2vmax;
+	    vertical-align:middle;
+	    padding: 5px 8px 5px 3px;
+		width: 100%;
+		height:auto;	
+	}
+	.hotel-category-child{
+		background-color: #F39941;
+		font-size:2.2vmax;
+		display: inline-block;
+	    width: 40%;
+	    height: 100%;
+	    text-align: center;
+	    padding: 1% 0;
+	}
 }

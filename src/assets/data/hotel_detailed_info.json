@@ -1,10 +1,12 @@
  {
+        "hotelname": "HOTEL AVASA",
+        "category": "PREMIUM",
         "images":[
-        	"assets/img/hotels/hotel4.jpg",
+        	"assets/img/hotels/hotel1.jpg",
         	"assets/img/hotels/hotel2.jpg",
         	"assets/img/hotels/hotel3.jpg"
         ],
-        "aminities":["wifi","ac","longue","alchol","xxx"],
+        "amenities":["FREE WIFI","GYM","longue","alchol"],
         "address":{
 	        "address1":"xxx",
 	        "address2":"yyy",
