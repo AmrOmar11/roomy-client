@@ -56,8 +56,7 @@ export class RegisterPage {
       console.log('singUpSubmit:req:'+this.signUpData);
       this.auth.registerUser(this.signUpData).subscribe(success => {
         if (success) {
-          this.signUpSuccess = true;
-          this.nav.setRoot('HomePage',{userInfo:success});
+          this.showOtpPoup(success);
         } else {
           this.showPopup("Error", "Problem creating account.");
         }
@@ -98,12 +97,30 @@ export class RegisterPage {
         {
           text: 'DONE',
           handler: data => {
-            this.auth.authenticateUser(inputData,inputData);
+            this.showLoading();
+            this.authenticateUser(data,inputData);
           }
         }
       ]
     });
     alert.present();
+  }
+
+  authenticateUser(inputData,userData){
+    if(inputData === userData.otp){
+      this.auth.authenticateUser(inputData).subscribe(success => {
+      if (success) {
+        this.nav.setRoot('HomePage',{userInfo:success});
+      } else {
+        this.showPopup("Error", "Problem creating account.");
+        }
+      },
+      error => {
+        this.showPopup("Error", error);
+      });
+    }else{
+      this.showPopup("Error", "please enter correct otp");
+    }
   }
 
   showPopup(title, text) {

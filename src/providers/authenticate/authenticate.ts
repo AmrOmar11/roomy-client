@@ -81,13 +81,15 @@ export class AuthenticateProvider {
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/registerUser',body,options)
     .map(res => {
-      console.log('registration:res:'+res.json().toString());
-      return this.authenticateUser(res.json(),inputData);
+      console.log('registration:res:'+res);
+      inputData.customerToken = res.json().customerToken;
+      inputData.otp = res.json().otp;
+      return inputData;
     })
     .catch(this.handleError);
   }
   
-  authenticateUser(inputData,credentials){
+  authenticateUser(inputData){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
@@ -99,7 +101,7 @@ export class AuthenticateProvider {
     .map(res => {
       console.log('autheticate:res:'+res.json().toString());
       inputData.customerToken = res.json().customerToken;
-      inputData.responseData = res.json().responseMessage;
+      inputData.responseData = res.json().failureMessage;
       this.setUser(inputData);
       return this.currentUser;
     })

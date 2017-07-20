@@ -135,5 +135,4 @@ export class LoginPage {
     alert.present(prompt);
   }
 
-
 }
