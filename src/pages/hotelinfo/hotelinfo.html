@@ -41,6 +41,13 @@
         </ion-col>
     </ion-row>
   </div>
+  <ion-item>
+    <ion-label>{{stayDuration}}hr + 18% GST = &#x20b9; {{fareAmount}}</ion-label>
+    <ion-range min="1" max="12" [(ngModel)]="stayDuration" (ionChange) = "calculatefare()" color="secondary">
+      <ion-label range-left>1 Hour</ion-label>
+      <ion-label range-right>12 Hours</ion-label>
+    </ion-range>
+  </ion-item>
 </ion-content>
 
 <ion-footer class="reserve-now">

@@ -14,11 +14,17 @@ import { IonicPage,NavParams,ViewController } from 'ionic-angular';
 })
 export class HotelinfoPage {
 
+	stayDuration= 1;
+	fareAmount:any;
   hotelInfo:any;
   constructor(public viewCtrl: ViewController, public navParams: NavParams) {
-  	this.hotelInfo = this.navParams.get("hotelInfo");
+  	this.hotelInfo = this.navParams.get("hotelInfo");  
+  	this.fareAmount = (this.stayDuration*60*10) + ((this.stayDuration*60*10)*.18);	
   }
 
+  calculatefare(){
+  	this.fareAmount = (this.stayDuration*60*10) + ((this.stayDuration*60*10)*.18);
+  }
   dismiss() {
     this.viewCtrl.dismiss();
   }
