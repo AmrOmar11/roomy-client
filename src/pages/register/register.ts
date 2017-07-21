@@ -108,16 +108,15 @@ export class RegisterPage {
 
   authenticateUser(inputData,userData){
     this.auth.authenticateUser(inputData).subscribe(success => {
-      if (success) {
-        this.nav.setRoot('HomePage',{userInfo:success});
-      } else {
-        this.showPopup("Error", "Problem creating account.");
-        }
-      },
-      error => {
-        this.showPopup("Error", error);
-      });
-    }
+    if (success) {
+      this.nav.setRoot('HomePage',{userInfo:success});
+    } else {
+      this.showPopup("Error", "Problem creating account.");
+      }
+    },
+    error => {
+      this.showPopup("Error", error);
+    });
   }
 
   showPopup(title, text) {
