@@ -107,20 +107,16 @@ export class RegisterPage {
   }
 
   authenticateUser(inputData,userData){
-    if(inputData === userData.otp){
-      this.auth.authenticateUser(inputData).subscribe(success => {
-      if (success) {
-        this.nav.setRoot('HomePage',{userInfo:success});
-      } else {
-        this.showPopup("Error", "Problem creating account.");
-        }
-      },
-      error => {
-        this.showPopup("Error", error);
-      });
-    }else{
-      this.showPopup("Error", "please enter correct otp");
-    }
+    this.auth.authenticateUser(inputData).subscribe(success => {
+    if (success) {
+      this.nav.setRoot('HomePage',{userInfo:success});
+    } else {
+      this.showPopup("Error", "Problem creating account.");
+      }
+    },
+    error => {
+      this.showPopup("Error", error);
+    });
   }
 
   showPopup(title, text) {
