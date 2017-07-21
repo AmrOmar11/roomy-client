@@ -107,8 +107,7 @@ export class RegisterPage {
   }
 
   authenticateUser(inputData,userData){
-    if(inputData === userData.otp){
-      this.auth.authenticateUser(inputData).subscribe(success => {
+    this.auth.authenticateUser(inputData).subscribe(success => {
       if (success) {
         this.nav.setRoot('HomePage',{userInfo:success});
       } else {
@@ -118,8 +117,6 @@ export class RegisterPage {
       error => {
         this.showPopup("Error", error);
       });
-    }else{
-      this.showPopup("Error", "please enter correct otp");
     }
   }
 
