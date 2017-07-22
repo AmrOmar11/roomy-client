@@ -15,7 +15,7 @@ import { HotelsProvider } from '../../providers/hotels/hotels';
   templateUrl: 'hotelslider.html',
 })
 export class HotelsliderPage {
-    
+    options:any;
 	@ViewChild(Slides) slidesObj: Slides;
     
     @Input()hotels:any
@@ -26,7 +26,12 @@ export class HotelsliderPage {
         public hotelsProvider: HotelsProvider,
         public loadingController:LoadingController,
         public modalController: ModalController) {
-        console.log('constructor HotelsliderPage');
+        this.options ={
+            direction: 'vertical',
+            slidesPerView: '1',
+            paginationClickable: true,
+            showNavButtons: false
+        }
     }
 
     slideChanged($event){

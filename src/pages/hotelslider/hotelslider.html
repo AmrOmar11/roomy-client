@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-content padding class="hotels">
-    <ion-slides (ionSlideDidChange)="slideChanged($event)" >
+    <ion-slides options="options" (ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
 	      <div [class.hotelStatus]="hotel.status" class="hotelStatusStatic">{{hotel.statusText}}</div>	
 	      <div class="HotelSlider"  [ngStyle]="{ 'background-image': 'url(' + hotel.img + ')'}" (click)="hotelDetailedInfo(hotel)">
