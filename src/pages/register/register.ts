@@ -55,10 +55,10 @@ export class RegisterPage {
       this.showLoading();
       console.log('singUpSubmit:req:'+this.signUpData);
       this.auth.registerUser(this.signUpData).subscribe(success => {
-        if (success) {
+        if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
           this.showOtpPoup(success);
         } else {
-          this.showPopup("Error", "Problem creating account.");
+          this.showPopup("Error", success.statusMessage);
         }
       },
       error => {
@@ -95,10 +95,11 @@ export class RegisterPage {
           }
         },
         {
-          text: 'DONE',
+          text: 'Done',
           handler: data => {
             this.showLoading();
-            this.authenticateUser(data,inputData);
+            inputData.otp = data;
+            this.authenticateUser(inputData);
           }
         }
       ]
@@ -106,12 +107,17 @@ export class RegisterPage {
     alert.present();
   }
 
-  authenticateUser(inputData,userData){
+  authenticateUser(inputData){
     this.auth.authenticateUser(inputData).subscribe(success => {
-    if (success) {
-      this.nav.setRoot('HomePage',{userInfo:success});
+    if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
+      this.auth.setCurrentUser({
+        statusMessage:success.statusMessage,
+        result:inputData,
+        jwtToken:success.jwtToken
+      });
+      this.nav.setRoot('HomePage',{userInfo:this.auth.getUserInfo()});
     } else {
-      this.showPopup("Error", "Problem creating account.");
+      	this.showPopup("Error", success.statusMessage);
       }
     },
     error => {

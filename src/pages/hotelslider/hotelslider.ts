@@ -1,5 +1,5 @@
-import { Component,Input, ViewChild  } from '@angular/core';
-import { NavController, NavParams, ModalController,Slides,  LoadingController  } from 'ionic-angular';
+import { Component,Input} from '@angular/core';
+import { NavController, NavParams, LoadingController} from 'ionic-angular';
 import { MapPage } from '../../pages/pages';
 import { HotelsProvider } from '../../providers/hotels/hotels';
 
@@ -16,16 +16,13 @@ import { HotelsProvider } from '../../providers/hotels/hotels';
 })
 export class HotelsliderPage {
     
-	@ViewChild(Slides) slidesObj: Slides;
-    
-    @Input()hotels:any
+	@Input()hotels:any
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
         public mapPage: MapPage,
         public hotelsProvider: HotelsProvider,
-        public loadingController:LoadingController,
-        public modalController: ModalController) {
+        public loadingController:LoadingController) {
         console.log('constructor HotelsliderPage');
     }
 
@@ -41,9 +38,8 @@ export class HotelsliderPage {
         });
         loader.present().then(()=>{
             this.hotelsProvider.getHotelDetailedInfo().then(data => {
-                  let modal = this.modalController.create('HotelinfoPage',{"hotelInfo":data} );
                   loader.dismiss();
-                  modal.present();
+                  this.navCtrl.push('HotelinfoPage',{"hotelInfo":data});
             });
         });
     }

@@ -1,12 +1,16 @@
  {
         "hotelname": "HOTEL AVASA",
         "category": "PREMIUM",
+        "mincost": "1",
+        "hourcost": "60",
+        "currency" : "INR",
+        "farechargetype":"HR",
         "images":[
         	"assets/img/hotels/hotel1.jpg",
         	"assets/img/hotels/hotel2.jpg",
         	"assets/img/hotels/hotel3.jpg"
         ],
-        "amenities":["FREE WIFI","GYM","longue","alchol"],
+        "amenities":["WIFI","GYM","LONGUE","ALCHOL"],
         "address":{
 	        "address1":"xxx",
 	        "address2":"yyy",

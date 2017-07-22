@@ -10,7 +10,7 @@ import 'rxjs/Rx';
   for more info on providers and Angular DI.
 */
 export class User {
-  responseData: string;
+  statusMessage: string;
   userId: string;
   emailAddress: string;
   contactNumber: string;
@@ -18,27 +18,17 @@ export class User {
   middleName: string;
   lastName: string;
   userType: string;
-  customerToken: string 
-  constructor(
-    responseData: string,
-    userId: string,
-    emailAddress: string,
-    contactNumber: string,
-    firstName: string,
-    middleName: string,
-    lastName: string,
-    userType: string,
-    customerToken: string 
-    ){
-    this.responseData = responseData;
-    this.userId=userId;
-    this.emailAddress=emailAddress;
-    this.contactNumber=contactNumber;
-    this.firstName=firstName;
-    this.middleName=middleName;
-    this.lastName=lastName;
-    this.userType=userType,
-    this.customerToken=customerToken;
+  jwtToken: string 
+  constructor(){
+    this.statusMessage = '';
+    this.userId='';
+    this.emailAddress='';
+    this.contactNumber='';
+    this.firstName='';
+    this.middleName='';
+    this.lastName='';
+    this.userType='',
+    this.jwtToken='';
   }
 }
  
@@ -61,8 +51,7 @@ export class AuthenticateProvider {
     return this.http.post('https://roomy-midtier.herokuapp.com/login',body,options)
     .map(res => {
       console.log('login:res:'+res.json().toString());
-      this.setUser(res.json());
-      return this.currentUser;
+      return res.json();
     })
     .catch(this.handleError);
   }
@@ -81,9 +70,10 @@ export class AuthenticateProvider {
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/registerUser',body,options)
     .map(res => {
-      console.log('registration:res:'+res);
-      inputData.customerToken = res.json().customerToken;
-      inputData.otp = res.json().otp;
+      console.log('registration:res:'+res.json());
+      inputData.statusCode = res.json().statusCode;
+      inputData.jwtToken = res.json().jwtToken;
+      inputData.otp = res.json().result;
       return inputData;
     })
     .catch(this.handleError);
@@ -94,16 +84,16 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({      
-      customerToken: inputData.customerToken,
+      customerToken: inputData.jwtToken,
       otp: inputData.otp
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/authenticateUser',body,options)
     .map(res => {
       console.log('autheticate:res:'+res.json().toString());
-      inputData.customerToken = res.json().customerToken;
-      inputData.responseData = res.json().failureMessage;
-      this.setUser(inputData);
-      return this.currentUser;
+      inputData.statusCode = res.json().statusCode;
+      inputData.jwtToken = res.json().jwtToken;
+      inputData.statusMessage = res.json().statusMessage;
+      return inputData;
     })
     .catch(this.handleError); 
   }
@@ -112,16 +102,17 @@ export class AuthenticateProvider {
     return this.currentUser;
   }
   
-  setUser(data){
-    this.currentUser = new User(data.responseData,
-                                  data.userId,
-                                  data.emailAddress,
-                                  data.contactNumber,
-                                  data.firstName,
-                                  data.middleName,
-                                  data.lastName,
-                                  data.userType,
-                                  data.customerToken);
+  public setCurrentUser(data){
+    this.currentUser = new User();
+    this.currentUser.statusMessage = data.statusMessage;
+    this.currentUser.userId = data.result.userId;
+    this.currentUser.emailAddress = data.result.emailAddress;
+    this.currentUser.contactNumber = data.result.contactNumber;
+    this.currentUser.firstName = data.result.firstName;
+    this.currentUser.middleName = data.result.middleName;
+    this.currentUser.lastName = data.result.lastName;
+    this.currentUser.userType = data.result.userType;
+    this.currentUser.jwtToken = data.jwtToken;
   }
  
   public logout() {
@@ -137,12 +128,12 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({
-      customerToken: data.customerToken
+      jwtToken: data.jwtToken
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/updateProfile',body,options)
     .map(res => {
       console.log('updateProfile:res:'+res.json().toString());
-      this.setUser(res.json());
+      this.setCurrentUser(res.json());
       return this.currentUser;
     })
     .catch(this.handleError);
@@ -153,12 +144,12 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({
-      customerToken: data.customerToken
+      jwtToken: data.jwtToken
     });
     return this.http.post('https://roomy-midtier.herokuapp.com/logout',body,options)
     .map(res => {
       console.log('logout:res:'+res.json().toString());
-      this.setUser(res.json());
+      this.setCurrentUser(res.json());
       return this.currentUser;
     })
     .catch(this.handleError);
