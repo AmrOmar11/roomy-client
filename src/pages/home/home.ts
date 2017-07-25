@@ -32,7 +32,7 @@ export class HomePage {
 		this.navCtrl.push('PromotionsPage');
 	}
 	goToSettings(){
-		// this.navCtrl.push('SettingsPage',{userInfo:this.userInfo});
+		this.navCtrl.push('SettingsPage',{userInfo:this.userInfo});
 	}
 	goToHowItWorks(){
 		this.navCtrl.push('HowitworksPage');

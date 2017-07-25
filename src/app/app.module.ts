@@ -22,7 +22,10 @@ import { AuthenticateProvider,HotelsProvider,FacebookLoginService,GoogleLoginSer
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(RoomyApp)
+    IonicModule.forRoot(RoomyApp,{
+      backButtonIcon: 'close',
+      backButtonText: '',
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

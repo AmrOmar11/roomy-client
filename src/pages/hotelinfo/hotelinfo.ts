@@ -25,7 +25,11 @@ export class HotelinfoPage {
   calculatefare(){
   	this.fareAmount = (this.stayDuration*60*10) + ((this.stayDuration*60*10)*.18);
   }
-  
+
+  dismiss(){
+    this.navCtrl.pop();
+  }
+    
   reserveNow(){
     this.navCtrl.push('BookingPage');
   }

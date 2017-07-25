@@ -16,6 +16,7 @@
 	        "hotel latitue":"yyy",
 	        "phonenumber":"xxxxxx"
         },
+        "rating":"5star.png",
         "minduration": "1",
         "farechargetype":"HR"
 }
