@@ -58,7 +58,7 @@ export class AuthenticateProvider {
       mobileNumber: inputData.mobileNumber,
       password: inputData.password
     });
-    return this.http.post('https://roomy-midtier.herokuapp.com/login',body,options)
+    return this.http.post('/login',body,options)
     .map(res => {
       console.log('login:res:'+res.json().toString());
       this.setUser(res.json());
@@ -114,14 +114,14 @@ export class AuthenticateProvider {
   
   setUser(data){
     this.currentUser = new User(data.responseData,
-                                  data.userId,
-                                  data.emailAddress,
-                                  data.contactNumber,
-                                  data.firstName,
-                                  data.middleName,
-                                  data.lastName,
-                                  data.userType,
-                                  data.customerToken);
+                                  data.result.userId,
+                                  data.result.emailAddress,
+                                  data.result.contactNumber,
+                                  data.result.firstName,
+                                  data.result.middleName,
+                                  data.result.lastName,
+                                  data.result.userType,
+                                  data.jwtToken);
   }
  
   public logout() {

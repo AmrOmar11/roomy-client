@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage,NavParams,ViewController } from 'ionic-angular';
+import { IonicPage,NavParams,NavController } from 'ionic-angular';
 
 /**
  * Generated class for the HotelinfoPage page.
@@ -17,7 +17,7 @@ export class HotelinfoPage {
 	stayDuration= 1;
 	fareAmount:any;
   hotelInfo:any;
-  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   	this.hotelInfo = this.navParams.get("hotelInfo");  
   	this.fareAmount = (this.stayDuration*60*10) + ((this.stayDuration*60*10)*.18);	
   }
@@ -25,8 +25,8 @@ export class HotelinfoPage {
   calculatefare(){
   	this.fareAmount = (this.stayDuration*60*10) + ((this.stayDuration*60*10)*.18);
   }
-  dismiss() {
-    this.viewCtrl.dismiss();
+  
+  reserveNow(){
+    this.navCtrl.push('BookingPage');
   }
-
 }
