@@ -17,8 +17,8 @@ page-booking {
             color: map-get($colors, theme);
         }
     }
-    .male{background-image:url(../../assets/img/booking/male.png);}
-    .female{background-image:url(../../assets/img/booking/female.png);}
+    .male{background-image:url(assets/img/booking/male.png);}
+    .female{background-image:url(assets/img/booking/female.png);}
 
     .gender input:active +.gender-bg{opacity: .9;}
     .gender input:checked +.gender-bg{
