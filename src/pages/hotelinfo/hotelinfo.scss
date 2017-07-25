@@ -1,17 +1,33 @@
 page-hotelinfo {
-	$black: rgba(#000000, .2);
+	$black: rgba(#000000, .4);
 	$orange: #F39941;
 	$white:#FFFFFF;
-	height:100%;	
+	$theme-color:#DD5757;
+	$theme-grey: #767676;
+	$theme-font:'Open Sans', sans-serif;
+	height:100%;
+
 	
+	.slide-zoom{
+		height:100%;
+	}
 	.hotelInfo{
 		padding-top:0;
 		padding-bottom:0;
 	}
 	.hotelSlides{
-		height:40%;
+		height:50%;
 	}
-
+	.swiper-slide img{
+		height:100% !important;
+	}
+	.swiper-pagination-bullet{
+		background:#BABABA;
+		opacity: 1;
+	}
+	.swiper-pagination-bullet-active{
+		background:$theme-color;
+	}
 	.HotelSlider{
 		background-color:#ffad33;
 		width:100%;
@@ -29,36 +45,149 @@ page-hotelinfo {
 		position: absolute;
 		top:0px;
 	}
+	.backbutton{
+	    width: 10%;
+	    height: auto;
+	    background-size: 100%;
+	    position: absolute;
+	    top: 1%;
+	    left: 4%;
+	    font-size: 4vmax;
+	    font-weight: bold;
+	    color: #fff;
+	    z-index: 1;
+	}
 	.sliderContent{
 		position: absolute;
 	    z-index: inherit;
-	    top: 20%;
-	    width: auto;
+	    top: 35%;
+	    width: 95%;
 	    height: auto;
-	    left: 5%;
+	    left: 3%;
 	    color: $white;
-	    font-weight: bold;
 	}
 	.HotelName{
-		font-size: 4vmax;
-    	padding: 2px 8px;
+		font-size: 17pt;
     	height: auto;
+    	font-weight:bold;
+    	font-family:$theme-font;
 	}
-	.HotelCategory{
-		display: inline-block; 
-	    font-size:2vmax;
-	    vertical-align:middle;
-	    padding: 5px 8px 5px 3px;
+	.HotelAddress{
+		display: inline-block;
 		width: 100%;
 		height:auto;	
 	}
+	.HotelyType{
+	    width: 30px;
+	    height: 30px;
+	    right: 5%;
+	    top: 20%;
+	    position: absolute;
+	}
 	.hotel-category-child{
-		background-color: #F39941;
-		font-size:2.2vmax;
-		display: inline-block;
-	    width: 40%;
+	    font-size: 11pt;
+	    display: inline-block;
+	    width: auto;
 	    height: 100%;
 	    text-align: center;
 	    padding: 1% 0;
+	    font-weight: 600;
+	    font-family:$theme-font;
+	}
+
+	.amenity{
+		width:35px;
+		height:25px;
+	}
+
+	.amenities{
+		width: 95%;
+	    margin: 0 auto;
+	    border-bottom: #F0F0F0 2px solid;
+	}
+
+	.amenities .label{
+		color: $theme-grey;
+	    font-size: 13pt;
+	    font-weight: bold;
+	    margin: 16px 5px;
+	    font-family:$theme-font;
+	}
+	.amenities .row{
+		margin-bottom:15px;
+	}
+
+	.pricing .label{
+	    margin: 10px 5px;
+	    font-family: $theme-font;
+	}
+	.pricing .price{
+		color:$theme-grey;
+		font-size: 13pt;
+	    font-weight: bold;
+	}
+	.pricing .duration{
+		color: $theme-color;
+	    font-size: 7pt;
+	    font-weight: 200;
+	    margin: 15px 24px 10px 5px;
+	    text-align: right;
+	}
+	.range .range-bar{
+		top:14px;
+		height: 7px;
+		background-color:$theme-grey;
+	}
+	.range .range-bar-active{
+		background-color:$theme-color;
+	}
+
+	.range .range-tick{
+		top:20.5px;
+	}
+
+	.range .range-knob-handle{
+		top:16px;
+	}
+
+	.wifi{
+		background: url('../assets/img/amenities.png') no-repeat 0 -7px;
+	}
+	.ac{
+		background: url('../assets/img/amenities.png') no-repeat -55px -7px;
+	}
+	.longue{
+		background: url('../assets/img/amenities.png') no-repeat -1129px -157px;
+	}
+	.alchol{
+		background: url('../assets/img/amenities.png') no-repeat -294px -3px;
+	}
+	.pool{
+		background: url('../assets/img/amenities.png') no-repeat -179px -4px;
+	}
+	.shower{
+		background: url('../assets/img/amenities.png') no-repeat -115px 0;
+	}
+	.telivision{
+		background: url('../assets/img/amenities.png') no-repeat -237px -1px;
+	}
+	.restuarant{
+		background: url('../assets/img/amenities.png') no-repeat -343px -4px;
+	}
+
+	.toolbar,.toolbar-ios{
+		padding:0px;
+	}
+
+	.reserve-now button{
+		margin:0px;
+		background-color:$theme-color;
+	}
+
+	.reserve-now .button-inner{
+		font-size:14pt;
+		font-family:$theme-font;
+		font-weight:bold;
+		color:$white;
 	}
 }

@@ -4,18 +4,6 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>
-     Hotel Information
-    </ion-title>    
-  </ion-toolbar>
-</ion-header>
 
 <ion-content class="hotelInfo">
   <ion-slides class="hotelSlides" pager="true" loop="false">
@@ -24,30 +12,43 @@
         <div class="SliderBlackOverlay"></div>
     </ion-slide>
   </ion-slides>
+  <ion-icon name="close" class="backbutton" (click)="dismiss()"></ion-icon>
   <div class="sliderContent">
-    <div class="HotelCategory">
-      <span class="hotel-category-child">{{hotelInfo.category}}
+    <div class="HotelName">{{hotelInfo.hotelname}}
+    </div>
+    <div class="HotelAddress">
+      <span class="hotel-category-child">{{hotelInfo.address.address1}}, {{hotelInfo.address.address2}}, {{hotelInfo.address.city}}, {{hotelInfo.address.state}}
       </span>
     </div>
-    <div class="HotelName">{{hotelInfo.hotelname}}
-    </div>    
+    <img class="HotelyType" src="../assets/img/5star.png">
   </div>
   <div class="amenities">
-      <ion-label>AMENITIES:</ion-label>
+      <ion-label>AMENITIES</ion-label>
       <ion-row >
         <ion-col *ngFor="let amenity of hotelInfo.amenities">
-          <ion-icon name="wifi" style="zoom:2.0"></ion-icon>
-          <ion-label>{{amenity}}</ion-label>
+          <div ngClass={{amenity}} class="amenity" ></div>
         </ion-col>
-    </ion-row>
+      </ion-row>
   </div>
-  <ion-item>
-    <ion-label>{{stayDuration}}hr + 18% GST = &#x20b9; {{fareAmount}}</ion-label>
-    <ion-range min="1" max="12" [(ngModel)]="stayDuration" (ionChange) = "calculatefare()" color="secondary">
-      <ion-label range-left>1 Hour</ion-label>
-      <ion-label range-right>12 Hours</ion-label>
-    </ion-range>
-  </ion-item>
+  <div class="pricing">
+    <ion-row>
+        <ion-col>
+            <ion-label class="price">PRICING</ion-label>                    
+        </ion-col>
+        <ion-col>
+            <ion-label class="duration">{{hotelInfo.minduration}} {{hotelInfo.farechargetype}} MINIMUM</ion-label>
+        </ion-col>
+     </ion-row>
+     <ion-row>
+      <ion-item>
+        <ion-label>{{stayDuration}}hr + 18% GST = &#x20b9; {{fareAmount}}</ion-label>
+        <ion-range min="1" max="12" step="1" snaps="true" [(ngModel)]="stayDuration" (ionChange) = "calculatefare()">
+          <ion-label range-left>1</ion-label>
+          <ion-label range-right>12</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-row>
+  </div>  
 </ion-content>
 
 <ion-footer class="reserve-now">

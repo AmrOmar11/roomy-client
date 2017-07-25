@@ -6,12 +6,16 @@
         	"assets/img/hotels/hotel2.jpg",
         	"assets/img/hotels/hotel3.jpg"
         ],
-        "amenities":["FREE WIFI","GYM","longue","alchol"],
+        "amenities":["wifi","ac","alchol","pool","shower","telivision","restuarant"],
         "address":{
-	        "address1":"xxx",
-	        "address2":"yyy",
+	        "address1":"PLOT NO:15",
+	        "address2":"HITEC CITY",
+                "city": "HYD",
+                "state": "TS",
 	        "hotel longitude":"xxx",
 	        "hotel latitue":"yyy",
 	        "phonenumber":"xxxxxx"
-        }
+        },
+        "minduration": "1",
+        "farechargetype":"HR"
 }
