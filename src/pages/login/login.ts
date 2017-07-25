@@ -30,7 +30,7 @@ export class LoginPage {
   private alertCtrl: AlertController, 
   private loadingCtrl: LoadingController,
   public facebookLoginService: FacebookLoginService,
-	public googleLoginService: GoogleLoginService,
+  public googleLoginService: GoogleLoginService,
   public formBuilder:  FormBuilder
   ) {
 
@@ -104,10 +104,11 @@ export class LoginPage {
         input.emailId = '';
       }
       this.auth.login(input).subscribe(success => {
-        if((success.customerToken !== undefined)&&((success.customerToken !== null))) {        
-          this.navCtrl.setRoot('HomePage',{userInfo:success});
+        if((success.statusCode !== undefined)&&(success.statusCode == 0)) {        
+          this.auth.setCurrentUser(success);
+          this.navCtrl.setRoot('HomePage',{userInfo:this.auth.getUserInfo()});
         } else {
-          this.showError(success.responseData);
+          this.showError(success.statusMessage);
         }
       },
       error => {
