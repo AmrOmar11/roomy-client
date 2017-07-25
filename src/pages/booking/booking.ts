@@ -9,19 +9,25 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
  */
 @IonicPage()
 @Component({
-  selector: 'page-booking',
-  templateUrl: 'booking.html',
+    selector: 'page-booking',
+    templateUrl: 'booking.html',
 })
 export class BookingPage {
-  userInfo:any;
-  constructor(public navCtrl: NavController, 
-  	public navParams: NavParams,
-  	private authProvider: AuthenticateProvider) {
-  	this.userInfo = this.authProvider.getUserInfo();
-  }
+    userInfo:any;
+constructor(public navCtrl: NavController, 
+            public navParams: NavParams,
+            private authProvider: AuthenticateProvider) {
+    this.userInfo = this.authProvider.getUserInfo();
+}
 
-  ionViewDidLoad() {
+ionViewDidLoad() {
     console.log('ionViewDidLoad BookingPage');
-  }
+};
+openTerms() {
+    console.log('openTerms page');
+}
+goToSettings(){
+    this.navCtrl.push('SettingsPage');
+}
 
 }

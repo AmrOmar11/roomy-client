@@ -1,3 +1,74 @@
+
 page-booking {
+    .gender input{
+        margin:0;padding:0;
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        appearance:none;
+    }
+
+    .TC-checkbox {    
+        .item-cover {
+            width: 10%;
+        }
+    }
+    .TC-checkbox {    
+        a {
+            color: map-get($colors, theme);
+        }
+    }
+    .male{background-image:url(../../assets/img/booking/male.png);}
+    .female{background-image:url(../../assets/img/booking/female.png);}
+
+    .gender input:active +.gender-bg{opacity: .9;}
+    .gender input:checked +.gender-bg{
+        -webkit-filter: none;
+        -moz-filter: none;
+        filter: none;
+    }
+    .gender-bg{
+        cursor:pointer;
+        background-size:contain;
+        background-repeat:no-repeat;
+        display:inline-block;
+        width:100px;height:70px;
+        -webkit-transition: all 100ms ease-in;
+        -moz-transition: all 100ms ease-in;
+        transition: all 100ms ease-in;
+        -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+        -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+        filter: brightness(1.8) grayscale(1) opacity(.7);
+    }
+    .gender-bg:hover{
+        -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+        -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+        filter: brightness(1.2) grayscale(.5) opacity(.9);
+    }
+
+    .label,.icon{color:map-get($colors, textcolor);}
+    .card{
+        box-shadow: 0px 1px 15px #bdbdbd;
+    }
+
+    .toolbar-title  {
+        color: map-get($colors, textcolor);
+    }
+
+    .book-now button{
+        margin:0px;
+        background-color:map-get($colors, theme);
+    }
+
+    .reserve-now .book-now{
+        font-size:14pt;
+        font-family:$theme-font;
+        font-weight:bold;
+        color:map-get($colors, light);
+    }
+
+    .toolbar,.toolbar-ios{
+        padding:0px;
+    }
 
 }
+
