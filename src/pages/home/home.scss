@@ -6,6 +6,11 @@ page-home {
 	.list-ios, .list-md{
 		margin:0;
 	}
+	ion-footer {
+    	&.footer-md::before {
+        	background-image: none;
+    	}
+	}
 }
 
 .map-page #map{
