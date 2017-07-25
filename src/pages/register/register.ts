@@ -115,7 +115,7 @@ export class RegisterPage {
         result:inputData,
         jwtToken:success.jwtToken
       });
-      this.nav.setRoot('HomePage',{userInfo:this.auth.getUserInfo()});
+      this.nav.setRoot('HomePage');
     } else {
         this.showPopup("Error", success.statusMessage);
       }

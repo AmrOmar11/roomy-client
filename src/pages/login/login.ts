@@ -106,7 +106,7 @@ export class LoginPage {
       this.auth.login(input).subscribe(success => {
         if((success.statusCode !== undefined)&&(success.statusCode == 0)) {        
           this.auth.setCurrentUser(success);
-          this.navCtrl.setRoot('HomePage',{userInfo:this.auth.getUserInfo()});
+          this.navCtrl.setRoot('HomePage');
         } else {
           this.showError(success.statusMessage);
         }

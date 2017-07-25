@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
-
+import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 
 /**
  * Generated class for the HomePage page.
@@ -18,8 +18,9 @@ export class HomePage {
 	constructor(
 		private loadingCtrl: LoadingController,
 		public navCtrl: NavController, 
-		public navParams: NavParams) {
-		this.userInfo = this.navParams.get('userInfo');
+		public navParams: NavParams,
+		private authProvider: AuthenticateProvider) {
+  		this.userInfo = this.authProvider.getUserInfo();
 	}
 	
 	ionViewDidLoad() {
@@ -32,7 +33,7 @@ export class HomePage {
 		this.navCtrl.push('PromotionsPage');
 	}
 	goToSettings(){
-		this.navCtrl.push('SettingsPage',{userInfo:this.userInfo});
+		this.navCtrl.push('SettingsPage');
 	}
 	goToHowItWorks(){
 		this.navCtrl.push('HowitworksPage');

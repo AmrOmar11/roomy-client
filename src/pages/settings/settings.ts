@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the SettingsPage page.
  *
@@ -18,8 +19,9 @@ export class SettingsPage {
   constructor(public navCtrl: NavController,
    public navParams: NavParams,
    public formBuilder: FormBuilder,
-   private loadingCtrl: LoadingController) {
-  	this.userInfo = this.navParams.get('userInfo');
+   private loadingCtrl: LoadingController,
+   private authProvider: AuthenticateProvider) {
+    this.userInfo = this.authProvider.getUserInfo();
   	this.profileForm = this.formBuilder.group({
 	      firstname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
         lastname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],

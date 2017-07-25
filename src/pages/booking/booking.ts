@@ -16,15 +16,8 @@ export class BookingPage {
   userInfo:any;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams,
-  	private auth: AuthenticateProvider) {
-  	this.userInfo = this.auth.getUserInfo();
-	if(this.userInfo == undefined){
-		this.userInfo = {};
-		this.userInfo.emailAddress='muralidharn.dharan9@gmail.com';
-	    this.userInfo.contactNumber='9700222949';
-	    this.userInfo.firstName='Murali';
-	    this.userInfo.lastName='Kanamarlapudi';
-	}
+  	private authProvider: AuthenticateProvider) {
+  	this.userInfo = this.authProvider.getUserInfo();
   }
 
   ionViewDidLoad() {

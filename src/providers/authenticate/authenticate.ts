@@ -99,6 +99,13 @@ export class AuthenticateProvider {
   }
   
   public getUserInfo() : User {
+    if(this.currentUser == undefined){
+      this.currentUser = new User();
+      this.currentUser.emailAddress='muralidharn.dharan9@gmail.com';
+      this.currentUser.contactNumber='9700222949';
+      this.currentUser.firstName='murali';
+      this.currentUser.lastName='kanamarlapudi';
+    }
     return this.currentUser;
   }
   
