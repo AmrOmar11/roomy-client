@@ -18,5 +18,6 @@
         },
         "rating":"assets/img/5star.png",
         "minduration": "1",
-        "farechargetype":"HR"
+        "farechargetype":"HR",
+        "taxpercent": "18"
 }

@@ -35,14 +35,29 @@
         <ion-col>
             <ion-label class="price">PRICING</ion-label>                    
         </ion-col>
-        <ion-col>
-            <ion-label class="duration">{{hotelInfo.minduration}} {{hotelInfo.farechargetype}} MINIMUM</ion-label>
+        <ion-col style="text-align: right;">
+            <ion-label class="duration inlineblock">{{hotelInfo.minduration}} {{hotelInfo.farechargetype}} MINIMUM</ion-label>
         </ion-col>
      </ion-row>
      <ion-row>
+       <div class="farecalculation">
+          <div class="durationparent inlineblock">
+              <div class="stayduration inlineblock">{{stayDuration}}</div><div class="durationtype inlineblock">HR</div>
+          </div>
+          <div class="plusymb inlineblock">+</div>
+          <div class="taxparent inlineblock">
+              <div class="taxpercentage inlineblock">{{hotelInfo.taxpercent}}</div><div class="percemtsymb inlineblock">%</div>
+          </div>
+          <div class="equalsymb inlineblock">=</div>
+          <div class="fareparent inlineblock">
+               <div class="totalfare inlineblock">&#x20b9; {{fareAmount}}</div>
+          </div>
+        </div>
+     </ion-row>
+     <ion-row>
       <ion-item>
-        <ion-label>{{stayDuration}}hr + 18% GST = &#x20b9; {{fareAmount}}</ion-label>
-        <ion-range min="1" max="12" step="1" snaps="true" [(ngModel)]="stayDuration" (ionChange) = "calculatefare()">
+        <!-- <ion-label>{{stayDuration}}hr + 18% GST = &#x20b9; {{fareAmount}}</ion-label> -->
+        <ion-range min="1" max="12" step="0.5" snaps="true" [(ngModel)]="stayDuration" (ionChange) = "calculatefare()">
           <ion-label range-left>1</ion-label>
           <ion-label range-right>12</ion-label>
         </ion-range>
