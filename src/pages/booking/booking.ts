@@ -27,7 +27,7 @@ ionViewDidLoad() {
     console.log('ionViewDidLoad BookingPage');
 };
 openTerms() {
-    console.log('openTerms page');
+   this.navCtrl.push('PoliciesPage');
 }
 onBookTo(){
     this.editGuest = !this.editGuest;
