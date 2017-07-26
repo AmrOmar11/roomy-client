@@ -7,9 +7,17 @@ page-booking {
         appearance:none;
     }
 
+    .segment-ios .segment-button {
+        border-color: map-get($colors, theme);
+        color: map-get($colors, theme);
+    }
+    .segment-button.segment-activated {
+        background-color: map-get($colors, theme) !important;
+    }
+
     .TC-checkbox {    
-        .item-cover {
-            width: 10%;
+        p {
+            text-align: center;
         }
     }
     .TC-checkbox {    
@@ -45,6 +53,13 @@ page-booking {
         filter: brightness(1.2) grayscale(.5) opacity(.9);
     }
 
+    .bookingPage .card-header{
+        font-size: 1.2rem;
+        font-weight: 500;
+        color:map-get($colors, textcolor);
+        padding: 16px;
+        text-align: center;
+    }
     .label,.icon{color:map-get($colors, textcolor);}
     .card{
         box-shadow: 0px 1px 15px #bdbdbd;

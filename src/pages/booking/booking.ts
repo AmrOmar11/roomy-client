@@ -13,7 +13,10 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
     templateUrl: 'booking.html',
 })
 export class BookingPage {
-    userInfo:any;
+    guests="one";
+userInfo:any;
+editGuest=false;
+
 constructor(public navCtrl: NavController, 
             public navParams: NavParams,
             private authProvider: AuthenticateProvider) {
@@ -26,8 +29,11 @@ ionViewDidLoad() {
 openTerms() {
     console.log('openTerms page');
 }
-goToSettings(){
-    this.navCtrl.push('SettingsPage');
+onBookTo(){
+    this.editGuest = !this.editGuest;
+}
+onSaveBookingTo(){
+    this.editGuest = !this.editGuest;
 }
 
 }
