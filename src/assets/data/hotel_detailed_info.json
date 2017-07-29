@@ -18,6 +18,7 @@
         },
         "rating":"assets/img/5star.png",
         "minduration": "1",
+        "chargepermin": "3.50",
         "farechargetype":"HR",
         "taxpercent": "18"
 }

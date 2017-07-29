@@ -4,6 +4,7 @@ page-hotelslider {
 	$black: rgba(#000000, .2);
 	$black-a: lighten($black, 10%);
 	$orange: #F39941;
+	$theme-color:#DD5757;
 
 
 	width:100%;
@@ -99,7 +100,7 @@ page-hotelslider {
 		height:auto;	
 	}
 	.hotel-category-child{
-		background-color: #F39941;
+		background-color: $theme-color;
 		font-size:2.2vmax;
 		display: inline-block;
 	    width: 40%;
@@ -137,7 +138,7 @@ page-hotelslider {
 	.hourcost-bottom{
 		width:32%;
 		height:100%;
-		background-color:$orange;
+		background-color:$theme-color;
 		color:$white;
 		padding: 5px 5px;
 		font-size: 2.7vmax;

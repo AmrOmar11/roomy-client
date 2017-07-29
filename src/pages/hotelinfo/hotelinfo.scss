@@ -14,6 +14,18 @@ page-hotelinfo {
 	.item-inner{
 		border:0px !important;
 	}
+	.range-knob{
+		background-color:transparent !important;
+		background-image: url('../assets/img/slider_knob.png') !important;
+		background-repeat:no-repeat !important;
+		background-size:100% !important;
+		box-shadow: none !important;
+		left: 7px !important;
+		top: 7px !important;
+		width: 28px !important;
+    	height: 28px !important;
+    	border:none !important;
+	}
 	.hotelInfo{
 		padding-top:0;
 		padding-bottom:0;
@@ -50,15 +62,15 @@ page-hotelinfo {
 	}
 	.backbutton{
 	    width: 10%;
-	    height: auto;
+	    height: 6%;
 	    background-size: 100%;
 	    position: absolute;
 	    top: 3%;
-	    left: 5%;
-	    font-size: 4vmax;
-	    font-weight: bold;
+	    left: 1%;
+	    font-size: 5vmax;
 	    color: #fff;
 	    z-index: 1;
+	    text-align: center;
 	}
 	.sliderContent{
 		position: absolute;
@@ -122,7 +134,6 @@ page-hotelinfo {
 	}
 
 	.pricing .label{
-	    margin: 10px 5px;
 	    font-family: $theme-font;
 	}
 	.pricing .price{
@@ -188,10 +199,24 @@ page-hotelinfo {
     .pricing .range{
     	padding:0px;
     }
+    .pricingsubinfo{
+    	height:10px;
+    }
+    .pricingsubinfo .col{
+    	text-align: center;
+	    font-size: 1.5vmax;
+	    height: 10px;
+	    padding: 0px;
+    }
+    .pricingsubinfo .col .label{
+    	margin: 0;
+    	color:$theme-grey;
+    }
 	.range .range-bar{
 		top:14px;
 		height: 7px;
 		background-color:$theme-grey;
+		border-radius:5px;
 	}
 	.range .range-bar-active{
 		background-color:$theme-color;
