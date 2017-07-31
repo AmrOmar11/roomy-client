@@ -1,3 +1,6 @@
 page-login {
-  
+    .toolbar,.toolbar-md,.toolbar-ios{
+        padding:0px;
+        background-color:map-get($colors, theme) ;
+    }
 }
