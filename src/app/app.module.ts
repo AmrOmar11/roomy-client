@@ -13,6 +13,25 @@ import { RoomyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthenticateProvider,HotelsProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '9187f137',
+  },
+  'push': {
+    'sender_id': '596958727411',
+    'pluginConfig': {
+      'ios': {
+        'badge': true,
+        'sound': true
+      },
+      'android': {
+        'iconColor': '#343434'
+      }
+    }
+  }
+};
 
 @NgModule({
   declarations: [
@@ -25,7 +44,8 @@ import { AuthenticateProvider,HotelsProvider,FacebookLoginService,GoogleLoginSer
     IonicModule.forRoot(RoomyApp,{
       backButtonIcon: 'close',
       backButtonText: '',
-    })
+    }),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
