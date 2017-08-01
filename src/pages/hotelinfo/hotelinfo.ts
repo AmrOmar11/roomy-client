@@ -14,16 +14,20 @@ import { IonicPage,NavParams,NavController } from 'ionic-angular';
 })
 export class HotelinfoPage {
 
-	stayDuration= 1;
+	stayDuration:any = 60;
+  stayDurationInHours:any = 1;
 	fareAmount:any;
   hotelInfo:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   	this.hotelInfo = this.navParams.get("hotelInfo");  
-  	this.fareAmount = (this.stayDuration*60*10) + ((this.stayDuration*60*10)*.18);	
+    this.calculatefare();
   }
 
   calculatefare(){
-  	this.fareAmount = (this.stayDuration*60*10) + ((this.stayDuration*60*10)*.18);
+    this.stayDurationInHours  = (this.stayDuration/60).toFixed(2);
+    this.stayDurationInHours = this.stayDurationInHours.toString().replace(".",":");
+    //fareAmount = Hotelcharge + Tax;
+  	this.fareAmount = ((this.stayDuration*(this.hotelInfo.chargepermin)) + ((this.stayDuration*(this.hotelInfo.chargepermin))*(this.hotelInfo.taxpercent/100))).toFixed(2);
   }
 
   dismiss(){

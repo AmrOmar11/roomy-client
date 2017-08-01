@@ -14,6 +14,29 @@ page-hotelinfo {
 	.item-inner{
 		border:0px !important;
 	}
+	.range-ios {
+		.range-slider{
+			height:32px;
+		}
+		.range-bar {
+		    top: 14px;
+		    height: 7px;
+		}
+		.range-knob-handle{
+			top: 17px !important;
+		}
+	}
+	.range-md {
+		.range-knob{
+			width: 35px;
+    		height: 35px;
+		}
+	}
+	ion-icon.backbutton.icon.icon-ios.ion-ios-close {
+	    font-weight: bold;
+	    font-size: 6vmax;
+	    top: 5%;
+	}
 	.range-knob{
 		background-color:transparent !important;
 		background-image: url('../assets/img/slider_knob.png') !important;
@@ -22,8 +45,8 @@ page-hotelinfo {
 		box-shadow: none !important;
 		left: 7px !important;
 		top: 7px !important;
-		width: 28px !important;
-    	height: 28px !important;
+		//width: inherit !important;
+    	//height: inherit !important;
     	border:none !important;
 	}
 	.hotelInfo{
@@ -116,13 +139,13 @@ page-hotelinfo {
 	}
 
 	
-	.amenities,.pricing{
+	.amenities,.pricing,.hoteldescription{
 		width: 95%;
 	    margin: 0 auto;
 	    border-bottom: #F0F0F0 2px solid;
 	}
 
-	.amenities .label{
+	.amenities .label,.hoteldescription .label{
 		color: $theme-grey;
 	    font-size: 2.6vmax;
 	    font-weight: bold;
@@ -133,30 +156,38 @@ page-hotelinfo {
 		margin-bottom:15px;
 	}
 
-	.pricing .label{
-	    font-family: $theme-font;
-	}
-	.pricing .price{
-		color:$theme-grey;
-		font-size: 2.6vmax;
-	    font-weight: bold;
-	}
-	.pricing .duration{
-		color: $theme-color;
-	    font-size: 7pt;
-	    font-weight: 200;
-	    margin: 15px 24px 10px 5px;
-	    text-align: right;
-	}
-	.farecalculation{
-		width: 90%;
-		margin:0 auto;
-		//border: 1px solid #000;
-	}
+	.pricing 
+		{
+			.label{
+			    font-family: $theme-font;
+			}
+			.price{
+				color:$theme-grey;
+				font-size: 2.6vmax;
+			    font-weight: bold;
+			}
+			.duration{
+				color: $theme-color;
+			    font-size: 7pt;
+			    font-weight: 200;
+			    margin: 15px 24px 10px 5px;
+			    text-align: right;
+			}
+			.farecalculation{
+				width: 90%;
+				margin:0 auto;
+			}
+		}		
 	.durationparent, .taxparent, .fareparent{
-		width: 26%;
+		width: 28%;
 		border-radius: 5px;
 	}
+	.taxparent{
+		width: 22%;
+	}
+	.fareparent{
+		width: 32%;
+	}	
 	.plusymb, .equalsymb{
 		width: 6%;
 		font-size: 3vmax;
@@ -164,7 +195,7 @@ page-hotelinfo {
     	color: #C6C6C6;
 	}
 	.stayduration, .taxpercentage{
-		width: 65%;
+		width: 70%;
 		height:100%;
 	    font-size: 3vmax;
 	    padding: 3px;
@@ -175,7 +206,7 @@ page-hotelinfo {
 	    font-family:$theme-font;
     }
     .durationtype,.percemtsymb{
-    	width: 35%;
+    	width: 30%;
     	height:100%;
 	    font-size: 2.2vmax;
 	    padding: 8px 0 5px 0;
@@ -212,9 +243,15 @@ page-hotelinfo {
     	margin: 0;
     	color:$theme-grey;
     }
+    .hoteldescription{
+    	.descriptionContent{
+    		text-align:justify;
+    		padding: 0 10px;
+    	}
+    }
 	.range .range-bar{
 		top:14px;
-		height: 7px;
+		height: 10px;
 		background-color:$theme-grey;
 		border-radius:5px;
 	}
@@ -227,7 +264,7 @@ page-hotelinfo {
 	}
 
 	.range .range-knob-handle{
-		top:16px;
+		top:13px;
 	}
 
 	.wifi{

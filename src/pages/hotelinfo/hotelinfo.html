@@ -42,7 +42,7 @@
      <ion-row>
        <div class="farecalculation">
           <div class="durationparent inlineblock">
-              <div class="stayduration inlineblock">{{stayDuration}}</div><div class="durationtype inlineblock">HR</div>
+              <div class="stayduration inlineblock">{{stayDurationInHours}}</div><div class="durationtype inlineblock">HR</div>
           </div>
           <div class="plusymb inlineblock">+</div>
           <div class="taxparent inlineblock">
@@ -67,13 +67,18 @@
      </ion-row>
      <ion-row style="margin-top: 20px;">
       <ion-item>
-        <ion-range min="1" max="12" step="1" snaps="true" pin="true" class="range-ios"  [(ngModel)]="stayDuration" (ionChange) = "calculatefare()">
-          <ion-label range-left>1</ion-label>
-          <ion-label range-right>12</ion-label>
+        <ion-range min="60" max="720" step="1" class="range-ios"  [(ngModel)]="stayDuration" (ionChange) = "calculatefare()">
+          <ion-label range-left>1 Hr</ion-label>
+          <ion-label range-right>12 Hrs</ion-label>
         </ion-range>
       </ion-item>
     </ion-row>
-  </div>  
+  </div>
+  <div class="hoteldescription">
+      <ion-label>DESCRIPTION</ion-label>
+      <div class="descriptionContent"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nihil modi nulla libero, rem, consequuntur reiciendis voluptas debitis vel facilis, error dolorem in ut ipsa praesentium laudantium dignissimos, saepe quidem.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic eaque ipsum assumenda architecto iste atque earum ratione excepturi, veniam quae rerum provident fuga, quam iure ea recusandae tempora ipsa fugiat.</span></div>
+  </div> 
 </ion-content>
 
 <ion-footer class="reserve-now">
