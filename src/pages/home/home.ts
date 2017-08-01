@@ -31,7 +31,7 @@ export class HomePage {
 		this.push.rx.notification()
 		.subscribe((msg) => {
 			console.log(msg.title + ': ' + msg.text);
-			this.navCtrl.push(NotificationsPage, { message: msg });
+			this.navCtrl.push('NotificationsPage', { message: msg });
 		});
 	}
 	

@@ -16,10 +16,7 @@ export class NotificationsPage {
   
   pushMessage: string = 'push message will be displayed here';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  	if (navParams.msg) {
-      this.pushMessage = navParams.msg;
-    }
-
+  	this.pushMessage = this.navParams.get("message");
   }
 
   ionViewDidLoad() {
