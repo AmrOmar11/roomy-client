@@ -14,3 +14,27 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.pobyt-button{
+    margin:0px;
+    background-color:map-get($colors, theme) !important;
+}
+
+.pobyt-button .button-inner{
+    font-size:2.8vmax;
+    font-family:$theme-font;
+    font-weight:bold;
+    color:map-get($colors, light);
+}
+a{
+    color:map-get($colors, text-grey);
+    text-decoration: none;
+    font-family:$theme-font;
+    font-size:28.27ppt
+}
+.placeholder{
+    color:map-get($colors, text-grey);
+    text-decoration: none;
+    font-family:$theme-font;
+    font-size:32.27ppt
+}
