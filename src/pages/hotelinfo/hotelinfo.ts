@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage,NavParams,NavController } from 'ionic-angular';
+import { IonicPage,NavParams,NavController,AlertController } from 'ionic-angular';
+import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 
 /**
  * Generated class for the HotelinfoPage page.
@@ -9,32 +10,55 @@ import { IonicPage,NavParams,NavController } from 'ionic-angular';
  */
 @IonicPage()
 @Component({
-  selector: 'page-hotelinfo',
-  templateUrl: 'hotelinfo.html',
+    selector: 'page-hotelinfo',
+    templateUrl: 'hotelinfo.html',
 })
 export class HotelinfoPage {
 
-	stayDuration:any = 60;
-  stayDurationInHours:any = 1;
-	fareAmount:any;
-  hotelInfo:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  	this.hotelInfo = this.navParams.get("hotelInfo");  
+    stayDuration:any = 60;
+stayDurationInHours:any = 1;
+fareAmount:any;
+hotelInfo:any;
+userInfo:any;
+constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private authProvider: AuthenticateProvider) {
+    this.hotelInfo = this.navParams.get("hotelInfo");  
+    this.userInfo = this.authProvider.getUserInfo();
     this.calculatefare();
-  }
+}
 
-  calculatefare(){
+calculatefare(){
     this.stayDurationInHours  = (this.stayDuration/60).toFixed(2);
     this.stayDurationInHours = this.stayDurationInHours.toString().replace(".",":");
     //fareAmount = Hotelcharge + Tax;
-  	this.fareAmount = ((this.stayDuration*(this.hotelInfo.chargepermin)) + ((this.stayDuration*(this.hotelInfo.chargepermin))*(this.hotelInfo.taxpercent/100))).toFixed(2);
-  }
+    this.fareAmount = ((this.stayDuration*(this.hotelInfo.chargepermin)) + ((this.stayDuration*(this.hotelInfo.chargepermin))*(this.hotelInfo.taxpercent/100))).toFixed(2);
+}
 
-  dismiss(){
+dismiss(){
     this.navCtrl.pop();
-  }
-    
-  reserveNow(){
-    this.navCtrl.push('BookingPage');
-  }
+}
+
+reserveNow(){
+
+    let confirm = this.alertCtrl.create({
+        message: 'Booking For '+this.userInfo.firstName+" ?",
+        buttons: [
+            {
+                text: 'No',
+                handler: () => {
+                    console.log(this.authProvider);
+                    this.navCtrl.push('BookingPage',{for:"other"});
+                }
+            },
+            {
+                text: 'Yes',
+                handler: () => {
+                    this.navCtrl.push('BookingPage',{for:"me"});
+                }
+            }
+        ]
+    });
+    confirm.present();
+
+
+}
 }
