@@ -311,4 +311,230 @@ page-hotelinfo {
 	.inlineblock{
 		display:inline-block;
 	}
+
+
+
+
+	#remindersetpage {
+	  display: block;
+	  background-color:#FF9C51;
+	}
+	#timeselect {
+	    background-color: #FF9C51;
+	    width: 75%;
+	    height: 260px;
+	    margin: 0 auto;
+	}
+	#hourselect {
+	    height: 240px;
+	    text-align: center;
+	    position: relative;
+	    width: 150px;
+	    border: 1px #FF9C51 solid;
+	    text-align: center;
+	    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	    font-size: 28px;
+	    color: white;
+	    background-color: #FF9C51;
+	    z-index: 1;
+	}
+	#hoursdisplay{
+	  position: relative;
+	  top: 10px;
+	  height: 127px;
+	  width: 80px;
+	  margin-left: 35px;
+	  border: 1px #DD6204 solid;
+	  z-index: -10;
+	  background-color: #DD6204;
+	  radius: 5px
+	}
+	#hoursdiv {
+	  transition-duration: 0.4s;
+	  position: relative;
+	  //top: -215px;
+	  z-index: -1;
+	}
+	.hourmod {
+	  z-index: 10;
+	}
+	.hourmoddiv{
+	  background-color: #FF9C51;
+	  z-index: 1;
+	}
+	#hrdn {
+	  position: relative;
+	  top: 6px;
+	}
+	.hr {
+	  transition-duration: 0.4s;
+	  z-index: -10;
+	  font-weight: 700;
+	  font-color: white;
+	}
+	#hour00 {
+
+	  opacity: 0.25;
+	  height: 43px;
+	}
+	#hour01 {
+	  opacity: 1;
+	}
+	#hour02 {
+	  opacity: 0.25;
+	}
+	#hour03,#hour04,#hour05,#hour06,#hour07,#hour08,#hour09,#hour10,#hour11,#hour12,#hour13 {
+	  opacity: 0;
+	}
+	#hrup{
+	  position: relative;
+	  top: 10px;
+	}
+	#hourup {
+	  position: relative;
+	  top: -10px;
+	  width: 0px;
+	  height: 0px;
+	  border-bottom: 30px white solid;
+	  border-top: 25px #FF9C51 solid;
+	  border-left: 25px #FF9C51 solid;
+	  border-right: 27px #FF9C51 solid;
+	  margin-left: 50px;
+	  z-index: 10;
+	  transition-duration: 0.4s;
+	}
+	#hourup:hover {
+	  border-bottom: 30px #DD6204 solid;
+	}
+	#hourup:active {
+	  border-bottom: 30px white solid;
+	}
+	#hourdown {
+	  position: relative;
+	  top: 10px;
+	  width: 0px;
+	  height: 0px;
+	  border-top: 30px white solid;
+	  border-bottom: 25px #FF9C51 solid;
+	  border-left: 25px #FF9C51 solid;
+	  border-right: 27px #FF9C51 solid;
+	  margin-top: 5px;
+	  margin-left: 50px;
+	  transition-duration: 0.4s;
+	}
+	#hourdown:hover {
+	  border-top: 30px #DD6204 solid;
+	}
+	#hourdown:active {
+	  border-top: 30px white solid;
+	}
+	#minselect {
+	    height: 260px;
+	    text-align: center;
+	    position: relative;
+	    margin-left: 120px;
+	    top: -240px;
+	    width: 150px;
+	    border: 1px #FF9C51 solid;
+	    text-align: center;
+	    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	    font-size: 28px;
+	    color: white;
+	    background-color: #FF9C51;
+	    z-index: 1;
+	}
+	#minsdisplay{
+	  position: relative;
+	  top: 10px;
+	  height: 127px;
+	  width: 80px;
+	  margin-left: 35px;
+	  border: 1px #DD6204 solid;
+	  z-index: -10;
+	  background-color: #DD6204;
+	}
+	#minsdiv {
+	  transition-duration: 0.4s;
+	  position: relative;
+	  //top: -258px;
+	  z-index: -10;
+	}
+	.minmod {
+	  z-index: 10;
+	}
+	.minmoddiv{
+	  background-color: #050f21;
+	  z-index: 9;
+	}
+	#mindn {
+	  position: relative;
+	  top: 6px;
+	  background-color: #FF9C51;
+	}
+	.min {
+	  transition-duration: 0.4s;
+	  z-index: -10;
+	  font-weight: 700;
+	  font-color: white;
+	}
+	#min0-5 {
+	  opacity: 0.25;
+	  height: 43px;
+	}
+	#min00 {
+	  opacity: 1;
+	}
+	#min05 {
+	  opacity: 0.25;
+	}
+	#min10,#min15,#min20,#min25,#min30,#min35,#min40,#min45,#min50,#min55 {
+	  opacity: 0;
+	}
+	#min60 {
+	  opacity: 0;
+	  height: 43px;
+	}
+	#minup{
+	  position: relative;
+	  top: 10px;
+	  background-color: #FF9C51;
+	}
+	#minuteup {
+	  position: relative;
+	  top: -10px;
+	  width: 0px;
+	  height: 0px;
+	  border-bottom: 30px white solid;
+	  border-top: 25px #FF9C51 solid;
+	  border-left: 25px #FF9C51 solid;
+	  border-right: 27px #FF9C51 solid;
+	  margin-left: 50px;
+	  z-index: 10;
+	  transition-duration: 0.4s;
+	}
+	#minuteup:hover {
+	  border-bottom: 30px #DD6204 solid;
+	}
+	#minuteup:active {
+	  border-bottom: 30px white solid;
+	}
+	#minutedown {
+	  position: relative;
+	  top: 10px;
+	  width: 0px;
+	  height: 0px;
+	  border-top: 30px white solid;
+	  border-bottom: 25px #FF9C51 solid;
+	  border-left: 25px #FF9C51 solid;
+	  border-right: 27px #FF9C51 solid;
+	  margin-top: 5px;
+	  margin-left: 50px;
+	  transition-duration: 0.4s;
+	}
+	#minutedown:hover {
+	  border-top: 30px #DD6204 solid;
+	}
+	#minutedown:active {
+	  border-top: 30px white solid;
+	}
 }

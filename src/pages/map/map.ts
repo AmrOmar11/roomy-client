@@ -28,6 +28,7 @@ export class MapPage implements OnInit{
     private directionsService:any;
     private directionsDisplay:any;
     private destinationLocation:any;
+    public loading:any;
 
 	constructor(
 		public navCtrl: NavController, 
@@ -40,7 +41,20 @@ export class MapPage implements OnInit{
 
 	ngOnInit() {
        console.log('ngOnInit');
-       this.getCurrenLocation();
+       this.loading = this.loadingController.create({
+        spinner: 'hide',
+        content: `
+          <div class="custom-spinner-container">
+            <div class="custom-spinner-box"></div>
+          </div>`
+      });
+
+      this.loading.onDidDismiss(() => {
+        console.log('Dismissed loading');
+      });
+
+      this.loading.present();
+      this.getCurrenLocation();
     }
 
 	ngAfterViewInit() {
@@ -81,19 +95,20 @@ export class MapPage implements OnInit{
 
 	private mapLoaded(location){
         this.addSourceMarker(true,location);
-        let loader = this.loadingController.create({
-        	content:"Fetching Hotels..."
-        });
+        // let loader = this.loadingController.create({
+        // 	content:"Fetching Hotels..."
+        // });
 
-        loader.present().then(()=>{
+        //loader.present().then(()=>{
             this.hotelsProvider.load().then(data => {
                   this.hotelsInfo = data;
                   if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
-                     this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
+                     //this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
                   }
-                  loader.dismiss();
+                  //loader.dismiss();
+                  this.loading.dismiss();
             });
-        });
+        //});
 	}
 	
 	// Adds a marker to the map.
@@ -178,7 +193,7 @@ export class MapPage implements OnInit{
                 self.map.panTo(place.geometry.location);
                 if(self.destinationLocation !== undefined){
                    self.sourceMarker.setMap(null);
-                   self.displayRoute(place.geometry.location,self.destinationLocation,self.directionsService,self.directionsDisplay);
+                   //self.displayRoute(place.geometry.location,self.destinationLocation,self.directionsService,self.directionsDisplay);
                 }else{
                     self.addSourceMarker(false,place.geometry.location);
                 }

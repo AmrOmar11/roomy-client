@@ -78,7 +78,41 @@
       <ion-label>DESCRIPTION</ion-label>
       <div class="descriptionContent"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nihil modi nulla libero, rem, consequuntur reiciendis voluptas debitis vel facilis, error dolorem in ut ipsa praesentium laudantium dignissimos, saepe quidem.
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic eaque ipsum assumenda architecto iste atque earum ratione excepturi, veniam quae rerum provident fuga, quam iure ea recusandae tempora ipsa fugiat.</span></div>
-  </div> 
+  </div>
+
+  <div id="remindersetpage">
+      <div id="timeselect">
+        <div id="hourselect">
+          <div id="hrup" class="hourmoddiv">
+            <div id="hourup" (click)="hourup()" class="hourmod"></div>
+          </div>
+          <div id="hoursdisplay">
+            <div id="hoursdiv">
+              <div *ngFor="let hour of hours" [id]="'hour'+hour" class="hr">{{hour}}</div>
+              <div id="hour13" class="hr"></div>
+            </div>
+          </div>
+          <div id="hrdn" class="hourmoddiv">
+            <div id="hourdown" (click)="hourdown()" class="hourmod"></div>
+          </div>
+        </div>
+        <div id="minselect">
+          <div id="minup" class="minmoddiv">
+            <div id="minuteup" (click)="minuteup()" class="minmod"></div>
+          </div>
+          <div id="minsdisplay">
+            <div id="minsdiv">
+              <div id="min0-5" class="min"></div>
+              <div *ngFor="let minute of minutes" [id]="'min'+minute" class="min">{{minute}}</div>
+              <div id="min60" class="min"></div>
+            </div>
+          </div>
+          <div id="mindn" class="minmoddiv">
+            <div id="minutedown" (click)="minutedown()" class="minmod"></div>
+          </div>
+        </div>
+      </div>
+    </div> 
 </ion-content>
 
 <ion-footer class="reserve-now">
