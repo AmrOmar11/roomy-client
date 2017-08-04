@@ -3,4 +3,24 @@ page-login {
         padding:0px;
         background-color:map-get($colors, theme) ;
     }
+    .logo{
+        height: 80px;
+    }
+    .social-icons{
+        height: 40px;
+    }
+
+    .sign-in-with { 
+        color: #99979a;
+        font-family: "Open Sans";
+        font-size: 28.27ppt;
+        width:100%; 
+        border-bottom: 1px solid rgba(199, 196, 196, 0.18);
+        line-height:0.1em; 
+        margin:10px 0 20px; 
+    }
+    .sign-in-with span { 
+        background:#fff; 
+        padding:0 10px; 
+    }
 }

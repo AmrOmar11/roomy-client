@@ -43,7 +43,7 @@ reserveNow(){
         message: 'Booking For '+this.userInfo.firstName+" ?",
         buttons: [
             {
-                text: 'No',
+                text: 'Other',
                 handler: () => {
                     console.log(this.authProvider);
                     this.navCtrl.push('BookingPage',{for:"other"});
