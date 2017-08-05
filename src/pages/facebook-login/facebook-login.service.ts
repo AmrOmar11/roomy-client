@@ -31,7 +31,7 @@ export class FacebookLoginService {
           //now we have the users info, let's save it in the NativeStorage
           env.setFacebookUser(user)
           .then(function(res){
-            resolve(res);
+            resolve(user);
           });
         })
       }, function(error){

@@ -23,6 +23,14 @@ export class LoginPage {
   loginForm:FormGroup;
   submitAttempt:boolean=false;
   userCredentials = { emailId: '',mobileNumber: '',password:'' };
+  socialSignUpData = {
+    contactNumber: "",
+    emailAddress: "",
+    firstName: "",
+    lastName: "",
+    loginPassword: "",
+    middleName: ""
+  };
 
   constructor(public navCtrl: NavController,
   public navParams: NavParams, 
@@ -55,6 +63,27 @@ export class LoginPage {
       //we don't have the user data so we will ask him to log in
       env.facebookLoginService.doFacebookLogin()
       .then(function(res){
+        env.socialSignUpData = {
+            contactNumber: "",
+            emailAddress: res.email,
+            firstName: res.name,
+            lastName: "",
+            loginPassword: "",
+            middleName: ""
+        };
+        console.log(env.socialSignUpData);
+        env.showLoading();
+        env.auth.registerUser(env.socialSignUpData).subscribe(success => {
+          if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
+            env.loading.dismiss();
+            env.navCtrl.setRoot('HomePage');
+          } else {
+            env.showError(success.statusMessage);
+          }
+        },
+        error => {
+          this.showError(error);
+        });
         env.loading.dismiss();
         env.navCtrl.popToRoot();
       }, function(err){
