@@ -15,12 +15,12 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
 })
 export class HotelinfoPage {
 
-    stayDuration:any = 60;
-stayDurationInHours:any = 1;
-fareAmount:any;
-hotelInfo:any;
-userInfo:any;
-hours :any = ["00","01","02","03","04","05","06","07","08","09","10","11","12"];
+  stayDuration:any = "01:00";
+  stayDurationInput:any;
+  fareAmount:any;
+  hotelInfo:any;
+  userInfo:any;
+  hours :any = ["00","01","02","03","04","05","06","07","08","09","10","11","12"];
   minutes :any = ["00","05","10","15","20","25","30","35","40","45","50","55"];
   hour :any = 1;
   min :any = 0;
@@ -31,10 +31,12 @@ constructor(public navCtrl: NavController, public navParams: NavParams,public al
 }
 
 calculatefare(){
-    this.stayDurationInHours  = (this.stayDuration/60).toFixed(2);
-    this.stayDurationInHours = this.stayDurationInHours.toString().replace(".",":");
+    this.stayDurationInput = this.stayDuration;
+    this.stayDurationInput = this.stayDurationInput.toString();
+    this.stayDurationInput = this.stayDurationInput.split(":")
+    this.stayDurationInput = ((parseInt(this.stayDurationInput[0])*60)+ parseInt(this.stayDurationInput[1]))
     //fareAmount = Hotelcharge + Tax;
-    this.fareAmount = ((this.stayDuration*(this.hotelInfo.chargepermin)) + ((this.stayDuration*(this.hotelInfo.chargepermin))*(this.hotelInfo.taxpercent/100))).toFixed(2);
+    this.fareAmount = ((this.stayDurationInput*(this.hotelInfo.chargepermin)) + ((this.stayDurationInput*(this.hotelInfo.chargepermin))*(this.hotelInfo.taxpercent/100))).toFixed(2);
 }
 
 dismiss(){

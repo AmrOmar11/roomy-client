@@ -42,7 +42,8 @@
      <ion-row>
        <div class="farecalculation">
           <div class="durationparent inlineblock">
-              <div class="stayduration inlineblock">{{stayDurationInHours}}</div><div class="durationtype inlineblock">HR</div>
+              <div class="stayduration inlineblock"><ion-datetime min="01:00" max="11:00" displayFormat="HH:mm" [(ngModel)]="stayDuration" (ionChange) = "calculatefare()" >
+  </ion-datetime></div><div class="durationtype inlineblock">HR</div>
           </div>
           <div class="plusymb inlineblock">+</div>
           <div class="taxparent inlineblock">
@@ -65,14 +66,14 @@
          
         </ion-col>
      </ion-row>
-     <ion-row style="margin-top: 20px;">
+     <!-- <ion-row style="margin-top: 20px;">
       <ion-item>
         <ion-range min="60" max="720" step="1" class="range-ios"  [(ngModel)]="stayDuration" (ionChange) = "calculatefare()">
           <ion-label range-left>1 Hr</ion-label>
           <ion-label range-right>12 Hrs</ion-label>
         </ion-range>
       </ion-item>
-    </ion-row>
+    </ion-row> -->
   </div>
   <div class="hoteldescription">
       <ion-label>DESCRIPTION</ion-label>

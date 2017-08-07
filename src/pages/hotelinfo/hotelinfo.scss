@@ -49,6 +49,9 @@ page-hotelinfo {
     	//height: inherit !important;
     	border:none !important;
 	}
+	.datetime-md,.datetime-ios{
+		padding:0px;
+	}
 	.hotelInfo{
 		padding-top:0;
 		padding-bottom:0;
@@ -198,7 +201,7 @@ page-hotelinfo {
 		width: 70%;
 		height:100%;
 	    font-size: 3vmax;
-	    padding: 3px;
+	    padding: 5px 3px;
 	    background-color: #f2f2f2;
 	    text-align: center;
 	    border-radius: 5px 0 0 5px;
@@ -231,7 +234,7 @@ page-hotelinfo {
     	padding:0px;
     }
     .pricingsubinfo{
-    	height:10px;
+    	height:25px;
     }
     .pricingsubinfo .col{
     	text-align: center;
