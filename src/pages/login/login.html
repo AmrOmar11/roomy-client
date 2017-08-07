@@ -11,23 +11,7 @@ Ionic pages and navigation.
             <img class="logo" src="assets/img/logo.png"/>
         </ion-col>
     </ion-row>
-    <ion-row >
-        <ion-col margin-top padding-top text-center padding-bottom >
-            <p class="sign-in-with">
-                <span>
-                    Sign in with
-                </span>
-            </p>
-        </ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col text-center>
-            <img class="social-icons" src="assets/img/facebook.png" (click)="doFacebookLogin()">
-        </ion-col>
-        <ion-col text-center>
-            <img class="social-icons"  src="assets/img/google.png" (click)="doGoogleLogin()">
-        </ion-col>
-    </ion-row>
+
     <div>
         <form [formGroup] ="loginForm">
             <ion-row>
@@ -65,17 +49,31 @@ Ionic pages and navigation.
 
             </ion-col>
         </ion-row>
-        <ion-row>
-
+        <ion-row >
+            <ion-col margin-top padding-top text-center>
+                <button ion-button block class="pobyt-button" (click)="SignIn()">Sign in</button>
+            </ion-col>
         </ion-row>
+        <ion-row >
+            <ion-col margin-top padding-top text-center padding-bottom >
+                <p class="sign-in-with">
+                    <span>
+                        Sign in with
+                    </span>
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <img class="social-icons" src="assets/img/facebook.png" (click)="doFacebookLogin()">
+            </ion-col>
+            <ion-col text-center>
+                <img class="social-icons"  src="assets/img/google.png" (click)="doGoogleLogin()">
+            </ion-col>
+        </ion-row>
+
 
 
     </div>
 </ion-content>
 
-
-<ion-footer>
-    <ion-toolbar>
-        <button ion-button full class="pobyt-button" (click)="SignIn()">Sign in</button>
-    </ion-toolbar>
-</ion-footer>
