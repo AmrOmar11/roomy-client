@@ -7,7 +7,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { Network } from '@ionic-native/network';
 import { RoomyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -64,7 +64,8 @@ const cloudSettings: CloudSettings = {
     NativeStorage,
     Facebook,
     GooglePlus,
-    AuthenticateProvider
+    AuthenticateProvider,
+    Network
   ]
 })
 export class AppModule {}

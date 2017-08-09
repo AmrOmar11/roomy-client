@@ -27,6 +27,7 @@
         "@ionic-native/google-maps": "^3.12.1",
         "@ionic-native/google-plus": "^3.12.1",
         "@ionic-native/native-storage": "^3.12.1",
+        "@ionic-native/network": "^4.1.0",
         "@ionic-native/push": "^4.1.0",
         "@ionic-native/social-sharing": "^3.12.1",
         "@ionic-native/splash-screen": "3.10.2",
@@ -102,7 +103,8 @@
             },
             "phonegap-plugin-push": {
                 "SENDER_ID": "596958727411"
-            }
+            },
+            "cordova-plugin-network-information": {}
         },
         "platforms": [
             "android",
