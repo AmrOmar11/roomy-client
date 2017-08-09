@@ -7,11 +7,11 @@
 <ion-content>	
 	<div #map id="map" style="height:100%;">
 	</div>
-	<button ion-button icon-only (click)="compasClicked()" class="compas">
-		<ion-icon name="compass"></ion-icon>
+	<button (click)="compasClicked()" class="compas">
+		<img src="assets/img/Navigation_icon.png" style="" alt="logo">
 	</button>
-	<button ion-button icon-only (click)="searchClicked()" class="search">
-		<ion-icon name="search"></ion-icon>
+	<button (click)="searchClicked()" class="search">
+		<img src="assets/img/search_icon.png" style="" alt="logo">
 	</button>
 	<page-hotelslider [hotels]="hotelsInfo"></page-hotelslider>
 </ion-content>

@@ -1,20 +1,15 @@
 page-map {
-    .compas { 
-        position: absolute;
-        top: 17%;
-        right: 10px;
-        opacity: 0.7;
-        border-radius: 100px;
-        height: 45px;
-    }
-
-    .search { 
+    .search,.compas { 
         position: absolute;
         top: 5%;
         right: 10px;
         opacity: 0.7;
-        border-radius: 100%;
-        height: 41px;
+        height: 45px;
+        width: 45px;
+        background: transparent;
+    }
+     .compas{
+        top: 17%;
     }
 }
 
@@ -28,16 +23,27 @@ page-map {
     .custom-spinner-container{
         height:1000px;
         width:500px;
-        background-color:#ffffff;
+        background-color:map-get($colors, theme);
+        margin-left: -6%;
+    }
+
+    .loading-ios {
+        .custom-spinner-container{
+            margin-left: -11%;
+        }
+        .custom-spinner-box{
+            margin-left:13%;
+        }
     }
 
     .custom-spinner-box{
-        background-image:url(../assets/img/title_logo.png);
-        background-repeat:no-repeat;
-        width:147px;
-        height:56px;
-        margin-left: 110px;
-        transform: translateY(775%);
+        background-image: url(../assets/img/Loading_Logo.png);
+        background-repeat: no-repeat;
+        width: 250px;
+        height: 250px;
+        margin-left: 16%;
+        background-size: 100%;
+        transform: translateY(140%);
     }
 
 

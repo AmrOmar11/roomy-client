@@ -38,3 +38,12 @@ a{
     font-family:$theme-font;
     font-size:32.27ppt
 }
+
+@font-face{
+font-family: Opensans;
+src: url('../assets/fonts/opensans.woff2') format('woff2');
+}
+ 
+*{
+font-family: Opensans,sans-serif;
+}
