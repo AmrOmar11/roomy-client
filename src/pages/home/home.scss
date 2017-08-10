@@ -20,6 +20,32 @@ page-home {
 	  height: 100%;
 	  text-align: center;
 	}
+
+	.custom-spinner-container{
+        height: 100%;
+        width: 100%;
+        background-color: map-get($colors, theme);
+    }
+
+    .custom-spinner-box{
+        background-image: url(../assets/img/Loading_Logo.png);
+        background-repeat: no-repeat;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        background-size: 100%;
+        transform: translateY(100%);
+    }
+    #loaderoverlay{
+        width:100%;
+        height:100%;
+        background-color:grey;
+        display:none;
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:11;
+    }
 }
 
 .map-page #map{

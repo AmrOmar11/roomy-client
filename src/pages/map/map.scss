@@ -13,38 +13,4 @@ page-map {
     }
 }
 
-    .loading-wrapper,.loading-content{
-        width: auto;
-        height: auto;
-        max-width:100% !important;
-        max-height:100% !important;
-    }
-
-    .custom-spinner-container{
-        height:1000px;
-        width:500px;
-        background-color:map-get($colors, theme);
-        margin-left: -6%;
-    }
-
-    .loading-ios {
-        .custom-spinner-container{
-            margin-left: -11%;
-        }
-        .custom-spinner-box{
-            margin-left:13%;
-        }
-    }
-
-    .custom-spinner-box{
-        background-image: url(../assets/img/Loading_Logo.png);
-        background-repeat: no-repeat;
-        width: 250px;
-        height: 250px;
-        margin-left: 16%;
-        background-size: 100%;
-        transform: translateY(140%);
-    }
-
-
 

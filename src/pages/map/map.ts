@@ -41,19 +41,20 @@ export class MapPage implements OnInit{
 
 	ngOnInit() {
        console.log('ngOnInit');
-       this.loading = this.loadingController.create({
+       this.loading = document.getElementById("loaderoverlay");
+       /*this.loadingController.create({
         spinner: 'hide',
         content: `
           <div class="custom-spinner-container">
             <div class="custom-spinner-box"></div>
           </div>`
-      });
+       });*/
 
-      this.loading.onDidDismiss(() => {
-        console.log('Dismissed loading');
-      });
+      // this.loading.onDidDismiss(() => {
+      //   console.log('Dismissed loading');
+      // });
 
-      this.loading.present();
+      this.loading.style.display="block";
       this.getCurrenLocation();
     }
 
@@ -106,7 +107,7 @@ export class MapPage implements OnInit{
                      //this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
                   }
                   //loader.dismiss();
-                  this.loading.dismiss();
+                  this.loading.style.display="none";
             });
         //});
 	}
