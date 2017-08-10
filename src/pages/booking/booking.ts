@@ -14,26 +14,28 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
 })
 export class BookingPage {
     guests="one";
+bookingFor="";
 userInfo:any;
-editGuest=false;
+
 
 constructor(public navCtrl: NavController, 
             public navParams: NavParams,
             private authProvider: AuthenticateProvider) {
-    this.userInfo = this.authProvider.getUserInfo();
+    this.bookingFor = this.navParams.get("for");
+    if(this.bookingFor!=="other"){
+        this.userInfo = this.authProvider.getUserInfo();
+    }
+    else
+    {
+        this.userInfo={}
+    }
 }
 
 ionViewDidLoad() {
     console.log('ionViewDidLoad BookingPage');
 };
 openTerms() {
-   this.navCtrl.push('PoliciesPage');
-}
-onBookTo(){
-    this.editGuest = !this.editGuest;
-}
-onSaveBookingTo(){
-    this.editGuest = !this.editGuest;
+    this.navCtrl.push('PoliciesPage');
 }
 
 }

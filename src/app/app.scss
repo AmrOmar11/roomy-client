@@ -21,29 +21,35 @@
 }
 
 .pobyt-button .button-inner{
-    font-size:2.8vmax;
+    font-size:2rem;
     font-family:$theme-font;
     font-weight:bold;
-    color:map-get($colors, light);
+    color:map-get($colors, whiteColor);
 }
 a{
-    color:map-get($colors, text-grey);
+    color:map-get($colors, textcolor);
     text-decoration: none;
     font-family:$theme-font;
-    font-size:28.27ppt
+    font-size:1.4rem
 }
 .placeholder{
-    color:map-get($colors, text-grey);
+    color:map-get($colors, textcolor);
     text-decoration: none;
     font-family:$theme-font;
-    font-size:32.27ppt
+    font-size:1.5rem
 }
 
-@font-face{
-font-family: Opensans;
-src: url('../assets/fonts/opensans.woff2') format('woff2');
+.footer button{
+    margin-left: .4rem !important;
+    margin-right: .4rem !important;
+    width: 97.5%;
+    font-weight: bold;
 }
- 
+@font-face{
+    font-family: Opensans;
+    src: url('../assets/fonts/opensans.woff2') format('woff2');
+}
+
 *{
-font-family: Opensans,sans-serif;
+    font-family: Opensans,sans-serif;
 }

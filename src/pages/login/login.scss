@@ -9,9 +9,13 @@ page-login {
     .social-icons{
         height: 40px;
     }
+    .sigin-btn{
+        padding-left: 35px !important;
+        padding-right: 35px !important;
+    }
 
     .sign-in-with { 
-        color: #99979a;
+        color: map-get($colors, textcolor);
         font-family: "Open Sans";
         font-size: 28.27ppt;
         width:100%; 

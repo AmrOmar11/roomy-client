@@ -1,3 +1,27 @@
 page-register {
-  
+    .toolbar-background {
+        background: map-get($colors, header-toolbar-background);
+    }
+    .toolbar-title{
+        color: map-get($colors, whiteColor);
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: "open sans";
+    }
+    .content,.item{
+        background-color: map-get($colors, content-background);
+    }
+    .item.item-block .item-inner {
+        border-bottom: none;
+    }
+    .text-input{
+        padding: 1rem;
+        background-color:  map-get($colors, whiteColor);
+    }
+    .text-input::-moz-placeholder,.text-input:-ms-input-placeholder, .text-input::-webkit-input-placeholder {
+        color: map-get($colors, placeholder-color);
+        font-family:$theme-font;
+        font-size:1.5rem
+    }
+
 }
