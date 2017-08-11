@@ -301,22 +301,22 @@ export class MapPage implements OnInit{
 	
 	// Adds a marker to the map.
 	private addSourceMarker(animate:boolean,location){
-        if(this.sourceMarker !== undefined){
-            this.sourceMarker.setMap(null);
-        }        
-		let animationType:any = null;
-		if(animate == true){
-			animationType = google.maps.Animation.DROP;
-		}
-		this.sourceMarker = new google.maps.Marker({
-			position: location,
-			map: this.map,
-			animation: animationType,
-			title: 'Drage me!',
-			draggable:true,
-			icon:this.icons.userloc
-		});
-        google.maps.event.addListener(this.sourceMarker,'dragend',this.sourceMarkerDragEnd.bind(this));
+      if(this.sourceMarker !== undefined){
+          this.sourceMarker.setMap(null);
+      }        
+  		let animationType:any = null;
+  		if(animate == true){
+  			animationType = google.maps.Animation.DROP;
+  		}
+  		this.sourceMarker = new google.maps.Marker({
+  			position: location,
+  			map: this.map,
+  			animation: animationType,
+  			// title: 'Drage me!',
+  			// draggable:true,
+  			icon:this.icons.userloc
+  		});
+      // google.maps.event.addListener(this.sourceMarker,'dragend',this.sourceMarkerDragEnd.bind(this));
     }
 	
 	private sourceMarkerDragEnd(event){
@@ -380,12 +380,12 @@ export class MapPage implements OnInit{
                 // set place in map
                 self.userLocation = place.geometry.location;
                 self.map.panTo(place.geometry.location);
-                if(self.destinationLocation !== undefined){
-                   self.sourceMarker.setMap(null);
+                // if(self.destinationLocation !== undefined){
+                   // self.sourceMarker.setMap(null);
                    //self.displayRoute(place.geometry.location,self.destinationLocation,self.directionsService,self.directionsDisplay);
-                }else{
+                // }else{
                     self.addSourceMarker(false,place.geometry.location);
-                }
+                // }
                 // populate
                 self.address.set = true;
             }else{
@@ -415,7 +415,7 @@ export class MapPage implements OnInit{
         //if(this.sourceMarker !== undefined){
         //    this.sourceMarker.setMap(null);
         //}
-        this.destinationLocation = new google.maps.LatLng(Lat, Lng);
+        // this.destinationLocation = new google.maps.LatLng(Lat, Lng);
         // this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
     }
 }
