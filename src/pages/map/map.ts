@@ -186,7 +186,7 @@ export class MapPage implements OnInit{
                     "color": "#333333"
                 },
                 {
-                    "weight": 1
+                    "weight": 0.5
                 }
             ]
         },
@@ -298,45 +298,45 @@ export class MapPage implements OnInit{
 	
 	private sourceMarkerDragEnd(event){
 	    console.log('Marker:DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
-        this.userLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
-        this.map.panTo(this.userLocation);
+      this.userLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
+      this.map.panTo(this.userLocation);
 	}
 	
 	compasClicked(){
-        if (this.map !== undefined) {
-			// this.addMarker(false,this.location);
-            let options = {enableHighAccuracy: true};
-            this.geolocation.getCurrentPosition(options).then((res) => {
-                console.log(res);
-                this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
-                this.map.panTo(this.userLocation);
-                if(this.destinationLocation !== undefined){
-                   this.sourceMarker.setMap(null);
-                   // this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
-                }else{
-                    this.addSourceMarker(false,this.userLocation);    
-                }
-            })
-            .catch((error) =>{
-                console.log(error);
-            });
-		}
+    if (this.map !== undefined) {
+      // this.addMarker(false,this.location);
+      let options = {enableHighAccuracy: true};
+      this.geolocation.getCurrentPosition(options).then((res) => {
+          console.log(res);
+          this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
+          this.map.panTo(this.userLocation);
+          // if(this.destinationLocation !== undefined){
+             // this.sourceMarker.setMap(null);
+             // this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
+          // }else{
+              this.addSourceMarker(false,this.userLocation);    
+          // }
+      })
+      .catch((error) =>{
+          console.log(error);
+      });
+    }
 	}
 	
 	searchClicked(){
-        // reset 
-        this.resetSearch();
-        // show modal
-        let modal = this.modalCtrl.create('SearchPage');
-        modal.onDidDismiss(data => {
-            console.log('search > modal dismissed > data > ', data);
-            if(data){
-                this.address.place = data.description;
-                // get details
-                this.getPlaceDetail(data.place_id);
-            }                
-        })
-        modal.present();
+      // reset 
+      this.resetSearch();
+      // show modal
+      let modal = this.modalCtrl.create('SearchPage');
+      modal.onDidDismiss(data => {
+          console.log('search > modal dismissed > data > ', data);
+          if(data){
+              this.address.place = data.description;
+              // get details
+              this.getPlaceDetail(data.place_id);
+          }
+      })
+      modal.present();
     }
 
     private resetSearch() {
