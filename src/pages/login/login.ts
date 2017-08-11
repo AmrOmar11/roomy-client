@@ -106,6 +106,27 @@ export class LoginPage {
       //we don't have the user data so we will ask him to log in
       env.googleLoginService.doGoogleLogin()
       .then(function(res){
+        env.socialSignUpData = {
+            contactNumber: "",
+            emailAddress: res.email,
+            firstName: res.displayName,
+            lastName: "",
+            loginPassword: "",
+            middleName: ""
+        };
+        console.log(env.socialSignUpData);
+        env.showLoading();
+        env.auth.registerUser(env.socialSignUpData).subscribe(success => {
+          if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
+            env.loading.dismiss();
+            env.navCtrl.setRoot('HomePage');
+          } else {
+            env.showError(success.statusMessage);
+          }
+        },
+        error => {
+          this.showError(error);
+        });
         env.loading.dismiss();
         env.navCtrl.popToRoot();
       }, function(err){
