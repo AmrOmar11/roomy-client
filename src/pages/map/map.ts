@@ -75,19 +75,87 @@ export class MapPage implements OnInit{
   
   	private loadMap(position: Geoposition){
 		this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		let mapOptions = {
-			center: this.userLocation,
-			zoom: 17,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			mapTypeControl: false,
-			zoomControl:false,
-			fullscreenControl:false,
-			streetViewControl:false,
-			compass:true,
-			myLocationButton: true, // GEOLOCATION BUTTON 
-			indoorPicker: true
-		}
-		this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+		var mapStyles =[
+      {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+      {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+      {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+      {
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+            { visibility: "off" }
+          ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [{color: '#38414e'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#212a37'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#9ca5b3'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [{color: '#746855'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#1f2835'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#f3d19c'}]
+      },
+      {
+        featureType: 'transit',
+        elementType: 'geometry',
+        stylers: [{color: '#2f3948'}]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#d59563'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [{color: '#17263c'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#515c6d'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.stroke',
+        stylers: [{color: '#17263c'}]
+      }
+    ];
+    let mapOptions = {
+      center: this.userLocation,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: false,
+      zoomControl:false,
+      fullscreenControl:false,
+      streetViewControl:false,
+      compass:true,
+      myLocationButton: true, // GEOLOCATION BUTTON 
+      indoorPicker: true,
+      styles: mapStyles
+    }
+    this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 		google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.userLocation));
         this.directionsService = new google.maps.DirectionsService;
         this.directionsDisplay = new google.maps.DirectionsRenderer;
