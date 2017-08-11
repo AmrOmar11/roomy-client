@@ -14,7 +14,7 @@ page-register {
     .item.item-block .item-inner {
         border-bottom: none;
     }
-    .text-input{
+    .text-input,.datetime-ios{
         padding: 1rem;
         background-color:  map-get($colors, whiteColor);
     }
@@ -23,5 +23,19 @@ page-register {
         font-family:$theme-font;
         font-size:1.5rem
     }
+    .label{
+        color: map-get($colors, placeholder-color);
+        font-family:$theme-font;
+        font-size:1.5rem !important;
+    }
+    .segment .segment-button ion-icon {
+      
+        font-size:1.5rem;
+        line-height: 3rem;
+    }
+    a {
+        color: map-get($colors, theme);
+    }
+
 
 }

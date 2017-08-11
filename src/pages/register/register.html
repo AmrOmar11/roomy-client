@@ -6,41 +6,76 @@ Ionic pages and navigation.
 -->
 <ion-header>
     <ion-navbar>
-        <ion-title>Register</ion-title>
+        <ion-title text-uppercase>Register</ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
     <div >
         <form (ngSubmit)="singUpSubmit()" [formGroup] = "signUpForm">
-            <ion-row>
-                <ion-col>
-                    <ion-item>
-                        <ion-input placeholder="First Name" type="text" [class.invalid]= "!signUpForm.controls.firstname.valid && (signUpForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="signUpData.firstName" ></ion-input>
-                    </ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-item no-padding>
+                            <ion-label stacked>First Name</ion-label>
+                            <ion-input type="text" [class.invalid]= "!signUpForm.controls.firstname.valid && (signUpForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="signUpData.firstName" ></ion-input>
+                        </ion-item>
+                    </ion-col >
+                    <ion-col>
+                        <ion-item no-padding>
+                            <ion-label stacked>Last Name</ion-label>
+                            <ion-input  type="text" [class.invalid]= "!signUpForm.controls.lastname.valid && (signUpForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="signUpData.lastName"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-item no-padding>
+                            <ion-label stacked>Mobile</ion-label>
+                            <ion-input type="text" [class.invalid]= "!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="signUpData.contactNumber"></ion-input> 
+                        </ion-item>
+                        <ion-label *ngIf="!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)">
+                            <p>Please enter valid Mobile</p>
+                        </ion-label>
+                        <ion-item no-padding>
+                            <ion-label stacked>Email Id</ion-label>
+                            <ion-input type="text"  [class.invalid]= "!signUpForm.controls.email.valid && (signUpForm.controls.email.dirty || registerAttempt)" formControlName="email" name="email" [(ngModel)]="signUpData.emailAddress"></ion-input> 
+                        </ion-item >
+                        <ion-label *ngIf="!signUpForm.controls.email.valid && (signUpForm.controls.email.dirty || registerAttempt)">
+                            <p>Please enter valid email</p>
+                        </ion-label >
+                        <ion-item no-padding>
+                            <ion-label stacked>Password</ion-label>
+                            <ion-input placeholder="Minium 6 characters" type="password" [class.invalid]= "!signUpForm.controls.password.valid && (signUpForm.controls.password.dirty || registerAttempt)" formControlName="password" name="password" [(ngModel)]="signUpData.loginPassword"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-item no-padding>
+                            <ion-label stacked>Date of Birth</ion-label>
+                            <ion-datetime displayFormat="MMM DD YYYY" formControlName="dob" name="dob" [(ngModel)]="signUpData.dob"></ion-datetime>
+                        </ion-item>
+                    </ion-col >
+                    <ion-col>
+                        <ion-label stacked>Gender</ion-label>
+                        <ion-item no-padding>
+                            <ion-segment formControlName="gender" name="gender" [(ngModel)]="signUpData.gender">
+                                <ion-segment-button value="M">
+                                    <ion-icon name="male"> M</ion-icon>
+                                </ion-segment-button>
+                                <ion-segment-button value="F">
+                                  <ion-icon name="female"> F</ion-icon>
+                                </ion-segment-button>
+                            </ion-segment>
+                        </ion-item>
+                    </ion-col>
 
-                    <ion-item>
-                        <ion-input placeholder="Last Name" type="text" [class.invalid]= "!signUpForm.controls.lastname.valid && (signUpForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="signUpData.lastName"></ion-input>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-input placeholder="Mobile" type="text" [class.invalid]= "!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="signUpData.contactNumber"></ion-input> 
-                    </ion-item>
-                    <ion-label *ngIf="!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)">
-                        <p>Please enter valid Mobile</p>
-                    </ion-label>
-                    <ion-item>
-                        <ion-input placeholder="Email" type="text"  [class.invalid]= "!signUpForm.controls.email.valid && (signUpForm.controls.email.dirty || registerAttempt)" formControlName="email" name="email" [(ngModel)]="signUpData.emailAddress"></ion-input> 
-                    </ion-item>
-                    <ion-label *ngIf="!signUpForm.controls.email.valid && (signUpForm.controls.email.dirty || registerAttempt)">
-                        <p>Please enter valid email</p>
-                    </ion-label>
-                    <ion-item>
-                        <ion-input placeholder="Password" type="password" [class.invalid]= "!signUpForm.controls.password.valid && (signUpForm.controls.password.dirty || registerAttempt)" formControlName="password" name="password" [(ngModel)]="signUpData.loginPassword"></ion-input>
-                    </ion-item>
-                </ion-col>
-            </ion-row>
-
+                </ion-row>
+                <ion-item no-lines padding class="TC-checkbox">
+                    <p>By Signing up, you are accepting <a (click)="openTerms()">Pobyt T&C.</a></p>
+                </ion-item>
+            </ion-grid>
             <ion-footer>
                 <button ion-button block medium type="submit">Register</button>
             </ion-footer>
