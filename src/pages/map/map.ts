@@ -29,6 +29,20 @@ export class MapPage implements OnInit{
     private directionsDisplay:any;
     private destinationLocation:any;
     public loading:any;
+    public icons:any = { 
+          userloc: {
+            url: "http://w2.marketeer.co/img/bluedot.png", // url
+            scaledSize: new google.maps.Size(61, 50), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+          },
+          hotel:{
+            url: "../assets/img/hotel_marker.png", // url
+            scaledSize: new google.maps.Size(20, 20), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+          }
+        }; 
 
 	constructor(
 		public navCtrl: NavController, 
@@ -267,12 +281,20 @@ export class MapPage implements OnInit{
 
         //loader.present().then(()=>{
             this.hotelsProvider.load().then(data => {
-                  this.hotelsInfo = data;
-                  if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
-                     //this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
-                  }
-                  //loader.dismiss();
-                  this.loading.style.display="none";
+              this.hotelsInfo = data;
+              if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
+               //this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
+               for(let hotel of this.hotelsInfo) {
+                  var hotelLocation = new google.maps.LatLng(hotel.latitude, hotel.longitude);
+                  this.sourceMarker = new google.maps.Marker({
+                  position: hotelLocation,
+                  map: this.map,
+                  icon:this.icons.hotel
+                });
+                }
+              }
+              //loader.dismiss();
+              this.loading.style.display="none";
             });
         //});
 	}
@@ -291,7 +313,8 @@ export class MapPage implements OnInit{
 			map: this.map,
 			animation: animationType,
 			title: 'Drage me!',
-			draggable:true
+			draggable:true,
+			icon:this.icons.userloc
 		});
         google.maps.event.addListener(this.sourceMarker,'dragend',this.sourceMarkerDragEnd.bind(this));
     }
@@ -389,9 +412,9 @@ export class MapPage implements OnInit{
     }
 
     public displayDirection(Lat,Lng){
-        if(this.sourceMarker !== undefined){
-            this.sourceMarker.setMap(null);
-        }
+        //if(this.sourceMarker !== undefined){
+        //    this.sourceMarker.setMap(null);
+        //}
         this.destinationLocation = new google.maps.LatLng(Lat, Lng);
         // this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
     }

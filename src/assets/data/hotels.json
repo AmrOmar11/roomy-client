@@ -11,7 +11,7 @@
             "currency" : "INR",
             "farechargetype":"HR",
             "img": "assets/img/hotels/hotel1.jpg",
-            "lattitue": "17.447020",
+            "latitude": "17.447020",
             "longitude": "78.383683",
             "status":0,
             "statusText":""
@@ -27,7 +27,7 @@
             "currency" : "INR",
             "farechargetype":"HR",
             "img": "assets/img/hotels/hotel2.jpg",
-            "lattitue": "17.449918",
+            "latitude": "17.449918",
             "longitude": "78.378951",
             "status":0,
             "statusText":""
@@ -43,7 +43,7 @@
             "currency" : "INR",
             "farechargetype":"HR",         
             "img": "assets/img/hotels/hotel3.jpg",
-            "lattitue": "17.472835",
+            "latitude": "17.472835",
             "longitude": "78.372799",
             "status":1,
             "statusText":"TEMPORARILY FULL"
@@ -59,7 +59,7 @@
             "currency" : "INR",
             "farechargetype":"HR",
             "img": "assets/img/hotels/hotel4.jpg",
-            "lattitue": "17.443244",
+            "latitude": "17.443244",
             "longitude": "78.376690",
             "status": 1,
             "statusText":"TEMPORARILY FULL"
