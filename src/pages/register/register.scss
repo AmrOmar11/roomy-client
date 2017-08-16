@@ -2,40 +2,57 @@ page-register {
     .toolbar-background {
         background: map-get($colors, header-toolbar-background);
     }
-    .toolbar-title{
+    .toolbar-title {
         color: map-get($colors, whiteColor);
         font-size: 1.5rem;
         font-weight: bold;
         font-family: "open sans";
     }
-    .content,.item{
+    .content,
+    .item {
         background-color: map-get($colors, content-background);
     }
     .item.item-block .item-inner {
         border-bottom: none;
     }
-    .text-input,.datetime-ios{
+    .text-input,
+    .datetime {
         padding: 1rem;
-        background-color:  map-get($colors, whiteColor);
+        background-color: map-get($colors, whiteColor);
+        border: 1px solid map-get($colors, placeholder-color);
+        border-radius: 5px;
     }
-    .text-input::-moz-placeholder,.text-input:-ms-input-placeholder, .text-input::-webkit-input-placeholder {
-        color: map-get($colors, placeholder-color);
-        font-family:$theme-font;
-        font-size:1.5rem
+    .datetime {
+        margin-top: 1.5rem;
     }
-    .label{
+    .text-input::-moz-placeholder,
+    .text-input:-ms-input-placeholder,
+    .text-input::-webkit-input-placeholder {
         color: map-get($colors, placeholder-color);
-        font-family:$theme-font;
-        font-size:1.5rem !important;
+        font-family: $theme-font;
+        font-size: 1.5rem
+    }
+    .label {
+        color: map-get($colors, placeholder-color);
+        font-family: $theme-font;
+        font-size: 1.5rem !important;
     }
     .segment .segment-button ion-icon {
-      
-        font-size:1.5rem;
-        line-height: 3rem;
+        font-size: 2rem;
+    }
+    .segment .segment-button {
+        border: 2px solid map-get($colors, theme) !important;
+        color: map-get($colors, theme) !important;
+        margin-right: 1rem !important;
+        height: 4rem;
+        line-height: 4rem;
+        margin-top: 0.3rem;
+    }
+    .segment-button.segment-activated {
+        background-color: map-get($colors, theme) !important;
+        color: map-get($colors, whiteColor) !important;
     }
     a {
         color: map-get($colors, theme);
     }
-
-
 }

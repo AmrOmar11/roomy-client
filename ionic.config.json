@@ -31,5 +31,8 @@
       "path": "/updateProfile",
       "proxyUrl": "https://roomy-midtier.herokuapp.com/updateProfile"
     }
-  ]
+  ],
+  "integrations": {
+    "cordova": {}
+  }
 }

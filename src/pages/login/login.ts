@@ -91,6 +91,27 @@ export class LoginPage {
       });
     });
   }
+forgetPassword(){
+    let confirm = this.alertCtrl.create({
+        message: 'Booking For?',
+        buttons: [
+            {
+                text: 'Other',
+                handler: () => {
+               
+                    this.navCtrl.push('BookingPage',{for:"other"});
+                }
+            },
+            {
+                text: 'Yes',
+                handler: () => {
+                    this.navCtrl.push('BookingPage',{for:"me"});
+                }
+            }
+        ]
+    });
+    confirm.present();
+}
 
   doGoogleLogin() {
     this.loading = this.loadingCtrl.create();

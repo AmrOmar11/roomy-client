@@ -7,7 +7,7 @@ page-booking {
         appearance:none;
     }
 
-    .segment-ios .segment-button {
+    .segment .segment-button {
         border-color: map-get($colors, theme);
         color: map-get($colors, theme);
     }
@@ -81,7 +81,7 @@ page-booking {
         color:map-get($colors, light);
     }
 
-    .toolbar,.toolbar-ios{
+    .toolbar,.toolbar{
         padding:0px;
     }
 

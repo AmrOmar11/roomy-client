@@ -6,11 +6,11 @@ Ionic pages and navigation.
 -->
 <ion-header>
     <ion-navbar>
-        <ion-title text-uppercase>Register</ion-title>
+        <ion-title text-uppercase text-center>Register</ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content >
+<ion-content scroll="false">
     <div >
         <form (ngSubmit)="singUpSubmit()" [formGroup] = "signUpForm">
             <ion-grid>
@@ -72,13 +72,13 @@ Ionic pages and navigation.
                     </ion-col>
 
                 </ion-row>
-                <ion-item no-lines padding class="TC-checkbox">
+                <ion-item no-lines text-center class="TC-checkbox">
                     <p>By Signing up, you are accepting <a (click)="openTerms()">Pobyt T&C.</a></p>
                 </ion-item>
             </ion-grid>
-            <ion-footer>
-                <button ion-button block medium type="submit">Register</button>
-            </ion-footer>
         </form>
     </div>
 </ion-content>
+<ion-footer>
+    <button ion-button block medium type="submit">Register</button>
+</ion-footer>

@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/v2/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,49 +12,60 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
-.pobyt-button{
-    margin:0px;
-    background-color:map-get($colors, theme) !important;
+.pobyt-button {
+    margin: 0px;
+    background-color: map-get($colors, theme) !important;
 }
 
-.pobyt-button .button-inner{
-    font-size:2rem;
-    font-family:$theme-font;
-    font-weight:bold;
-    color:map-get($colors, whiteColor);
+.pobyt-button .button-inner {
+    font-size: 2rem;
+    font-family: $theme-font;
+    font-weight: bold;
+    color: map-get($colors, whiteColor);
 }
-a{
-    color:map-get($colors, textcolor);
+
+a {
+    color: map-get($colors, link-color);
     text-decoration: none;
-    font-family:$theme-font;
-    font-size:1.4rem
+    font-family: $theme-font;
+    font-size: 1.4rem
 }
-.placeholder{
-    color:map-get($colors, textcolor);
+
+.placeholder {
+    color: map-get($colors, textcolor);
     text-decoration: none;
-    font-family:$theme-font;
-    font-size:1.5rem
+    font-family: $theme-font;
+    font-size: 1.5rem
 }
-.error{
+
+.error {
     text-align: center;
-    color: #de5449;
-    font-weight: bolder;
+    color: map-get($colors, error);
+    font-family: $theme-font;
     margin: 0;
     font-size: 1.5rem;
-
 }
-.footer button{
+
+.footer button {
     margin-left: .4rem !important;
     margin-right: .4rem !important;
     width: 97.5%;
     font-weight: bold;
 }
-@font-face{
+
+@font-face {
     font-family: Opensans;
-    src: url('../assets/fonts/opensans.woff2') format('woff2');
+    src: url('../assets/fonts/OpenSans-Regular.tff');
+}
+@font-face {
+    font-family: Opensans-Bold;
+    src: url('../assets/fonts/OpenSans-Bold.tff') format('tff');
+}
+@font-face {
+    font-family: Opensans-Light;
+    src: url('../assets/fonts/OpenSans-Light.tff') format('tff');
 }
 
-*{
-    font-family: Opensans,sans-serif;
+* {
+    font-family: Opensans, sans-serif;
 }
