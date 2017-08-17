@@ -128,7 +128,9 @@ authenticateUser(inputData){
         this.showPopup("Error", error);
     });
 }
-
+openTerms() {
+    this.nav.push('PoliciesPage');
+}
 showPopup(title, text) {
     let alert = this.alertCtrl.create({
         title: title,
