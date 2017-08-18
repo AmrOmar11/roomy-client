@@ -94,29 +94,8 @@ doFacebookLogin() {
     });
 }
 forgetPassword(){
-       let confirm = this.alertCtrl.create({
-        title: 'Forget your password?',
-        message: "Enter you e-mail/Mobile and we'll send you a OTP to reset your password.",
-        inputs: [
-            {
-                name: 'userId',
-                placeholder: 'Email / Mobile'
-            }],
-        buttons: [
-            {
-                text: 'Cancel',
-                role: 'cancel'            },
-            {
-                text: 'Reset',
-                handler: () => {
-                    this.navCtrl.push('BookingPage',{for:"me"});
-                }
-            }
-        ]
-    });
-    confirm.present();
-    //let modal = this.modalCtrl.create(ForgetModalPage);
-    //modal.present();
+    let modal = this.modalCtrl.create(ForgetModalPage);
+    modal.present();
 }
 
 doGoogleLogin() {

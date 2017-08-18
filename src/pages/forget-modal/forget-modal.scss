@@ -1,3 +1,44 @@
-page-forget-modal {
 
+ion-modal.Forget-Model {
+    @media (min-width: 300px) and (min-height: 500px) {
+        ion-backdrop {
+            visibility: visible;
+        }
+    }
+
+    .modal-wrapper {
+        position: absolute;
+        max-width: 300px;
+        border-radius: 2px;
+        height: 65%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border: 0;
+        box-shadow: 0 16px 20px rgba(0,0,0,.4);
+        background-color: #fafafa;
+    }
+    p{
+        color: map-get($colors, placeholder-color);
+    } 
+    p b{
+        color: map-get($colors, textcolor);
+    }
+    .text-input{
+        padding: 1rem;
+        background-color: map-get($colors, whiteColor);
+        border: 1px solid map-get($colors, placeholder-color);
+        border-radius: 5px;
+    }
+
+    .text-input::-moz-placeholder,
+    .text-input:-ms-input-placeholder,
+    .text-input::-webkit-input-placeholder {
+        color: map-get($colors, placeholder-color);
+        font-family: $theme-font;
+        font-size: 1.5rem
+    }
 }
+
