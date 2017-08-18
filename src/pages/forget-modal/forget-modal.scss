@@ -9,8 +9,9 @@ ion-modal.Forget-Model {
     .modal-wrapper {
         position: absolute;
         max-width: 300px;
+        max-height: 68%;
         border-radius: 2px;
-        height: 65%;
+        height: auto;
         top: 0;
         bottom: 0;
         left: 0;
