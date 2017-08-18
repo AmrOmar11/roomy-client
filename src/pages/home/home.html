@@ -1,74 +1,70 @@
 <!--
-  Generated template for the HomePage page.
+Generated template for the HomePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
 -->
 <ion-header>
-	<ion-navbar>
-			<button ion-button theme-grey icon-only menuToggle large>
-				<ion-icon name="menu"></ion-icon>
-			</button>
-		<ion-title>
-      <img src="assets/img/title_logo.png" style="width: 40%;transform: translateY(20%);" alt="logo">
-    </ion-title>
-	</ion-navbar>
+    <ion-navbar>
+        <button ion-button theme-grey icon-only menuToggle large>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <img src="assets/img/title_logo.png" style="width: 40%;transform: translateY(20%);" alt="logo">
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content class="map-page">
-	<page-map></page-map>
+    <page-map></page-map>
 </ion-content>
 
 <ion-menu [content]="content" type="overlay">
-  <ion-header (click)="goToSettings()">
-    <ion-toolbar menuClose>
-      <ion-list no-lines>
-        <ion-row>
-          <ion-col class="menu-header">
-            <ion-icon name="ios-contact"style="zoom:4.0;" ></ion-icon>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="menu-header">
-            <ion-label>{{userInfo.firstName +' '+userInfo.lastName}}</ion-label>
-          </ion-col>
-        </ion-row>      
-      </ion-list>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content >
-    <ion-list no-lines>
-      <button menuClose ion-item (click)="goToPayment()">
-        <ion-icon name="card"></ion-icon>  PAYMENT
-      </button>
-      <button menuClose ion-item (click)="goToPromotions()">
-        <ion-icon name="beer"></ion-icon>  REWARDS
-      </button>
-      <button menuClose ion-item (click)="goToSettings()">
-        <ion-icon name="settings"></ion-icon>  SETTINGS
-      </button>
-      <button menuClose ion-item (click)="goToHowItWorks()">
-        <ion-icon name="help-circle"></ion-icon> HOW IT WORKS
-      </button>
-      <button menuClose ion-item (click)="goToInviteFriends()">
-        <ion-icon  name="people"></ion-icon>  INVITE FRIENDS
-      </button>
-    </ion-list>
-  </ion-content>
-  <ion-footer>
-    <ion-list no-lines>
-        <button menuClose ion-item (click)="contactUs()">
-          <ion-icon  name="call"></ion-icon>  CONTACTUS
-        </button>
-        <button menuClose ion-item (click)="logOut()">
-          <ion-icon  name="power"></ion-icon>  LOGOUT
-        </button>
-    </ion-list>
-  </ion-footer>
+    <ion-content >
+        <ion-list no-lines>
+            <ion-row>
+                <ion-col class="menu-header">
+                     <img src="assets/img/user_icon.png">
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="menu-header">
+                    <ion-label text-capitalize>{{userInfo.firstName +' '+userInfo.lastName}}</ion-label>
+                </ion-col>
+            </ion-row>      
+        </ion-list>
+        <ion-list no-lines>
+            <button menuClose ion-item (click)="goToPayment()">
+                <img src="../../assets/img/menu/payment.png">  PAYMENT
+            </button>
+            <button menuClose ion-item (click)="goToPromotions()">
+                <img src="../../assets/img/menu/promotions_icon.png">  PROMOTIONS
+            </button>
+            <button menuClose ion-item (click)="goToSettings()">
+                <img src="../../assets/img/menu/profile_icon.png"> PROFILE
+            </button>
+            <button menuClose ion-item (click)="goToHowItWorks()">
+                <img src="../../assets/img/menu/How%20it%20works_icon.png"> HOW IT WORKS
+            </button>
+            <button menuClose ion-item (click)="goToInviteFriends()">
+               <img src="../../assets/img/menu/Inivite%20frd_vion.png">  INVITE FRIENDS
+            </button>
+        </ion-list>
+    </ion-content>
+    <ion-footer>
+        <ion-list no-lines>
+            <button menuClose ion-item (click)="contactUs()">
+                <ion-icon  name="call"></ion-icon>  CONTACTUS
+            </button>
+            <button menuClose ion-item (click)="logOut()">
+                <ion-icon  name="power"></ion-icon>  LOGOUT
+            </button>
+        </ion-list>
+    </ion-footer>
 </ion-menu>
 <ion-nav #content swipeBackEnabled="false"></ion-nav>
 <div id="loaderoverlay">
-   <div class="custom-spinner-container">
+    <div class="custom-spinner-container">
         <div class="custom-spinner-box"></div>
-      </div>
+    </div>
 </div>
