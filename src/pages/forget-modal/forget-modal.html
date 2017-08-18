@@ -5,23 +5,20 @@ See http://ionicframework.com/docs/components/#navigation for more info on
 Ionic pages and navigation.
 -->
 <ion-content padding>
-    <img src="../../assets/img/forgotpassword_character.png">
+    <img src="assets/img/forgotpassword_character.png">
     <p text-center>
         <b >Forgot your password?</b>
     </p>
     <p text-center>Enter you E-mail/Mobile and we'll send you a OTP to reset your password.</p>
-     <ion-input type="text" placeholder="Email / Mobile"></ion-input>
+    <ion-input type="text" placeholder="Email / Mobile"></ion-input>
+
+    <ion-row>
+        <ion-col>
+            <button ion-button outline full (click)="dismiss()">Cancel</button>
+        </ion-col>
+        <ion-col>
+            <button ion-button full (click)="reset()">Reset</button>
+        </ion-col>
+    </ion-row>
 </ion-content>
-<ion-footer>
-    <ion-toolbar transparent>
-        <ion-row>
-            <ion-col width-50 style="text-align: center;">
-                <button ion-button outline (click)="dismiss()">Cancel</button>
-            </ion-col>
-            <ion-col width-50 style="text-align: center;">
-                <button ion-button (click)="reset()">Reset</button>
-            </ion-col>
-        </ion-row>
-    </ion-toolbar>
-</ion-footer>
 

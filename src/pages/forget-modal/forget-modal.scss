@@ -32,7 +32,11 @@ ion-modal.Forget-Model {
         border: 1px solid map-get($colors, placeholder-color);
         border-radius: 5px;
     }
-
+    .button-outline{
+        background-color: map-get($colors,  placeholder-color);
+        border: 1px solid map-get($colors, placeholder-color);
+        color: map-get($colors, whiteColor);
+    }
     .text-input::-moz-placeholder,
     .text-input:-ms-input-placeholder,
     .text-input::-webkit-input-placeholder {
