@@ -4,8 +4,8 @@
   "type": "ionic-angular",
   "proxies": [
     {
-      "path": "/login",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/login"
+      "path": "/userLogin",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/userLogin"
     },
     {
       "path": "/registerUser",

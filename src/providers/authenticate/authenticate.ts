@@ -46,9 +46,11 @@ export class AuthenticateProvider {
     let body = JSON.stringify({
       emailId: inputData.emailId,
       mobileNumber: inputData.mobileNumber,
-      password: inputData.password
+      password: inputData.password,
+      jwtToken:"",
+      loginType:"CREDENTIALS"
     });
-    return this.http.post('https://roomy-midtier.herokuapp.com/login',body,options)
+    return this.http.post('https://roomy-midtier.herokuapp.com/userLogin',body,options)
     .map(res => {
       console.log('login:res:'+res.json().toString());
       return res.json();
