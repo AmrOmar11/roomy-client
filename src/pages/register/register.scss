@@ -1,12 +1,19 @@
 page-register {
     .toolbar-background {
-        background: map-get($colors, header-toolbar-background);
+        background: map-get($colors, theme);
+    }
+    .toolbar button{
+        color: map-get($colors, whiteColor);
     }
     .toolbar-title {
         color: map-get($colors, whiteColor);
         font-size: 1.5rem;
         font-weight: bold;
         font-family: "open sans";
+    }
+    .col{
+        padding-top: 0px;
+        //padding-bottom: 0px;
     }
     .content,
     .item {
@@ -23,7 +30,7 @@ page-register {
         border-radius: 5px;
     }
     .datetime {
-        margin-top: 1.5rem;
+        margin-top: 1rem;
     }
     .text-input::-moz-placeholder,
     .text-input:-ms-input-placeholder,
@@ -36,6 +43,7 @@ page-register {
         color: map-get($colors, placeholder-color);
         font-family: $theme-font;
         font-size: 1.5rem !important;
+        margin-top: 5px;
     }
     .segment .segment-button ion-icon {
         font-size: 2rem;

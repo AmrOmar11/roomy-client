@@ -9,17 +9,13 @@ Ionic pages and navigation.
         <ion-slide *ngFor="let slide of slides">
             <img [src]="slide.image">
         </ion-slide>
-    </ion-slides>  
+    </ion-slides>
 </ion-content>
 <ion-footer>
     <ion-toolbar transparent>
         <ion-row>
-            <ion-col width-50 style="text-align: center;">
-                <button ion-button class="pobyt-button" (click)="LoginIn()">Sign In
-                </button>
-            </ion-col>
-            <ion-col width-50 style="text-align: center;">
-                <button ion-button class="pobyt-button" (click)="SignUp()">Sign Up
+            <ion-col full bstyle="text-align: center;">
+                <button ion-button class="pobyt-button" (click)="LoginIn()">BOOK YOUR'S
                 </button>
             </ion-col>
         </ion-row>

@@ -62,6 +62,6 @@ export class HomePage {
 	      dismissOnPageChange: true
 	    });
 	    loader.present();
-		this.navCtrl.setRoot('WelcomePage');
+		this.navCtrl.setRoot('LoginPage');
 	}
 }
