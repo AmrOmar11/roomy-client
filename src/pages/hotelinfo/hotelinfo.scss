@@ -51,6 +51,12 @@ page-hotelinfo {
 	.datetime-md,.datetime-ios{
 		padding:0px;
 	}
+	.toolbar-background-md{
+		background:transparent;
+	}
+	.button-md{
+		box-shadow:none;
+	}
 	.hotelInfo{
 		padding-top:0;
 		padding-bottom:0;
@@ -207,16 +213,30 @@ page-hotelinfo {
 	    color: #717171;
 	    font-family:$theme-font;
     }
+    .stayduration{
+    	color: map-get($colors, theme);
+    }
+    .taxpercentage{
+    	padding: 3.5px 3px;
+    	color: #636363;
+    }
+    .totalfare{
+    	color: #636363;
+    }
     .durationtype,.percemtsymb{
     	width: 30%;
-    	height:100%;
+    	height:34px;
 	    font-size: 2.2vmax;
-	    padding: 8px 0 5px 0;
+	    padding: 13px 0 5px 0;
 	    background-color: #8E8E8E;
 	    text-align: center;
 	    border-radius: 0 5px 5px 0;
 	    color: #FFFFFF;
 	    font-family:$theme-font;
+	    vertical-align: top;
+    }
+    .percemtsymb{
+    	padding: 7px 0 5px 0;
     }
     .arrow-down {
 		width: 0; 
