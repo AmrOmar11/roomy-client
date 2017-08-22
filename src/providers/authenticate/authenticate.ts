@@ -50,7 +50,7 @@ export class AuthenticateProvider {
       jwtToken:"",
       loginType:"CREDENTIALS"
     });
-    return this.http.post('https://roomy-midtier.herokuapp.com/userLogin',body,options)
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/userLogin',body,options)
     .map(res => {
       console.log('login:res:'+res.json().toString());
       return res.json();
@@ -70,7 +70,7 @@ export class AuthenticateProvider {
       loginPassword: inputData.loginPassword,
       middleName: ""
     });
-    return this.http.post('https://roomy-midtier.herokuapp.com/registerUser',body,options)
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/registerUser',body,options)
     .map(res => {
       console.log('registration:res:'+res.json());
       inputData.statusCode = res.json().statusCode;
@@ -89,7 +89,7 @@ export class AuthenticateProvider {
       customerToken: inputData.customerToken,
       otp: inputData.otp
     });
-    return this.http.post('https://roomy-midtier.herokuapp.com/authenticateUser',body,options)
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/authenticateUser',body,options)
     .map(res => {
       console.log('autheticate:res:'+res.json().toString());
       inputData.statusCode = res.json().statusCode;
@@ -139,7 +139,7 @@ export class AuthenticateProvider {
     let body = JSON.stringify({
       customerToken: data.customerToken
     });
-    return this.http.post('https://roomy-midtier.herokuapp.com/updateProfile',body,options)
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/updateProfile',body,options)
     .map(res => {
       console.log('updateProfile:res:'+res.json().toString());
       this.setCurrentUser(res.json());
@@ -155,7 +155,7 @@ export class AuthenticateProvider {
     let body = JSON.stringify({
       customerToken: data.customerToken
     });
-    return this.http.post('https://roomy-midtier.herokuapp.com/logout',body,options)
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/logout',body,options)
     .map(res => {
       console.log('logout:res:'+res.json().toString());
       this.setCurrentUser(res.json());
