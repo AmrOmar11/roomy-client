@@ -322,6 +322,19 @@ page-hotelinfo {
 		background: url('../assets/img/amenities.png') no-repeat -343px -4px;
 	}
 
+	.three {
+		background: url('imgs/stars.png') no-repeat 0 0;
+	}
+	.four{
+		background: url('imgs/stars.png') no-repeat -60px 0;
+	}
+	.five{
+		background: url('imgs/stars.png') no-repeat -121px 0;
+	}
+	.seven{
+		background: url('imgs/stars.png') no-repeat -182px 0;
+	}
+
 	.toolbar,.toolbar-md,.toolbar-ios{
 		padding:0px;
 		background-color:map-get($colors, theme);

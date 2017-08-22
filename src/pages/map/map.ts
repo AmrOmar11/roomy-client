@@ -28,6 +28,7 @@ export class MapPage implements OnInit{
     private directionsService:any;
     private directionsDisplay:any;
     private destinationLocation:any;
+    public hotelDist:any;
     public loading:any;
     public icons:any = { 
           userloc: {
@@ -54,20 +55,8 @@ export class MapPage implements OnInit{
 	}
 
 	ngOnInit() {
-       console.log('ngOnInit');
-       this.loading = document.getElementById("loaderoverlay");
-       /*this.loadingController.create({
-        spinner: 'hide',
-        content: `
-          <div class="custom-spinner-container">
-            <div class="custom-spinner-box"></div>
-          </div>`
-       });*/
-
-      // this.loading.onDidDismiss(() => {
-      //   console.log('Dismissed loading');
-      // });
-
+      console.log('ngOnInit');
+      this.loading = document.getElementById("loaderoverlay");
       this.loading.style.display="block";
       this.getCurrenLocation();
     }
@@ -280,6 +269,12 @@ export class MapPage implements OnInit{
         // });
 
         //loader.present().then(()=>{
+            // var headers;
+            // headers.user_Latitude = location.latitude;
+            // headers.user_Longitude = location.longitude;
+            // headers.radius = 10;
+            // headers.user_jwtToken = userData.jwtToken;
+            //this.hotelsProvider.getHotels(headers).then(data => {
             this.hotelsProvider.load().then(data => {
               this.hotelsInfo = data;
               if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
