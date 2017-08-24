@@ -1,0 +1,24 @@
+page-booking-confirm {
+    .booking-icon {
+        background-repeat: no-repeat !important;
+    }
+    .booking-message {
+        color: map-get($colors, theme);
+    }
+    .info-content {
+        border: 1px solid #dbdbdb;
+        background-color: map-get($colors, theme);
+        color: white;
+    }
+    .detail-content {
+        border: 1px solid #dbdbdb;
+        background-color: #676568;
+        color: white;
+    }
+    .status-info {
+        color: #81241D;
+    }
+    .hotelInfo-table {
+        border: 1px solid #dbdbdb
+    }
+}
