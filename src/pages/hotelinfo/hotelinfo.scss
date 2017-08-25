@@ -124,11 +124,12 @@ page-hotelinfo {
 		height:auto;	
 	}
 	.HotelyType{
-	    width: 30px;
-	    height: 30px;
+	    width: 45px;
+	    height: 45px;
 	    right: 5%;
 	    top: 20%;
 	    position: absolute;
+	    background-size:100%;
 	}
 	.hotel-category-child{
 	    font-size: 2.2vmax;
@@ -323,16 +324,16 @@ page-hotelinfo {
 	}
 
 	.three {
-		background: url('imgs/stars.png') no-repeat 0 0;
+		background: url('../assets/img/stars.png') no-repeat 0 0;
 	}
 	.four{
-		background: url('imgs/stars.png') no-repeat -60px 0;
+		background: url('../assets/img/stars.png') no-repeat -60px 0;
 	}
 	.five{
-		background: url('imgs/stars.png') no-repeat -121px 0;
+		background: url('../assets/img/stars.png') no-repeat -121px 0;
 	}
 	.seven{
-		background: url('imgs/stars.png') no-repeat -182px 0;
+		background: url('../assets/img/stars.png') no-repeat -182px 0;
 	}
 
 	.toolbar,.toolbar-md,.toolbar-ios{

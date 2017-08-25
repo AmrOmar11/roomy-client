@@ -44,13 +44,19 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({
+      action: "signin",
+      conactNumber: inputData.mobileNumber,
+      dob: "",
       emailId: inputData.emailId,
-      mobileNumber: inputData.mobileNumber,
+      gender: "",
+      loginType: "web",
+      name: "",
+      otp: "",
       password: inputData.password,
-      jwtToken:"",
-      loginType:"CREDENTIALS"
+      token: "",
+      userId: 0
     });
-    return this.http.post('http://pobyt-webapp.azurewebsites.net/userLogin',body,options)
+    return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options)
     .map(res => {
       console.log('login:res:'+res.json().toString());
       return res.json();

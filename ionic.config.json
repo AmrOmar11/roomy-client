@@ -4,32 +4,32 @@
   "type": "ionic-angular",
   "proxies": [
     {
-      "path": "/userLogin",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/userLogin"
+      "path": "/userRegistration",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/userRegistration"
     },
     {
       "path": "/registerUser",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/registerUser"
+      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/registerUser"
     },
     {
       "path": "/authenticateUser",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/authenticateUser"
+      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/authenticateUser"
     },
     {
       "path": "/getHotels",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/getHotels"
+      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/getHotels"
     },
     {
       "path": "/getHotelDetails",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/getHotelDetails"
+      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/getHotelDetails"
     },
     {
       "path": "/logout",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/logout"
+      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/logout"
     },
     {
       "path": "/updateProfile",
-      "proxyUrl": "https://roomy-midtier.herokuapp.com/updateProfile"
+      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/updateProfile"
     }
   ],
   "integrations": {

@@ -97,7 +97,6 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
     <engine name="android" spec="^6.2.3" />
-    <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-console" spec="^1.0.7" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
@@ -113,7 +112,7 @@
         <variable name="NSLOCATIONWHENINUSEUSAGEDESCRIPTION" value="Show your location on the map" />
         <variable name="NSLOCATIONALWAYSUSAGEDESCRIPTION" value="Trace your location on the map" />
     </plugin>
-    <plugin name="cordova-plugin-googleplus" spec="git+https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git">
+    <plugin name="cordova-plugin-googleplus" spec="https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git">
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.17668287249-8743taiejq71k4s5du31o2plfb5mpds4" />
     </plugin>
     <plugin name="cordova-plugin-nativestorage" spec="^2.2.2" />
@@ -127,4 +126,5 @@
         <variable name="APP_NAME" value="pobyt" />
     </plugin>
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.2.0" />
 </widget>

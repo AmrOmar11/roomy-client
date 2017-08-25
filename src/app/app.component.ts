@@ -17,27 +17,24 @@ export class RoomyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      //document.addEventListener("deviceready", onDeviceReady, false);
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-     /* FCMPlugin.getToken(
-        (t) => {
-          console.log(t);
-        },
-        (e) => {
-          console.log(e);
-        }
-      );
+      // function onDeviceReady() {
+      //    if(window["plugins"] != undefined){
+      //     var notificationOpenedCallback = function(jsonData) {
+      //       alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      //       console.log('notificationOpenedCallback');
+      //     };
 
-      FCMPlugin.onNotification(
-        (data) => {
-          console.log(data);
-        },
-        (e) => {
-          console.log(e);
-        }
-      );*/
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      //     window["plugins"].OneSignal
+      //       .startInit("1ae97439-f217-446d-9ae5-8fefcfb36ed7", "509701155983")
+      //       .handleNotificationOpened(notificationOpenedCallback)
+      //       .endInit();
+      //     this.statusBar.styleDefault();
+      //     this.splashScreen.hide();
+      //   }
+      // }
     });
   }
 }

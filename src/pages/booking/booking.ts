@@ -37,5 +37,8 @@ ionViewDidLoad() {
 openTerms() {
     this.navCtrl.push('PoliciesPage');
 }
+confirmbooking(){
+    this.navCtrl.push('BookingConfirmPage');
+}
 
 }

@@ -38,7 +38,7 @@ export class MapPage implements OnInit{
             anchor: new google.maps.Point(0, 0) // anchor
           },
           hotel:{
-            url: "../assets/img/hotel_marker.png", // url
+            url: "assets/img/hotel_marker.png", // url
             scaledSize: new google.maps.Size(20, 20), // scaled size
             origin: new google.maps.Point(0,0), // origin
             anchor: new google.maps.Point(0, 0) // anchor
