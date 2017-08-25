@@ -162,12 +162,13 @@ SignIn() {
         this.auth.login(input).subscribe(success => {
             if((success.statusCode !== undefined)&&(success.statusCode == 0)) {        
                 this.auth.setCurrentUser(success);
+                this.auth.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
             } else {
                 this.showError(success.statusMessage);
             }
         },
-                                         error => {
+        error => {
             this.showError(error);
         });
     }

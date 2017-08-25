@@ -2,6 +2,10 @@ import { Component} from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NativeStorage } from '@ionic-native/native-storage';
+import { AuthenticateProvider } from '../providers/authenticate/authenticate';
+
+
 
 //declare var FCMPlugin;
 @Component({
@@ -10,13 +14,39 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class RoomyApp {
   
   rootPage: any = 'PreviewPage';
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  userData:any;
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private nativeStorage: NativeStorage, public auth: AuthenticateProvider
+    ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.nativeStorage.getItem('userdata')
+      .then(data => {
+          console.log(data)
+          this.userData = data;
+        },
+        error => console.error(error)
+      );
+
+      if (this.userData) {
+        this.auth.login(this.userData).subscribe(success => {
+          if((success.statusCode !== undefined)&&(success.statusCode == 0)) {        
+              this.auth.setCurrentUser(success);
+              this.auth.setUserData(success);
+              this.rootPage = 'HomePage';
+          } else {
+              this.rootPage = 'PreviewPage';
+          }
+        },
+        error => {
+            console.log(error);
+            this.rootPage = 'PreviewPage';
+        });
+      } else {
+        this.rootPage = 'PreviewPage';
+      }
       //document.addEventListener("deviceready", onDeviceReady, false);
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

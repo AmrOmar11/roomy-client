@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http,Headers,RequestOptions } from '@angular/http';
+import { NativeStorage } from '@ionic-native/native-storage';
 import 'rxjs/Rx';
 
 /*
@@ -10,24 +11,31 @@ import 'rxjs/Rx';
   for more info on providers and Angular DI.
 */
 export class User {
+  statusCode:number;
   statusMessage: string;
-  userId: string;
+  userID: string;
   emailAddress: string;
   contactNumber: string;
-  firstName: string;
-  middleName: string;
-  lastName: string;
-  userType: string;
-  customerToken: string 
+  first_Name: string;
+  midle_Name: string;
+  last_Name: string;
+  user_type: string;
+  memberShip_type:string;
+  identityCardType:string;
+  identityCardNumber:string;
+  dateOfBirth:string;
+  cityPrefrence:string;
+  customerToken: string ;
+  status:string;
   constructor(){
     this.statusMessage = '';
-    this.userId='';
+    this.userID='';
     this.emailAddress='';
     this.contactNumber='';
-    this.firstName='';
-    this.middleName='';
-    this.lastName='';
-    this.userType='',
+    this.first_Name='';
+    this.midle_Name='';
+    this.last_Name='';
+    this.user_type='',
     this.customerToken='';
   }
 }
@@ -35,7 +43,7 @@ export class User {
 @Injectable()
 export class AuthenticateProvider {
   currentUser: User;
-  constructor(public http: Http) {
+  constructor(public http: Http,private nativeStorage: NativeStorage) {
    console.log('Hello AuthenticateProvider');
   }
   
@@ -54,10 +62,9 @@ export class AuthenticateProvider {
       otp: "",
       password: inputData.password,
       token: "",
-      userId: 0
+      userID: 0
     });
-    return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options)
-    .map(res => {
+    return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options).map(res => {
       console.log('login:res:'+res.json().toString());
       return res.json();
     })
@@ -69,14 +76,19 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({      
-      contactNumber:inputData.contactNumber,
-      emailAddress: inputData.emailAddress,
-      firstName: inputData.firstName,
-      lastName: inputData.lastName,
-      loginPassword: inputData.loginPassword,
-      middleName: ""
+      action: "signin",
+      conactNumber: inputData.mobileNumber,
+      dob: inputData.dob,
+      emailId: inputData.emailId,
+      gender: inputData.gender,
+      loginType: "web",
+      name: inputData.name,
+      otp: "",
+      password: inputData.password,
+      token: "",
+      userID: 0
     });
-    return this.http.post('http://pobyt-webapp.azurewebsites.net/registerUser',body,options)
+    return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options)
     .map(res => {
       console.log('registration:res:'+res.json());
       inputData.statusCode = res.json().statusCode;
@@ -92,10 +104,19 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({      
-      customerToken: inputData.customerToken,
-      otp: inputData.otp
+      action: "otp",
+      conactNumber: "",
+      dob: "",
+      emailId: "",
+      gender: "",
+      loginType: "web",
+      name: "",
+      otp: inputData.otp,
+      password: "",
+      token: inputData.customerToken,
+      userID: 0
     });
-    return this.http.post('http://pobyt-webapp.azurewebsites.net/authenticateUser',body,options)
+    return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options)
     .map(res => {
       console.log('autheticate:res:'+res.json().toString());
       inputData.statusCode = res.json().statusCode;
@@ -109,10 +130,6 @@ export class AuthenticateProvider {
   public getUserInfo() : User {
     if(this.currentUser == undefined){
       this.currentUser = new User();
-      this.currentUser.emailAddress='muralidharn.dharan9@gmail.com';
-      this.currentUser.contactNumber='9700222949';
-      this.currentUser.firstName='murali';
-      this.currentUser.lastName='kanamarlapudi';
     }
     return this.currentUser;
   }
@@ -120,14 +137,22 @@ export class AuthenticateProvider {
   public setCurrentUser(data){
     this.currentUser = new User();
     this.currentUser.statusMessage = data.statusMessage;
-    this.currentUser.userId = data.result.userId;
+    this.currentUser.userID = data.result.userID;
     this.currentUser.emailAddress = data.result.emailAddress;
     this.currentUser.contactNumber = data.result.contactNumber;
-    this.currentUser.firstName = data.result.firstName;
-    this.currentUser.middleName = data.result.middleName;
-    this.currentUser.lastName = data.result.lastName;
-    this.currentUser.userType = data.result.userType;
+    this.currentUser.first_Name = data.result.first_Name;
+    this.currentUser.midle_Name = data.result.midle_Name;
+    this.currentUser.last_Name = data.result.last_Name;
+    this.currentUser.user_type = data.result.user_type;
     this.currentUser.customerToken = data.customerToken;
+  }
+
+  public setUserData(data){
+    this.nativeStorage.setItem('userdata', {first_Name: this.currentUser.first_Name, last_Name: this.currentUser.last_Name,customerToken: this.currentUser.customerToken, emailAddress :this.currentUser.emailAddress, contactNumber:this.currentUser.contactNumber })
+    .then(
+      () => console.log('Stored item!'),
+      error => console.error('Error storing item', error)
+    );
   }
  
   public logout() {
