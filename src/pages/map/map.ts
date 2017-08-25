@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
 import { IonicPage,NavController,NavParams,ModalController, LoadingController} from 'ionic-angular';
 import { Geolocation,Geoposition } from '@ionic-native/geolocation';
 import { HotelsProvider } from '../../providers/hotels/hotels';
@@ -15,7 +15,7 @@ declare var google:any;
   templateUrl: 'map.html'
 })
 export class MapPage implements OnInit{
-
+  @Input() userData:any;
 	private map:any;
 	private userLocation:any;
 	private sourceMarker:any;
@@ -263,35 +263,34 @@ export class MapPage implements OnInit{
 	}
 
 	private mapLoaded(location){
-        this.addSourceMarker(true,location);
-        // let loader = this.loadingController.create({
-        // 	content:"Fetching Hotels..."
-        // });
-
-        //loader.present().then(()=>{
-            // var headers;
-            // headers.user_Latitude = location.latitude;
-            // headers.user_Longitude = location.longitude;
-            // headers.radius = 10;
-            // headers.user_jwtToken = userData.jwtToken;
-            //this.hotelsProvider.getHotels(headers).then(data => {
-            this.hotelsProvider.load().then(data => {
-              this.hotelsInfo = data;
-              if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
-               //this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
-               for(let hotel of this.hotelsInfo) {
-                  var hotelLocation = new google.maps.LatLng(hotel.latitude, hotel.longitude);
-                  this.sourceMarker = new google.maps.Marker({
-                  position: hotelLocation,
-                  map: this.map,
-                  icon:this.icons.hotel
-                });
-                }
-              }
-              //loader.dismiss();
-              this.loading.style.display="none";
-            });
-        //});
+      this.addSourceMarker(true,location);
+      /*var headers={
+        //user_Latitude:location.latitude,
+        //user_Longitude:location.longitude,
+        //jwtToken:this.userData.customerToken
+        //Below is hardcoded for testing.
+        user_Latitude:"17.459189",
+        user_Longitude:"78.372967",
+        jwtToken:"12345678987654321"
+      };
+      this.hotelsProvider.getHotels(headers).subscribe(data => {*/
+      this.hotelsProvider.load().then(data => {
+        // this.hotelsInfo = data.result;
+        this.hotelsInfo = data;
+        if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
+         //this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
+         for(let hotel of this.hotelsInfo) {
+            var hotelLocation = new google.maps.LatLng(hotel.latitude, hotel.longitude);
+            this.sourceMarker = new google.maps.Marker({
+            position: hotelLocation,
+            map: this.map,
+            icon:this.icons.hotel
+          });
+          }
+        }
+        //loader.dismiss();
+        this.loading.style.display="none";
+      });
 	}
 	
 	// Adds a marker to the map.

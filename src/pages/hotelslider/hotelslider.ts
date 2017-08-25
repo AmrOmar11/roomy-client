@@ -47,6 +47,14 @@ export class HotelsliderPage {
             content:"Fetching Hotels..."
         });
         loader.present().then(()=>{
+            /*let data ={
+              // hotel_id :hotelInfo.hotel_id,
+              // jwtToken :hotelInfo.customerToken //Need to inherit this from Map.html
+              //Hard coded the below data for testing.
+              hotel_id :hotelInfo.hotel_id,
+              jwtToken :"12345678987654321"
+            };
+            this.hotelsProvider.getHotelDetails(data).subscribe(data => {*/
             this.hotelsProvider.getHotelDetailedInfo().then(data => {
                   loader.dismiss();
                   this.navCtrl.push('HotelinfoPage',{"hotelInfo":data} );                  

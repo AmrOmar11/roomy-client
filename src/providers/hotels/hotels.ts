@@ -53,13 +53,12 @@ export class HotelsProvider {
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json' );
 		let options = new RequestOptions({ headers: headers });
-		let params = JSON.stringify({
-			user_Latitude : data.latitude,
-            user_Longitude : data.longitude,
-            radius : data.raius,
-            user_jwtToken : data.jwtToken
+		let body = JSON.stringify({
+			user_Latitude : data.user_Latitude,
+            user_Longitude : data.user_Longitude,
+            jwtToken : data.jwtToken
 		});
-		return this.http.post('https://roomy-midtier.herokuapp.com/getHotelsbyLocation',params,options)
+		return this.http.post('https://roomy-midtier.herokuapp.com/getHotelsbyLocation',body,options)
 		.map(res => {
 		console.log('hotels:res:'+res.json().toString());
 		return res.json();
