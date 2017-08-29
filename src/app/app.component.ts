@@ -4,18 +4,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { AuthenticateProvider } from '../providers/authenticate/authenticate';
+import { OneSignal } from '@ionic-native/onesignal';
 
 
-
-//declare var FCMPlugin;
 @Component({
   templateUrl: 'app.html'
 })
-export class RoomyApp {
-  
+export class RoomyApp {  
   rootPage: any = 'PreviewPage';
   userData:any;
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private nativeStorage: NativeStorage, public auth: AuthenticateProvider
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private nativeStorage: NativeStorage, public auth: AuthenticateProvider,private oneSignal: OneSignal
     ) {
     this.initializeApp();
   }
@@ -47,24 +45,24 @@ export class RoomyApp {
       } else {
         this.rootPage = 'PreviewPage';
       }
-      //document.addEventListener("deviceready", onDeviceReady, false);
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      // function onDeviceReady() {
-      //    if(window["plugins"] != undefined){
-      //     var notificationOpenedCallback = function(jsonData) {
-      //       alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-      //       console.log('notificationOpenedCallback');
-      //     };
+     
+      this.oneSignal.startInit('1ae97439-f217-446d-9ae5-8fefcfb36ed7', '17668287249');
 
-      //     window["plugins"].OneSignal
-      //       .startInit("1ae97439-f217-446d-9ae5-8fefcfb36ed7", "509701155983")
-      //       .handleNotificationOpened(notificationOpenedCallback)
-      //       .endInit();
-      //     this.statusBar.styleDefault();
-      //     this.splashScreen.hide();
-      //   }
-      // }
-    });
-  }
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+       // do something when notification is received
+        // alert("recevied");
+      });
+
+      this.oneSignal.handleNotificationOpened().subscribe(() => {
+        // do something when a notification is opened
+        // alert("opened");
+      });
+
+      this.oneSignal.endInit();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });     
+  };
 }

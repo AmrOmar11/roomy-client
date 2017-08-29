@@ -17,7 +17,7 @@
     },
     {
       "path": "/getHotels",
-      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/getHotels"
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/getHotelsbyLocation"
     },
     {
       "path": "/getHotelDetails",

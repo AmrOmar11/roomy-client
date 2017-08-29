@@ -28,6 +28,7 @@
         "@ionic-native/google-plus": "^3.12.1",
         "@ionic-native/native-storage": "^3.12.1",
         "@ionic-native/network": "^4.1.0",
+        "@ionic-native/onesignal": "^4.2.0",
         "@ionic-native/push": "^4.1.0",
         "@ionic-native/social-sharing": "^3.12.1",
         "@ionic-native/splash-screen": "3.10.2",
@@ -41,7 +42,7 @@
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-facebook4": "^1.9.1",
         "cordova-plugin-geolocation": "^2.4.3",
-        "cordova-plugin-googlemaps": "^1.4.3",
+        "cordova-plugin-googlemaps": "^1.4.5",
         "cordova-plugin-googlemaps-sdk": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
         "cordova-plugin-googleplayservices": "^19.0.3",
         "cordova-plugin-googleplus": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git",
@@ -83,12 +84,6 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "cordova-plugin-googlemaps": {
-                "API_KEY_FOR_ANDROID": "AIzaSyD3sX8pettPjsFmCP8DeBRVnznwrjUS5z4",
-                "API_KEY_FOR_IOS": "AIzaSyD3sX8pettPjsFmCP8DeBRVnznwrjUS5z4",
-                "NSLOCATIONWHENINUSEUSAGEDESCRIPTION": "Show your location on the map",
-                "NSLOCATIONALWAYSUSAGEDESCRIPTION": "Trace your location on the map"
-            },
             "cordova-plugin-x-socialsharing": {},
             "cordova-plugin-nativestorage": {},
             "cordova-plugin-facebook4": {
@@ -103,7 +98,11 @@
                 "REVERSED_CLIENT_ID": "com.googleusercontent.apps.17668287249-8743taiejq71k4s5du31o2plfb5mpds4"
             },
             "cordova-plugin-network-information": {},
-            "onesignal-cordova-plugin": {}
+            "onesignal-cordova-plugin": {},
+            "cordova-plugin-googlemaps": {
+                "API_KEY_FOR_ANDROID": "AIzaSyDSh5Y47l72lEtsc1dJgEKtvJLAwfO8tQg",
+                "API_KEY_FOR_IOS": "AIzaSyAbrD76FSqfhQsORJ_GQrGugiiz2x3V7Sk"
+            }
         },
         "platforms": [
             "android"

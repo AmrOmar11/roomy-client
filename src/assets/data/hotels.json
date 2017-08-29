@@ -1,5 +1,6 @@
 {
       "hotels": [{
+            "hotelid":"10001",
             "hotelname": "HOTEL AVASA",
             "address1": "PLOT NO:15",
             "address2": "HITEC CITY",
@@ -16,6 +17,7 @@
             "status":0,
             "statusText":""
       }, {
+            "hotelid":"10002",
             "hotelname": "TRIDENT HOTEL",
             "address1": "SURVEY NO:64",
             "address2": "HITEC CITY",
@@ -32,6 +34,7 @@
             "status":0,
             "statusText":""
       }, {
+            "hotelid":"10003",
             "hotelname": "NOVOTEL",
             "address1": "KAVURI HILLS",
             "address2": "KONDAPUR",
@@ -48,6 +51,7 @@
             "status":1,
             "statusText":"TEMPORARILY FULL"
       }, {
+            "hotelid":"10004",
             "hotelname": "REDFOX",
             "address1": "PLOT NO: 1 & 2",
             "address2": "HITEC CITY",
