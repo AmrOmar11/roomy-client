@@ -146,13 +146,13 @@ export class LoginPage {
             let mobileRegex = /^[0-9]+$/;
             let inputData = {
                 action: "SIGNIN",
-                conactNumber: '',
+                contactNumber: '',
                 emailId: this.userCredentials.emailId,
                 loginType: "APP",
                 password: this.userCredentials.password
             };
             if(inputData.emailId.match(mobileRegex)){
-                inputData.conactNumber = this.userCredentials.emailId;
+                inputData.contactNumber = this.userCredentials.emailId;
                 inputData.emailId = '';
             }            
             this.authProvider.login(inputData).subscribe(success => {

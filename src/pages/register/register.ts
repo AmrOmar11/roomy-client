@@ -21,7 +21,7 @@ export class RegisterPage {
     signUpAttempt:boolean=false;
     signUpData = {
         action:'SIGNUP',
-        conactNumber: '',
+        contactNumber: '',
         dob: '',
         emailId: '',
         gender:'',
@@ -94,7 +94,7 @@ export class RegisterPage {
             this.loading.dismiss();
         }
         let alert = this.alertCtrl.create({
-            message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number:'+inputData.result.conactNumber,
+            message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number:'+inputData.result.contactNumber,
             inputs: [
                 {
                     name: 'OTP',
