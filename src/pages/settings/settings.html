@@ -20,12 +20,12 @@
         <ion-col>
             <ion-item>
             <ion-label floating>FirstName</ion-label>
-              <ion-input type="text" [class.invalid]= "!profileForm.controls.firstname.valid && (profileForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="userInfo.firstName" ></ion-input>
+              <ion-input type="text" [class.invalid]= "!profileForm.controls.firstname.valid && (profileForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="userInfo.first_Name" ></ion-input>
             </ion-item>
             
             <ion-item>
               <ion-label floating>LastName</ion-label>
-              <ion-input type="text" [class.invalid]= "!profileForm.controls.lastname.valid && (profileForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="userInfo.lastName"></ion-input>
+              <ion-input type="text" [class.invalid]= "!profileForm.controls.lastname.valid && (profileForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="userInfo.last_Name"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label floating>Mobile</ion-label>

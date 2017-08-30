@@ -12,7 +12,6 @@ import { OneSignal } from '@ionic-native/onesignal';
 })
 export class RoomyApp {  
   rootPage: any = 'PreviewPage';
-  userData:any;
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private nativeStorage: NativeStorage, public auth: AuthenticateProvider,private oneSignal: OneSignal
     ) {
     this.initializeApp();
@@ -32,9 +31,21 @@ export class RoomyApp {
       this.nativeStorage.getItem('userdata')
       .then(data => {
           console.log(data);
-          this.userData = data;
-          this.auth.login(this.userData).subscribe(success => {
-          if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
+          var inputData = {
+            action: "SIGNIN",
+            conactNumber: '',
+            dob: '',
+            emailId: '',
+            gender: '',
+            loginType: "TOKEN",
+            name: "",
+            otp: "",
+            password: '',
+            token: data,
+            userID: 0
+          };
+          this.auth.login(inputData).subscribe(success => {
+          if((success.status !== undefined)&&(success.status == '0001')) {
               this.auth.setCurrentUser(success);
               this.auth.setUserData(success);
               this.rootPage = 'HomePage';

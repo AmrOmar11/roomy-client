@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Platform } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Http,Headers,RequestOptions } from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -11,31 +12,20 @@ import 'rxjs/Rx';
   for more info on providers and Angular DI.
 */
 export class User {
-  statusCode:number;
-  statusMessage: string;
-  userID: string;
   emailAddress: string;
   contactNumber: string;
   first_Name: string;
   midle_Name: string;
   last_Name: string;
-  user_type: string;
-  memberShip_type:string;
-  identityCardType:string;
-  identityCardNumber:string;
   dateOfBirth:string;
-  cityPrefrence:string;
   customerToken: string ;
-  status:string;
   constructor(){
-    this.statusMessage = '';
-    this.userID='';
     this.emailAddress='';
     this.contactNumber='';
     this.first_Name='';
     this.midle_Name='';
     this.last_Name='';
-    this.user_type='',
+    this.dateOfBirth='';
     this.customerToken='';
   }
 }
@@ -43,7 +33,7 @@ export class User {
 @Injectable()
 export class AuthenticateProvider {
   currentUser: User;
-  constructor(public http: Http,private nativeStorage: NativeStorage) {
+  constructor(public platform: Platform,public http: Http,private nativeStorage: NativeStorage) {
    console.log('Hello AuthenticateProvider');
   }
   
@@ -51,19 +41,7 @@ export class AuthenticateProvider {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify({
-      action: "signin",
-      conactNumber: inputData.mobileNumber,
-      dob: "",
-      emailId: inputData.emailId,
-      gender: "",
-      loginType: "web",
-      name: "",
-      otp: "",
-      password: inputData.password,
-      token: "",
-      userID: 0
-    });
+    let body = JSON.stringify(inputData);
     return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options).map(res => {
       console.log('login:res:'+res.json().toString());
       return res.json();
@@ -136,23 +114,23 @@ export class AuthenticateProvider {
   
   public setCurrentUser(data){
     this.currentUser = new User();
-    this.currentUser.statusMessage = data.statusMessage;
-    this.currentUser.userID = data.result.userID;
     this.currentUser.emailAddress = data.result.emailAddress;
     this.currentUser.contactNumber = data.result.contactNumber;
     this.currentUser.first_Name = data.result.first_Name;
     this.currentUser.midle_Name = data.result.midle_Name;
     this.currentUser.last_Name = data.result.last_Name;
-    this.currentUser.user_type = data.result.user_type;
-    this.currentUser.customerToken = data.customerToken;
+    this.currentUser.dateOfBirth = data.dateOfBirth;
+    this.currentUser.customerToken = data.jwtToken;
   }
 
   public setUserData(data){
-    this.nativeStorage.setItem('userdata', {first_Name: this.currentUser.first_Name, last_Name: this.currentUser.last_Name,customerToken: this.currentUser.customerToken, emailAddress :this.currentUser.emailAddress, contactNumber:this.currentUser.contactNumber })
-    .then(
-      () => console.log('Stored item!'),
-      error => console.error('Error storing item', error)
-    );
+    if (this.platform.is('cordova')){
+      this.nativeStorage.setItem('userdata', {customerToken: data.jwtToken})
+      .then(
+        () => console.log('Stored item!'),
+        error => console.error('Error storing item', error)
+      );
+    }
   }
  
   public logout() {
