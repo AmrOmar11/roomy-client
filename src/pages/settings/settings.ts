@@ -46,7 +46,7 @@ export class SettingsPage {
     loader.present();
     var inputData = {
       token: this.authProvider.getUserInfo().customerToken,
-      userID: this.authProvider.getUserInfo().userID
+      userId: this.authProvider.getUserInfo().userID
     };
     this.authProvider.singOut(inputData).subscribe(success => {
       if((success.statusCode !== undefined)&&(success.statusCode == 0)) {

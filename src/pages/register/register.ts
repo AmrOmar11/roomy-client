@@ -31,7 +31,7 @@ export class RegisterPage {
         otp: '',
         password: '',
         token: '',
-        userID: 0
+        userId: 0
     };
 
     constructor(
@@ -63,7 +63,7 @@ export class RegisterPage {
             this.showLoading();
             console.log('singUpSubmit:req:'+this.signUpData);
             this.authProvider.login(this.signUpData).subscribe(success => {
-                if((success.status !== undefined)&&(success.status == 0)) {
+                if((success.status !== undefined)&&(success.status == '0009')) {
                     this.showOtpPoup(success);
                 } else {
                     this.showPopup("Error", success.statusMessage);
@@ -106,8 +106,8 @@ export class RegisterPage {
                     text: 'Done',
                     handler: data => {
                         this.showLoading();
-                        inputData.otp = data;
-                        this.authenticateUser(inputData);
+                        this.signUpData.otp = data;
+                        this.authenticateUser(this.signUpData);
                     }
                 }
             ]
@@ -116,14 +116,11 @@ export class RegisterPage {
     }
 
     authenticateUser(inputData){
-        this.authProvider.authenticateUser(inputData).subscribe(success => {
-            if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
-                this.authProvider.setCurrentUser({
-                    statusMessage:success.statusMessage,
-                    result:inputData,
-                    jwtToken:success.jwtToken
-                });
-                this.nav.setRoot('HomePage');
+        this.authProvider.login(inputData).subscribe(success => {
+            if((success.status !== undefined)&&(success.status == '0001')) {
+                this.authProvider.setCurrentUser(success);
+                this.authProvider.setUserData(success);
+                this.navCtrl.setRoot('HomePage');
             } else {
                 this.showPopup("Error", success.statusMessage);
             }

@@ -106,10 +106,6 @@
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value=" " />
     </plugin>
-    <plugin name="cordova-plugin-googlemaps" spec="^1.4.5">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDSh5Y47l72lEtsc1dJgEKtvJLAwfO8tQg" />
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyAbrD76FSqfhQsORJ_GQrGugiiz2x3V7Sk" />
-    </plugin>
     <plugin name="cordova-plugin-googleplus" spec="https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git">
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.17668287249-8743taiejq71k4s5du31o2plfb5mpds4" />
     </plugin>

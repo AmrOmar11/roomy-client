@@ -42,7 +42,7 @@ export class RoomyApp {
             otp: "",
             password: '',
             token: data.customerToken,
-            userID: 0
+            userId: 0
           };
           this.auth.login(inputData).subscribe(success => {
           if((success.status !== undefined)&&(success.status == '0001')) {

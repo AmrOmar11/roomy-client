@@ -98,11 +98,7 @@
                 "REVERSED_CLIENT_ID": "com.googleusercontent.apps.17668287249-8743taiejq71k4s5du31o2plfb5mpds4"
             },
             "cordova-plugin-network-information": {},
-            "onesignal-cordova-plugin": {},
-            "cordova-plugin-googlemaps": {
-                "API_KEY_FOR_ANDROID": "AIzaSyDSh5Y47l72lEtsc1dJgEKtvJLAwfO8tQg",
-                "API_KEY_FOR_IOS": "AIzaSyAbrD76FSqfhQsORJ_GQrGugiiz2x3V7Sk"
-            }
+            "onesignal-cordova-plugin": {}
         },
         "platforms": [
             "android"

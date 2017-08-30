@@ -155,7 +155,7 @@ export class LoginPage {
                 otp: "",
                 password: this.userCredentials.password,
                 token: '',
-                userID: 0
+                userId: 0
             };
             if(inputData.emailId.match(mobileRegex)){
                 inputData.conactNumber = this.userCredentials.emailId;
