@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { IonicPage, NavController, NavParams,AlertController,LoadingController,Loading } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { IonicPage, NavController, AlertController,LoadingController,Loading } from 'ionic-angular';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the RegisterPage page.
@@ -35,8 +35,7 @@ export class RegisterPage {
     };
 
     constructor(
-        private nav: NavController, 
-        public navParams: NavParams, 
+        private navCtrl: NavController, 
         private authProvider: AuthenticateProvider, 
         private alertCtrl: AlertController, 
         public formBuilder: FormBuilder,
@@ -131,7 +130,7 @@ export class RegisterPage {
     }
     
     openTerms() {
-        this.nav.push('PoliciesPage');
+        this.navCtrl.push('PoliciesPage');
     }
 
     showPopup(title, text) {
@@ -143,7 +142,7 @@ export class RegisterPage {
                     text: 'OK',
                     handler: data => {
                         if (this.signUpSuccess) {
-                            this.nav.popToRoot();
+                            this.navCtrl.popToRoot();
                         }
                     }
                 }
