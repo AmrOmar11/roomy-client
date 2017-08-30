@@ -144,7 +144,7 @@ export class LoginPage {
         if(this.loginForm.valid){
             this.showLoading();
             let mobileRegex = /^[0-9]+$/;
-            var inputData = {
+            let inputData = {
                 action: "SIGNIN",
                 conactNumber: this.userCredentials.mobileNumber,
                 dob: '',

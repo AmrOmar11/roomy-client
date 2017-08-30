@@ -31,7 +31,7 @@ export class RoomyApp {
       this.nativeStorage.getItem('userdata')
       .then(data => {
           console.log(data);
-          var inputData = {
+          let inputData = {
             action: "SIGNIN",
             conactNumber: '',
             dob: '',
