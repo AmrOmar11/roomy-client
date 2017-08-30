@@ -20,7 +20,7 @@ export class RegisterPage {
     signUpForm:FormGroup;
     signUpAttempt:boolean=false;
     signUpData = {
-        action:'SINGUP',
+        action:'SIGNUP',
         conactNumber: '',
         dob: '',
         emailId: '',
@@ -28,7 +28,7 @@ export class RegisterPage {
         loginType: 'APP',
         name: '',
         lastName: '',
-        otp: '',
+        otp: 0,
         password: '',
         token: '',
         userId: 0
@@ -61,11 +61,19 @@ export class RegisterPage {
         if(this.signUpForm.valid){
             this.showLoading();
             console.log('singUpSubmit:req:'+this.signUpData);
+            this.signUpData.action = 'SIGNUP';
+            this.signUpData.otp = 0;
+            this.signUpData.password = '';
+            this.signUpData.userId = 0;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
                     this.showOtpPoup(success);
+                }else if((success.status !== undefined)&&(success.status == '0002')){
+                    this.showPopup("Error", 'Mobile Numer already exis');
+                }else if((success.status !== undefined)&&(success.status == '0003')){
+                    this.showPopup("Error", 'Email ID already exit');
                 } else {
-                    this.showPopup("Error", success.statusMessage);
+                    this.showPopup("Error", success.status);
                 }
             },
             error => {
@@ -87,7 +95,7 @@ export class RegisterPage {
             this.loading.dismiss();
         }
         let alert = this.alertCtrl.create({
-            message: 'Please enter OTP:'+inputData.otp+' sent to your Mobile Number:'+inputData.contactNumber,
+            message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number:'+inputData.result.conactNumber,
             inputs: [
                 {
                     name: 'OTP',
@@ -106,7 +114,9 @@ export class RegisterPage {
                     handler: data => {
                         this.showLoading();
                         this.signUpData.action ='OTP';
-                        this.signUpData.otp = data;
+                        this.signUpData.otp = data.OTP;
+                        this.signUpData.token = inputData.jwtToken;
+                        this.signUpData.userId = inputData.result.userId;
                         this.authenticateUser(this.signUpData);
                     }
                 }
@@ -121,8 +131,12 @@ export class RegisterPage {
                 this.authProvider.setCurrentUser(success);
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
-            } else {
-                this.showPopup("Error", success.statusMessage);
+            }else if((success.status !== undefined)&&(success.status == '0007')){
+                this.showPopup("Error", 'OTP does not match');
+            }else if((success.status !== undefined)&&(success.status == '0008')){
+                this.showPopup("Error", 'OTP Expried');
+            }else{
+                this.showPopup("Error", success.status);
             }
         },
         error => {
@@ -142,9 +156,7 @@ export class RegisterPage {
                 {
                     text: 'OK',
                     handler: data => {
-                        if (this.signUpSuccess) {
-                            this.navCtrl.popToRoot();
-                        }
+                        this.loading.dismiss();
                     }
                 }
             ]
