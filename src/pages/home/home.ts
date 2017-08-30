@@ -59,7 +59,7 @@ constructor(
           token: this.authProvider.getUserInfo().customerToken,
           userId: this.authProvider.getUserInfo().userID
         };
-        this.authProvider.singOut(inputData).subscribe(success => {
+        this.authProvider.logout(inputData).subscribe(success => {
           if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
               this.authProvider.setUserData(success);
               this.navCtrl.setRoot('PreviewPage');

@@ -36,7 +36,6 @@ export class User {
 export class AuthenticateProvider {
   currentUser: User;
   constructor(public platform: Platform,public http: Http,private nativeStorage: NativeStorage) {
-   console.log('Hello AuthenticateProvider');
   }
   
   public login(inputData) {
@@ -44,69 +43,43 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
+    console.log('authenticate:login:req:'+inputData.action);
     return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options).map(res => {
-      console.log('login:res:'+res.json().toString());
+      console.log('authenticate:login:res');
+      console.log(res.json());
       return res.json();
     })
     .catch(this.handleError);
   }
   
-  public registerUser(inputData) {
+  public logout(inputData){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify({      
-      action: "signin",
-      conactNumber: inputData.mobileNumber,
-      dob: inputData.dob,
-      emailId: inputData.emailId,
-      gender: inputData.gender,
-      loginType: "web",
-      name: inputData.name,
-      otp: "",
-      password: inputData.password,
-      token: "",
-      userID: 0
-    });
-    return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options)
-    .map(res => {
-      console.log('registration:res:'+res.json());
-      inputData.statusCode = res.json().statusCode;
-      inputData.customerToken = res.json().customerToken;
-      inputData.otp = res.json().result;
-      return inputData;
+    let body = JSON.stringify(inputData);
+    console.log('authenticate:logout:req');
+    return this.http.post('https://roomy-midtier.herokuapp.com/userLogout',body,options).map(res => {
+      console.log('authenticate:logout:res');
+      console.log(res.json());
+      return res.json();
     })
     .catch(this.handleError);
   }
-  
-  authenticateUser(inputData){
+
+  public forgotPassword(inputData){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify({      
-      action: "otp",
-      conactNumber: "",
-      dob: "",
-      emailId: "",
-      gender: "",
-      loginType: "web",
-      name: "",
-      otp: inputData.otp,
-      password: "",
-      token: inputData.customerToken,
-      userID: 0
-    });
-    return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options)
-    .map(res => {
-      console.log('autheticate:res:'+res.json().toString());
-      inputData.statusCode = res.json().statusCode;
-      inputData.customerToken = res.json().customerToken;
-      inputData.statusMessage = res.json().statusMessage;
-      return inputData;
+    let body = JSON.stringify(inputData);
+    console.log('authenticate:forgotPassword:req');
+    return this.http.post('https://roomy-midtier.herokuapp.com/forgetPassword',body,options).map(res => {
+      console.log('authenticate:forgotPassword:res');
+      console.log(res.json());
+      return res.json();
     })
-    .catch(this.handleError); 
+    .catch(this.handleError);
   }
-  
+
   public getUserInfo() : User {
     if(this.currentUser == undefined){
       this.currentUser = new User();
@@ -130,18 +103,10 @@ export class AuthenticateProvider {
     if(this.platform.is('cordova')){
       this.nativeStorage.setItem('userdata', {customerToken: data.jwtToken})
       .then(
-        () => console.log('Stored item!'),
+        () => console.log('Stored userdata in nativeStorage'),
         error => console.error('Error storing item', error)
       );
     }
-  }
- 
-  public logout() {
-    return Observable.create(observer => {
-      this.currentUser = null;
-      observer.next(true);
-      observer.complete();
-    });
   } 
   
   public updateProfile(data){
@@ -151,28 +116,18 @@ export class AuthenticateProvider {
     let body = JSON.stringify({
       customerToken: data.customerToken
     });
+    console.log('authenticate:profile-update:req');
     return this.http.post('http://pobyt-webapp.azurewebsites.net/updateProfile',body,options)
     .map(res => {
-      console.log('updateProfile:res:'+res.json().toString());
+      console.log('authenticate:profile-update:res');
+      console.log(res.json());
       this.setCurrentUser(res.json());
       return this.currentUser;
     })
     .catch(this.handleError);
-  }
+  }  
 
-  public singOut(inputData){
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json' );
-    let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify(inputData);
-    return this.http.post('https://roomy-midtier.herokuapp.com/userLogout',body,options).map(res => {
-      console.log('login:res:'+res.json().toString());
-      return res.json();
-    })
-    .catch(this.handleError);
-  }
-
-  handleError(error) {
+  public handleError(error) {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }

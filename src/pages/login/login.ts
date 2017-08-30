@@ -70,7 +70,7 @@ export class LoginPage {
                 };
                 console.log(env.socialSignUpData);
                 env.showLoading();
-                env.authProvider.registerUser(env.socialSignUpData).subscribe(success => {
+                env.authProvider.login(env.socialSignUpData).subscribe(success => {
                     if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
                         env.loading.dismiss();
                         env.navCtrl.setRoot('HomePage');
@@ -116,7 +116,7 @@ export class LoginPage {
                 };
                 console.log(env.socialSignUpData);
                 env.showLoading();
-                env.authProvider.registerUser(env.socialSignUpData).subscribe(success => {
+                env.authProvider.login(env.socialSignUpData).subscribe(success => {
                     if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
                         env.loading.dismiss();
                         env.navCtrl.setRoot('HomePage');
@@ -146,16 +146,10 @@ export class LoginPage {
             let mobileRegex = /^[0-9]+$/;
             let inputData = {
                 action: "SIGNIN",
-                conactNumber: this.userCredentials.mobileNumber,
-                dob: '',
+                conactNumber: '',
                 emailId: this.userCredentials.emailId,
-                gender: '',
                 loginType: "APP",
-                name: "",
-                otp: "",
-                password: this.userCredentials.password,
-                token: '',
-                userId: 0
+                password: this.userCredentials.password
             };
             if(inputData.emailId.match(mobileRegex)){
                 inputData.conactNumber = this.userCredentials.emailId;

@@ -1,6 +1,6 @@
 import { Component,Renderer } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController,AlertController } from 'ionic-angular';
-
+import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the ForgetModalPage page.
  *
@@ -15,7 +15,8 @@ import { IonicPage, NavController, NavParams,ViewController,AlertController } fr
 export class ForgetModalPage {
     constructor( public viewCtrl: ViewController,  
                   public renderer: Renderer,
-                  private alertCtrl: AlertController) {
+                  private alertCtrl: AlertController,
+                  private authProvider: AuthenticateProvider) {
         this.renderer.setElementClass(viewCtrl.pageRef().nativeElement, 'Forget-Model', true);
         console.log("Added model");
 
@@ -36,7 +37,8 @@ export class ForgetModalPage {
             buttons: [
                 {
                     text: 'Cancel',
-                    role: 'cancel'            },
+                    role: 'cancel'            
+                },
                 {
                     text: 'Reset',
                     handler: () => {

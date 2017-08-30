@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the SettingsPage page.
@@ -48,7 +48,7 @@ export class SettingsPage {
       token: this.authProvider.getUserInfo().customerToken,
       userId: this.authProvider.getUserInfo().userID
     };
-    this.authProvider.singOut(inputData).subscribe(success => {
+    this.authProvider.logout(inputData).subscribe(success => {
       if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
           this.authProvider.setUserData(success);
           this.navCtrl.setRoot('PreviewPage');

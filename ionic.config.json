@@ -8,15 +8,7 @@
       "proxyUrl": "https://roomy-midtier.herokuapp.com/userRegistration"
     },
     {
-      "path": "/registerUser",
-      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/registerUser"
-    },
-    {
-      "path": "/authenticateUser",
-      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/authenticateUser"
-    },
-    {
-      "path": "/getHotels",
+      "path": "/getHotelsbyLocation",
       "proxyUrl": "https://roomy-midtier.herokuapp.com/getHotelsbyLocation"
     },
     {
@@ -28,8 +20,12 @@
       "proxyUrl": "https://roomy-midtier.herokuapp.com/userLogout"
     },
     {
-      "path": "/updateProfile",
-      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/updateProfile"
+      "path": "/updateUserProfile",
+      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/updateUserProfile"
+    },
+    {
+      "path": "/forgetPassword",
+      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/forgetPassword"
     }
   ],
   "integrations": {

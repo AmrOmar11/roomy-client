@@ -63,7 +63,6 @@ export class RegisterPage {
             console.log('singUpSubmit:req:'+this.signUpData);
             this.signUpData.action = 'SIGNUP';
             this.signUpData.otp = 0;
-            this.signUpData.password = '';
             this.signUpData.userId = 0;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
