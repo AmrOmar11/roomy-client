@@ -105,6 +105,7 @@ export class RegisterPage {
                     text: 'Done',
                     handler: data => {
                         this.showLoading();
+                        this.signUpData.action ='OTP';
                         this.signUpData.otp = data;
                         this.authenticateUser(this.signUpData);
                     }
