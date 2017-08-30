@@ -27,7 +27,7 @@ export class RoomyApp {
   }
 
   loginFromNativeStorage(){
-    if (this.platform.is('cordova')){
+    if(this.platform.is('cordova')){
       this.nativeStorage.getItem('userdata')
       .then(data => {
           console.log(data);
@@ -41,7 +41,7 @@ export class RoomyApp {
             name: "",
             otp: "",
             password: '',
-            token: data,
+            token: data.customerToken,
             userID: 0
           };
           this.auth.login(inputData).subscribe(success => {

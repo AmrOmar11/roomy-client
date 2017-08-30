@@ -24,8 +24,8 @@
       "proxyUrl": "http://pobyt-webapp.azurewebsites.net/getHotelDetails"
     },
     {
-      "path": "/logout",
-      "proxyUrl": "http://pobyt-webapp.azurewebsites.net/logout"
+      "path": "/userLogout",
+      "proxyUrl": "https://roomy-midtier.herokuapp.com/userLogout"
     },
     {
       "path": "/updateProfile",

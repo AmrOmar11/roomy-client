@@ -44,7 +44,21 @@ export class SettingsPage {
       dismissOnPageChange: true
     });
     loader.present();
-    this.navCtrl.setRoot('WelcomePage');
+    var inputData = {
+      token: this.authProvider.getUserInfo().customerToken,
+      userID: this.authProvider.getUserInfo().userID
+    };
+    this.authProvider.singOut(inputData).subscribe(success => {
+      if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
+          this.authProvider.setUserData(success);
+          this.navCtrl.setRoot('PreviewPage');
+      } else {
+          loader.dismiss();
+      }
+    },
+    error => {
+       loader.dismiss();
+    });
   }
 
 }

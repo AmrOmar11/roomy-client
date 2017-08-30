@@ -34,7 +34,7 @@ export class LoginPage {
     };
 
     constructor(public navCtrl: NavController,
-            private auth: AuthenticateProvider, 
+            private authProvider: AuthenticateProvider, 
             private alertCtrl: AlertController, 
             private loadingCtrl: LoadingController,
             public facebookLoginService: FacebookLoginService,
@@ -70,7 +70,7 @@ export class LoginPage {
                 };
                 console.log(env.socialSignUpData);
                 env.showLoading();
-                env.auth.registerUser(env.socialSignUpData).subscribe(success => {
+                env.authProvider.registerUser(env.socialSignUpData).subscribe(success => {
                     if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
                         env.loading.dismiss();
                         env.navCtrl.setRoot('HomePage');
@@ -116,7 +116,7 @@ export class LoginPage {
                 };
                 console.log(env.socialSignUpData);
                 env.showLoading();
-                env.auth.registerUser(env.socialSignUpData).subscribe(success => {
+                env.authProvider.registerUser(env.socialSignUpData).subscribe(success => {
                     if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
                         env.loading.dismiss();
                         env.navCtrl.setRoot('HomePage');
@@ -161,10 +161,10 @@ export class LoginPage {
                 inputData.conactNumber = this.userCredentials.emailId;
                 inputData.emailId = '';
             }            
-            this.auth.login(inputData).subscribe(success => {
+            this.authProvider.login(inputData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0001')) {
-                    this.auth.setCurrentUser(success);
-                    this.auth.setUserData(success);
+                    this.authProvider.setCurrentUser(success);
+                    this.authProvider.setUserData(success);
                     this.navCtrl.setRoot('HomePage');
                 } else {
                     this.showError(success.statusMessage);

@@ -18,7 +18,8 @@ export class User {
   midle_Name: string;
   last_Name: string;
   dateOfBirth:string;
-  customerToken: string ;
+  userID:string;
+  customerToken: string;
   constructor(){
     this.emailAddress='';
     this.contactNumber='';
@@ -26,6 +27,7 @@ export class User {
     this.midle_Name='';
     this.last_Name='';
     this.dateOfBirth='';
+    this.userID='';
     this.customerToken='';
   }
 }
@@ -119,12 +121,13 @@ export class AuthenticateProvider {
     this.currentUser.first_Name = data.result.first_Name;
     this.currentUser.midle_Name = data.result.midle_Name;
     this.currentUser.last_Name = data.result.last_Name;
-    this.currentUser.dateOfBirth = data.dateOfBirth;
+    this.currentUser.dateOfBirth = data.result.dateOfBirth;
+    this.currentUser.userID = data.result.userID;
     this.currentUser.customerToken = data.jwtToken;
   }
 
   public setUserData(data){
-    if (this.platform.is('cordova')){
+    if(this.platform.is('cordova')){
       this.nativeStorage.setItem('userdata', {customerToken: data.jwtToken})
       .then(
         () => console.log('Stored item!'),
@@ -157,18 +160,14 @@ export class AuthenticateProvider {
     .catch(this.handleError);
   }
 
-  public singOut(data){
+  public singOut(inputData){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify({
-      customerToken: data.customerToken
-    });
-    return this.http.post('http://pobyt-webapp.azurewebsites.net/logout',body,options)
-    .map(res => {
-      console.log('logout:res:'+res.json().toString());
-      this.setCurrentUser(res.json());
-      return this.currentUser;
+    let body = JSON.stringify(inputData);
+    return this.http.post('https://roomy-midtier.herokuapp.com/userLogout',body,options).map(res => {
+      console.log('login:res:'+res.json().toString());
+      return res.json();
     })
     .catch(this.handleError);
   }
