@@ -32,7 +32,7 @@ Ionic pages and navigation.
                     <ion-col>
                         <ion-item no-padding>
                             <ion-label stacked>Mobile</ion-label>
-                            <ion-input type="text" [class.invalid]= "!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="signUpData.conactNumber"></ion-input> 
+                            <ion-input type="text" [class.invalid]= "!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="signUpData.contactNumber"></ion-input> 
                         </ion-item>
                         <ion-label *ngIf="!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)">
                             <p>Please enter valid Mobile</p>
