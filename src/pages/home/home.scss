@@ -1,7 +1,17 @@
 page-home {
-    .menu-header{
+   .menu-header{
         text-align:center;
         font-size:initial;
+    }
+    .bar-buttons,
+    .toolbar-title {
+        color: #333333;
+      }
+    .content .fixed-content{
+        margin-top: 0px !important;
+    }
+    .content .scroll-content{
+        padding-top: 0px !important;
     }
     .list-ios, .list-md{
         margin:0;

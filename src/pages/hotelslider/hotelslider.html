@@ -5,10 +5,19 @@
   Ionic pages and navigation.
 -->
 <ion-content padding class="hotels">
+	<ion-card tex-wrap [hidden]="hideCard==='true'">
+		<ion-card-header>
+            <ion-label text-capitalize>We are not here yet!</ion-label>
+		</ion-card-header>
+
+        <ion-card-content>	            
+            <ion-label tex-wrap>Thank you for choosing Pobyt. We are not serving here yet and we would be glad to notify once we are available here.</ion-label>
+        </ion-card-content>
+	</ion-card>
     <ion-slides options="options" (ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
 	      <div [ngClass]="hotel.isAviablity ? '':'hotelStatus'" class="hotelStatusStatic">{{hotel.hotel_description}}</div>	
-	      <div class="HotelSlider"  [ngStyle]="{ 'background-image': 'url(' + hotel.hotel_pic_path + ')'}" (click)="hotelDetailedInfo(hotel)">
+	      <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotel_pic_path + ')'}" (click)="hotelDetailedInfo(hotel)">
 	      	<div class="SliderBlackOverlay"></div>
 			<div class="sliderContent">
 		      	<div class="HotelName">{{hotel.hotel_name}}</div>

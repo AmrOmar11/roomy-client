@@ -69,7 +69,7 @@
         "@ionic/cli-plugin-cordova": "1.6.1",
         "@ionic/cli-plugin-ionic-angular": "1.4.1",
         "@types/googlemaps": "^3.26.14",
-        "ionic": "3.9.1",
+        "ionic": "3.9.2",
         "typescript": "2.3.3"
     },
     "description": "An Ionic project",

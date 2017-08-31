@@ -20,6 +20,7 @@ export class HotelsliderPage {
     hotels:any;
     geolocation:any;
     HotelDistance:any;
+    public hideCard:any = 'true';
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
@@ -37,6 +38,10 @@ export class HotelsliderPage {
         events.subscribe('hotels:list', (hotelsList, location) => {
           this.hotels = hotelsList;
           this.geolocation = location;
+          this.hotels = [];
+          if(this.hotels.length == 0 ){
+            this.hideCard = 'false';
+          }
           this.zone.run(() => {
             console.log('force refresh hotel silder');
           });
