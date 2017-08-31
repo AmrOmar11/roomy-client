@@ -1,6 +1,5 @@
-import { Component,Input} from '@angular/core';
+import { Component} from '@angular/core';
 import { NavController, NavParams, LoadingController} from 'ionic-angular';
-import { MapPage } from '../../pages/pages';
 import { HotelsProvider } from '../../providers/hotels/hotels';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
@@ -24,7 +23,6 @@ export class HotelsliderPage {
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
-        public mapPage: MapPage,
         public hotelsProvider: HotelsProvider,
         public authProvider: AuthenticateProvider,
         public loadingController:LoadingController,
@@ -47,7 +45,6 @@ export class HotelsliderPage {
 
     slideChanged($event){
         if(this.hotels[$event._activeIndex] !== undefined){
-            this.mapPage.displayDirection(this.hotels[$event._activeIndex].lattitude,this.hotels[$event._activeIndex].longitude);
             this.getDistanceFromLatLonInKm(this.geolocation.lat(),this.geolocation.lng(),parseFloat(this.hotels[$event._activeIndex].latitude),parseFloat(this.hotels[$event._activeIndex].longitude));
         }
     }

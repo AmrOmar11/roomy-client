@@ -1,5 +1,5 @@
-import { Component,Input,OnInit } from '@angular/core';
-import { IonicPage,NavController,NavParams,ModalController, LoadingController} from 'ionic-angular';
+import { Component,OnInit } from '@angular/core';
+import { IonicPage,ModalController} from 'ionic-angular';
 import { Geolocation,Geoposition } from '@ionic-native/geolocation';
 import { HotelsProvider } from '../../providers/hotels/hotels';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
@@ -20,15 +20,12 @@ export class MapPage implements OnInit{
   private map:any;
   private userLocation:any;
   private sourceMarker:any;
+  private hotelMarkers = [];
   private address:any = {
       place: '',
       set: false,
   };
   private placesService:any;
-  private directionsService:any;
-  private directionsDisplay:any;
-  private destinationLocation:any;
-  public hotelDist:any;
   public loading:any;
   public icons:any = { 
     userloc: {
@@ -46,11 +43,8 @@ export class MapPage implements OnInit{
   }; 
 
 	constructor(
-		public navCtrl: NavController, 
-		public navParams: NavParams, 
 		public geolocation: Geolocation,
 		public modalCtrl: ModalController,
-    public loadingController:LoadingController,
     public hotelsProvider: HotelsProvider,
     public authProvider: AuthenticateProvider,
     public events: Events) {
@@ -58,8 +52,8 @@ export class MapPage implements OnInit{
 
 	ngOnInit() {
     console.log('map:ngOnInit');
-    this.loading = document.getElementById("loaderoverlay");
-    this.loading.style.display="block";
+    // this.loading = document.getElementById("loaderoverlay");
+    // this.loading.style.display="block";
     this.getCurrenLocation();
   }
 
@@ -77,259 +71,92 @@ export class MapPage implements OnInit{
 		});
 	}
   
-  	private loadMap(position: Geoposition){
-		this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		var mapStyles =[
-        {
-            "featureType": "administrative",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "visibility": "simplified"
-                }
-            ]
-        },
-        {
-            "featureType": "all",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "saturation": -100
-                },
-                {
-                    "gamma": 1
-                }
-            ]
-        },
-        {
-            "featureType": "all",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.business",
-            "elementType": "labels.text",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.business",
-            "elementType": "labels.icon",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.place_of_worship",
-            "elementType": "labels.text",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.place_of_worship",
-            "elementType": "labels.icon",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "road",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "visibility": "simplified"
-                }
-            ]
-        },
-        {
-            "featureType": "water",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "visibility": "on"
-                },
-                {
-                    "hue": "#50a5d1"
-                },
-                {
-                    "saturation": 50
-                },
-                {
-                    "gamma": 0
-                }
-            ]
-        },
-        {
-            "featureType": "administrative.neighborhood",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#333333"
-                }
-            ]
-        },
-        {
-            "featureType": "road.local",
-            "elementType": "labels.text",
-            "stylers": [
-                {
-                    "color": "#333333"
-                },
-                {
-                    "weight": 0.5
-                }
-            ]
-        },
-        {
-            "featureType": "transit.station",
-            "elementType": "labels.icon",
-            "stylers": [
-                {
-                    "saturation": 50
-                },
-                {
-                    "gamma": 1
-                }
-            ]
-        },
-        {
-            "featureType": "transit.station",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "labels.icon",
-            "stylers": [
-                {
-                    "visibility": "off"
-                },
-                {
-                    "invert_lightness": true
-                },
-                {
-                    "color": "#000000"
-                },
-                {
-                    "weight": 0.1
-                },
-                {
-                    "saturation": -100
-                },
-                {
-                    "lightness": -100
-                },
-                {
-                    "gamma": 0.01
-                }
-            ]
-        }
-    ];
-    let mapOptions = {
-      center: this.userLocation,
-      zoom: 13,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      zoomControl:false,
-      fullscreenControl:false,
-      streetViewControl:false,
-      compass:true,
-      myLocationButton: true, // GEOLOCATION BUTTON 
-      indoorPicker: true,
-      styles: mapStyles
-    }
-    this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-		google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.userLocation));
-        this.directionsService = new google.maps.DirectionsService;
-        this.directionsDisplay = new google.maps.DirectionsRenderer;
-        this.directionsDisplay.setMap(this.map);
+  private loadMap(position: Geoposition){
+      this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);		
+      let mapOptions = {
+        center: this.userLocation,
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: false,
+        zoomControl:false,
+        fullscreenControl:false,
+        streetViewControl:false,
+        compass:true,
+        myLocationButton: true, // GEOLOCATION BUTTON 
+        indoorPicker: true,
+        // styles: mapStyles
+      }
+      this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+      google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.userLocation));
 	}
 
 	private mapLoaded(location){
       this.addSourceMarker(true,location);
-      let inputData = {
-        user_Latitude:location.lat(),
-        user_Longitude:location.lng(),
-        jwtToken : this.authProvider.getUserInfo().customerToken
-      };
-      this.hotelsProvider.getHotels(inputData).subscribe(data => {
-      // this.hotelsProvider.load().then(data => {
-        let hotelsInfo = data.result;
-        this.events.publish('hotels:list', data.result,this.userLocation);
-        if(hotelsInfo !== undefined && hotelsInfo.length !== 0){
-         //this.displayDirection(hotelsInfo[0].lattitue,hotelsInfo[0].longitude);
-         for(let hotel of hotelsInfo) {
-            var hotelLocation = new google.maps.LatLng(hotel.latitude, hotel.longitude);
-            this.sourceMarker = new google.maps.Marker({
-              position: hotelLocation,
-              map: this.map,
-              icon:this.icons.hotel
-            });
-          }
-        }
-        //loader.dismiss();
-        this.loading.style.display="none";
-      });
+      this.fetchHotels(location);
 	}
-	
-	// Adds a marker to the map.
-	private addSourceMarker(animate:boolean,location){
-      if(this.sourceMarker !== undefined){
-          this.sourceMarker.setMap(null);
-      }        
-  		let animationType:any = null;
-  		if(animate == true){
-  			animationType = google.maps.Animation.DROP;
-  		}
-  		this.sourceMarker = new google.maps.Marker({
-  			position: location,
-  			map: this.map,
-  			animation: animationType,
-  			// title: 'Drage me!',
-  			// draggable:true,
-  			icon:this.icons.userloc
-  		});
-      // google.maps.event.addListener(this.sourceMarker,'dragend',this.sourceMarkerDragEnd.bind(this));
+
+  private fetchHotels(location){
+    let inputData = {
+      user_Latitude:location.lat(),
+      user_Longitude:location.lng(),
+      jwtToken : this.authProvider.getUserInfo().customerToken
+    };
+    this.hotelsProvider.getHotels(inputData).subscribe(data => {
+      this.events.publish('hotels:list', data.result,this.userLocation);
+      this.clearHotelMarkers();
+      this.addHotelMarkers(data.result);
+      // this.loading.style.display="none";
+    });
+  }
+
+  private addHotelMarkers(hotelsInfo){
+    if(hotelsInfo !== undefined && hotelsInfo.length !== 0){
+     for(let hotel of hotelsInfo) {
+        let location = new google.maps.LatLng(hotel.latitude, hotel.longitude);
+        let marker = new google.maps.Marker({
+          position: location,
+          map: this.map,
+          icon:this.icons.hotel
+        });
+        this.hotelMarkers.push(marker);
+      }
     }
+  }
+
+  private clearHotelMarkers() {
+    for (var i = 0; i < this.hotelMarkers.length; i++) {
+      this.hotelMarkers[i].setMap(null);
+    }
+    this.hotelMarkers = [];
+  }
 	
-	private sourceMarkerDragEnd(event){
-	    console.log('Marker:DragEnd:lat:'+event.latLng.lat()+' lng:'+event.latLng.lng());
-      this.userLocation = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
-      this.map.panTo(this.userLocation);
-	}
+	private addSourceMarker(animate:boolean,location){
+    if(this.sourceMarker !== undefined){
+        this.sourceMarker.setMap(null);
+    }        
+    let animationType:any = null;
+    if(animate == true){
+    	animationType = google.maps.Animation.DROP;
+    }
+    this.sourceMarker = new google.maps.Marker({
+    	position: location,
+    	map: this.map,
+    	animation: animationType,
+    	// title: 'Drage me!',
+    	// draggable:true,
+    	icon:this.icons.userloc
+    });
+  }
 	
 	compasClicked(){
     if (this.map !== undefined) {
-      // this.addMarker(false,this.location);
       let options = {enableHighAccuracy: true};
       this.geolocation.getCurrentPosition(options).then((res) => {
           console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
           this.map.panTo(this.userLocation);
-          // if(this.destinationLocation !== undefined){
-             // this.sourceMarker.setMap(null);
-             // this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
-          // }else{
-              this.addSourceMarker(false,this.userLocation);    
-          // }
+          this.addSourceMarker(false,this.userLocation);
+          this.fetchHotels(this.userLocation);
       })
       .catch((error) =>{
           console.log(error);
@@ -371,42 +198,12 @@ export class MapPage implements OnInit{
                 // set place in map
                 self.userLocation = place.geometry.location;
                 self.map.panTo(place.geometry.location);
-                // if(self.destinationLocation !== undefined){
-                   // self.sourceMarker.setMap(null);
-                   //self.displayRoute(place.geometry.location,self.destinationLocation,self.directionsService,self.directionsDisplay);
-                // }else{
-                    self.addSourceMarker(false,place.geometry.location);
-                // }
-                // populate
+                self.addSourceMarker(false,place.geometry.location);
                 self.address.set = true;
+                self.fetchHotels(self.userLocation);
             }else{
                 console.log('page > getPlaceDetail > status > ', status);
             }
         }
-    }
-    
-    private displayRoute(origin, destination, service, display) {
-        service.route({
-          origin: origin,
-          destination: destination,
-          // waypoints: [{location: 'Adelaide, SA'}, {location: 'Broken Hill, NSW'}],
-          travelMode: 'DRIVING',
-          avoidTolls: false
-        }, function(response, status) {
-          if (status === 'OK') {
-            // console.log(response);
-             display.setDirections(response);
-          } else {
-            console.log('Could not display directions due to: ' + status);
-          }
-        });
-    }
-
-    public displayDirection(Lat,Lng){
-        //if(this.sourceMarker !== undefined){
-        //    this.sourceMarker.setMap(null);
-        //}
-        // this.destinationLocation = new google.maps.LatLng(Lat, Lng);
-        // this.displayRoute(this.userLocation,this.destinationLocation,this.directionsService,this.directionsDisplay);
     }
 }

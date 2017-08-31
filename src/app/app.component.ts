@@ -11,20 +11,18 @@ import { OneSignal } from '@ionic-native/onesignal';
   templateUrl: 'app.html'
 })
 export class RoomyApp {  
-  rootPage: any = 'PreviewPage';
+  rootPage: any;
   constructor(public platform: Platform, 
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private nativeStorage: NativeStorage, 
     public authProvider: AuthenticateProvider,
-    private oneSignal: OneSignal) {
-    
-    this.initializeApp();
+    public oneSignal: OneSignal) {
+      this.loginFromNativeStorage();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.loginFromNativeStorage(); 
       this.startOnesignal();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -37,8 +35,8 @@ export class RoomyApp {
       .then(data => {
           console.log(data);
           let inputData = {
-            action: "SIGNIN",
-            loginType: "TOKEN",
+            action: "TOKEN",
+            loginType: "APP",
             token: data.customerToken
           };
           this.authProvider.login(inputData).subscribe(success => {
@@ -63,6 +61,7 @@ export class RoomyApp {
     }else{
       this.rootPage = 'PreviewPage';
     }
+    this.initializeApp();
   }
 
   startOnesignal(){

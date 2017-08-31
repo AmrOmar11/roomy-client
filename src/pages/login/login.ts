@@ -48,10 +48,12 @@ export class LoginPage {
             // user is previously logged with FB and we have his data we will let him access the app
             env.authenticate({
                 action: "SIGNIN",
+                contactNumber:"",
                 emailId: data.email,
                 gender:data.gender,
                 name: data.name,
-                loginType: "FB"
+                loginType: "FB",
+                password:""
             });
         }, function(error){
             //we don't have the user data so we will ask him to log in
@@ -59,10 +61,12 @@ export class LoginPage {
                 .then(function(res){
                     env.authenticate({
                         action: "SIGNIN",
+                        contactNumber:"",
                         emailId: res.email,
                         gender:res.gender,
                         name: res.name,
-                        loginType: "FB"
+                        loginType: "FB",
+                        password:""
                     }); 
             }, function(err){
                 console.log("Facebook Login error", err);
@@ -84,9 +88,11 @@ export class LoginPage {
             // user is previously logged with Google and we have his data we will let him access the app
             env.authenticate({
                 action: "SIGNIN",
+                contactNumber:"",
                 emailId: data.email,
                 name: data.displayName,
-                loginType: "GMAIL"
+                loginType: "GMAIL",
+                password:""
             });
         }, function(error){
             //we don't have the user data so we will ask him to log in
@@ -94,9 +100,11 @@ export class LoginPage {
                 .then(function(res){
                     env.authenticate({
                         action: "SIGNIN",
+                        contactNumber:"",
                         emailId: res.email,
                         name: res.displayName,
-                        loginType: "GMAIL"
+                        loginType: "GMAIL",
+                        password:""
                     }); 
             }, function(err){
                 console.log("Google Login error", err);
