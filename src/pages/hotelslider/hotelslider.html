@@ -7,23 +7,23 @@
 <ion-content padding class="hotels">
     <ion-slides options="options" (ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
-	      <div [class.hotelStatus]="hotel.status" class="hotelStatusStatic">{{hotel.statusText}}</div>	
-	      <div class="HotelSlider"  [ngStyle]="{ 'background-image': 'url(' + hotel.img + ')'}" (click)="hotelDetailedInfo(hotel)">
+	      <div [class.hotelStatus]="hotel.isAviablity" class="hotelStatusStatic">{{hotel.hotel_description}}</div>	
+	      <div class="HotelSlider"  [ngStyle]="{ 'background-image': 'url(' + hotel.hotel_pic_path + ')'}" (click)="hotelDetailedInfo(hotel)">
 	      	<div class="SliderBlackOverlay"></div>
 			<div class="sliderContent">
-		      	<div class="HotelName">{{hotel.hotelname}}</div>
-		      	<div class="HotelAddress"><span>{{hotel.address1+', '}}</span><span>{{hotel.address2+', '}}</span><span>{{hotel.city+', '}}</span><span>{{hotel.state}}</span></div>
+		      	<div class="HotelName">{{hotel.hotel_name}}</div>
+		      	<div class="HotelAddress"><span>{{hotel.hotel_address+', '}}</span><span>{{hotel.address2+', '}}</span><span>{{hotel.hotel_City+', '}}</span><span>{{hotel.hotel_State}}</span></div>
 		      	<div class="HotelDetails">
-		      		<div class="HotelCategory"><span class="hotel-category-child">{{hotel.category}}</span></div>
+		      		<div class="HotelCategory"><span class="hotel-category-child">{{hotel.hotel_type}}</span></div>
 		      		<div class="HotelFare">
-		      			<div class="HotelMinCost"><span>{{hotel.mincost}}</span><span class="farecurrency">{{hotel.farechargetype}}</span><span class="minumum"> MINIMUM</span></div>
+		      			<div class="HotelMinCost"><span>{{hotel.pricePerMin}}</span><span class="farecurrency">{{hotel.currencyType}}</span><span class="minumum"> MINIMUM</span></div>
 		      		</div>
 		      	</div>
 		      	<div class="HotelHourCost">
 		      		<div id="HotelDist" class="HotelBlank">{{HotelDistance}}</div>
 		      		<div class="hourcost-bottom">
-			      		<span>{{hotel.hourcost}}</span>
-			      		<span class="farecurrency">{{hotel.currency}}</span>
+			      		<span>{{hotel.pricePerMin*60}}</span>
+			      		<span class="farecurrency">{{hotel.currencyType}}</span>
 			      		<span class="farecurrency">/{{hotel.farechargetype}}</span>
 		      		</div>
 		      	</div>

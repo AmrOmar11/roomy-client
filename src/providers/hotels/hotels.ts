@@ -64,18 +64,15 @@ export class HotelsProvider {
 		.catch(this.handleError);
 	}
 
-	public getHotelDetails(data) {
+	public getHotelDetails(inputData) {
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json' );
 		let options = new RequestOptions({ headers: headers });
-		let body = JSON.stringify({
-			hotelId: data.hotel_id,
-			customerToken: data.customerToken
-		});
-		console.log('HotelDetails:req:');
+		let body = JSON.stringify(inputData);
+		console.log('HotelDetails:req:'+inputData.hotelId);
 		return this.http.post('https://roomy-midtier.herokuapp.com/getHotelDetails',body,options)
 		.map(res => {
-			console.log('HotelDetails:res:'+res.json().toString());
+			console.log('HotelDetails:res:');
 			console.log(res.json());
 			return res.json();
 		})

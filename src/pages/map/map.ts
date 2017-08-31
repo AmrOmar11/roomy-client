@@ -2,6 +2,7 @@ import { Component,Input,OnInit } from '@angular/core';
 import { IonicPage,NavController,NavParams,ModalController, LoadingController} from 'ionic-angular';
 import { Geolocation,Geoposition } from '@ionic-native/geolocation';
 import { HotelsProvider } from '../../providers/hotels/hotels';
+import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the MapPage page.
  *
@@ -16,50 +17,51 @@ declare var google:any;
 })
 export class MapPage implements OnInit{
   @Input() userData:any;
-	private map:any;
-	private userLocation:any;
-	private sourceMarker:any;
-	private address:any = {
-        place: '',
-        set: false,
-    };
-    public hotelsInfo:any;
-    private placesService:any;
-    private directionsService:any;
-    private directionsDisplay:any;
-    private destinationLocation:any;
-    public hotelDist:any;
-    public loading:any;
-    public icons:any = { 
-          userloc: {
-            url: "http://w2.marketeer.co/img/bluedot.png", // url
-            scaledSize: new google.maps.Size(61, 50), // scaled size
-            origin: new google.maps.Point(0,0), // origin
-            anchor: new google.maps.Point(0, 0) // anchor
-          },
-          hotel:{
-            url: "assets/img/hotel_marker.png", // url
-            scaledSize: new google.maps.Size(20, 20), // scaled size
-            origin: new google.maps.Point(0,0), // origin
-            anchor: new google.maps.Point(0, 0) // anchor
-          }
-        }; 
+  private map:any;
+  private userLocation:any;
+  private sourceMarker:any;
+  private address:any = {
+      place: '',
+      set: false,
+  };
+  public hotelsInfo:any;
+  private placesService:any;
+  private directionsService:any;
+  private directionsDisplay:any;
+  private destinationLocation:any;
+  public hotelDist:any;
+  public loading:any;
+  public icons:any = { 
+    userloc: {
+      url: "http://w2.marketeer.co/img/bluedot.png", // url
+      scaledSize: new google.maps.Size(61, 50), // scaled size
+      origin: new google.maps.Point(0,0), // origin
+      anchor: new google.maps.Point(0, 0) // anchor
+    },
+    hotel:{
+      url: "assets/img/hotel_marker.png", // url
+      scaledSize: new google.maps.Size(20, 20), // scaled size
+      origin: new google.maps.Point(0,0), // origin
+      anchor: new google.maps.Point(0, 0) // anchor
+    }
+  }; 
 
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
 		public geolocation: Geolocation,
 		public modalCtrl: ModalController,
-        public loadingController:LoadingController,
-        public hotelsProvider: HotelsProvider) {
+    public loadingController:LoadingController,
+    public hotelsProvider: HotelsProvider,
+    public authProvider: AuthenticateProvider) {
 	}
 
 	ngOnInit() {
-      console.log('ngOnInit');
-      this.loading = document.getElementById("loaderoverlay");
-      this.loading.style.display="block";
-      this.getCurrenLocation();
-    }
+    console.log('ngOnInit');
+    this.loading = document.getElementById("loaderoverlay");
+    this.loading.style.display="block";
+    this.getCurrenLocation();
+  }
 
 	ngAfterViewInit() {
 		console.log('ngAfterViewInit');
@@ -264,28 +266,24 @@ export class MapPage implements OnInit{
 
 	private mapLoaded(location){
       this.addSourceMarker(true,location);
-      /*var headers={
-        //user_Latitude:location.latitude,
-        //user_Longitude:location.longitude,
-        //jwtToken:this.userData.customerToken
-        //Below is hardcoded for testing.
-        user_Latitude:"17.459189",
-        user_Longitude:"78.372967",
-        jwtToken:"12345678987654321"
+      let inputData = {
+        user_Latitude:location.lat(),
+        user_Longitude:location.lng(),
+        jwtToken : this.authProvider.getUserInfo().customerToken
       };
-      this.hotelsProvider.getHotels(headers).subscribe(data => {*/
-      this.hotelsProvider.load().then(data => {
-        // this.hotelsInfo = data.result;
-        this.hotelsInfo = data;
+      this.hotelsProvider.getHotels(inputData).subscribe(data => {
+      // this.hotelsProvider.load().then(data => {
+        this.hotelsInfo = data.result;
+        // this.hotelsInfo = data;
         if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
          //this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
          for(let hotel of this.hotelsInfo) {
             var hotelLocation = new google.maps.LatLng(hotel.latitude, hotel.longitude);
             this.sourceMarker = new google.maps.Marker({
-            position: hotelLocation,
-            map: this.map,
-            icon:this.icons.hotel
-          });
+              position: hotelLocation,
+              map: this.map,
+              icon:this.icons.hotel
+            });
           }
         }
         //loader.dismiss();

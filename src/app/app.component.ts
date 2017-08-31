@@ -37,8 +37,8 @@ export class RoomyApp {
       .then(data => {
           console.log(data);
           let inputData = {
-            action: "TOKEN",
-            loginType: "APP",
+            action: "SIGNIN",
+            loginType: "TOKEN",
             token: data.customerToken
           };
           this.authProvider.login(inputData).subscribe(success => {
