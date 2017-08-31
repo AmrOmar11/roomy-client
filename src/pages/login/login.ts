@@ -53,7 +53,8 @@ export class LoginPage {
                 gender:data.gender,
                 name: data.name,
                 loginType: "FB",
-                password:""
+                password:"",
+                token:""
             });
         }, function(error){
             //we don't have the user data so we will ask him to log in
@@ -66,7 +67,8 @@ export class LoginPage {
                         gender:res.gender,
                         name: res.name,
                         loginType: "FB",
-                        password:""
+                        password:"",
+                        token:""
                     }); 
             }, function(err){
                 console.log("Facebook Login error", err);
@@ -90,9 +92,11 @@ export class LoginPage {
                 action: "SIGNIN",
                 contactNumber:"",
                 emailId: data.email,
+                gender:'',
                 name: data.displayName,
                 loginType: "GMAIL",
-                password:""
+                password:"",
+                token:""
             });
         }, function(error){
             //we don't have the user data so we will ask him to log in
@@ -102,9 +106,11 @@ export class LoginPage {
                         action: "SIGNIN",
                         contactNumber:"",
                         emailId: res.email,
+                        gender:'',
                         name: res.displayName,
                         loginType: "GMAIL",
-                        password:""
+                        password:"",
+                        token:""
                     }); 
             }, function(err){
                 console.log("Google Login error", err);
@@ -125,7 +131,8 @@ export class LoginPage {
                 contactNumber: '',
                 emailId: this.userCredentials.emailId,
                 loginType: "APP",
-                password: this.userCredentials.password
+                password: this.userCredentials.password,
+                token:""
             };
             if(inputData.emailId.match(mobileRegex)){
                 inputData.contactNumber = this.userCredentials.emailId;
