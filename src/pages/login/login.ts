@@ -24,15 +24,6 @@ export class LoginPage {
     loginForm:FormGroup;
     submitAttempt:boolean=false;
     userCredentials = { emailId: '',mobileNumber: '',password:'' };
-    socialSignUpData = {
-        contactNumber: "",
-        emailAddress: "",
-        firstName: "",
-        lastName: "",
-        loginPassword: "",
-        middleName: ""
-    };
-
     constructor(public navCtrl: NavController,
             private authProvider: AuthenticateProvider, 
             private alertCtrl: AlertController, 
@@ -55,34 +46,24 @@ export class LoginPage {
         this.facebookLoginService.getFacebookUser()
             .then(function(data) {
             // user is previously logged with FB and we have his data we will let him access the app
-            env.navCtrl.popToRoot();
+            env.authenticate({
+                action: "SIGNIN",
+                emailId: data.email,
+                gender:data.gender,
+                name: data.name,
+                loginType: "FB"
+            });
         }, function(error){
             //we don't have the user data so we will ask him to log in
             env.facebookLoginService.doFacebookLogin()
                 .then(function(res){
-                env.socialSignUpData = {
-                    contactNumber: "",
-                    emailAddress: res.email,
-                    firstName: res.name,
-                    lastName: "",
-                    loginPassword: "",
-                    middleName: ""
-                };
-                console.log(env.socialSignUpData);
-                env.showLoading();
-                env.authProvider.login(env.socialSignUpData).subscribe(success => {
-                    if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
-                        env.loading.dismiss();
-                        env.navCtrl.setRoot('HomePage');
-                    } else {
-                        env.showError(success.statusMessage);
-                    }
-                },
-                error => {
-                    this.showError(error);
-                });
-                env.loading.dismiss();
-                env.navCtrl.popToRoot();
+                    env.authenticate({
+                        action: "SIGNIN",
+                        emailId: res.email,
+                        gender:res.gender,
+                        name: res.name,
+                        loginType: "FB"
+                    }); 
             }, function(err){
                 console.log("Facebook Login error", err);
             });
@@ -101,34 +82,22 @@ export class LoginPage {
         this.googleLoginService.trySilentLogin()
             .then(function(data) {
             // user is previously logged with Google and we have his data we will let him access the app
-            env.navCtrl.popToRoot();
+            env.authenticate({
+                action: "SIGNIN",
+                emailId: data.email,
+                name: data.displayName,
+                loginType: "GMAIL"
+            });
         }, function(error){
             //we don't have the user data so we will ask him to log in
             env.googleLoginService.doGoogleLogin()
                 .then(function(res){
-                env.socialSignUpData = {
-                    contactNumber: "",
-                    emailAddress: res.email,
-                    firstName: res.displayName,
-                    lastName: "",
-                    loginPassword: "",
-                    middleName: ""
-                };
-                console.log(env.socialSignUpData);
-                env.showLoading();
-                env.authProvider.login(env.socialSignUpData).subscribe(success => {
-                    if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
-                        env.loading.dismiss();
-                        env.navCtrl.setRoot('HomePage');
-                    } else {
-                        env.showError(success.statusMessage);
-                    }
-                },
-                error => {
-                    this.showError(error);
-                });
-                env.loading.dismiss();
-                env.navCtrl.popToRoot();
+                    env.authenticate({
+                        action: "SIGNIN",
+                        emailId: res.email,
+                        name: res.displayName,
+                        loginType: "GMAIL"
+                    }); 
             }, function(err){
                 console.log("Google Login error", err);
             });
@@ -142,7 +111,6 @@ export class LoginPage {
     SignIn() {
         this.submitAttempt = true;
         if(this.loginForm.valid){
-            this.showLoading();
             let mobileRegex = /^[0-9]+$/;
             let inputData = {
                 action: "SIGNIN",
@@ -155,21 +123,93 @@ export class LoginPage {
                 inputData.contactNumber = this.userCredentials.emailId;
                 inputData.emailId = '';
             }            
-            this.authProvider.login(inputData).subscribe(success => {
-                if((success.status !== undefined)&&(success.status == '0001')) {
-                    this.authProvider.setCurrentUser(success);
-                    this.authProvider.setUserData(success);
-                    this.navCtrl.setRoot('HomePage');
-                } else {
-                    this.showError(success.statusMessage);
-                }
-            },
-            error => {
-                this.showError(error);
-            });
+            this.authenticate(inputData);
         }
     }
+    
+    authenticate(inputData){
+        this.showLoading();
+        this.authProvider.login(inputData).subscribe(success => {
+            if((success.status !== undefined)&&(success.status == '0001')) {
+                this.authProvider.setCurrentUser(success);
+                this.authProvider.setUserData(success);
+                this.navCtrl.setRoot('HomePage');
+            }else if((success.status !== undefined)&&(success.status == '0005')) {
+                this.showError('Invalid Credentials');
+            }else if((success.status !== undefined)&&(success.status == '0013')) {
+                this.collectMobile(inputData);
+            }else if((success.status !== undefined)&&(success.status == '0009')) {
+                this.showOtpPoup(inputData,success);
+            }else {
+                this.showError(success.statusMessage);
+            }
+        },
+        error => {
+            this.showError(error);
+        });
+    }
+    
+    collectMobile(inputData){
+        if(this.loading !== undefined){
+            this.loading.dismiss();
+        }
+        let alert = this.alertCtrl.create({
+            message: 'Please enter your Mobile Number:',
+            inputs: [
+                {
+                    name: 'mobile',
+                    placeholder: 'mobile'
+                },
+            ],
+            buttons: [
+                {
+                    text: 'Done',
+                    handler: data => {
+                        this.showLoading();
+                        inputData.action ='SIGNUP';
+                        inputData.contactNumber =data.mobile;
+                        this.authenticate(inputData);
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
 
+    showOtpPoup(inputData,res){
+        if(this.loading !== undefined){
+            this.loading.dismiss();
+        }
+        let alert = this.alertCtrl.create({
+            message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number:'+inputData.result.contactNumber,
+            inputs: [
+                {
+                    name: 'OTP',
+                    placeholder: 'OTP'
+                },
+            ],
+            buttons: [
+                {
+                    text: 'ReSend OTP?',
+                    handler: data => {
+                        console.log('ReSend clicked');
+                    }
+                },
+                {
+                    text: 'Done',
+                    handler: data => {
+                        this.showLoading();
+                        inputData.action ='OTP';
+                        inputData.otp = data.OTP;
+                        inputData.token = res.jwtToken;
+                        inputData.userId = res.result.userId;
+                        this.authenticate(inputData);
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
     showLoading() {
         this.loading = this.loadingCtrl.create({
             content: 'Please wait...',

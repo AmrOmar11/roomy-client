@@ -49,19 +49,17 @@ export class HotelsProvider {
 	  });
 	}
 
-	public getHotels(data) {
+	public getHotels(inputData) {
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json' );
 		let options = new RequestOptions({ headers: headers });
-		let body = JSON.stringify({
-			user_Latitude : data.user_Latitude,
-            user_Longitude : data.user_Longitude,
-            jwtToken : data.jwtToken
-		});
+		let body = JSON.stringify(inputData);
+		console.log('HotelsbyLocation:req:');
 		return this.http.post('https://roomy-midtier.herokuapp.com/getHotelsbyLocation',body,options)
 		.map(res => {
-		console.log('hotels:res:'+res.json().toString());
-		return res.json();
+			console.log('HotelsbyLocation:res:');
+			console.log(res.json());
+			return res.json();
 		})
 		.catch(this.handleError);
 	}
@@ -74,9 +72,11 @@ export class HotelsProvider {
 			hotelId: data.hotel_id,
 			customerToken: data.customerToken
 		});
+		console.log('HotelDetails:req:');
 		return this.http.post('https://roomy-midtier.herokuapp.com/getHotelDetails',body,options)
 		.map(res => {
-			console.log('hotelInfo:res:'+res.json().toString());
+			console.log('HotelDetails:res:'+res.json().toString());
+			console.log(res.json());
 			return res.json();
 		})
 		.catch(this.handleError);
