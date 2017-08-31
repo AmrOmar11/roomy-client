@@ -32,9 +32,9 @@ calculatefare(){
     this.stayDurationInput = this.stayDuration;
     this.stayDurationInput = this.stayDurationInput.toString();
     this.stayDurationInput = this.stayDurationInput.split(":")
-    this.stayDurationInput = ((parseInt(this.stayDurationInput[0])*60)+ parseInt(this.stayDurationInput[1]))
+    this.stayDurationInput = ((parseInt(this.stayDurationInput[0])*60)+ parseInt(this.stayDurationInput[1]));
     //fareAmount = Hotelcharge + Tax;
-    this.fareAmount = ((this.stayDurationInput*(this.hotelInfo.chargepermin)) + ((this.stayDurationInput*(this.hotelInfo.chargepermin))*(this.hotelInfo.taxpercent/100))).toFixed(2);
+    this.fareAmount = ((this.stayDurationInput*(this.hotelInfo.pricePerMin)) + ((this.stayDurationInput*(this.hotelInfo.pricePerMin))*(parseFloat(this.hotelInfo.tax)/100))).toFixed(2);
 }
 
 dismiss(){
@@ -43,7 +43,7 @@ dismiss(){
 
 reserveNow(){
     let confirm = this.alertCtrl.create({
-        message: 'Booking For '+this.userInfo.firstName+" ?",
+        message: 'Booking For '+this.userInfo.first_Name+" ?",
         buttons: [
             {
                 text: 'Other',

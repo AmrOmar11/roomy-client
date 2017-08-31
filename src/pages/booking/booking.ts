@@ -38,7 +38,7 @@ openTerms() {
     this.navCtrl.push('PoliciesPage');
 }
 confirmbooking(){
-    this.navCtrl.push('BookingConfirmPage');
+    this.navCtrl.push('BookingConfirmPage',{"userInfo":this.userInfo} );
 }
 
 }

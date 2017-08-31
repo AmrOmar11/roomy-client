@@ -13,6 +13,10 @@ page-hotelinfo {
 	.item-inner{
 		border:0px !important;
 	}
+	.item-cover{
+		width: 0;
+    	height: 0;
+	}
 	.range-ios {
 		.range-slider{
 			height:32px;
@@ -145,6 +149,7 @@ page-hotelinfo {
 	.amenity{
 		width:33px;
 		height:25px;
+		margin:0 auto;
 	}
 
 	
@@ -298,19 +303,19 @@ page-hotelinfo {
 		top:13px;
 	}
 
-	.wifi{
+	.WIFI{
 		background: url('../assets/img/amenities.png') no-repeat 0 -7px;
 	}
 	.ac{
 		background: url('../assets/img/amenities.png') no-repeat -55px -7px;
 	}
-	.longue{
+	.longue,.PARKING{
 		background: url('../assets/img/amenities.png') no-repeat -1129px -157px;
 	}
-	.alchol{
+	.alchol,.BAR{
 		background: url('../assets/img/amenities.png') no-repeat -294px -3px;
 	}
-	.pool{
+	.pool,.SWIMMINGPOOL{
 		background: url('../assets/img/amenities.png') no-repeat -179px -4px;
 	}
 	.shower{
@@ -319,7 +324,7 @@ page-hotelinfo {
 	.telivision{
 		background: url('../assets/img/amenities.png') no-repeat -237px -1px;
 	}
-	.restuarant{
+	.restuarant,.RESTAURANT{
 		background: url('../assets/img/amenities.png') no-repeat -343px -4px;
 	}
 

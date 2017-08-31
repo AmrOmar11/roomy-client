@@ -13,8 +13,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'booking-confirm.html',
 })
 export class BookingConfirmPage {
-
+  public userInfo:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  	this.userInfo = this.navParams.get("userInfo"); 
   }
 
   ionViewDidLoad() {

@@ -34,7 +34,7 @@
    </ion-row>
    <ion-row>
       <ion-col text-center>
-         <h6>Details will be sent to <a href="#">ajay.palavai@gmail.com</a>&nbsp;and 8885934359</h6>
+         <h6>Details will be sent to <a href="#">{{this.userInfo.emailId}}</a>&nbsp;and {{this.userInfo.contactNumber}}</h6>
          <h5>you have just booked</h5>
       </ion-col>
    </ion-row>
@@ -67,7 +67,7 @@
          <span>Booked in the name of</span>
       </ion-col>
       <ion-col col-7  class="detail-content">
-         <span class="alignRight"> Mr.Ajay kumar ,8885934359</span>
+         <span class="alignRight"> {{this.userInfo.first_Name}} ,{{this.userInfo.contactNumber}}</span>
       </ion-col>
    </ion-row>
    <ion-row>
