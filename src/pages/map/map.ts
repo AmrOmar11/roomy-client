@@ -3,6 +3,7 @@ import { IonicPage,NavController,NavParams,ModalController, LoadingController} f
 import { Geolocation,Geoposition } from '@ionic-native/geolocation';
 import { HotelsProvider } from '../../providers/hotels/hotels';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the MapPage page.
  *
@@ -16,7 +17,6 @@ declare var google:any;
   templateUrl: 'map.html'
 })
 export class MapPage implements OnInit{
-  @Input() userData:any;
   private map:any;
   private userLocation:any;
   private sourceMarker:any;
@@ -24,7 +24,6 @@ export class MapPage implements OnInit{
       place: '',
       set: false,
   };
-  public hotelsInfo:any;
   private placesService:any;
   private directionsService:any;
   private directionsDisplay:any;
@@ -53,18 +52,18 @@ export class MapPage implements OnInit{
 		public modalCtrl: ModalController,
     public loadingController:LoadingController,
     public hotelsProvider: HotelsProvider,
-    public authProvider: AuthenticateProvider) {
+    public authProvider: AuthenticateProvider,
+    public events: Events) {
 	}
 
 	ngOnInit() {
-    console.log('ngOnInit');
+    console.log('map:ngOnInit');
     this.loading = document.getElementById("loaderoverlay");
     this.loading.style.display="block";
     this.getCurrenLocation();
   }
 
 	ngAfterViewInit() {
-		console.log('ngAfterViewInit');
 	}
   
 	private getCurrenLocation(){
@@ -273,11 +272,11 @@ export class MapPage implements OnInit{
       };
       this.hotelsProvider.getHotels(inputData).subscribe(data => {
       // this.hotelsProvider.load().then(data => {
-        this.hotelsInfo = data.result;
-        // this.hotelsInfo = data;
-        if(this.hotelsInfo !== undefined && this.hotelsInfo.length !== 0){
-         //this.displayDirection(this.hotelsInfo[0].lattitue,this.hotelsInfo[0].longitude);
-         for(let hotel of this.hotelsInfo) {
+        let hotelsInfo = data.result;
+        this.events.publish('hotels:list', data.result,this.userLocation);
+        if(hotelsInfo !== undefined && hotelsInfo.length !== 0){
+         //this.displayDirection(hotelsInfo[0].lattitue,hotelsInfo[0].longitude);
+         for(let hotel of hotelsInfo) {
             var hotelLocation = new google.maps.LatLng(hotel.latitude, hotel.longitude);
             this.sourceMarker = new google.maps.Marker({
               position: hotelLocation,

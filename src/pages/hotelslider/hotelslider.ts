@@ -3,6 +3,8 @@ import { NavController, NavParams, LoadingController} from 'ionic-angular';
 import { MapPage } from '../../pages/pages';
 import { HotelsProvider } from '../../providers/hotels/hotels';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+import { Events } from 'ionic-angular';
+import { NgZone  } from '@angular/core';
 /**
  * Generated class for the HotelsliderPage page.
  *
@@ -16,8 +18,8 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
 })
 export class HotelsliderPage {
     options:any;
-    @Input()hotels:any;
-    @Input()geolocation:any;
+    hotels:any;
+    geolocation:any;
     HotelDistance:any;
     constructor(
         public navCtrl: NavController, 
@@ -25,13 +27,22 @@ export class HotelsliderPage {
         public mapPage: MapPage,
         public hotelsProvider: HotelsProvider,
         public authProvider: AuthenticateProvider,
-        public loadingController:LoadingController) {
+        public loadingController:LoadingController,
+        public events: Events,
+        public zone: NgZone) {
         this.options ={
             direction: 'vertical',
             slidesPerView: '1',
             paginationClickable: true,
             showNavButtons: false
         }
+        events.subscribe('hotels:list', (hotelsList, location) => {
+          this.hotels = hotelsList;
+          this.geolocation = location;
+          this.zone.run(() => {
+            console.log('force refresh hotel silder');
+          });
+        });
     }
 
     slideChanged($event){

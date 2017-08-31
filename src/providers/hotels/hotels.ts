@@ -12,9 +12,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class HotelsProvider {
 
-	data:any;
+  data:any;
   constructor(public http: Http) {
-    console.log('Hello HotelsProvider Provider');
   }
 
   public load() {
