@@ -40,7 +40,7 @@ export class LoginPage {
     }
 
     doFacebookLogin() {
-        this.loading = this.loadingCtrl.create();
+        this.showLoading();
         // Here we will check if the user is already logged in because we don't want to ask users to log in each time they open the app
         let env = this;
         this.facebookLoginService.getFacebookUser()
@@ -72,6 +72,7 @@ export class LoginPage {
                     }); 
             }, function(err){
                 console.log("Facebook Login error", err);
+                this.showError("Facebook Login error");
             });
         });
     }
@@ -82,7 +83,7 @@ export class LoginPage {
     }
 
     doGoogleLogin() {
-        this.loading = this.loadingCtrl.create();
+        this.showLoading();
         // Here we will check if the user is already logged in because we don't want to ask users to log in each time they open the app
         let env = this;
         this.googleLoginService.trySilentLogin()
@@ -114,6 +115,7 @@ export class LoginPage {
                     }); 
             }, function(err){
                 console.log("Google Login error", err);
+                this.showError("Google Login error");
             });
         });
     }
@@ -180,7 +182,6 @@ export class LoginPage {
                 {
                     text: 'Done',
                     handler: data => {
-                        this.showLoading();
                         inputData.action ='SIGNUP';
                         inputData.contactNumber =data.mobile;
                         this.authenticate(inputData);
@@ -213,7 +214,6 @@ export class LoginPage {
                 {
                     text: 'Done',
                     handler: data => {
-                        this.showLoading();
                         inputData.action ='OTP';
                         inputData.otp = data.OTP;
                         inputData.token = res.jwtToken;
@@ -226,6 +226,9 @@ export class LoginPage {
         alert.present();
     }
     showLoading() {
+        if(this.loading !== undefined){
+            this.loading.dismiss();
+        }
         this.loading = this.loadingCtrl.create({
             content: 'Please wait...',
             dismissOnPageChange: true
@@ -234,7 +237,9 @@ export class LoginPage {
     }
 
     showError(text) {
-        this.loading.dismiss();
+        if(this.loading !== undefined){
+            this.loading.dismiss();
+        }
         let alert = this.alertCtrl.create({
             title: 'Fail',
             subTitle: text,
