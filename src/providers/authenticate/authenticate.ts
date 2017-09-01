@@ -107,7 +107,11 @@ export class AuthenticateProvider {
         error => console.error('Error storing item', error)
       );
     }
-  } 
+  }
+
+  public removeUser(){
+    this.nativeStorage.remove('userdata');
+  }
   
   public updateProfile(data){
     var headers = new Headers();
