@@ -53,7 +53,7 @@ export class SettingsPage {
     };
     this.authProvider.logout(inputData).subscribe(success => {
       if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
-          this.authProvider.setUserData(success);
+          this.authProvider.removeUser();
           this.facebookLoginService.doFacebookLogout();
           this.googleLoginService.doGoogleLogout();
           this.navCtrl.setRoot('PreviewPage');
