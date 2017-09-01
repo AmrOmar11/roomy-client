@@ -21,7 +21,6 @@ export class FacebookLoginService {
   doFacebookLogin()
   {
     let env = this;
-
     return new Promise<FacebookUserModel>((resolve, reject) => {
       //["public_profile"] is the array of permissions, you can add more if you need
       this.fb.login(["public_profile","email"]).then(function(response){
@@ -43,13 +42,12 @@ export class FacebookLoginService {
 
   doFacebookLogout()
   {
-    let env = this;
-
+    // let env = this;
     return new Promise((resolve, reject) => {
       this.fb.logout()
       .then(function(res) {
         //user logged out so we will remove him from the NativeStorage
-        env.nativeStorage.remove('facebook_user');
+        // env.nativeStorage.remove('facebook_user');
         resolve();
       }, function(error){
         reject();
@@ -65,7 +63,6 @@ export class FacebookLoginService {
   setFacebookUser(user: any)
   {
     let env = this;
-
     return new Promise<FacebookUserModel>((resolve, reject) => {
       env.nativeStorage.setItem('facebook_user',
       {

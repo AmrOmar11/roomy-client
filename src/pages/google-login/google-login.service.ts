@@ -27,12 +27,11 @@ export class GoogleLoginService {
         'offline': true
       })
       .then(function (user) {
-        // env.setGoogleUser(user)
-        // .then(function(res){
-        //   console.log(user);
-        //   resolve(user);
-        // });
-        resolve(user);
+        env.setGoogleUser(user)
+        .then(function(res){
+          console.log(user);
+          resolve(user);
+        });
       }, function (error) {
         reject(error);
       });
@@ -51,11 +50,12 @@ export class GoogleLoginService {
         'offline': true
       })
       .then(function (user) {
-        env.setGoogleUser(user)
-        .then(function(res){
-          console.log(user);
-          resolve(user);
-        });
+        // env.setGoogleUser(user)
+        // .then(function(res){
+        //   console.log(user);
+        //   resolve(user);
+        // });
+        resolve(user);
       }, function (error) {
         reject(error);
       });
@@ -69,7 +69,7 @@ export class GoogleLoginService {
       this.googlePlus.logout()
       .then(function(response) {
         //user logged out so we will remove him from the NativeStorage
-        env.nativeStorage.remove('google_user');
+        // env.nativeStorage.remove('google_user');
         resolve();
       }, function(error){
         reject(error);

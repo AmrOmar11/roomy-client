@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
 /**
  * Generated class for the SettingsPage page.
  *
@@ -20,7 +21,9 @@ export class SettingsPage {
    public navParams: NavParams,
    public formBuilder: FormBuilder,
    private loadingCtrl: LoadingController,
-   private authProvider: AuthenticateProvider) {
+   private authProvider: AuthenticateProvider,
+   public facebookLoginService: FacebookLoginService,
+   public googleLoginService: GoogleLoginService) {
     this.userInfo = this.authProvider.getUserInfo();
   	this.profileForm = this.formBuilder.group({
 	      firstname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
@@ -51,6 +54,8 @@ export class SettingsPage {
     this.authProvider.logout(inputData).subscribe(success => {
       if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
           this.authProvider.setUserData(success);
+          this.facebookLoginService.doFacebookLogout();
+          this.googleLoginService.doGoogleLogout();
           this.navCtrl.setRoot('PreviewPage');
       } else {
           loader.dismiss();

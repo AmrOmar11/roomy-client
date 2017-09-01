@@ -41,9 +41,10 @@ export class LoginPage {
 
     doFacebookLogin() {
         this.showLoading();
+        let env = this;
         this.facebookLoginService.doFacebookLogin()
             .then(function(res){
-                this.authenticate({
+                env.authenticate({
                     action: "SIGNIN",
                     contactNumber:"",
                     emailId: res.email,
@@ -55,7 +56,7 @@ export class LoginPage {
                 }); 
         }, function(err){
             console.log("Facebook Login error", err);
-            this.showError("Facebook Login error");
+            env.showError("Facebook Login error");
         });
     }
 
@@ -66,9 +67,10 @@ export class LoginPage {
 
     doGoogleLogin() {
         this.showLoading();
+        let env = this;
         this.googleLoginService.doGoogleLogin()
             .then(function(res){
-                this.authenticate({
+                env.authenticate({
                     action: "SIGNIN",
                     contactNumber:"",
                     emailId: res.email,
@@ -80,7 +82,7 @@ export class LoginPage {
                 }); 
         }, function(err){
             console.log("Google Login error", err);
-            this.showError("Google Login error");
+            env.showError("Google Login error");
         });
     }
 
@@ -189,6 +191,7 @@ export class LoginPage {
         });
         alert.present();
     }
+
     showLoading() {
         if(this.loading !== undefined){
             this.loading.dismiss();
