@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 
 /**
  * Generated class for the PreviewPage page.
@@ -13,7 +13,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'preview.html',
 })
 export class PreviewPage {
-
+   @ViewChild(Slides) slider: Slides;
   slides =[
      {
         "image":"assets/img/preview/screen1.png"
@@ -33,6 +33,13 @@ export class PreviewPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PreviewPage');
+    this.slider.coverflow = {
+      rotate: 0,
+      stretch: 0,
+      depth: 50,
+      modifier: 1,
+      slideShadows: false
+    };
   }
 
   LoginIn(){

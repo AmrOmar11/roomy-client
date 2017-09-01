@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-import { NavController, NavParams, LoadingController} from 'ionic-angular';
+import { Component, ViewChild} from '@angular/core';
+import { NavController, NavParams, LoadingController,Slides} from 'ionic-angular';
 import { HotelsProvider } from '../../providers/hotels/hotels';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
@@ -16,7 +16,7 @@ import { NgZone  } from '@angular/core';
   templateUrl: 'hotelslider.html',
 })
 export class HotelsliderPage {
-    options:any;
+    @ViewChild(Slides) slider: Slides;
     hotels:any;
     geolocation:any;
     HotelDistance:any;
@@ -29,12 +29,6 @@ export class HotelsliderPage {
         public loadingController:LoadingController,
         public events: Events,
         public zone: NgZone) {
-        this.options ={
-            direction: 'vertical',
-            slidesPerView: '1',
-            paginationClickable: true,
-            showNavButtons: false
-        }
         events.subscribe('hotels:list', (hotelsList, location) => {
           this.hotels = hotelsList;
           this.geolocation = location;
@@ -46,6 +40,17 @@ export class HotelsliderPage {
           });
         });
     }
+
+    ionViewDidLoad() {
+    console.log('ionViewDidLoad PreviewPage');
+    this.slider.coverflow = {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: false
+    };
+  }
 
     slideChanged($event){
         if(this.hotels[$event._activeIndex] !== undefined){

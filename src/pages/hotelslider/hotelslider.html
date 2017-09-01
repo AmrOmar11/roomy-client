@@ -11,10 +11,11 @@
 		</ion-card-header>
 
         <ion-card-content>	            
-            <ion-label tex-wrap>Thank you for choosing Pobyt. We are not serving here yet and we would be glad to notify once we are available here.</ion-label>
+            <ion-label tex-wrap>Thank you for choosing Pobyt. We are currently not serving here and we would be glad to notify you once we are available in this location.</ion-label>
         </ion-card-content>
 	</ion-card>
-    <ion-slides options="options" (ionSlideDidChange)="slideChanged($event)" >
+    <!-- <ion-slides (ionSlideDidChange)="slideChanged($event)" > -->
+    <ion-slides pager="true" loop="true" effect="coverflow" direction="vertical"  (ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
 	      <div [ngClass]="hotel.isAviablity ? '':'hotelStatus'" class="hotelStatusStatic">{{hotel.hotel_description}}</div>	
 	      <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotel_pic_path + ')'}" (click)="hotelDetailedInfo(hotel)">
