@@ -72,22 +72,69 @@ export class MapPage implements OnInit{
 	}
   
   private loadMap(position: Geoposition){
-      this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);		
-      let mapOptions = {
-        center: this.userLocation,
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        mapTypeControl: false,
-        zoomControl:false,
-        fullscreenControl:false,
-        streetViewControl:false,
-        compass:true,
-        myLocationButton: true, // GEOLOCATION BUTTON 
-        indoorPicker: true,
-        // styles: mapStyles
+    this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);		
+    let mapStyles =[
+      {
+          "featureType": "poi.business",
+          "elementType": "labels.text",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "poi.business",
+          "elementType": "labels.icon",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "poi.place_of_worship",
+          "elementType": "labels.text",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "poi.place_of_worship",
+          "elementType": "labels.icon",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "labels.icon",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
       }
-      this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-      google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.userLocation));
+    ];
+    let mapOptions = {
+      center: this.userLocation,
+      zoom: 11,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: false,
+      zoomControl:false,
+      fullscreenControl:false,
+      streetViewControl:false,
+      compass:true,
+      myLocationButton: true, // GEOLOCATION BUTTON 
+      indoorPicker: true,
+      styles: mapStyles
+    }
+    this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+    google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.userLocation));
 	}
 
 	private mapLoaded(location){
