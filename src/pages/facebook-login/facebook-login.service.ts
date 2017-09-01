@@ -29,10 +29,11 @@ export class FacebookLoginService {
         env.fb.api("/me?fields=name,gender,email", [])
         .then(function(user) {
           //now we have the users info, let's save it in the NativeStorage
-          env.setFacebookUser(user)
-          .then(function(res){
-            resolve(user);
-          });
+          // env.setFacebookUser(user)
+          // .then(function(res){
+          //   resolve(user);
+          // });
+          resolve(user);
         })
       }, function(error){
         reject(error);

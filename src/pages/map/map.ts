@@ -52,8 +52,8 @@ export class MapPage implements OnInit{
 
 	ngOnInit() {
     console.log('map:ngOnInit');
-    // this.loading = document.getElementById("loaderoverlay");
-    // this.loading.style.display="block";
+    this.loading = document.getElementById("loaderoverlay");
+    this.loading.style.display="block";
     this.getCurrenLocation();
   }
 
@@ -152,7 +152,7 @@ export class MapPage implements OnInit{
       this.events.publish('hotels:list', data.result,this.userLocation);
       this.clearHotelMarkers();
       this.addHotelMarkers(data.result);
-      // this.loading.style.display="none";
+      this.loading.style.display="none";
     });
   }
 

@@ -27,11 +27,12 @@ export class GoogleLoginService {
         'offline': true
       })
       .then(function (user) {
-        env.setGoogleUser(user)
-        .then(function(res){
-          console.log(user);
-          resolve(user);
-        });
+        // env.setGoogleUser(user)
+        // .then(function(res){
+        //   console.log(user);
+        //   resolve(user);
+        // });
+        resolve(user);
       }, function (error) {
         reject(error);
       });

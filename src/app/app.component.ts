@@ -44,24 +44,28 @@ export class RoomyApp {
               this.authProvider.setCurrentUser(success);
               this.authProvider.setUserData(success);
               this.rootPage = 'HomePage';
+              this.initializeApp();
             } else {
               this.rootPage = 'PreviewPage';
+              this.initializeApp();
             }
           },
           error => {
             console.log(error);
             this.rootPage = 'PreviewPage';
+            this.initializeApp();
           });
         },
         error => {
           console.log(error);
           this.rootPage = 'PreviewPage';
+          this.initializeApp();
         }
       );
     }else{
       this.rootPage = 'PreviewPage';
+      this.initializeApp();
     }
-    this.initializeApp();
   }
 
   startOnesignal(){

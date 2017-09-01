@@ -41,39 +41,21 @@ export class LoginPage {
 
     doFacebookLogin() {
         this.showLoading();
-        // Here we will check if the user is already logged in because we don't want to ask users to log in each time they open the app
-        let env = this;
-        this.facebookLoginService.getFacebookUser()
-            .then(function(data) {
-            // user is previously logged with FB and we have his data we will let him access the app
-            env.authenticate({
-                action: "SIGNIN",
-                contactNumber:"",
-                emailId: data.email,
-                gender:data.gender,
-                name: data.name,
-                loginType: "FB",
-                password:"",
-                token:""
-            });
-        }, function(error){
-            //we don't have the user data so we will ask him to log in
-            env.facebookLoginService.doFacebookLogin()
-                .then(function(res){
-                    env.authenticate({
-                        action: "SIGNIN",
-                        contactNumber:"",
-                        emailId: res.email,
-                        gender:res.gender,
-                        name: res.name,
-                        loginType: "FB",
-                        password:"",
-                        token:""
-                    }); 
-            }, function(err){
-                console.log("Facebook Login error", err);
-                this.showError("Facebook Login error");
-            });
+        this.facebookLoginService.doFacebookLogin()
+            .then(function(res){
+                this.authenticate({
+                    action: "SIGNIN",
+                    contactNumber:"",
+                    emailId: res.email,
+                    gender:res.gender,
+                    name: res.name,
+                    loginType: "FB",
+                    password:"",
+                    token:""
+                }); 
+        }, function(err){
+            console.log("Facebook Login error", err);
+            this.showError("Facebook Login error");
         });
     }
 
@@ -84,39 +66,21 @@ export class LoginPage {
 
     doGoogleLogin() {
         this.showLoading();
-        // Here we will check if the user is already logged in because we don't want to ask users to log in each time they open the app
-        let env = this;
-        this.googleLoginService.trySilentLogin()
-            .then(function(data) {
-            // user is previously logged with Google and we have his data we will let him access the app
-            env.authenticate({
-                action: "SIGNIN",
-                contactNumber:"",
-                emailId: data.email,
-                gender:'',
-                name: data.displayName,
-                loginType: "GMAIL",
-                password:"",
-                token:""
-            });
-        }, function(error){
-            //we don't have the user data so we will ask him to log in
-            env.googleLoginService.doGoogleLogin()
-                .then(function(res){
-                    env.authenticate({
-                        action: "SIGNIN",
-                        contactNumber:"",
-                        emailId: res.email,
-                        gender:'',
-                        name: res.displayName,
-                        loginType: "GMAIL",
-                        password:"",
-                        token:""
-                    }); 
-            }, function(err){
-                console.log("Google Login error", err);
-                this.showError("Google Login error");
-            });
+        this.googleLoginService.doGoogleLogin()
+            .then(function(res){
+                this.authenticate({
+                    action: "SIGNIN",
+                    contactNumber:"",
+                    emailId: res.email,
+                    gender:'',
+                    name: res.displayName,
+                    loginType: "GMAIL",
+                    password:"",
+                    token:""
+                }); 
+        }, function(err){
+            console.log("Google Login error", err);
+            this.showError("Google Login error");
         });
     }
 
@@ -197,7 +161,7 @@ export class LoginPage {
             this.loading.dismiss();
         }
         let alert = this.alertCtrl.create({
-            message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number:'+inputData.result.contactNumber,
+            message: 'Please enter OTP:'+res.result.otp+' sent to your Mobile Number:'+res.result.contactNumber,
             inputs: [
                 {
                     name: 'OTP',
