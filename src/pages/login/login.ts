@@ -121,7 +121,7 @@ export class LoginPage {
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 this.showOtpPoup(inputData,success);
             }else {
-                this.showError(success.statusMessage);
+                this.showError(success.status);
             }
         },
         error => {

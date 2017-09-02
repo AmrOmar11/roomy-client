@@ -80,6 +80,8 @@ export class ForgetModalPage {
                 this.showError("error","OTP Does not match");
             }else if((success.status !== undefined)&&(success.status == '0008')) {
                 this.showError("error","OTP Expired");
+            }else {
+                this.showError("error",success.status);
             }
         },
         error => {
