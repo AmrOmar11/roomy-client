@@ -72,7 +72,7 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     console.log('authenticate:forgotPassword:req');
-    return this.http.post('https://roomy-midtier.herokuapp.com/forgetPassword',body,options).map(res => {
+    return this.http.post('https://roomy-midtier.herokuapp.com/forgotPassword',body,options).map(res => {
       console.log('authenticate:forgotPassword:res');
       console.log(res.json());
       return res.json();

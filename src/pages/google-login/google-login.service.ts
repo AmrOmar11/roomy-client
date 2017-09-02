@@ -64,7 +64,7 @@ export class GoogleLoginService {
 
   doGoogleLogout()
   {
-    let env = this;
+    // let env = this;
     return new Promise((resolve, reject) => {
       this.googlePlus.logout()
       .then(function(response) {

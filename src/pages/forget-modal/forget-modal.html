@@ -6,19 +6,57 @@ Ionic pages and navigation.
 -->
 <ion-content padding>
     <img src="assets/img/forgotpassword_character.png">
-    <p text-center>
-        <b >Forgot your password?</b>
-    </p>
-    <p text-center>Enter you E-mail/Mobile and we'll send you a OTP to reset your password.</p>
-    <ion-input type="text" placeholder="Email / Mobile"></ion-input>
+    <form [formGroup]="mobileForm" [hidden]="hideMobileForm">
+        <p text-center>
+            <b >Forgot your password?</b>
+        </p>
+        <p text-center>Enter you E-mail/Mobile and we'll send you a OTP to reset your password.</p>
+        <ion-item [class.invalid]="!emailId.valid && password.touched">
+            <ion-label floating>E-mail/Mobile</ion-label>
+            <ion-input type="text" value="" [formControl]="emailId"></ion-input>
+        </ion-item>
 
-    <ion-row>
-        <ion-col>
-            <button ion-button outline full (click)="dismiss()">Cancel</button>
-        </ion-col>
-        <ion-col>
-            <button ion-button full (click)="reset()">Send OTP</button>
-        </ion-col>
-    </ion-row>
+        <ion-item *ngIf="emailId.hasError('required') && emailId.touched" class="invalid">
+            <p>* E-mail/Mobile is required!</p>
+        </ion-item>
+<!--         <ion-input type="text" placeholder="Email / Mobile" name="mobilenNumber" [(ngModel)]="resetData.mobilenNumber" ></ion-input>
+ -->
+        <ion-row>
+            <ion-col>
+                <button ion-button full (click)="dismiss()">Cancel</button>
+            </ion-col>
+            <ion-col>
+                <button ion-button full (click)="sendOTP()">Send OTP</button>
+            </ion-col>
+        </ion-row>
+    </form>
+    <form [formGroup]="resetForm" [hidden]="hideResetForm">
+        <ion-item [class.invalid]="!password.valid && password.touched">
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" value="" [formControl]="password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('required') && password.touched" class="invalid">
+            <p>* Password is required!</p>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('minlength') && password.touched" class="invalid">
+            <p>* Minimum password length is 3!</p>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('maxlength') && password.touched" class="invalid">
+            <p>* Maximum password length is 25!</p>
+        </ion-item>
+
+        <ion-item [class.invalid]="!re_password.valid && re_password.touched">
+            <ion-label floating>Re-enter Password</ion-label>
+            <ion-input type="password" value="" [formControl]="re_password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="re_password.hasError('pw_mismatch') && re_password.touched" class="invalid">
+            <p>* Passwords do not match!</p>
+        </ion-item>
+        <button ion-button block medium (click)="authenticate()" [disabled]="(!resetForm.valid)">Submit</button>
+    </form>
 </ion-content>
 

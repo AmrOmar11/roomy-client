@@ -1,10 +1,9 @@
 import { Component,Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { IonicPage, NavController, ModalController,LoadingController,AlertController,Loading,} from 'ionic-angular';
+import { IonicPage, NavController, LoadingController,AlertController,Loading,} from 'ionic-angular';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
 import { UsernameValidator } from  '../../validators/username';
-import { ForgetModalPage } from '../forget-modal/forget-modal';
 
 /**
  * Generated class for the LoginPage page.
@@ -30,8 +29,7 @@ export class LoginPage {
             private loadingCtrl: LoadingController,
             public facebookLoginService: FacebookLoginService,
             public googleLoginService: GoogleLoginService,
-            public formBuilder:  FormBuilder,
-            public modalCtrl: ModalController
+            public formBuilder:  FormBuilder
            ) {
         this.loginForm = this.formBuilder.group({
             username: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z0-9\.\@]+'), Validators.required,UsernameValidator.isValid]),''],
@@ -61,8 +59,7 @@ export class LoginPage {
     }
 
     forgetPassword(){
-        let modal = this.modalCtrl.create(ForgetModalPage);
-        modal.present();
+        this.navCtrl.push('ForgetModalPage');
     }
 
     doGoogleLogin() {

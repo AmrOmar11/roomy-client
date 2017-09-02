@@ -97,7 +97,7 @@ export class RegisterPage {
             message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number:'+inputData.result.contactNumber,
             inputs: [
                 {
-                    name: 'OTP',
+                    name: 'otp',
                     placeholder: 'OTP'
                 },
             ],
@@ -113,7 +113,7 @@ export class RegisterPage {
                     handler: data => {
                         this.showLoading();
                         this.signUpData.action ='OTP';
-                        this.signUpData.otp = data.OTP;
+                        this.signUpData.otp = data.otp;
                         this.signUpData.token = inputData.jwtToken;
                         this.signUpData.userId = inputData.result.userId;
                         this.authenticateUser(this.signUpData);
