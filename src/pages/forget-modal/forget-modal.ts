@@ -20,7 +20,7 @@ export class ForgetModalPage {
         action: "FORGOTPASSWORD",
         customerToken: '',
         emailId: '',
-        mobilenNumber: '',
+        mobileNumber: '',
         otp:0,
         password:""
     };
@@ -59,7 +59,7 @@ export class ForgetModalPage {
     sendOTP(){
         let mobileRegex = /^[0-9]+$/;
         if(this.emailId.value.match(mobileRegex)){
-            this.resetData.mobilenNumber = this.emailId.value;
+            this.resetData.mobileNumber = this.emailId.value;
         }else{
             this.resetData.emailId = this.emailId.value;
         }
@@ -123,7 +123,7 @@ export class ForgetModalPage {
 
     showOtpPoup(inputData){
         let confirm = this.alertCtrl.create({
-            message: 'Please enter OTP:'+inputData.result.otp+' sent to  Mobile Number:'+this.resetData.mobilenNumber,
+            message: 'Please enter OTP:'+inputData.result.otp+' sent to  Mobile Number:'+this.resetData.mobileNumber,
             inputs: [
                 {
                     name: 'otp',
@@ -157,6 +157,9 @@ export class ForgetModalPage {
     }
     
     showError(title, text) {
+        if(this.loading !== undefined){
+            this.loading.dismiss();
+        }
         let alert = this.alertCtrl.create({
             title: title,
             subTitle: text,
