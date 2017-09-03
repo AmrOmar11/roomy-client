@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { PasswordValidator } from  '../../validators/password';
 import { UsernameValidator } from  '../../validators/username';
-import { IonicPage, NavController, AlertController,LoadingController,Loading } from 'ionic-angular';
-import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import { AuthenticateProvider,UserRequest } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the ForgetModalPage page.
  *
@@ -16,26 +16,16 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
     templateUrl: 'forget-modal.html',
 })
 export class ForgetModalPage {
-    resetData = {
-        action: "FORGOTPASSWORD",
-        customerToken: '',
-        emailId: '',
-        mobileNumber: '',
-        otp:0,
-        password:""
-    };
     mobileForm: FormGroup;
     resetForm: FormGroup;
     emailId: any;
     password: AbstractControl;
     re_password: AbstractControl;
-    loading:Loading;
     hideMobileForm:boolean = false;
     hideResetForm:boolean = true;
     constructor( 
         private navCtrl: NavController, 
         private alertCtrl: AlertController,
-        private loadingCtrl: LoadingController,
         private authProvider: AuthenticateProvider,
         private formBuilder: FormBuilder) {        
         this.resetForm = formBuilder.group({
@@ -57,17 +47,18 @@ export class ForgetModalPage {
     }
 
     sendOTP(){
+        let inputData:UserRequest = new UserRequest();
+        inputData.action = "FORGETPASSWORD";
         let mobileRegex = /^[0-9]+$/;
         if(this.emailId.value.match(mobileRegex)){
-            this.resetData.mobileNumber = this.emailId.value;
+            inputData.contactNumber = this.emailId.value;
         }else{
-            this.resetData.emailId = this.emailId.value;
+            inputData.emailId = this.emailId.value;
         }
-        this.reset(this.resetData);
+        this.reset(inputData);
     }
 
     reset(inputData){
-        this.showLoading();
         this.authProvider.forgotPassword(inputData).subscribe(success => {
             if((success.status !== undefined)&&(success.status == '0001')) {
                 this.hideMobileForm = true;
@@ -75,55 +66,50 @@ export class ForgetModalPage {
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 this.showOtpPoup(success);
             }else if((success.status !== undefined)&&(success.status == '0013')) {
-                this.showError("error","User not found");
+                this.showError("User not found");
             }else if((success.status !== undefined)&&(success.status == '0007')) {
-                this.showError("error","OTP Does not match");
+                this.showError("OTP Does not match");
             }else if((success.status !== undefined)&&(success.status == '0008')) {
-                this.showError("error","OTP Expired");
+                this.showError("OTP Expired");
             }else {
-                this.showError("error",success.status);
+                this.showError(success.status);
             }
         },
         error => {
-            this.showError("error","Service Error");
+            this.showError("Service Error");
         });        
     }
     
     authenticate(){
-        let inputData = {
-            action: "SIGNIN",
-            contactNumber: '',
-            emailId: '',
-            loginType: "APP",
-            password: this.password.value,
-            token:""
-        };
+        let inputData:UserRequest = new UserRequest();
+        inputData.action = "SIGNIN";
+        inputData.loginType = "APP";
+        inputData.password = this.password.value;
         let mobileRegex = /^[0-9]+$/;
         if(this.emailId.value.match(mobileRegex)){
             inputData.contactNumber = this.emailId.value;
         }else{
             inputData.emailId = this.emailId.value;
         }
-        this.showLoading();
         this.authProvider.login(inputData).subscribe(success => {
             if((success.status !== undefined)&&(success.status == '0001')) {
                 this.authProvider.setCurrentUser(success);
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
             }else if((success.status !== undefined)&&(success.status == '0005')) {
-                this.showError('error','Invalid Credentials');
+                this.showError('Invalid Credentials');
             }else {
-                this.showError('error','error');
+                this.showError('error');
             }
         },
         error => {
-            this.showError('error','error');
+            this.showError(error);
         });
     }
 
     showOtpPoup(inputData){
         let confirm = this.alertCtrl.create({
-            message: 'Please enter OTP:'+inputData.result.otp+' sent to  Mobile Number:'+this.resetData.mobileNumber,
+            message: 'Please enter OTP:'+inputData.result.otp+' sent to  Mobile Number',
             inputs: [
                 {
                     name: 'otp',
@@ -137,10 +123,13 @@ export class ForgetModalPage {
                 {
                     text: 'Send',
                     handler: data => {
-                        this.resetData.action ='OTP';
-                        this.resetData.otp = data.otp;
-                        this.resetData.customerToken = inputData.jwtToken;
-                        this.reset(this.resetData);
+                        let reqData:UserRequest = new UserRequest();
+                        reqData.action = 'OTP';
+                        reqData.loginType = 'APP';
+                        reqData.otp = data.otp;
+                        reqData.customerToken = inputData.jwtToken;
+                        reqData.userId = inputData.result.userId;
+                        this.reset(reqData);
                     }
                 }
             ]
@@ -148,26 +137,14 @@ export class ForgetModalPage {
         confirm.present();
     }
     
-    showLoading() {
-        this.loading = this.loadingCtrl.create({
-            content: 'Please wait...',
-            dismissOnPageChange: true
-        });
-        this.loading.present();
-    }
-    
-    showError(title, text) {
-        if(this.loading !== undefined){
-            this.loading.dismiss();
-        }
+    showError(text) {
         let alert = this.alertCtrl.create({
-            title: title,
+            title: 'Error',
             subTitle: text,
             buttons: [
                 {
                     text: 'OK',
                     handler: data => {
-                        this.loading.dismiss();
                     }
                 }
             ]

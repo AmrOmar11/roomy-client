@@ -1,6 +1,5 @@
 import { Component, ViewChild} from '@angular/core';
-import { NavController, NavParams, LoadingController,Slides} from 'ionic-angular';
-import { HotelsProvider } from '../../providers/hotels/hotels';
+import { NavController, NavParams, Slides} from 'ionic-angular';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
 import { NgZone  } from '@angular/core';
@@ -24,9 +23,7 @@ export class HotelsliderPage {
     constructor(
         public navCtrl: NavController, 
         public navParams: NavParams,
-        public hotelsProvider: HotelsProvider,
         public authProvider: AuthenticateProvider,
-        public loadingController:LoadingController,
         public events: Events,
         public zone: NgZone) {
         events.subscribe('hotels:list', (hotelsList, location) => {
@@ -59,20 +56,13 @@ export class HotelsliderPage {
     }
 
     hotelDetailedInfo(hotelInfo){
-        let loader = this.loadingController.create({
-            content:"Fetching Hotel..."
-        });
-        loader.present().then(()=>{
-            let inputData = {
-              hotelId:hotelInfo.hotel_id,
-              token : this.authProvider.getUserInfo().customerToken
-            };
-            this.hotelsProvider.getHotelDetails(inputData).subscribe(data => {
-            // this.hotelsProvider.getHotelDetailedInfo().then(data => {
-                  loader.dismiss();
-                  this.navCtrl.push('HotelinfoPage',{"hotelInfo":data.result} );                  
-            });
-        });
+      let inputData = {
+        hotelId:hotelInfo.hotel_id,
+        customerToken : this.authProvider.getUserInfo().customerToken
+      };
+      this.authProvider.getHotelDetails(inputData).subscribe(data => {
+          this.navCtrl.push('HotelinfoPage',{"hotelInfo":data.result} );
+      });
     }
 
     getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {

@@ -12,7 +12,7 @@ import { RoomyApp } from './app.component';
 import { InvitePageModule } from '../pages/invite/invite.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AuthenticateProvider,HotelsProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
+import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { OneSignal } from '@ionic-native/onesignal';
 
@@ -60,7 +60,6 @@ const cloudSettings: CloudSettings = {
         Geolocation,
         SocialSharing,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        HotelsProvider,
         FacebookLoginService,
         GoogleLoginService,
         NativeStorage,

@@ -1,7 +1,7 @@
 import { Component,Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { IonicPage, NavController, LoadingController,AlertController,Loading,} from 'ionic-angular';
-import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+import { IonicPage, NavController,AlertController} from 'ionic-angular';
+import { AuthenticateProvider,UserRequest } from '../../providers/authenticate/authenticate';
 import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
 import { UsernameValidator } from  '../../validators/username';
 
@@ -19,14 +19,12 @@ import { UsernameValidator } from  '../../validators/username';
 })
 export class LoginPage {
 
-    loading:Loading;
     loginForm:FormGroup;
     submitAttempt:boolean=false;
     userCredentials = { emailId: '',mobileNumber: '',password:'' };
     constructor(public navCtrl: NavController,
             private authProvider: AuthenticateProvider, 
             private alertCtrl: AlertController, 
-            private loadingCtrl: LoadingController,
             public facebookLoginService: FacebookLoginService,
             public googleLoginService: GoogleLoginService,
             public formBuilder:  FormBuilder
@@ -38,7 +36,7 @@ export class LoginPage {
     }
 
     doFacebookLogin() {
-        this.showLoading();
+        this.authProvider.showLoading();
         let env = this;
         this.facebookLoginService.doFacebookLogin()
             .then(function(res){
@@ -63,7 +61,7 @@ export class LoginPage {
     }
 
     doGoogleLogin() {
-        this.showLoading();
+        this.authProvider.showLoading();
         let env = this;
         this.googleLoginService.doGoogleLogin()
             .then(function(res){
@@ -91,24 +89,20 @@ export class LoginPage {
         this.submitAttempt = true;
         if(this.loginForm.valid){
             let mobileRegex = /^[0-9]+$/;
-            let inputData = {
-                action: "SIGNIN",
-                contactNumber: '',
-                emailId: this.userCredentials.emailId,
-                loginType: "APP",
-                password: this.userCredentials.password,
-                token:""
-            };
+            let inputData:UserRequest = new UserRequest();
+            inputData.action = "SIGNIN";
+            inputData.emailId = this.userCredentials.emailId;
+            inputData.loginType = "APP";
+            inputData.password = this.userCredentials.password;
             if(inputData.emailId.match(mobileRegex)){
                 inputData.contactNumber = this.userCredentials.emailId;
                 inputData.emailId = '';
-            }            
+            }
             this.authenticate(inputData);
         }
     }
     
     authenticate(inputData){
-        this.showLoading();
         this.authProvider.login(inputData).subscribe(success => {
             if((success.status !== undefined)&&(success.status == '0001')) {
                 this.authProvider.setCurrentUser(success);
@@ -130,9 +124,6 @@ export class LoginPage {
     }
     
     collectMobile(inputData){
-        if(this.loading !== undefined){
-            this.loading.dismiss();
-        }
         let alert = this.alertCtrl.create({
             message: 'Please enter your Mobile Number:',
             inputs: [
@@ -156,9 +147,6 @@ export class LoginPage {
     }
 
     showOtpPoup(inputData,res){
-        if(this.loading !== undefined){
-            this.loading.dismiss();
-        }
         let alert = this.alertCtrl.create({
             message: 'Please enter OTP:'+res.result.otp+' sent to your Mobile Number:'+res.result.contactNumber,
             inputs: [
@@ -189,25 +177,17 @@ export class LoginPage {
         alert.present();
     }
 
-    showLoading() {
-        if(this.loading !== undefined){
-            this.loading.dismiss();
-        }
-        this.loading = this.loadingCtrl.create({
-            content: 'Please wait...',
-            dismissOnPageChange: true
-        });
-        this.loading.present();
-    }
-
     showError(text) {
-        if(this.loading !== undefined){
-            this.loading.dismiss();
-        }
         let alert = this.alertCtrl.create({
-            title: 'Fail',
+            title: 'Error',
             subTitle: text,
-            buttons: ['OK']
+            buttons: [
+                {
+                    text: 'OK',
+                    handler: data => {
+                    }
+                }
+            ]
         });
         alert.present(prompt);
     }

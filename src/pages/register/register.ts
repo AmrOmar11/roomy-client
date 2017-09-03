@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { IonicPage, NavController, AlertController,LoadingController,Loading } from 'ionic-angular';
-import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the RegisterPage page.
  *
@@ -15,31 +15,15 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
 })
 export class RegisterPage {
 
-    loading:Loading;
     signUpSuccess = false;
     signUpForm:FormGroup;
     signUpAttempt:boolean=false;
-    signUpData = {
-        action:'SIGNUP',
-        contactNumber: '',
-        dob: '',
-        emailId: '',
-        gender:'',
-        loginType: 'APP',
-        name: '',
-        lastName: '',
-        otp: 0,
-        password: '',
-        token: '',
-        userId: 0
-    };
-
+    
     constructor(
         private navCtrl: NavController, 
         private authProvider: AuthenticateProvider, 
         private alertCtrl: AlertController, 
-        public formBuilder: FormBuilder,
-        private loadingCtrl: LoadingController) {
+        public formBuilder: FormBuilder) {
         this.signUpForm = this.formBuilder.group({
             firstname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
             lastname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
@@ -59,42 +43,29 @@ export class RegisterPage {
     singUpSubmit() {
         this.signUpAttempt = true;
         if(this.signUpForm.valid){
-            this.showLoading();
-            console.log('singUpSubmit:req:'+this.signUpData);
-            this.signUpData.action = 'SIGNUP';
-            this.signUpData.otp = 0;
-            this.signUpData.userId = 0;
-            this.authProvider.login(this.signUpData).subscribe(success => {
+            let inputData:UserRequest = new UserRequest();
+            inputData.action = 'SIGNUP';
+            inputData.loginType = 'APP';
+            this.authProvider.login(inputData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
                     this.showOtpPoup(success);
                 }else if((success.status !== undefined)&&(success.status == '0002')){
-                    this.showPopup("Error", 'Mobile Numer already exis');
+                    this.showError('Mobile Numer already exis');
                 }else if((success.status !== undefined)&&(success.status == '0003')){
-                    this.showPopup("Error", 'Email ID already exit');
+                    this.showError('Email ID already exit');
                 } else {
-                    this.showPopup("Error", success.status);
+                    this.showError(success.status);
                 }
             },
             error => {
-                this.showPopup("Error", error);
+                this.showError(error);
             });
         }
     }
 
-    showLoading() {
-        this.loading = this.loadingCtrl.create({
-            content: 'Please wait...',
-            dismissOnPageChange: true
-        });
-        this.loading.present();
-    }
-
     showOtpPoup(inputData){
-        if(this.loading !== undefined){
-            this.loading.dismiss();
-        }
         let alert = this.alertCtrl.create({
-            message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number:'+inputData.result.contactNumber,
+            message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number',
             inputs: [
                 {
                     name: 'otp',
@@ -111,12 +82,13 @@ export class RegisterPage {
                 {
                     text: 'Done',
                     handler: data => {
-                        this.showLoading();
-                        this.signUpData.action ='OTP';
-                        this.signUpData.otp = data.otp;
-                        this.signUpData.token = inputData.jwtToken;
-                        this.signUpData.userId = inputData.result.userId;
-                        this.authenticateUser(this.signUpData);
+                        let reqData:UserRequest = new UserRequest();
+                        reqData.action = 'OTP';
+                        reqData.loginType = 'APP';
+                        reqData.otp = data.otp;
+                        reqData.customerToken = inputData.jwtToken;
+                        reqData.userId = inputData.result.userId;
+                        this.authenticateUser(reqData);
                     }
                 }
             ]
@@ -131,15 +103,15 @@ export class RegisterPage {
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
             }else if((success.status !== undefined)&&(success.status == '0007')){
-                this.showPopup("Error", 'OTP does not match');
+                this.showError('OTP does not match');
             }else if((success.status !== undefined)&&(success.status == '0008')){
-                this.showPopup("Error", 'OTP Expried');
+                this.showError('OTP Expried');
             }else{
-                this.showPopup("Error", success.status);
+                this.showError(success.status);
             }
         },
         error => {
-            this.showPopup("Error", error);
+            this.showError(error);
         });
     }
     
@@ -147,15 +119,14 @@ export class RegisterPage {
         this.navCtrl.push('PoliciesPage');
     }
 
-    showPopup(title, text) {
+    showError(text) {
         let alert = this.alertCtrl.create({
-            title: title,
+            title: 'Error',
             subTitle: text,
             buttons: [
                 {
                     text: 'OK',
                     handler: data => {
-                        this.loading.dismiss();
                     }
                 }
             ]

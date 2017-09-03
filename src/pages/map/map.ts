@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { IonicPage,ModalController} from 'ionic-angular';
 import { Geolocation,Geoposition } from '@ionic-native/geolocation';
-import { HotelsProvider } from '../../providers/hotels/hotels';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
 /**
@@ -45,7 +44,6 @@ export class MapPage implements OnInit{
 	constructor(
 		public geolocation: Geolocation,
 		public modalCtrl: ModalController,
-    public hotelsProvider: HotelsProvider,
     public authProvider: AuthenticateProvider,
     public events: Events) {
 	}
@@ -146,9 +144,9 @@ export class MapPage implements OnInit{
     let inputData = {
       user_Latitude:location.lat(),
       user_Longitude:location.lng(),
-      jwtToken : this.authProvider.getUserInfo().customerToken
+      customerToken : this.authProvider.getUserInfo().customerToken
     };
-    this.hotelsProvider.getHotels(inputData).subscribe(data => {
+    this.authProvider.getHotels(inputData).subscribe(data => {
       this.events.publish('hotels:list', data.result,this.userLocation);
       this.clearHotelMarkers();
       this.addHotelMarkers(data.result);

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
 import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
 /**
  * Generated class for the SettingsPage page.
@@ -42,27 +42,21 @@ export class SettingsPage {
   }
   
   logOut(){
-    let loader = this.loadingCtrl.create({
-      content: 'Please wait...',
-      dismissOnPageChange: true
-    });
-    loader.present();
-    var inputData = {
-      token: this.authProvider.getUserInfo().customerToken,
-      userId: this.authProvider.getUserInfo().userID
-    };
+    let inputData:UserRequest = new UserRequest();
+    inputData.action = 'LOGOUT';
+    inputData.loginType = 'APP';
+    inputData.customerToken = this.authProvider.getUserInfo().customerToken;
+    inputData.userId = this.authProvider.getUserInfo().userID;
     this.authProvider.logout(inputData).subscribe(success => {
       if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
           this.authProvider.removeUser();
           this.facebookLoginService.doFacebookLogout();
           this.googleLoginService.doGoogleLogout();
           this.navCtrl.setRoot('PreviewPage');
-      } else {
-          loader.dismiss();
       }
     },
     error => {
-       loader.dismiss();
+       
     });
   }
 
