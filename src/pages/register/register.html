@@ -18,13 +18,13 @@ Ionic pages and navigation.
                     <ion-col>
                         <ion-item no-padding>
                             <ion-label stacked>First Name</ion-label>
-                            <ion-input type="text" [class.invalid]= "!signUpForm.controls.firstname.valid && (signUpForm.controls.firstname.dirty || registerAttempt)" formControlName="firstname" name="firstname" [(ngModel)]="signUpData.name" ></ion-input>
+                            <ion-input type="text" [class.invalid]= "!signUpForm.controls.firstName.valid && (signUpForm.controls.firstName.dirty || registerAttempt)" formControlName="firstName" name="firstName" [(ngModel)]="signUpData.firstName" ></ion-input>
                         </ion-item>
                     </ion-col >
                     <ion-col>
                         <ion-item no-padding>
                             <ion-label stacked>Last Name</ion-label>
-                            <ion-input  type="text" [class.invalid]= "!signUpForm.controls.lastname.valid && (signUpForm.controls.lastname.dirty || registerAttempt)" formControlName="lastname" name="lastname" [(ngModel)]="signUpData.lastName"></ion-input>
+                            <ion-input  type="text" [class.invalid]= "!signUpForm.controls.lastName.valid && (signUpForm.controls.lastName.dirty || registerAttempt)" formControlName="lastName" name="lastName" [(ngModel)]="signUpData.lastName"></ion-input>
                         </ion-item>
                     </ion-col>
                 </ion-row>
@@ -32,16 +32,16 @@ Ionic pages and navigation.
                     <ion-col>
                         <ion-item no-padding>
                             <ion-label stacked>Mobile</ion-label>
-                            <ion-input type="text" [class.invalid]= "!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)"formControlName="mobile" name="mobile" [(ngModel)]="signUpData.contactNumber"></ion-input> 
+                            <ion-input type="text" [class.invalid]= "!signUpForm.controls.contactNumber.valid && (signUpForm.controls.contactNumber.dirty || registerAttempt)"formControlName="contactNumber" name="contactNumber" [(ngModel)]="signUpData.contactNumber"></ion-input> 
                         </ion-item>
-                        <ion-label *ngIf="!signUpForm.controls.mobile.valid && (signUpForm.controls.mobile.dirty || registerAttempt)">
+                        <ion-label *ngIf="!signUpForm.controls.contactNumber.valid && (signUpForm.controls.contactNumber.dirty || registerAttempt)">
                             <p>Please enter valid Mobile</p>
                         </ion-label>
                         <ion-item no-padding>
                             <ion-label stacked>Email Id</ion-label>
-                            <ion-input type="text"  [class.invalid]= "!signUpForm.controls.email.valid && (signUpForm.controls.email.dirty || registerAttempt)" formControlName="email" name="email" [(ngModel)]="signUpData.emailId"></ion-input> 
+                            <ion-input type="text"  [class.invalid]= "!signUpForm.controls.emailId.valid && (signUpForm.controls.emailId.dirty || registerAttempt)" formControlName="emailId" name="emailId" [(ngModel)]="signUpData.emailId"></ion-input> 
                         </ion-item >
-                        <ion-label *ngIf="!signUpForm.controls.email.valid && (signUpForm.controls.email.dirty || registerAttempt)">
+                        <ion-label *ngIf="!signUpForm.controls.emailId.valid && (signUpForm.controls.emailId.dirty || registerAttempt)">
                             <p>Please enter valid email</p>
                         </ion-label >
                         <ion-item no-padding>

@@ -18,17 +18,18 @@ export class RegisterPage {
     signUpSuccess = false;
     signUpForm:FormGroup;
     signUpAttempt:boolean=false;
-    
+    signUpData:UserRequest;
     constructor(
         private navCtrl: NavController, 
         private authProvider: AuthenticateProvider, 
         private alertCtrl: AlertController, 
         public formBuilder: FormBuilder) {
+        this.signUpData = new UserRequest();
         this.signUpForm = this.formBuilder.group({
-            firstname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
-            lastname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
-            mobile: ['',Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]+'), Validators.required]),''],
-            email: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'), Validators.required]),''],
+            firstName: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
+            lastName: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
+            contactNumber: ['',Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]+'), Validators.required]),''],
+            emailId: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'), Validators.required]),''],
             password: ['',Validators.compose([Validators.required]),''],
             gender: ['',Validators.compose([Validators.required]),''],
             dob: ['',Validators.compose([Validators.required]),'']
@@ -43,10 +44,9 @@ export class RegisterPage {
     singUpSubmit() {
         this.signUpAttempt = true;
         if(this.signUpForm.valid){
-            let inputData:UserRequest = new UserRequest();
-            inputData.action = 'SIGNUP';
-            inputData.loginType = 'APP';
-            this.authProvider.login(inputData).subscribe(success => {
+            this.signUpData.action = 'SIGNUP';
+            this.signUpData.loginType = 'APP';
+            this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
                     this.showOtpPoup(success);
                 }else if((success.status !== undefined)&&(success.status == '0002')){
@@ -82,13 +82,11 @@ export class RegisterPage {
                 {
                     text: 'Done',
                     handler: data => {
-                        let reqData:UserRequest = new UserRequest();
-                        reqData.action = 'OTP';
-                        reqData.loginType = 'APP';
-                        reqData.otp = data.otp;
-                        reqData.customerToken = inputData.jwtToken;
-                        reqData.userId = inputData.result.userId;
-                        this.authenticateUser(reqData);
+                        this.signUpData.action = 'OTP';
+                        this.signUpData.otp = data.otp;
+                        this.signUpData.customerToken = inputData.jwtToken;
+                        this.signUpData.userId = inputData.result.userId;
+                        this.authenticateUser(this.signUpData);
                     }
                 }
             ]

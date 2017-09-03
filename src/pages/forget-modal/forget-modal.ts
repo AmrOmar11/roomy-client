@@ -87,7 +87,7 @@ export class ForgetModalPage {
 
     changePassword(){
         let reqData:UserRequest = new UserRequest();
-        reqData.action = 'CHANGEPASSWORD';
+        reqData.action = 'FORGETPASSWORD';
         reqData.oldpassword = this.password.value;
         let mobileRegex = /^[0-9]+$/;
         if(this.emailId.value.match(mobileRegex)){
