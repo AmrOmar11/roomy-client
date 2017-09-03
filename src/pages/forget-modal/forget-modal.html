@@ -56,7 +56,7 @@ Ionic pages and navigation.
         <ion-item *ngIf="re_password.hasError('pw_mismatch') && re_password.touched" class="invalid">
             <p>* Passwords do not match!</p>
         </ion-item>
-        <button ion-button block medium (click)="authenticate()" [disabled]="(!resetForm.valid)">Submit</button>
+        <button ion-button block medium (click)="changePassword()" [disabled]="(!resetForm.valid)">Submit</button>
     </form>
 </ion-content>
 

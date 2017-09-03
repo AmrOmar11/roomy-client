@@ -40,16 +40,13 @@ export class LoginPage {
         let env = this;
         this.facebookLoginService.doFacebookLogin()
             .then(function(res){
-                env.authenticate({
-                    action: "SIGNIN",
-                    contactNumber:"",
-                    emailId: res.email,
-                    gender:res.gender,
-                    name: res.name,
-                    loginType: "FB",
-                    password:"",
-                    token:""
-                }); 
+                let inputData:UserRequest = new UserRequest();
+                inputData.action = "SIGNIN";
+                inputData.loginType = "FB";
+                inputData.emailId = res.email;
+                inputData.gender = res.gender;
+                inputData.firstName = res.name;
+                env.authenticate(inputData); 
         }, function(err){
             console.log("Facebook Login error", err);
             env.showError("Facebook Login error");
@@ -65,16 +62,12 @@ export class LoginPage {
         let env = this;
         this.googleLoginService.doGoogleLogin()
             .then(function(res){
-                env.authenticate({
-                    action: "SIGNIN",
-                    contactNumber:"",
-                    emailId: res.email,
-                    gender:'',
-                    name: res.displayName,
-                    loginType: "GMAIL",
-                    password:"",
-                    token:""
-                }); 
+                let inputData:UserRequest = new UserRequest();
+                inputData.action = "SIGNIN";
+                inputData.loginType = "GMAIL";
+                inputData.emailId = res.email;
+                inputData.firstName = res.givenName;
+                env.authenticate(inputData);
         }, function(err){
             console.log("Google Login error", err);
             env.showError("Google Login error");
@@ -137,7 +130,7 @@ export class LoginPage {
                     text: 'Done',
                     handler: data => {
                         inputData.action ='SIGNUP';
-                        inputData.contactNumber =data.mobile;
+                        inputData.contactNumber = data.mobile;
                         this.authenticate(inputData);
                     }
                 }

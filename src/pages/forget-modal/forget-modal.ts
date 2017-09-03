@@ -18,11 +18,12 @@ import { AuthenticateProvider,UserRequest } from '../../providers/authenticate/a
 export class ForgetModalPage {
     mobileForm: FormGroup;
     resetForm: FormGroup;
-    emailId: any;
+    emailId: AbstractControl;
     password: AbstractControl;
     re_password: AbstractControl;
     hideMobileForm:boolean = false;
     hideResetForm:boolean = true;
+    hideResetClicked:boolean = false;
     constructor( 
         private navCtrl: NavController, 
         private alertCtrl: AlertController,
@@ -48,7 +49,7 @@ export class ForgetModalPage {
 
     sendOTP(){
         let inputData:UserRequest = new UserRequest();
-        inputData.action = "FORGETPASSWORD";
+        inputData.action = 'FORGETPASSWORD';
         let mobileRegex = /^[0-9]+$/;
         if(this.emailId.value.match(mobileRegex)){
             inputData.contactNumber = this.emailId.value;
@@ -63,6 +64,10 @@ export class ForgetModalPage {
             if((success.status !== undefined)&&(success.status == '0001')) {
                 this.hideMobileForm = true;
                 this.hideResetForm = false;
+                let condition:any = true;
+                if(this.hideResetClicked === condition){
+                    this.authenticate();    
+                }                
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 this.showOtpPoup(success);
             }else if((success.status !== undefined)&&(success.status == '0013')) {
@@ -79,11 +84,26 @@ export class ForgetModalPage {
             this.showError("Service Error");
         });        
     }
-    
+
+    changePassword(){
+        let reqData:UserRequest = new UserRequest();
+        reqData.action = 'CHANGEPASSWORD';
+        reqData.oldpassword = this.password.value;
+        let mobileRegex = /^[0-9]+$/;
+        if(this.emailId.value.match(mobileRegex)){
+            reqData.contactNumber = this.emailId.value;
+        }else{
+            reqData.emailId = this.emailId.value;
+        }
+        this.hideResetForm  = true;
+        this.hideResetClicked = true;
+        this.reset(reqData);
+    }
+
     authenticate(){
         let inputData:UserRequest = new UserRequest();
-        inputData.action = "SIGNIN";
-        inputData.loginType = "APP";
+        inputData.action = 'SIGNIN';
+        inputData.loginType = 'APP';
         inputData.password = this.password.value;
         let mobileRegex = /^[0-9]+$/;
         if(this.emailId.value.match(mobileRegex)){

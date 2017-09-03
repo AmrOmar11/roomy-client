@@ -46,6 +46,8 @@ export class UserRequest {
   otp:number;
   password:string;
   userId:number;
+  newPassword: string;
+  oldpassword:string;
   constructor(){
     this.action = '';
     this.contactNumber = '';
@@ -59,6 +61,8 @@ export class UserRequest {
     this.otp = 0;
     this.password = '';
     this.userId = 0;
+    this.newPassword = '';
+    this.oldpassword = '';
   }
 }
  
