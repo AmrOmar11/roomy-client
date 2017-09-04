@@ -87,8 +87,8 @@ export class ForgetModalPage {
 
     changePassword(){
         let reqData:UserRequest = new UserRequest();
-        reqData.action = 'FORGETPASSWORD';
-        reqData.oldpassword = this.password.value;
+        reqData.action = 'SAVEPASSWORD';
+        reqData.newPassword = this.password.value;
         let mobileRegex = /^[0-9]+$/;
         if(this.emailId.value.match(mobileRegex)){
             reqData.contactNumber = this.emailId.value;
@@ -145,7 +145,6 @@ export class ForgetModalPage {
                     handler: data => {
                         let reqData:UserRequest = new UserRequest();
                         reqData.action = 'OTP';
-                        reqData.loginType = 'APP';
                         reqData.otp = data.otp;
                         reqData.customerToken = inputData.jwtToken;
                         reqData.userId = inputData.result.userId;
