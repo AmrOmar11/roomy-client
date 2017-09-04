@@ -17,14 +17,14 @@
     <!-- <ion-slides (ionSlideDidChange)="slideChanged($event)" > -->
     <ion-slides pager="true" loop="true" effect="coverflow" direction="vertical"  (ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
-	      <div [ngClass]="hotel.isAviablity ? '':'hotelStatus'" class="hotelStatusStatic">{{hotel.hotel_description}}</div>	
-	      <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotel_pic_path + ')'}" (click)="hotelDetailedInfo(hotel)">
+	      <div [ngClass]="hotel.isAviablity ? '':'hotelStatus'" class="hotelStatusStatic">{{hotel.hoteldescription}}</div>	
+	      <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotelpicPath + ')'}" (click)="hotelDetailedInfo(hotel)">
 	      	<div class="SliderBlackOverlay"></div>
 			<div class="sliderContent">
-		      	<div class="HotelName">{{hotel.hotel_name}}</div>
-		      	<div class="HotelAddress"><span>{{hotel.hotel_Location+', '}}</span><span>{{hotel.hotel_City+', '}}</span><span>{{hotel.hotel_State}}</span></div>
+		      	<div class="HotelName">{{hotel.hotelname}}</div>
+		      	<div class="HotelAddress"><span>{{hotel.hotelLocation+', '}}</span><span>{{hotel.hotelCity+', '}}</span><span>{{hotel.hotelState}}</span></div>
 		      	<div class="HotelDetails">
-		      		<div class="HotelCategory"><span class="hotel-category-child">{{hotel.hotel_type}}</span></div>
+		      		<div class="HotelCategory"><span class="hotel-category-child">{{hotel.hotelType}}</span></div>
 		      		<div class="HotelFare">
 		      			<div class="HotelMinCost"><span>{{hotel.pricePerMin}} </span><span class="farecurrency">{{hotel.currencyType}}</span><span class="minumum"> MINIMUM</span></div>
 		      		</div>
