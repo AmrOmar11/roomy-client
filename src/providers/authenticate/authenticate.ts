@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http,Headers,RequestOptions } from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage';
 import 'rxjs/Rx';
-
+import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
 /*
   Generated class for the AuthenticateProvider provider.
 
@@ -75,7 +75,9 @@ export class AuthenticateProvider {
     public platform: Platform,
     public http: Http,
     private nativeStorage: NativeStorage,
-    private loadingCtrl: LoadingController) {
+    private loadingCtrl: LoadingController,
+    public facebookLoginService: FacebookLoginService,
+    public googleLoginService: GoogleLoginService) {
       
     }
   
@@ -157,7 +159,11 @@ export class AuthenticateProvider {
   }
 
   public removeUser(){
-    this.nativeStorage.remove('userdata');
+    if(this.platform.is('cordova')){
+      this.nativeStorage.remove('userdata');
+      this.facebookLoginService.doFacebookLogout();
+      this.googleLoginService.doGoogleLogout();          
+    }
   }
   
   public updateProfile(data){

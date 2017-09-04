@@ -57,7 +57,7 @@ export class HotelsliderPage {
 
     hotelDetailedInfo(hotelInfo){
       let inputData = {
-        hotelId:hotelInfo.hotel_id,
+        hotelId:hotelInfo.hotelId,
         customerToken : this.authProvider.getUserInfo().customerToken
       };
       this.authProvider.getHotelDetails(inputData).subscribe(data => {

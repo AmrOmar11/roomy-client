@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
 import { InvitePage } from '../invite/invite';
-import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
 /**
  * Generated class for the HomePage page.
  *
@@ -19,9 +18,7 @@ export class HomePage {
 constructor(
     public navCtrl: NavController, 
     public authProvider: AuthenticateProvider,
-    public modalCtrl: ModalController,
-    public facebookLoginService: FacebookLoginService,
-    public googleLoginService: GoogleLoginService) {
+    public modalCtrl: ModalController) {
         this.userInfo = this.authProvider.getUserInfo();
     }
     
@@ -59,8 +56,6 @@ constructor(
         this.authProvider.logout(inputData).subscribe(success => {
           if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
               this.authProvider.removeUser();
-              this.facebookLoginService.doFacebookLogout();
-              this.googleLoginService.doGoogleLogout();
               this.navCtrl.setRoot('PreviewPage');
           }
         },
