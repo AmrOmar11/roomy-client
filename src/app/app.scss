@@ -55,15 +55,15 @@ a {
 
 @font-face {
     font-family: Opensans;
-    src: url('../assets/fonts/OpenSans-Regular.tff');
+    src: url('/assets/fonts/OpenSans-Regular.ttf') format('tff');
 }
 @font-face {
     font-family: Opensans-Bold;
-    src: url('../assets/fonts/OpenSans-Bold.tff') format('tff');
+    src: url('/assets/fonts/OpenSans-Bold.ttf') format('ttf');
 }
 @font-face {
     font-family: Opensans-Light;
-    src: url('../assets/fonts/OpenSans-Light.tff') format('tff');
+    src: url('/assets/fonts/OpenSans-Light.ttf') format('ttf');
 }
 
 * {
