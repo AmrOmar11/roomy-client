@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform,AlertController} from 'ionic-angular';
 import { LoadingController,Loading} from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Http,Headers,RequestOptions } from '@angular/http';
@@ -72,12 +72,13 @@ export class AuthenticateProvider {
   loading:Loading;
 
   constructor(
-    public platform: Platform,
-    public http: Http,
+    private platform: Platform,
+    private http: Http,
     private nativeStorage: NativeStorage,
     private loadingCtrl: LoadingController,
-    public facebookLoginService: FacebookLoginService,
-    public googleLoginService: GoogleLoginService) {
+    private alertCtrl: AlertController, 
+    private facebookLoginService: FacebookLoginService,
+    private googleLoginService: GoogleLoginService) {
       
     }
   
@@ -225,6 +226,21 @@ export class AuthenticateProvider {
     return Observable.throw(error.json().error || 'Server error');
   }
 
+  public showError(text) {
+    let alert = this.alertCtrl.create({
+        title: 'Error',
+        message: text,
+        buttons: [
+            {
+                text: 'OK',
+                handler: data => {
+                }
+            }
+        ]
+    });
+    alert.present(prompt);
+  }
+  
   public showLoading(inputData:string='Please wait...') {
     this.loading = this.loadingCtrl.create({
         content: inputData,

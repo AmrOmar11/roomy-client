@@ -50,7 +50,7 @@ export class LoginPage {
         }, function(err){
             this.authProvider.hideLoading();
             console.log("Facebook Login error", err);
-            env.showError("Facebook Login error");
+            env.authProvider.showError("Facebook Login error");
         });
     }
 
@@ -72,7 +72,7 @@ export class LoginPage {
         }, function(err){
             this.authProvider.hideLoading();
             console.log("Google Login error", err);
-            env.showError("Google Login error");
+            env.authProvider.showError("Google Login error");
         });
     }
 
@@ -104,18 +104,18 @@ export class LoginPage {
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
             }else if((success.status !== undefined)&&(success.status == '0005')) {
-                this.showError('Invalid Credentials');
+                this.authProvider.showError('Invalid Credentials');
             }else if((success.status !== undefined)&&(success.status == '0013')) {
                 //this.collectMobile(inputData);
                 this.navCtrl.push('VerifyNumberPage',{'inputData':inputData});
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 this.showOtpPoup(inputData,success);
             }else {
-                this.showError(success.status);
+                this.authProvider.showError(success.status);
             }
         },
         error => {
-            this.showError(error);
+            this.authProvider.showError(error);
         });
     }
     
@@ -171,21 +171,6 @@ export class LoginPage {
             ]
         });
         alert.present();
-    }
-
-    showError(text) {
-        let alert = this.alertCtrl.create({
-            title: 'Error',
-            subTitle: text,
-            buttons: [
-                {
-                    text: 'OK',
-                    handler: data => {
-                    }
-                }
-            ]
-        });
-        alert.present(prompt);
     }
 
 }

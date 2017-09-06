@@ -71,17 +71,17 @@ export class ForgotPasswordPage {
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 this.showOtpPoup(success);
             }else if((success.status !== undefined)&&(success.status == '0013')) {
-                this.showError("User not found");
+                this.authProvider.showError("User not found");
             }else if((success.status !== undefined)&&(success.status == '0007')) {
-                this.showError("OTP Does not match");
+                this.authProvider.showError("OTP Does not match");
             }else if((success.status !== undefined)&&(success.status == '0008')) {
-                this.showError("OTP Expired");
+                this.authProvider.showError("OTP Expired");
             }else {
-                this.showError(success.status);
+                this.authProvider.showError(success.status);
             }
         },
         error => {
-            this.showError("Service Error");
+            this.authProvider.showError("Service Error");
         });        
     }
 
@@ -117,13 +117,13 @@ export class ForgotPasswordPage {
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
             }else if((success.status !== undefined)&&(success.status == '0005')) {
-                this.showError('Invalid Credentials');
+                this.authProvider.showError('Invalid Credentials');
             }else {
-                this.showError('error');
+                this.authProvider.showError('error');
             }
         },
         error => {
-            this.showError(error);
+            this.authProvider.showError(error);
         });
     }
 
@@ -154,20 +154,5 @@ export class ForgotPasswordPage {
             ]
         });
         confirm.present();
-    }
-    
-    showError(text) {
-        let alert = this.alertCtrl.create({
-            title: 'Error',
-            subTitle: text,
-            buttons: [
-                {
-                    text: 'OK',
-                    handler: data => {
-                    }
-                }
-            ]
-        });
-        alert.present();
     }
 }

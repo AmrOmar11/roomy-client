@@ -50,15 +50,15 @@ export class RegisterPage {
                 if((success.status !== undefined)&&(success.status == '0009')) {
                     this.showOtpPoup(success);
                 }else if((success.status !== undefined)&&(success.status == '0002')){
-                    this.showError('Mobile Numer already exis');
+                    this.authProvider.showError('Mobile Numer already exis');
                 }else if((success.status !== undefined)&&(success.status == '0003')){
-                    this.showError('Email ID already exit');
+                    this.authProvider.showError('Email ID already exit');
                 } else {
-                    this.showError(success.status);
+                    this.authProvider.showError(success.status);
                 }
             },
             error => {
-                this.showError(error);
+                this.authProvider.showError(error);
             });
         }
     }
@@ -101,35 +101,20 @@ export class RegisterPage {
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
             }else if((success.status !== undefined)&&(success.status == '0007')){
-                this.showError('OTP does not match');
+                this.authProvider.showError('OTP does not match');
             }else if((success.status !== undefined)&&(success.status == '0008')){
-                this.showError('OTP Expried');
+                this.authProvider.showError('OTP Expried');
             }else{
-                this.showError(success.status);
+                this.authProvider.showError(success.status);
             }
         },
         error => {
-            this.showError(error);
+            this.authProvider.showError(error);
         });
     }
     
     openTerms() {
         this.navCtrl.push('PoliciesPage');
     }
-
-    showError(text) {
-        let alert = this.alertCtrl.create({
-            title: 'Error',
-            subTitle: text,
-            buttons: [
-                {
-                    text: 'OK',
-                    handler: data => {
-                    }
-                }
-            ]
-        });
-        alert.present();
-    }
-
+    
 }
