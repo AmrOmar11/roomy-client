@@ -14,23 +14,23 @@
 
 
 <ion-content padding>
-	<div id="VerifyMobileContainer" [hidden]="showOtpPoup === 'true'">
+	<div id="VerifyMobileContainer" [hidden]="hideMobilePopUp">
 		<div class="otpImage">
 			<img src="assets/img/verify-number/OTP.png">
 		</div>
 		<div class="input-group">
   			<div class="input-group-addon">+91</div>
-			<ion-input type="tel" minlength="10" maxlength="10" [(ngModel)]="MobileNumber" placeholder="Your Mobile Number"></ion-input>
+			<ion-input type="tel" minlength="10" maxlength="10" [(ngModel)]="inputData.contactNumber" placeholder="Your Mobile Number"></ion-input>
 		</div>
 		<div class="otpInfo"><span>We will send you One-Time-Password (OTP) via SMS. Please enter OTP in next step.</span></div>
 		<ion-row>
             <ion-col full bstyle="text-align: center;">
-                <button ion-button class="pobyt-button" (click)="GenerateOTP()">Next
+                <button ion-button class="pobyt-button" (click)="generateOtp()">Next
                 </button>
             </ion-col>
         </ion-row>
 	</div>
-	<div id="VerifyOTPContainer" [hidden]="showOtpPoup === 'false'">
+	<div id="VerifyOTPContainer" [hidden]="hideOtpPopUp">
 		<div class="otpImage">
 			<img src="assets/img/verify-number/OTP.png">
 		</div>
@@ -66,11 +66,11 @@
 		</div>
 		<ion-row>
             <ion-col full bstyle="text-align: center;">
-                <button ion-button class="pobyt-button" (click)="GenerateOTP()">Resend
+                <button ion-button class="pobyt-button" (click)="generateOtp()">Resend
                 </button>
             </ion-col>
             <ion-col full bstyle="text-align: center;">
-                <button ion-button class="pobyt-button" (click)="SubmitOTP()">Submit
+                <button ion-button class="pobyt-button" (click)="submitOtp()">Submit
                 </button>
             </ion-col>
         </ion-row>

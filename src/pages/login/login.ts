@@ -1,6 +1,6 @@
 import { Component,Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { IonicPage, NavController,AlertController} from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 import { AuthenticateProvider,UserRequest } from '../../providers/authenticate/authenticate';
 import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
 import { UsernameValidator } from  '../../validators/username';
@@ -24,7 +24,6 @@ export class LoginPage {
     userCredentials = { emailId: '',mobileNumber: '',password:'' };
     constructor(public navCtrl: NavController,
             private authProvider: AuthenticateProvider, 
-            private alertCtrl: AlertController, 
             public facebookLoginService: FacebookLoginService,
             public googleLoginService: GoogleLoginService,
             public formBuilder:  FormBuilder
@@ -106,10 +105,13 @@ export class LoginPage {
             }else if((success.status !== undefined)&&(success.status == '0005')) {
                 this.authProvider.showError('Invalid Credentials');
             }else if((success.status !== undefined)&&(success.status == '0013')) {
-                //this.collectMobile(inputData);
-                this.navCtrl.push('VerifyNumberPage',{'inputData':inputData});
+                inputData.action ='SIGNUP';
+                this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'mobile'});
             }else if((success.status !== undefined)&&(success.status == '0009')) {
-                this.showOtpPoup(inputData,success);
+                inputData.action ='OTP';
+                inputData.token = success.jwtToken;
+                inputData.userId = success.result.userId;
+                this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'otp'});
             }else {
                 this.authProvider.showError(success.status);
             }
@@ -118,59 +120,4 @@ export class LoginPage {
             this.authProvider.showError(error);
         });
     }
-    
-    collectMobile(inputData){
-        let alert = this.alertCtrl.create({
-            message: 'Please enter your Mobile Number:',
-            inputs: [
-                {
-                    name: 'mobile',
-                    placeholder: 'mobile'
-                },
-            ],
-            buttons: [
-                {
-                    text: 'Done',
-                    handler: data => {
-                        inputData.action ='SIGNUP';
-                        inputData.contactNumber = data.mobile;
-                        this.authenticate(inputData);
-                    }
-                }
-            ]
-        });
-        alert.present();
-    }
-
-    showOtpPoup(inputData,res){
-        let alert = this.alertCtrl.create({
-            message: 'Please enter OTP:'+res.result.otp+' sent to your Mobile Number:'+res.result.contactNumber,
-            inputs: [
-                {
-                    name: 'OTP',
-                    placeholder: 'OTP'
-                },
-            ],
-            buttons: [
-                {
-                    text: 'ReSend OTP?',
-                    handler: data => {
-                        console.log('ReSend clicked');
-                    }
-                },
-                {
-                    text: 'Done',
-                    handler: data => {
-                        inputData.action ='OTP';
-                        inputData.otp = data.OTP;
-                        inputData.token = res.jwtToken;
-                        inputData.userId = res.result.userId;
-                        this.authenticate(inputData);
-                    }
-                }
-            ]
-        });
-        alert.present();
-    }
-
 }

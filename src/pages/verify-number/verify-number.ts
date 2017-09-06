@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
 
 /**
  * Generated class for the VerifyNumberPage page.
@@ -14,58 +14,61 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
   templateUrl: 'verify-number.html',
 })
 export class VerifyNumberPage {
-  public inputData:any={};
-  public MobileNumber:any;
-  public showOtpPoup:any = "true";
+  public inputData:UserRequest;
+  public hideMobilePopUp:boolean = true;
+  public hideOtpPopUp:boolean = true;
   public HiddenMobNum:any = '';
-  public OTPresponse:any={};
-  items = ['','','','','',''];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthenticateProvider) {
-    this.inputData = this.navParams.get("inputData");  
+  public items = ['','','','','',''];
 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthenticateProvider) {
+    this.inputData = this.navParams.get("inputData");
+    let screen = this.navParams.get("screen");
+    if(screen == 'mobile'){
+      this.hideMobilePopUp = false;
+    }else if(screen == 'otp'){
+      this.hideOtpPopUp = false;
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VerifyNumberPage');
-    //Test Data.
-    // this.HideMobCharacter('9711223344');
-    // this.OTPresponse.jwtToken = "1234567890";
-    // this.OTPresponse.result = {};
-    // this.OTPresponse.result.userId = "1234567";
   }
 
-  GenerateOTP(){
-	this.inputData.action ='SIGNUP';
-    this.inputData.contactNumber = this.MobileNumber;
+  public generateOtp(){
     this.authProvider.login(this.inputData).subscribe(success => {
     	if((success.status !== undefined)&&(success.status == '0009')) {
-                this.showOtpPoup = "true";
-                this.OTPresponse = success;
-                this.HideMobCharacter(this.MobileNumber);
-            }else {
-                alert(success.status);
-            }
+          this.hideMobilePopUp = true;
+          this.hideOtpPopUp = false;
+          this.inputData.action ='OTP';
+          this.inputData.customerToken = success.jwtToken;
+          this.inputData.userId = success.result.userId;
+          this.hideMobCharacter(this.inputData.contactNumber);
+        }else {
+            this.authProvider.showError(success.status);
+        }
+    },
+    error => {
+        this.authProvider.showError(error);
     });
   }
 
-  SubmitOTP(){
-  	this.inputData = {};
+  public submitOtp(){
   	var OTP='';
   	for(var item in this.items){
   		OTP = OTP + this.items[item];
   	}
-  	this.inputData.action ='OTP';
-    this.inputData.otp = parseInt(OTP);
-    this.inputData.token = this.OTPresponse.jwtToken;
-    this.inputData.userId = this.OTPresponse.result.userId;
+  	this.inputData.otp = parseInt(OTP);
     this.authProvider.login(this.inputData).subscribe(success => {
     	if((success.status !== undefined)&&(success.status == '0001')) {
             this.authProvider.setCurrentUser(success);
             this.authProvider.setUserData(success);
             this.navCtrl.setRoot('HomePage');
-        }else{
-        	alert(success.status);
+        }else {
+            this.authProvider.showError(success.status);
         }
+    },
+    error => {
+        this.authProvider.showError(error);
     });
   }
 
@@ -73,16 +76,18 @@ export class VerifyNumberPage {
   next(el) {
     el.setFocus();
   }
-  HideMobCharacter(MobileNumber){
+
+  hideMobCharacter(MobileNumber){
   	var i;
   	MobileNumber = MobileNumber.split('');
   	for(i=0; i<10;i++){
 	    for(i=0; i<10;i++){
-		    if(i==0||i==8||i==9)
-				this.HiddenMobNum= this.HiddenMobNum+MobileNumber[i];
-			else
-				this.HiddenMobNum= this.HiddenMobNum+'x';
-		}
-	}
+		    if(i==0||i==8||i==9){
+          this.HiddenMobNum= this.HiddenMobNum+MobileNumber[i];
+        }else{
+          this.HiddenMobNum= this.HiddenMobNum+'x';
+        }
+		  }
+	  }
   }
 }

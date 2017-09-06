@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the RegisterPage page.
@@ -22,7 +22,6 @@ export class RegisterPage {
     constructor(
         private navCtrl: NavController, 
         private authProvider: AuthenticateProvider, 
-        private alertCtrl: AlertController, 
         public formBuilder: FormBuilder) {
         this.signUpData = new UserRequest();
         this.signUpForm = this.formBuilder.group({
@@ -48,7 +47,10 @@ export class RegisterPage {
             this.signUpData.loginType = 'APP';
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
-                    this.showOtpPoup(success);
+                    this.signUpData.action ='OTP';
+                    this.signUpData.customerToken = success.jwtToken;
+                    this.signUpData.userId = success.result.userId;
+                    this.navCtrl.push('VerifyNumberPage',{'inputData':this.signUpData,'screen':'otp'});
                 }else if((success.status !== undefined)&&(success.status == '0002')){
                     this.authProvider.showError('Mobile Numer already exis');
                 }else if((success.status !== undefined)&&(success.status == '0003')){
@@ -61,37 +63,6 @@ export class RegisterPage {
                 this.authProvider.showError(error);
             });
         }
-    }
-
-    showOtpPoup(inputData){
-        let alert = this.alertCtrl.create({
-            message: 'Please enter OTP:'+inputData.result.otp+' sent to your Mobile Number',
-            inputs: [
-                {
-                    name: 'otp',
-                    placeholder: 'OTP'
-                },
-            ],
-            buttons: [
-                {
-                    text: 'ReSend OTP?',
-                    handler: data => {
-                        console.log('ReSend clicked');
-                    }
-                },
-                {
-                    text: 'Done',
-                    handler: data => {
-                        this.signUpData.action = 'OTP';
-                        this.signUpData.otp = data.otp;
-                        this.signUpData.customerToken = inputData.jwtToken;
-                        this.signUpData.userId = inputData.result.userId;
-                        this.authenticateUser(this.signUpData);
-                    }
-                }
-            ]
-        });
-        alert.present();
     }
 
     authenticateUser(inputData){
