@@ -1,22 +1,28 @@
 page-verify-number {
+	ion-header{
+        background: rgba(0,0,0,0);
+    }
+    .toolbar-background{
+    	background: transparent !important;
+    	border: none !important;
+    }
     ion-title .toolbar-title{
     	color:#727272 !important;
     }
 	ion-input{
-		border: 2px solid #D8D8D8;
-    	border-radius: 7px;
     	color:#777373;
-    	width: 85%;
+    	float:left;
+    	width: 80%;
     	margin: 0 auto;
-    	margin-bottom: 15px;
     	input{
+    		margin: 5px 8px 5px 0 !important;
     		margin-left: 4px !important;
-    		font-size: 30px;
+    		font-size: 3.5vmax;
     		text-align:center;
     		letter-spacing: 3px;
     	}
     	input::placeholder {
-    		font-size: 25px !important;
+    		font-size: 3.2vmax !important;
     		letter-spacing: 0px;
     	}
 	}
@@ -37,5 +43,26 @@ page-verify-number {
 	
 	.pobyt-button{
 	    width: 50%;
+	}
+	.input-group{
+		border: 2px solid #D8D8D8;
+	    border-radius: 7px;
+	    margin: 25px auto;
+	    height:45px;
+	    width: 85%;
+	}
+	.input-group-addon
+	{
+	    background-color: transparent;
+	    font-size: 3.5vmax;
+	    color: #777373;
+	    padding: 5px;
+	    border-right: 1px solid #dbd9d9;
+	    width:20%;
+	    float:left;
+	}
+	.input-group .input-group-addon + .form-control
+	{
+	    border-left:none;
 	}
 }

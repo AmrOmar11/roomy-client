@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>VERIFY NUMBER</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,9 +16,12 @@
 <ion-content padding>
 	<div id="VerifyMobileContainer" [hidden]="showOtpPoup === 'true'">
 		<div class="otpImage">
-			<img src="assets/img/forgotpassword_character.png">
+			<img src="assets/img/verify-number/OTP.png">
 		</div>
-		<ion-input type="tel" minlength="10" maxlength="10" [(ngModel)]="MobileNumber" placeholder="Your Mobile Number"></ion-input>
+		<div class="input-group">
+  			<div class="input-group-addon">+91</div>
+			<ion-input type="tel" minlength="10" maxlength="10" [(ngModel)]="MobileNumber" placeholder="Your Mobile Number"></ion-input>
+		</div>
 		<div class="otpInfo"><span>We will send you One-Time-Password (OTP) via SMS. Please enter OTP in next step.</span></div>
 		<ion-row>
             <ion-col full bstyle="text-align: center;">
