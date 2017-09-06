@@ -5,17 +5,17 @@ import { UsernameValidator } from  '../../validators/username';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { AuthenticateProvider,UserRequest } from '../../providers/authenticate/authenticate';
 /**
- * Generated class for the ForgetModalPage page.
+ * Generated class for the ForgotPasswordPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-    selector: 'page-forget-modal',
-    templateUrl: 'forget-modal.html',
+    selector: 'page-forgot-password',
+    templateUrl: 'forgot-password.html',
 })
-export class ForgetModalPage {
+export class ForgotPasswordPage {
     mobileForm: FormGroup;
     resetForm: FormGroup;
     emailId: AbstractControl;

@@ -73,50 +73,13 @@ export class MapPage implements OnInit{
     this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);		
     let mapStyles =[
       {
-          "featureType": "poi.business",
-          "elementType": "labels.text",
-          "stylers": [
-              {
-                  "visibility": "off"
-              }
-          ]
-      },
-      {
-          "featureType": "poi.business",
-          "elementType": "labels.icon",
-          "stylers": [
-              {
-                  "visibility": "off"
-              }
-          ]
-      },
-      {
-          "featureType": "poi.place_of_worship",
-          "elementType": "labels.text",
-          "stylers": [
-              {
-                  "visibility": "off"
-              }
-          ]
-      },
-      {
-          "featureType": "poi.place_of_worship",
-          "elementType": "labels.icon",
-          "stylers": [
-              {
-                  "visibility": "off"
-              }
-          ]
-      },
-      {
-          "featureType": "road.highway",
-          "elementType": "labels.icon",
-          "stylers": [
-              {
-                  "visibility": "off"
-              }
-          ]
-      }
+        "featureType": "poi",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }      
     ];
     let mapOptions = {
       center: this.userLocation,

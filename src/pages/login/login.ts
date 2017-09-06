@@ -55,7 +55,7 @@ export class LoginPage {
     }
 
     forgetPassword(){
-        this.navCtrl.push('ForgetModalPage');
+        this.navCtrl.push('ForgotPasswordPage');
     }
 
     doGoogleLogin() {
