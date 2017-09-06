@@ -65,4 +65,29 @@ page-verify-number {
 	{
 	    border-left:none;
 	}
+
+
+
+
+
+	#VerifyOTPContainer{
+		ion-row{
+			margin: 15px auto;
+		}
+		ion-col ion-input{
+			border: 1.5px solid #d3d1d1;
+    		border-radius: 4px;			
+		}
+		.otpInfo{
+			text-align: center;
+		    font-size: 12px;
+		    color: #6f6d6d;
+		    .verify{
+		    	font-weight: bold;
+		    }
+		}
+		.pobyt-button{
+			width: 100%;
+		}
+	}
 }

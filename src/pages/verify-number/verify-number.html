@@ -31,6 +31,48 @@
         </ion-row>
 	</div>
 	<div id="VerifyOTPContainer" [hidden]="showOtpPoup === 'false'">
-		Test Stuff
+		<div class="otpImage">
+			<img src="assets/img/verify-number/OTP.png">
+		</div>
+		<ion-row>
+			<ion-col full bstyle="text-align: center;">
+		        <ion-input type="text" #otp1 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[0]" (keyup)="next(otp2)">
+		        </ion-input>
+		    </ion-col>
+		    <ion-col full bstyle="text-align: center;">
+		        <ion-input type="text" #otp2 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[1]" (keyup)="next(otp3)">
+		        </ion-input>
+		    </ion-col>
+		    <ion-col full bstyle="text-align: center;">
+		        <ion-input type="text" #otp3 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[2]" (keyup)="next(otp4)">
+		        </ion-input>
+		    </ion-col>
+		    <ion-col full bstyle="text-align: center;">
+		        <ion-input type="text" #otp4 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[3]" (keyup)="next(otp5)">
+		        </ion-input>
+		    </ion-col>
+		    <ion-col full bstyle="text-align: center;">
+		        <ion-input type="text" #otp5 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[4]" (keyup)="next(otp6)">
+		        </ion-input>
+		    </ion-col>
+			<ion-col full bstyle="text-align: center;">
+		        <ion-input type="text" #otp6 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[5]">
+		        </ion-input>
+		    </ion-col>
+		</ion-row>
+		<div class="otpInfo">
+			<div class="verify">Verify OTP</div>
+			<div class="verifyInfo">Please enter 4 digit OTP sent to +91 {{HiddenMobNum}}</div>
+		</div>
+		<ion-row>
+            <ion-col full bstyle="text-align: center;">
+                <button ion-button class="pobyt-button" (click)="GenerateOTP()">Resend
+                </button>
+            </ion-col>
+            <ion-col full bstyle="text-align: center;">
+                <button ion-button class="pobyt-button" (click)="SubmitOTP()">Submit
+                </button>
+            </ion-col>
+        </ion-row>
 	</div>
 </ion-content>
