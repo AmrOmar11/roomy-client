@@ -2,10 +2,14 @@ page-home {
    .menu-header{
         text-align:center;
         font-size:initial;
+
+    }
+    ion-header{
+        background: rgba(0,0,0,0.5);
     }
     .bar-buttons,
     .toolbar-title {
-        color: #333333;
+        color: #ffffff;
       }
     .content .fixed-content{
         margin-top: 0px !important;

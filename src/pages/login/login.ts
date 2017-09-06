@@ -106,7 +106,8 @@ export class LoginPage {
             }else if((success.status !== undefined)&&(success.status == '0005')) {
                 this.showError('Invalid Credentials');
             }else if((success.status !== undefined)&&(success.status == '0013')) {
-                this.collectMobile(inputData);
+                //this.collectMobile(inputData);
+                this.navCtrl.push('VerifyNumberPage',{'inputData':inputData});
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 this.showOtpPoup(inputData,success);
             }else {

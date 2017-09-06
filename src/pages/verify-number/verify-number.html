@@ -1,0 +1,33 @@
+<!--
+  Generated template for the VerifyNumberPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>VERIFY NUMBER</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<div id="VerifyMobileContainer" [hidden]="showOtpPoup === 'true'">
+		<div class="otpImage">
+			<img src="assets/img/forgotpassword_character.png">
+		</div>
+		<ion-input type="tel" minlength="10" maxlength="10" [(ngModel)]="MobileNumber" placeholder="Your Mobile Number"></ion-input>
+		<div class="otpInfo"><span>We will send you One-Time-Password (OTP) via SMS. Please enter OTP in next step.</span></div>
+		<ion-row>
+            <ion-col full bstyle="text-align: center;">
+                <button ion-button class="pobyt-button" (click)="GenerateOTP()">Next
+                </button>
+            </ion-col>
+        </ion-row>
+	</div>
+	<div id="VerifyOTPContainer" [hidden]="showOtpPoup === 'false'">
+		Test Stuff
+	</div>
+</ion-content>

@@ -34,12 +34,14 @@ export class PreviewPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PreviewPage');
     this.slider.coverflow = {
-      rotate: 0,
+      rotate: 20,
       stretch: 0,
-      depth: 50,
+      depth: 100,
       modifier: 1,
       slideShadows: false
     };
+    this.slider.slidesPerView = 3;
+    this.slider.spaceBetween = -50;
   }
 
   LoginIn(){

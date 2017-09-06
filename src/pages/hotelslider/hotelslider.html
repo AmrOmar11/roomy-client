@@ -15,7 +15,7 @@
         </ion-card-content>
 	</ion-card>
     <!-- <ion-slides (ionSlideDidChange)="slideChanged($event)" > -->
-    <ion-slides pager="true" loop="true" effect="coverflow" direction="vertical"  (ionSlideDidChange)="slideChanged($event)" >
+    <ion-slides pager="true" loop="true" effect="coverflow" direction="vertical" slidesPerView="3" centeredSlides ="true" (ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
 	      <div [ngClass]="hotel.isAviablity ? '':'hotelStatus'" class="hotelStatusStatic">{{hotel.hoteldescription}}</div>	
 	      <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotelpicPath + ')'}" (click)="hotelDetailedInfo(hotel)">
