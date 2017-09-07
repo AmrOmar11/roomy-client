@@ -66,11 +66,11 @@ export class MapPage implements OnInit{
         for (var i = 0; i < this.hotelMarkers.length; i++) {
           if(currentIndex == i){
             this.hotelMarkers[i].setMap(null);
-          }else{
-            this.hotelMarkers[i].setMap(null);
             this.selectedHotelMarkers[currentIndex].setMap(this.map);
-          }          
-        }        
+          }else{
+            this.hotelMarkers[i].setMap(this.map);
+          }
+        }
       }
     });
   }
