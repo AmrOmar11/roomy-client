@@ -1,5 +1,5 @@
 import { Component, ViewChild} from '@angular/core';
-import { NavController, NavParams, Slides} from 'ionic-angular';
+import { NavController, Slides} from 'ionic-angular';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
 import { NgZone  } from '@angular/core';
@@ -15,14 +15,13 @@ import { NgZone  } from '@angular/core';
   templateUrl: 'hotelslider.html',
 })
 export class HotelsliderPage {
-    @ViewChild(Slides) slider: Slides;
+    @ViewChild(Slides) slides: Slides;
     hotels:any;
     geolocation:any;
     HotelDistance:any;
     public hideCard:any = 'true';
     constructor(
-        public navCtrl: NavController, 
-        public navParams: NavParams,
+        public navCtrl: NavController,
         public authProvider: AuthenticateProvider,
         public events: Events,
         public zone: NgZone) {
@@ -31,6 +30,8 @@ export class HotelsliderPage {
           this.geolocation = location;
           if(this.hotels.length == 0 ){
             this.hideCard = 'false';
+          }else{
+            this.events.publish('hotel:slideChanged', 0);
           }
           this.zone.run(() => {
             console.log('force refresh hotel silder');
@@ -39,19 +40,13 @@ export class HotelsliderPage {
     }
 
     ionViewDidLoad() {
-    console.log('ionViewDidLoad PreviewPage');
-    this.slider.coverflow = {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: false
-    };
-  }
+      console.log('ionViewDidLoad PreviewPage');
+    }
 
     slideChanged($event){
         if(this.hotels[$event._activeIndex] !== undefined){
             this.getDistanceFromLatLonInKm(this.geolocation.lat(),this.geolocation.lng(),parseFloat(this.hotels[$event._activeIndex].latitude),parseFloat(this.hotels[$event._activeIndex].longitude));
+            this.events.publish('hotel:slideChanged',$event._activeIndex);
         }
     }
 

@@ -1,4 +1,9 @@
 page-register {
+    ion-footer {
+        &.footer-md::before {
+            background-image: none;
+        }
+    }
     .toolbar-background {
         background: map-get($colors, theme);
     }

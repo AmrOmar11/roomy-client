@@ -20,6 +20,7 @@ export class MapPage implements OnInit{
   private userLocation:any;
   private sourceMarker:any;
   private hotelMarkers = [];
+  private selectedHotelMarkers = [];
   private address:any = {
       place: '',
       set: false,
@@ -35,7 +36,13 @@ export class MapPage implements OnInit{
     },
     hotel:{
       url: "assets/img/hotel_marker.png", // url
-      scaledSize: new google.maps.Size(20, 20), // scaled size
+      scaledSize: new google.maps.Size(25, 25), // scaled size
+      origin: new google.maps.Point(0,0), // origin
+      anchor: new google.maps.Point(0, 0) // anchor
+    },
+    selectedHotel:{
+      url: "assets/img/selected_hotel_marker.png", // url
+      scaledSize: new google.maps.Size(25, 25), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     }
@@ -53,6 +60,19 @@ export class MapPage implements OnInit{
     this.loading = document.getElementById("loaderoverlay");
     this.loading.style.display="block";
     this.getCurrenLocation();
+    this.events.subscribe('hotel:slideChanged',(currentIndex) => {
+      console.log('hotelSlideChanged:', currentIndex);
+      if(currentIndex != undefined){        
+        for (var i = 0; i < this.hotelMarkers.length; i++) {
+          if(currentIndex == i){
+            this.hotelMarkers[i].setMap(null);
+          }else{
+            this.hotelMarkers[i].setMap(null);
+            this.selectedHotelMarkers[currentIndex].setMap(this.map);
+          }          
+        }        
+      }
+    });
   }
 
 	ngAfterViewInit() {
@@ -121,12 +141,19 @@ export class MapPage implements OnInit{
     if(hotelsInfo !== undefined && hotelsInfo.length !== 0){
      for(let hotel of hotelsInfo) {
         let location = new google.maps.LatLng(hotel.latitude, hotel.longitude);
-        let marker = new google.maps.Marker({
+        let hotelMarker = new google.maps.Marker({
           position: location,
           map: this.map,
           icon:this.icons.hotel
         });
-        this.hotelMarkers.push(marker);
+        this.hotelMarkers.push(hotelMarker);
+        let selectedHotelMarker = new google.maps.Marker({
+          position: location,
+          map: this.map,
+          icon:this.icons.selectedHotel
+        });
+        this.selectedHotelMarkers.push(selectedHotelMarker);
+        selectedHotelMarker.setMap(null);
       }
     }
   }
@@ -135,7 +162,11 @@ export class MapPage implements OnInit{
     for (var i = 0; i < this.hotelMarkers.length; i++) {
       this.hotelMarkers[i].setMap(null);
     }
+    for (var i = 0; i < this.selectedHotelMarkers.length; i++) {
+      this.selectedHotelMarkers[i].setMap(null);
+    }
     this.hotelMarkers = [];
+    this.selectedHotelMarkers = [];
   }
 	
 	private addSourceMarker(animate:boolean,location){
