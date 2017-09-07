@@ -30,8 +30,6 @@ export class HotelsliderPage {
           this.geolocation = location;
           if(this.hotels.length == 0 ){
             this.hideCard = 'false';
-          }else{
-            this.events.publish('hotel:slideChanged', 0);
           }
           this.zone.run(() => {
             console.log('force refresh hotel silder');
@@ -46,7 +44,7 @@ export class HotelsliderPage {
     slideChanged($event){
         if(this.hotels[$event._activeIndex] !== undefined){
             this.getDistanceFromLatLonInKm(this.geolocation.lat(),this.geolocation.lng(),parseFloat(this.hotels[$event._activeIndex].latitude),parseFloat(this.hotels[$event._activeIndex].longitude));
-            this.events.publish('hotel:slideChanged',$event._activeIndex);
+            this.events.publish('hotel:slideChanged',$event._activeIndex,$event._previousIndex);
         }
     }
 

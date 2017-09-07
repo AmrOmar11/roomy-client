@@ -87,11 +87,10 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('authenticate:login:req:'+inputData.action);
+    console.log('authenticate:login:req:',inputData);
     this.showLoading();
     return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options).map(res => {
-      console.log('authenticate:login:res');
-      console.log(res.json());
+      console.log('authenticate:login:res:',res.json());
       this.hideLoading();
       return res.json();
     })
@@ -103,11 +102,10 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('authenticate:logout:req');
+    console.log('authenticate:logout:req:',inputData);
     this.showLoading();
     return this.http.post('https://roomy-midtier.herokuapp.com/userLogout',body,options).map(res => {
-      console.log('authenticate:logout:res');
-      console.log(res.json());
+      console.log('authenticate:logout:res:',res.json());
       this.hideLoading();
       return res.json();
     })
@@ -119,11 +117,10 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('authenticate:forgotPassword:req');
+    console.log('authenticate:forgotPassword:req:',inputData);
     this.showLoading();
     return this.http.post('https://roomy-midtier.herokuapp.com/forgetPassword',body,options).map(res => {
-      console.log('authenticate:forgotPassword:res');
-      console.log(res.json());
+      console.log('authenticate:forgotPassword:res:',res.json());
       this.hideLoading();
       return res.json();
     })
@@ -167,19 +164,18 @@ export class AuthenticateProvider {
     }
   }
   
-  public updateProfile(data){
+  public updateProfile(inputData){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify({
-      customerToken: data.customerToken
+      customerToken: inputData.customerToken
     });
-    console.log('authenticate:profile-update:req');
+    console.log('authenticate:profile-update:req',inputData);
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/updateProfile',body,options)
     .map(res => {
-      console.log('authenticate:profile-update:res');
-      console.log(res.json());
+      console.log('authenticate:profile-update:res',res.json());
       this.setCurrentUser(res.json());
       this.hideLoading();
       return this.currentUser;
@@ -192,12 +188,11 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('HotelsbyLocation:req:');
+    console.log('HotelsbyLocation:req:',inputData);
     this.showLoading('Fetching Hotels...');
     return this.http.post('https://roomy-midtier.herokuapp.com/getHotelsbyLocation',body,options)
     .map(res => {
-      console.log('HotelsbyLocation:res:');
-      console.log(res.json());
+      console.log('HotelsbyLocation:res:',res.json());
       this.hideLoading();
       return res.json();
     })
@@ -209,12 +204,11 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('HotelDetails:req:'+inputData.hotelId);
+    console.log('HotelDetails:req:',inputData);
     this.showLoading('Fetching Hotel...');
     return this.http.post('https://roomy-midtier.herokuapp.com/getHotelDetails',body,options)
     .map(res => {
-      console.log('HotelDetails:res:');
-      console.log(res.json());
+      console.log('HotelDetails:res:',res.json());
       return res.json();
     })
     .catch(this.handleError);

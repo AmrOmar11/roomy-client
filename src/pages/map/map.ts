@@ -60,17 +60,11 @@ export class MapPage implements OnInit{
     this.loading = document.getElementById("loaderoverlay");
     this.loading.style.display="block";
     this.getCurrenLocation();
-    this.events.subscribe('hotel:slideChanged',(currentIndex) => {
-      console.log('hotelSlideChanged:', currentIndex);
-      if(currentIndex != undefined){        
-        for (var i = 0; i < this.hotelMarkers.length; i++) {
-          if(currentIndex == i){
-            this.hotelMarkers[i].setMap(null);
-            this.selectedHotelMarkers[currentIndex].setMap(this.map);
-          }else{
-            this.hotelMarkers[i].setMap(this.map);
-          }
-        }
+    this.events.subscribe('hotel:slideChanged',(currentIndex,previousIndex) => {
+      console.log('hotelSlideChanged:',currentIndex,previousIndex);
+      if(this.hotelMarkers[previousIndex] != undefined && this.selectedHotelMarkers[currentIndex] != undefined){
+        this.hotelMarkers[previousIndex].setMap(this.map);
+        this.selectedHotelMarkers[currentIndex].setMap(this.map);
       }
     });
   }
@@ -130,17 +124,17 @@ export class MapPage implements OnInit{
       customerToken : this.authProvider.getUserInfo().customerToken
     };
     this.authProvider.getHotels(inputData).subscribe(data => {
-      this.events.publish('hotels:list', data.result,this.userLocation);
       this.clearHotelMarkers();
       this.addHotelMarkers(data.result);
+      this.events.publish('hotels:list', data.result,this.userLocation);
       this.loading.style.display="none";
     });
   }
 
-  private addHotelMarkers(hotelsInfo){
-    if(hotelsInfo !== undefined && hotelsInfo.length !== 0){
-     for(let hotel of hotelsInfo) {
-        let location = new google.maps.LatLng(hotel.latitude, hotel.longitude);
+  private addHotelMarkers(hotels){
+    if(hotels !== undefined && hotels.length !== 0){
+     for (var i = 0; i < hotels.length; i++) {
+        let location = new google.maps.LatLng(hotels[i].latitude, hotels[i].longitude);
         let hotelMarker = new google.maps.Marker({
           position: location,
           map: this.map,
@@ -153,7 +147,11 @@ export class MapPage implements OnInit{
           icon:this.icons.selectedHotel
         });
         this.selectedHotelMarkers.push(selectedHotelMarker);
-        selectedHotelMarker.setMap(null);
+        if(i==0){
+          hotelMarker.setMap(null);  
+        }else{
+          selectedHotelMarker.setMap(null);
+        }
       }
     }
   }
@@ -195,6 +193,7 @@ export class MapPage implements OnInit{
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
           this.map.panTo(this.userLocation);
           this.addSourceMarker(false,this.userLocation);
+          this.clearHotelMarkers();
           this.fetchHotels(this.userLocation);
       })
       .catch((error) =>{
@@ -239,6 +238,7 @@ export class MapPage implements OnInit{
                 self.map.panTo(place.geometry.location);
                 self.addSourceMarker(false,place.geometry.location);
                 self.address.set = true;
+                self.clearHotelMarkers();
                 self.fetchHotels(self.userLocation);
             }else{
                 console.log('page > getPlaceDetail > status > ', status);
