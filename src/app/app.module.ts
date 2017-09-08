@@ -9,7 +9,6 @@ import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Network } from '@ionic-native/network';
 import { RoomyApp } from './app.component';
-import { InvitePageModule } from '../pages/invite/invite.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
@@ -47,7 +46,6 @@ const cloudSettings: CloudSettings = {
             backButtonText: '',
         }),
         CloudModule.forRoot(cloudSettings),
-        InvitePageModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [

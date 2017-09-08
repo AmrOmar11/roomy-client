@@ -39,6 +39,11 @@ a {
 .toolbar-title {
     color: map-get($colors, whiteColor);
 }
+ion-footer {
+    &.footer-md::before {
+        background-image: none;
+    }
+}
 .placeholder {
     color: map-get($colors, textcolor);
     text-decoration: none;

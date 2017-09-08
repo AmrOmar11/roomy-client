@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
-import { InvitePage } from '../invite/invite';
 /**
  * Generated class for the HomePage page.
  *
@@ -17,8 +16,7 @@ export class HomePage {
     userInfo:any;
 constructor(
     public navCtrl: NavController, 
-    public authProvider: AuthenticateProvider,
-    public modalCtrl: ModalController) {
+    public authProvider: AuthenticateProvider){
         this.userInfo = this.authProvider.getUserInfo();
     }
     
@@ -39,8 +37,7 @@ constructor(
     }
     
     goToInviteFriends(){
-        let modal = this.modalCtrl.create(InvitePage);
-        modal.present();
+        this.navCtrl.push('InvitePage');
     }
     
     contactUs(){

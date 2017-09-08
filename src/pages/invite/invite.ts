@@ -1,5 +1,5 @@
-import { Component,Renderer } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController,AlertController  } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage } from 'ionic-angular';
 
 /**
  * Generated class for the InvitePage page.
@@ -14,10 +14,7 @@ import { IonicPage, NavController, NavParams,ViewController,AlertController  } f
 })
 export class InvitePage {
 
-  constructor(public viewCtrl: ViewController,  
-                  public renderer: Renderer,
-                  private alertCtrl: AlertController) {
-          this.renderer.setElementClass(viewCtrl.pageRef().nativeElement, 'invite-Model', true);
+  constructor() {
   }
 
   ionViewDidLoad() {
