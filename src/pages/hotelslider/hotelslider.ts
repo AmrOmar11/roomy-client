@@ -39,6 +39,13 @@ export class HotelsliderPage {
 
     ionViewDidLoad() {
       console.log('ionViewDidLoad PreviewPage');
+      this.slides.flip = {
+        slideShadows: false,
+        limitRotation: false
+      };
+      // this.slides.grabCursor = true;
+      // this.slides.nextButton = '.swiper-button-next';
+      // this.slides.nextButton = '.swiper-button-prev';
     }
 
     slideChanged($event){

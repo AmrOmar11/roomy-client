@@ -14,14 +14,13 @@
             <ion-label tex-wrap>Thank you for choosing Pobyt. We are currently not serving here and we would be glad to notify you once we are available in this location.</ion-label>
         </ion-card-content>
 	</ion-card>
-    <!-- <ion-slides (ionSlideDidChange)="slideChanged($event)" > -->
-    <ion-slides pager="true" loop="true" effect="coverflow" direction="vertical" slidesPerView="3" centeredSlides ="true" (ionSlideDidChange)="slideChanged($event)" >
+    <ion-slides pager="true" loop="true" effect="flip" speed="3000" (ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
-	      <div [ngClass]="hotel.isAviablity ? '':'hotelStatus'" class="hotelStatusStatic">{{hotel.hoteldescription}}</div>	
+	      <!-- <div [ngClass]="hotel.isAviablity ? '':'hotelStatus'" class="hotelStatusStatic">{{hotel.hoteldescription}}</div>	 -->
 	      <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotelpicPath + ')'}" (click)="hotelDetailedInfo(hotel)">
 	      	<div class="SliderBlackOverlay"></div>
 			<div class="sliderContent">
-		      	<div class="HotelName">{{hotel.hotelname}}</div>
+		      	<!-- <div class="HotelName">{{hotel.hotelname}}</div>
 		      	<div class="HotelAddress"><span>{{hotel.hotelLocation+', '}}</span><span>{{hotel.hotelCity+', '}}</span><span>{{hotel.hotelState}}</span></div>
 		      	<div class="HotelDetails">
 		      		<div class="HotelCategory"><span class="hotel-category-child">{{hotel.hotelType}}</span></div>
@@ -32,11 +31,23 @@
 		      	<div class="HotelHourCost">
 		      		<div id="HotelDist" class="HotelBlank">{{HotelDistance}}</div>
 		      		<div class="hourcost-bottom">
-			      		<span>{{hotel.pricePerMin}}</span>
-			      		<span class="farecurrency">{{hotel.currencyType}}</span>
-			      		<span class="farecurrency">/MIN</span>
+		      				      		<span>{{hotel.pricePerMin}}</span>
+		      				      		<span class="farecurrency">{{hotel.currencyType}}</span>
+		      				      		<span class="farecurrency">/MIN</span>
+		      		</div>
+		      	</div> -->
+				
+				<div class="HotelDetails">
+		      		<div class="HotelFare">
+		      			<div class="HotelMinCost">
+		      				<span>{{hotel.pricePerMin}} </span><span class="farecurrency">{{hotel.currencyType}}/</span><span class="minumum"> Minute</span>
+		      			</div>
+		      			<div class="MinDuration"><span>{{hotel.minDuration}} </span><span class="Hr">{{hotel.currencyType}}</span><span class="minumum"> MINIMUM</span></div>
 		      		</div>
 		      	</div>
+		      	<div id="HotelDist" class="HotelBlank">{{HotelDistance}}</div>
+		      	<div class="HotelName">{{hotel.hotelname}}</div>
+		      	<div class="HotelAddress"><span>{{hotel.hotelLocation+', '}}</span><span>{{hotel.hotelCity+', '}}</span><span>{{hotel.hotelState}}</span></div>
 	      	</div>
 	      </div>
 	    </ion-slide>

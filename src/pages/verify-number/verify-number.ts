@@ -80,13 +80,13 @@ export class VerifyNumberPage {
   hideMobCharacter(MobileNumber){
   	var i;
   	MobileNumber = MobileNumber.split('');
-  	for(i=0; i<10;i++){
+  	for(i=0; i<MobileNumber.length;i++){
 	    for(i=0; i<10;i++){
-		    if(i==0||i==8||i==9){
-          this.HiddenMobNum= this.HiddenMobNum+MobileNumber[i];
-        }else{
-          this.HiddenMobNum= this.HiddenMobNum+'x';
-        }
+		    if(i==0||i==(MobileNumber.length-2)||i==(MobileNumber.length-1)){
+	          this.HiddenMobNum= this.HiddenMobNum+MobileNumber[i];
+	        }else{
+	          this.HiddenMobNum= this.HiddenMobNum+'x';
+	        }
 		  }
 	  }
   }

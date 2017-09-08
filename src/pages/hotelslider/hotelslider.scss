@@ -7,25 +7,24 @@ page-hotelslider {
 
 
 	width:100%;
-	height:45%;
+	height:30%;
 	position:absolute;
 	bottom:0;
 	text-align:left;
-	background:transparent;
 
-	.content, .scroll-content{
-		//padding: 16px 0px 16px 16px !important;
-	}
-	.swiper-slide{
-		//padding-right: 10px !important;
-		//width:97% !important;
-		//margin-right: 5px;
-	}
 	.slide-zoom{
 		height:100%;
 	}
 	.hotelStatusStatic{
 		height:14%;
+	}
+
+	ion-slide{
+		border: 8px solid rgb(255, 255, 255) !important;
+    	border-radius: 5px;
+	}
+	.swiper-pagination{
+		bottom:-2% !important;
 	}
 	.hotelStatus{
 		color:#fff;
@@ -65,21 +64,22 @@ page-hotelslider {
 	}
 	.HotelName, .HotelCategory{
 		text-align:left;
-		font-weight:bold;
 		color:$white;
 	}
 
 	.HotelName{
 		font-size: 4vmax;
     	padding: 2px 8px;
-    	height: 25%;
+    	position: absolute;
+    	bottom: 14%;
 	}
 	.HotelAddress{
 		font-size:2.2vmax;
 		text-align:left;
 		color: $white;
-		padding: 2px 8px;		
-		height:15%;
+		padding: 2px 8px;
+		position: absolute;
+    	bottom: 6%;
 	}
 
 	.HotelDetails{
@@ -112,14 +112,24 @@ page-hotelslider {
 		padding: 5px 0;
 		height: auto;
 	}
-	.HotelMinCost{
-		background-color:#444547;	
-		color:#fff;
-		font-weight:bold;
-		font-size:2.2vmax;
-		height: 100%;
+	.HotelMinCost,.MinDuration{
+		background-color: #08B6AD;
+	    color: #fff;
+	    font-size: 1.5vmax;
+	    height: auto;
+	    width: auto;
 	    text-align: center;
-	    padding: 1% 0;
+	    padding: 1% 3%;
+	    border-radius: 7px;
+	    position: absolute;
+	    top: 5%;
+	}
+
+	.HotelMinCost{
+		left:3%;
+	}
+	.MinDuration{
+		right:3%;
 	}
 
 	.HotelBlank,.hourcost-bottom{
@@ -132,7 +142,17 @@ page-hotelslider {
 	}
 		
 	.HotelBlank{
-		width:65.2%;
+		background-color: #08B6AD;
+	    color: #fff;
+	    font-size: 1.5vmax;
+	    height: auto;
+	    width: auto;
+	    text-align: center;
+	    padding: 1% 3%;
+	    border-radius: 7px;
+	    position: absolute;
+	    bottom:20%;
+	    right:3%;
 	}
 	.hourcost-bottom{
 		width:32%;
@@ -143,14 +163,6 @@ page-hotelslider {
 		font-size: 2.7vmax;
     	font-weight: bold;
     	float:right;
-	}
-
-	.swiper-container {
-		height:auto;   
-	}
-
-	.swiper-slide {
-	    height: auto;
 	}
 
 }
