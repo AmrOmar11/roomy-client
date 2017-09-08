@@ -29,8 +29,8 @@ export class MapPage implements OnInit{
   public loading:any;
   public icons:any = { 
     userloc: {
-      url: "http://w2.marketeer.co/img/bluedot.png", // url
-      scaledSize: new google.maps.Size(61, 50), // scaled size
+      url: "assets/img/position_marker.gif", // url
+      scaledSize: new google.maps.Size(25, 25), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     },
@@ -181,7 +181,8 @@ export class MapPage implements OnInit{
     	animation: animationType,
     	// title: 'Drage me!',
     	// draggable:true,
-    	icon:this.icons.userloc
+    	icon:this.icons.userloc,
+      	optimized: false
     });
   }
 	

@@ -28,6 +28,7 @@ export class HotelsliderPage {
         events.subscribe('hotels:list', (hotelsList, location) => {
           this.hotels = hotelsList;
           this.geolocation = location;
+          this.hideCard = 'true';
           if(this.hotels.length == 0 ){
             this.hideCard = 'false';
           }
