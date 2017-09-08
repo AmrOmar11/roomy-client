@@ -28,10 +28,12 @@ export class HotelsliderPage {
         events.subscribe('hotels:list', (hotelsList, location) => {
           this.hotels = hotelsList;
           this.geolocation = location;
-          this.hideCard = 'true';
           if(this.hotels.length == 0 ){
             this.hideCard = 'false';
-          }
+          }else{
+            this.hideCard = 'true';
+            this.slides.slideTo(0);
+          }          
           this.zone.run(() => {
             console.log('force refresh hotel silder');
           });
