@@ -18,7 +18,12 @@ background-color:#999999
 }
 .arrowIcon
 {
-margin-top:75%
+    position: absolute;
+    top: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 .guestIcon
 {
