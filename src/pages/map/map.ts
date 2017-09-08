@@ -18,7 +18,7 @@ declare var google:any;
 export class MapPage implements OnInit{
   private map:any;
   private userLocation:any;
-  private sourceMarker:any;
+  private locationMarker:any;
   private hotelMarkers = [];
   private selectedHotelMarkers = [];
   private address:any = {
@@ -60,11 +60,14 @@ export class MapPage implements OnInit{
     this.loading = document.getElementById("loaderoverlay");
     this.loading.style.display="block";
     this.getCurrenLocation();
-    this.events.subscribe('hotel:slideChanged',(currentIndex,previousIndex) => {
+    this.events.subscribe('hotel:slideChanged',(currentIndex,previousIndex,latitude,longitude) => {
       console.log('hotelSlideChanged:',currentIndex,previousIndex);
       if(this.hotelMarkers[previousIndex] != undefined && this.selectedHotelMarkers[currentIndex] != undefined){
         this.hotelMarkers[previousIndex].setMap(this.map);
         this.selectedHotelMarkers[currentIndex].setMap(this.map);
+        let hotelLocation = new google.maps.LatLng(latitude,longitude);
+        this.map.setZoom(13);
+        this.map.panTo(hotelLocation);
       }
     });
   }
@@ -205,7 +208,7 @@ export class MapPage implements OnInit{
 	}
 
 	private mapLoaded(location){
-      this.addSourceMarker(true,location);
+      this.addLocationMarker(true,location);
       this.fetchHotels(location);
 	}
 
@@ -217,13 +220,12 @@ export class MapPage implements OnInit{
     };
     this.authProvider.getHotels(inputData).subscribe(data => {
       this.clearHotelMarkers();
-      this.addHotelMarkers(data.result);
-      this.events.publish('hotels:list', data.result,this.userLocation);
+      this.addHotelMarkers(data.result,location);
       this.loading.style.display="none";
     });
   }
 
-  private addHotelMarkers(hotels){
+  private addHotelMarkers(hotels,location){
     if(hotels !== undefined && hotels.length !== 0){
      for (var i = 0; i < hotels.length; i++) {
         let location = new google.maps.LatLng(hotels[i].latitude, hotels[i].longitude);
@@ -244,8 +246,10 @@ export class MapPage implements OnInit{
         }else{
           selectedHotelMarker.setMap(null);
         }
+        hotels[i].distance = this.distanceInKm(this.userLocation.lat(),this.userLocation.lng(),hotels[i].latitude,hotels[i].longitude);
       }
     }
+    this.events.publish('hotels:list',hotels);
   }
 
   private clearHotelMarkers() {
@@ -259,22 +263,22 @@ export class MapPage implements OnInit{
     this.selectedHotelMarkers = [];
   }
 	
-	private addSourceMarker(animate:boolean,location){
-    if(this.sourceMarker !== undefined){
-        this.sourceMarker.setMap(null);
+	private addLocationMarker(animate:boolean,location){
+    if(this.locationMarker !== undefined){
+        this.locationMarker.setMap(null);
     }        
     let animationType:any = null;
     if(animate == true){
     	animationType = google.maps.Animation.DROP;
     }
-    this.sourceMarker = new google.maps.Marker({
+    this.locationMarker = new google.maps.Marker({
     	position: location,
     	map: this.map,
     	animation: animationType,
     	// title: 'Drage me!',
     	// draggable:true,
     	icon:this.icons.userloc,
-      	optimized: false
+        optimized: false
     });
   }
 	
@@ -284,8 +288,9 @@ export class MapPage implements OnInit{
       this.geolocation.getCurrentPosition(options).then((res) => {
           console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
+          this.map.setZoom(11);
           this.map.panTo(this.userLocation);
-          this.addSourceMarker(false,this.userLocation);
+          this.addLocationMarker(false,this.userLocation);
           this.clearHotelMarkers();
           this.fetchHotels(this.userLocation);
       })
@@ -328,8 +333,9 @@ export class MapPage implements OnInit{
                 console.log('page > getPlaceDetail > place > ', place);
                 // set place in map
                 self.userLocation = place.geometry.location;
+                self.map.setZoom(11);
                 self.map.panTo(place.geometry.location);
-                self.addSourceMarker(false,place.geometry.location);
+                self.addLocationMarker(false,place.geometry.location);
                 self.address.set = true;
                 self.clearHotelMarkers();
                 self.fetchHotels(self.userLocation);
@@ -337,5 +343,29 @@ export class MapPage implements OnInit{
                 console.log('page > getPlaceDetail > status > ', status);
             }
         }
+    }
+
+    private distanceInKm(userLatitude,userLongitude,hotelLatitude,hotelLongitude) {
+      console.log('userLatitude:',userLatitude,'userLongitude:',userLongitude);
+      console.log('hotelLatitude:',hotelLatitude,'hotelLongitude:',hotelLongitude);
+      var R = 6371; // Radius of the earth in km
+      var dLat = this.deg2rad(hotelLatitude-userLatitude);  // deg2rad below
+      var dLon = this.deg2rad(hotelLongitude-userLongitude); 
+      var a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(this.deg2rad(userLatitude)) * Math.cos(this.deg2rad(hotelLatitude)) * 
+        Math.sin(dLon/2) * Math.sin(dLon/2); 
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+      var d = R * c; // Distance in km
+      let distance:any;      
+      if((d%1) > 0)
+          distance = d.toFixed(2) + " KM Away";
+      else
+          distance = d + " KM Away";
+      return distance;
+    }
+    
+    private deg2rad(deg) {
+        return deg * (Math.PI/180)
     }
 }

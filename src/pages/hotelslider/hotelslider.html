@@ -14,7 +14,7 @@
 			<p>Thank you for choosing Pobyt. We are currently not serving here and we would be glad to notify you once we are available in this location.</p>
 		</ion-card-content>
 	</ion-card>
-    <ion-slides pager="true" loop="true" spaceBetween="10" direction="vertical"(ionSlideDidChange)="slideChanged($event)" >
+    <ion-slides pager="true" spaceBetween="10" direction="vertical"(ionSlideDidChange)="slideChanged($event)" >
 	    <ion-slide *ngFor="let hotel of hotels">
 	      <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotelpicPath + ')'}" (click)="hotelDetailedInfo(hotel)">
 	      	<div class="SliderBlackOverlay"></div>
@@ -27,7 +27,7 @@
 		      			<div class="MinDuration"><span>{{hotel.minDuration}} </span><span class="Hr">{{hotel.currencyType}}</span><span class="minumum"> MINIMUM</span></div>
 		      		</div>
 		      	</div>
-		      	<div id="HotelDist" class="HotelBlank">{{HotelDistance}}</div>
+		      	<div id="HotelDist" class="HotelBlank">{{hotel.distance}}</div>
 		      	<div class="HotelName">{{hotel.hotelname}}</div>
 		      	<div class="HotelAddress"><span>{{hotel.hotelLocation+', '}}</span><span>{{hotel.hotelCity+', '}}</span><span>{{hotel.hotelState}}</span></div>
 	      	</div>
