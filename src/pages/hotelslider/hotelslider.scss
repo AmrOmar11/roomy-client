@@ -165,5 +165,32 @@ page-hotelslider {
     	float:right;
 	}
 
+	ion-card {
+		background: map-get($colors, theme) !important;
+		border: 5px solid rgba(42, 43, 43, 0.37 ) !important;
+		border-radius: 5px;
+    	img{
+    		width: 50% !important;
+		    margin: 10px auto;
+    	}
+    	.card-content{
+    		padding: 0px 16px !important;
+    	}
+    	.card-title{
+    		color:map-get($colors, whiteColor) !important;
+    		font-size: 2.5vmax !important;
+    		font-weight: bold;
+    		text-align: center;
+    		padding: 2px 0 !important;
+    	}
+    	p{
+    		color:map-get($colors, whiteColor) !important;
+    		font-size: 2vmax !important;
+    		line-height: 1.0 !important;
+    		text-align: center;
+    	}
+    }
+	
+
 }
 
