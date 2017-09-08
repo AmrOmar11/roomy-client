@@ -19,6 +19,7 @@ export class HotelsliderPage {
     hotels:any;
     geolocation:any;
     HotelDistance:any;
+    starRatingByHotel:any;
     public hideCard:any = 'true';
     constructor(
         public navCtrl: NavController,
@@ -84,6 +85,23 @@ export class HotelsliderPage {
           this.HotelDistance = d.toFixed(2) + " KM away";
       else
           this.HotelDistance = d + " KM away";
+    }
+
+    getRating(rating){
+      let ratingString = '';
+      rating = parseInt(rating);
+      if(rating == undefined || rating <= 3)
+      {
+        ratingString = "three";
+      }else if(rating == 5)
+      {
+        ratingString = "five";
+      }else if(rating == 7)
+      {
+        ratingString = "seven";
+      }
+      console.log(rating+"rating"+"ratingString"+ratingString)
+      return ratingString;
     }
 
     deg2rad(deg) {

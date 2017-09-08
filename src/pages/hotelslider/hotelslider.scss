@@ -19,12 +19,25 @@ page-hotelslider {
 		height:14%;
 	}
 
+    ion-content,.scroll-content{
+        padding:0px !important;
+    }
 	ion-slide{
-		border: 8px solid rgb(255, 255, 255) !important;
+		border: 5px solid rgba(42,43,43,0.37) !important;
     	border-radius: 5px;
 	}
 	.swiper-pagination{
-		bottom:-2% !important;
+		bottom:-1.5% !important;
+	}
+	.swiper-pagination-bullet{
+	  background: white !important;
+	  opacity: 0.8;
+	  width: 6px;
+      height: 6px;
+	}
+
+	.swiper-pagination-bullet-active{
+	  background: map-get($colors, theme) !important;
 	}
 	.hotelStatus{
 		color:#fff;
@@ -115,7 +128,7 @@ page-hotelslider {
 	.HotelMinCost,.MinDuration{
 		background-color: #08B6AD;
 	    color: #fff;
-	    font-size: 1.5vmax;
+	    font-size: 2.5vmax;
 	    height: auto;
 	    width: auto;
 	    text-align: center;
@@ -129,8 +142,18 @@ page-hotelslider {
 		left:3%;
 	}
 	.MinDuration{
-		right:3%;
+		right:7%;
 	}
+
+	.HotelRating{
+		height: 25px;
+	    width: 25px;
+	    position: absolute;
+	    bottom: 35%;
+	    left: 3%;
+	    background-repeat:no-repeat;
+	    background-size:100%;
+    }
 
 	.HotelBlank,.hourcost-bottom{
 		display:inline-block;
@@ -144,15 +167,15 @@ page-hotelslider {
 	.HotelBlank{
 		background-color: #08B6AD;
 	    color: #fff;
-	    font-size: 1.5vmax;
+	    font-size: 2vmax;
 	    height: auto;
 	    width: auto;
 	    text-align: center;
 	    padding: 1% 3%;
 	    border-radius: 7px;
 	    position: absolute;
-	    bottom:20%;
-	    right:3%;
+	    bottom:30%;
+	    right:7%;
 	}
 	.hourcost-bottom{
 		width:32%;
@@ -163,6 +186,18 @@ page-hotelslider {
 		font-size: 2.7vmax;
     	font-weight: bold;
     	float:right;
+	}
+	.three {
+		background: url('../assets/img/stars.png') no-repeat 0 0;
+	}
+	.four{
+		background: url('../assets/img/stars.png') no-repeat -60px 0;
+	}
+	.five{
+		background: url('../assets/img/stars.png') no-repeat -121px 0;
+	}
+	.seven{
+		background: url('../assets/img/stars.png') no-repeat -182px 0;
 	}
 
 	ion-card {
