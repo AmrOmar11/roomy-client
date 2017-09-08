@@ -4,18 +4,6 @@ page-register {
             background-image: none;
         }
     }
-    .toolbar-background {
-        background: map-get($colors, theme);
-    }
-    .toolbar button{
-        color: map-get($colors, whiteColor);
-    }
-    .toolbar-title {
-        color: map-get($colors, whiteColor);
-        font-size: 1.5rem;
-        font-weight: bold;
-        font-family: "open sans";
-    }
     .col{
         padding-top: 0px;
         //padding-bottom: 0px;

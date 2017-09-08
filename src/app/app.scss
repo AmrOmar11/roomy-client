@@ -30,7 +30,15 @@ a {
     font-family: $theme-font;
     font-size: 1.4rem
 }
-
+.toolbar-background {
+    background: map-get($colors, theme);
+}
+.toolbar button{
+    color: map-get($colors, whiteColor);
+}
+.toolbar-title {
+    color: map-get($colors, whiteColor);
+}
 .placeholder {
     color: map-get($colors, textcolor);
     text-decoration: none;
