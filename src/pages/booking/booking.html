@@ -26,7 +26,7 @@
                </ion-item>
             </ion-card-content>
          </ion-card>
-         <ion-card >
+         <ion-card  [hidden]="bookingFor==='other'">
             <ion-card-content>
                <ion-item no-lines>
                   <ion-icon name="person" item-start></ion-icon>
@@ -42,17 +42,22 @@
                </ion-item>
             </ion-card-content>
          </ion-card>
-         <div [hidden]="bookingFor!=='other'">
-            <ion-item lines>
-               <ion-label floating>Name</ion-label>
-               <ion-input type="text" [(ngModel)]="userInfo.firstName"></ion-input>
-            </ion-item>
-            <ion-item>
-               <ion-label floating>Mobile</ion-label>
-               <ion-input type="text" [(ngModel)]="userInfo.contactNumber"></ion-input> 
-            </ion-item>
-         </div>
-         <ion-card >
+		 <ion-card  [hidden]="bookingFor!=='other'">
+    <ion-card-content>
+      <form>
+      <ion-item >
+        <ion-icon class="rightPadding"  name="person" item-start></ion-icon>
+        <ion-input type="text" class="inputField" placeholder="Name"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines>
+        <ion-icon class="rightPadding"  name="call" item-start></ion-icon> &nbsp;
+        <ion-input type="number" class="inputField" placeholder="Mobile"></ion-input>
+      </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card>
+		 <ion-card >
             <ion-card-content>
                <ion-item>
                   <ion-label>Birthday</ion-label>
@@ -88,7 +93,7 @@
                </ion-col>
                <ion-col col-8 >
                   <div class="termsImp">IMPORTANT</div>
-                  <div class="termsMsg">               Guest need valid address and ID proof with a different city than {{userInfo.idIssuedCity}}</div>
+                  <div class="termsMsg">Guest need valid address and ID proof with a different city than {{userInfo.idIssuedCity}}</div>
                </ion-col>
             </ion-row>
          </ion-card>
@@ -97,12 +102,14 @@
    <h6 class="guestText">By proceeding, you agree with our <a (click)="openTerms()">Guest Policies</a></h6>
 </ion-content>
  <ion-footer class="book-now" (click)="confirmbooking()">
-       <ion-toolbar>
            <button ion-button full>BOOK NOW</button>
-       </ion-toolbar>
    </ion-footer>
+   
+   
+   
+   
 <!--Back up page
-   <ion-header>
+   <ion-header> 
    
        <ion-navbar>
            <ion-title>Confirm Booking</ion-title>
