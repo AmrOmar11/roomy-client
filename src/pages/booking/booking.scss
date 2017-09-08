@@ -1,89 +1,83 @@
-
 page-booking {
-    .gender input{
-        margin:0;padding:0;
-        -webkit-appearance:none;
-        -moz-appearance:none;
-        appearance:none;
-    }
 
-    .segment .segment-button {
-        border-color: map-get($colors, theme);
-        color: map-get($colors, theme);
-    }
-    .segment-button.segment-activated {
-        background-color: map-get($colors, theme) !important;
-    }
+.bookingPage
+{
+background-color:#ECECEC
+}
+.durationContent
+{
+color:#25B2A9
+}
+.headingText
+{
+background-color:#FFFFFF
+}
+.headingText2
+{
+background-color:#999999
+}
+.arrowIcon
+{
+margin-top:75%
+  }
+.guestIcon
+{
+margin: 0;
+    height: 83%;
+}
+.user
+{
+background-image:url(../assets/img/booking/user.png);
+        background-repeat: no-repeat !important;
 
-    .TC-checkbox {    
-        p {
-            text-align: center;
-        }
-    }
-    .TC-checkbox {    
-        a {
-            color: map-get($colors, theme);
-        }
-    }
-    .male{background-image:url(../assets/img/booking/male.png);}
-    .female{background-image:url(../assets/img/booking/female.png);}
 
-    .gender input:active +.gender-bg{opacity: .9;}
-    .gender input:checked +.gender-bg{
-        -webkit-filter: none;
-        -moz-filter: none;
-        filter: none;
-    }
-    .gender-bg{
-        cursor:pointer;
-        background-size:contain;
-        background-repeat:no-repeat;
-        display:inline-block;
-        width:100px;height:70px;
-        -webkit-transition: all 100ms ease-in;
-        -moz-transition: all 100ms ease-in;
-        transition: all 100ms ease-in;
-        -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
-        -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
-        filter: brightness(1.8) grayscale(1) opacity(.7);
-    }
-    .gender-bg:hover{
-        -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
-        -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
-        filter: brightness(1.2) grayscale(.5) opacity(.9);
-    }
+}
 
-    .bookingPage .card-header{
-        font-size: 1.2rem;
-        font-weight: 500;
-        color:map-get($colors, textcolor);
-        padding: 16px;
-        text-align: center;
-    }
-    .label,.icon{color:map-get($colors, textcolor);}
-    .card{
-        box-shadow: 0px 1px 15px #bdbdbd;
-    }
+.guestText
+{
+margin-left:10px;
+color:#616161
+}
+.singleGuest
+{
 
-    .toolbar-title  {
-        color: map-get($colors, textcolor);
-    }
+    background-color: #07B7AD;
+    height: 43%;
+    margin-top: 3%;
+    text-align: center;
+    color: #fff;
+    border-radius: 6%;
+}
+.doubleGuest
+{
+background-color:#999999;
+ height: 43%;
+    margin-top: 3%;
+    text-align: center;
+    color: #fff;
+    border-radius: 6%;
+}
+.termsImp
+{
+color:#6D181F
+}
+.termsMsg
+{
+color:#919191
+}
 
-    .book-now button{
-        margin:0px;
-        background-color:map-get($colors, theme);
-    }
+.custButton{
+    padding: 0 34px;
+    background-color: #08b6ad !important;
+    margin-top:7%
+  }
 
-    .reserve-now .book-now{
-        font-size:14pt;
-        font-family:$theme-font;
-        font-weight:bold;
-        color:map-get($colors, light);
-    }
+  .custButton2{
+    padding: 0 34px;
+    background-color:#999999 !important;
+    margin-top:7%
+  }
 
-    .toolbar,.toolbar{
-        padding:0px;
-    }
-
+ 
 }
 
