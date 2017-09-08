@@ -44,9 +44,7 @@ export class HotelsliderPage {
 
     slideChanged($event){
         if(this.hotels[$event._activeIndex] !== undefined){
-            let latitude = parseFloat(this.hotels[$event._activeIndex].latitude);
-            let longitude = parseFloat(this.hotels[$event._activeIndex].longitude);
-            this.events.publish('hotel:slideChanged',$event._activeIndex,$event._previousIndex,latitude,longitude);
+          this.events.publish('hotel:slideChanged',$event._activeIndex,$event._previousIndex);
         }
     }
 

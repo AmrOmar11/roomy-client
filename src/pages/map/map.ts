@@ -21,13 +21,9 @@ export class MapPage implements OnInit{
   private locationMarker:any;
   private hotelMarkers = [];
   private selectedHotelMarkers = [];
-  private address:any = {
-      place: '',
-      set: false,
-  };
   private placesService:any;
-  public loading:any;
-  public icons:any = { 
+  private loading:any;
+  private icons:any = { 
     userloc: {
       url: "assets/img/position_marker.gif", // url
       scaledSize: new google.maps.Size(25, 25), // scaled size
@@ -60,15 +56,14 @@ export class MapPage implements OnInit{
     this.loading = document.getElementById("loaderoverlay");
     this.loading.style.display="block";
     this.getCurrenLocation();
-    this.events.subscribe('hotel:slideChanged',(currentIndex,previousIndex,latitude,longitude) => {
+    this.events.subscribe('hotel:slideChanged',(currentIndex,previousIndex) => {
       console.log('hotelSlideChanged:',currentIndex,previousIndex);
-      if(this.hotelMarkers[previousIndex] != undefined && this.selectedHotelMarkers[currentIndex] != undefined){
+        this.selectedHotelMarkers[previousIndex].setMap(null);
         this.hotelMarkers[previousIndex].setMap(this.map);
+        this.hotelMarkers[currentIndex].setMap(null);
         this.selectedHotelMarkers[currentIndex].setMap(this.map);
-        let hotelLocation = new google.maps.LatLng(latitude,longitude);
         this.map.setZoom(13);
-        this.map.panTo(hotelLocation);
-      }
+        this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
     });
   }
 
@@ -89,107 +84,107 @@ export class MapPage implements OnInit{
   private loadMap(position: Geoposition){
     this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);		
     let mapStyles =[
-  {
-    "featureType": "landscape",
-    "elementType": "geometry.fill",
-    "stylers": [
       {
-        "color": "#dde3e3"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.man_made",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.man_made",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "stylers": [
-      {
-        "visibility": "on"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#a8de87"
+        "featureType": "landscape",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#dde3e3"
+          }
+        ]
       },
       {
-        "visibility": "on"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels",
-    "stylers": [
+        "featureType": "landscape.man_made",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
       {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.fill",
-    "stylers": [
+        "featureType": "landscape.man_made",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
       {
-        "color": "#c2d1d6"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
+        "featureType": "poi",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
       {
-        "color": "#c2d1d6"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "labels.text.fill",
-    "stylers": [
+        "featureType": "poi.park",
+        "stylers": [
+          {
+            "visibility": "on"
+          }
+        ]
+      },
       {
-        "color": "#7d7d7d"
-      }
-    ]
-  },
-  {
-    "featureType": "transit",
-    "elementType": "labels.icon",
-    "stylers": [
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#a8de87"
+          },
+          {
+            "visibility": "on"
+          }
+        ]
+      },
       {
-        "visibility": "off"
+        "featureType": "poi.park",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#c2d1d6"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#c2d1d6"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#7d7d7d"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
       }
-    ]
-  }
-];
+    ];
     let mapOptions = {
       center: this.userLocation,
       zoom: 11,
@@ -301,71 +296,62 @@ export class MapPage implements OnInit{
 	}
 	
 	searchClicked(){
-      // reset 
-      this.resetSearch();
-      // show modal
-      let modal = this.modalCtrl.create('SearchPage');
-      modal.onDidDismiss(data => {
-          console.log('search > modal dismissed > data > ', data);
-          if(data){
-              this.address.place = data.description;
-              // get details
-              this.getPlaceDetail(data.place_id);
-          }
-      })
-      modal.present();
-    }
-
-    private resetSearch() {
-        this.address.place = '';
-        this.address.set = false;
-    }
-
-    private getPlaceDetail(place_id:string):void {
-        var self = this;
-        var request = {
-            placeId: place_id
-        };
-        this.placesService = new google.maps.places.PlacesService(this.map);
-        this.placesService.getDetails(request, callback);
-        function callback(place, status) {
-            if (status == google.maps.places.PlacesServiceStatus.OK) {
-                console.log('page > getPlaceDetail > place > ', place);
-                // set place in map
-                self.userLocation = place.geometry.location;
-                self.map.setZoom(11);
-                self.map.panTo(place.geometry.location);
-                self.addLocationMarker(false,place.geometry.location);
-                self.address.set = true;
-                self.clearHotelMarkers();
-                self.fetchHotels(self.userLocation);
-            }else{
-                console.log('page > getPlaceDetail > status > ', status);
-            }
+    // show modal
+    let modal = this.modalCtrl.create('SearchPage');
+    modal.onDidDismiss(data => {
+        console.log('search > modal dismissed > data > ', data);
+        if(data){
+            // get details
+            this.getPlaceDetail(data.place_id);
         }
-    }
+    })
+    modal.present();
+  }
 
-    private distanceInKm(userLatitude,userLongitude,hotelLatitude,hotelLongitude) {
-      console.log('userLatitude:',userLatitude,'userLongitude:',userLongitude);
-      console.log('hotelLatitude:',hotelLatitude,'hotelLongitude:',hotelLongitude);
-      var R = 6371; // Radius of the earth in km
-      var dLat = this.deg2rad(hotelLatitude-userLatitude);  // deg2rad below
-      var dLon = this.deg2rad(hotelLongitude-userLongitude); 
-      var a = 
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(this.deg2rad(userLatitude)) * Math.cos(this.deg2rad(hotelLatitude)) * 
-        Math.sin(dLon/2) * Math.sin(dLon/2); 
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-      var d = R * c; // Distance in km
-      let distance:any;      
-      if((d%1) > 0)
-          distance = d.toFixed(2) + " KM Away";
-      else
-          distance = d + " KM Away";
-      return distance;
-    }
-    
-    private deg2rad(deg) {
-        return deg * (Math.PI/180)
-    }
+  private getPlaceDetail(place_id:string):void {
+      var self = this;
+      var request = {
+          placeId: place_id
+      };
+      this.placesService = new google.maps.places.PlacesService(this.map);
+      this.placesService.getDetails(request, callback);
+      function callback(place, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+              console.log('page > getPlaceDetail > place > ', place);
+              // set place in map
+              self.userLocation = place.geometry.location;
+              self.map.setZoom(11);
+              self.map.panTo(place.geometry.location);
+              self.addLocationMarker(false,place.geometry.location);
+              self.clearHotelMarkers();
+              self.fetchHotels(self.userLocation);
+          }else{
+              console.log('page > getPlaceDetail > status > ', status);
+          }
+      }
+  }
+
+  private distanceInKm(userLatitude,userLongitude,hotelLatitude,hotelLongitude) {
+    console.log('userLatitude:',userLatitude,'userLongitude:',userLongitude);
+    console.log('hotelLatitude:',hotelLatitude,'hotelLongitude:',hotelLongitude);
+    var R = 6371; // Radius of the earth in km
+    var dLat = this.deg2rad(hotelLatitude-userLatitude);  // deg2rad below
+    var dLon = this.deg2rad(hotelLongitude-userLongitude); 
+    var a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(this.deg2rad(userLatitude)) * Math.cos(this.deg2rad(hotelLatitude)) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2); 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var d = R * c; // Distance in km
+    let distance:any;      
+    if((d%1) > 0)
+        distance = d.toFixed(2) + " KM Away";
+    else
+        distance = d + " KM Away";
+    return distance;
+  }
+  
+  private deg2rad(deg) {
+      return deg * (Math.PI/180)
+  }
 }
