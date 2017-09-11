@@ -37,8 +37,8 @@
     </ion-list>
   </ion-card>
 
-  <form [formGroup] = "signUpForm">
-    <ion-card [hidden]="bookForOther">
+  <form [formGroup] = "signUpForm" [hidden]="bookForOther">
+    <ion-card>
       <ion-list inset>
         <ion-item>
           <ion-thumbnail item-start>
@@ -64,8 +64,33 @@
       </ion-list>
     </ion-card>
   </form>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>Issued city name of government id ?</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/booking/idproof.png">
+        </ion-thumbnail>
+        <ion-input type="text" placeholder="City Name"></ion-input>
+      </ion-item>    
+    </ion-list>
+    <ion-list type="disc">
+      <ion-item>
+        Guest should carry valid government id.
+      </ion-item>
+      <ion-item>
+        Max 2 guest allowed with a child aged under 12 years.
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-label>I agree guest policy</ion-label>
+      <ion-checkbox checked="false"></ion-checkbox>
+    </ion-item>
+  </ion-card>
 </ion-content>
 
-<ion-footer class="book-now" (click)="confirmbooking()">
+<ion-footer (click)="confirmbooking()">
  <button ion-button full>BOOK NOW</button>
 </ion-footer>
