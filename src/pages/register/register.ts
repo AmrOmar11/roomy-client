@@ -87,5 +87,9 @@ export class RegisterPage {
     openTerms() {
         this.navCtrl.push('PoliciesPage');
     }
+
+    closePage(){
+        this.navCtrl.pop();
+    }
     
 }

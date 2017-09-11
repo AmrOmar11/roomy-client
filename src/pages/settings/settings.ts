@@ -54,5 +54,8 @@ export class SettingsPage {
        
     });
   }
-
+  
+  closePage(){
+      this.navCtrl.pop();
+  }
 }

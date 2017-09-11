@@ -5,9 +5,14 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="closePage()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Profile</ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 
@@ -18,7 +23,7 @@
         <ion-thumbnail item-start>
           <img src="assets/profile/user.png">
         </ion-thumbnail>
-        <ion-label stacked>Name</ion-label>
+        <ion-label stacked class="label-name">Name</ion-label>
         <ion-label>{{userInfo.first_Name}}</ion-label>
       </ion-item>
 
@@ -26,7 +31,7 @@
         <ion-thumbnail item-start>
           <img src="assets/profile/calender.png">
         </ion-thumbnail>
-        <ion-label stacked>BirthDate</ion-label>
+        <ion-label stacked class="label-name">BirthDate</ion-label>
         <ion-label>{{userInfo.dateOfBirth}}</ion-label>
       </ion-item>
 
@@ -34,7 +39,7 @@
         <ion-thumbnail item-start>
           <img src="assets/profile/email.png">
         </ion-thumbnail>      
-        <ion-label stacked>EMail</ion-label>
+        <ion-label stacked class="label-name">EMail</ion-label>
         <ion-label>{{userInfo.emailAddress}}</ion-label>
       </ion-item>
 
@@ -42,7 +47,7 @@
         <ion-thumbnail item-start>
           <img src="assets/profile/mobile.png">
         </ion-thumbnail>
-        <ion-label stacked>Mobile
+        <ion-label stacked class="label-name">Mobile
           <ion-input type="tel" pattern="[0-9]*" minlength="10" maxlength="10" [(ngModel)]="userInfo.contactNumber" placeholder="Mobile"></ion-input>
         </ion-label>
       </ion-item>
@@ -55,7 +60,7 @@
         <ion-thumbnail item-start>
           <img src="assets/profile/password.png">
         </ion-thumbnail>
-        <ion-label>Chane Password</ion-label>
+        <ion-label class="label-name">Change Password</ion-label>
       </ion-item>
     </ion-list>
   </ion-card>

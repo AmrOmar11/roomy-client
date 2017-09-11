@@ -6,8 +6,17 @@ page-settings {
 	ion-thumbnail img {
 	    width: 25px !important;
 	    height: 25px !important;
+	     top: 20% !important;
+	     position: absolute;
 	}
 	ion-label{
 		font-size: 2vmax !important;
+	}
+	.label-name{
+	  	margin: 11px 2px -27px 1px !important;
+	  	color: #cdcdcd;
+	}
+	.card{
+	   	border-radius: 10px !important;
 	}
 }

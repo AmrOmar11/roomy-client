@@ -14,11 +14,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PoliciesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PoliciesPage');
-  }
-
+	ionViewDidLoad() {
+	console.log('ionViewDidLoad PoliciesPage');
+	}
+	
+	closePage(){
+	    this.navCtrl.pop();
+	}
 }

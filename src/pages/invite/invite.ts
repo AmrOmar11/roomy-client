@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage,NavController } from 'ionic-angular';
 
 /**
  * Generated class for the InvitePage page.
@@ -14,11 +14,14 @@ import { IonicPage } from 'ionic-angular';
 })
 export class InvitePage {
 
-  constructor() {
-  }
+	constructor(public navCtrl: NavController) {
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InvitePage');
-  }
-
+	ionViewDidLoad() {
+	console.log('ionViewDidLoad InvitePage');
+	}
+	
+	closePage(){
+	    this.navCtrl.pop();
+	}
 }

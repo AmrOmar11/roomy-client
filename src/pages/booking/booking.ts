@@ -47,5 +47,8 @@ export class BookingPage {
     confirmbooking(){
         this.navCtrl.push('BookingConfirmPage',{"userInfo":this.userInfo} );
     }
-
+    
+    closePage(){
+        this.navCtrl.pop();
+    }
 }
