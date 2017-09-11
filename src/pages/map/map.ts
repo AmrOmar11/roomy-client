@@ -25,19 +25,19 @@ export class MapPage implements OnInit{
   private loading:any;
   private icons:any = { 
     userloc: {
-      url: "assets/img/position_marker.gif", // url
+      url: "assets/map/position_marker.gif", // url
       scaledSize: new google.maps.Size(25, 25), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     },
     hotel:{
-      url: "assets/img/hotel_marker.png", // url
+      url: "assets/map/hotel_marker.png", // url
       scaledSize: new google.maps.Size(25, 25), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     },
     selectedHotel:{
-      url: "assets/img/selected_hotel_marker.png", // url
+      url: "assets/map/selected_hotel_marker.png", // url
       scaledSize: new google.maps.Size(25, 25), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor

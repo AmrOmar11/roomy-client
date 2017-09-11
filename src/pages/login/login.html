@@ -16,9 +16,9 @@ Ionic pages and navigation.
         <form [formGroup] ="loginForm">
             <ion-row>
                 <ion-col>
-                    <p class="error" *ngIf="(!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt))||(!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt))"><ion-icon name="close-circle"></ion-icon> Incorrect Email/Mobile or password</p>
+                    <p class="error" *ngIf="(!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt))||(!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt))"><ion-icon name="close-circle"></ion-icon> Incorrect Mobile or password</p>
                     <ion-item>
-                        <ion-label floating class="placeholder"> <ion-icon name="person"> </ion-icon> Email/Mobile</ion-label>
+                        <ion-label floating class="placeholder"> <ion-icon name="person"> </ion-icon>Mobile</ion-label>
                         <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="text" formControlName="username" name="email" [(ngModel)]="userCredentials.emailId">
                         </ion-input>
                     </ion-item>
