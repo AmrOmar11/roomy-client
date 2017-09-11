@@ -29,8 +29,8 @@ export class LoginPage {
             public formBuilder:  FormBuilder
            ) {
         this.loginForm = this.formBuilder.group({
-            username: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z0-9\.\@]+'), Validators.required,UsernameValidator.isValid]),''],
-            password: ['',Validators.compose([Validators.required]),'']
+            username: ['',Validators.compose([Validators.maxLength(10), Validators.pattern('^[0-9]+$'), Validators.required]),''],
+            password: ['',Validators.compose([Validators.maxLength(10),Validators.required]),'']
         });
     }
 
@@ -86,6 +86,7 @@ export class LoginPage {
             let inputData:UserRequest = new UserRequest();
             inputData.action = "SIGNIN";
             inputData.emailId = this.userCredentials.emailId;
+            inputData.contactNumber = this.userCredentials.mobileNumber;
             inputData.loginType = "APP";
             inputData.password = this.userCredentials.password;
             if(inputData.emailId.match(mobileRegex)){

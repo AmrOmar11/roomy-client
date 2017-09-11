@@ -20,7 +20,7 @@ Ionic pages and navigation.
                     <ion-item>
                         <ion-label floating class="placeholder">
                         <ion-icon name="phone-portrait"></ion-icon> Mobile</ion-label>
-                        <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="text" formControlName="username" name="email" [(ngModel)]="userCredentials.emailId">
+                        <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="tel" formControlName="username" name="username" [(ngModel)]="userCredentials.mobileNumber">
                         </ion-input>
                     </ion-item>
 
