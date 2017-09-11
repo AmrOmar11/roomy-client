@@ -8,7 +8,7 @@ Ionic pages and navigation.
 <ion-content padding>
     <ion-row>
         <ion-col margin-top margin-bottom padding-top padding-bottom text-center>
-            <img class="logo" src="assets/img/logo.png"/>
+            <img class="logo" src="assets/login/logo.png"/>
         </ion-col>
     </ion-row>
 
@@ -18,7 +18,8 @@ Ionic pages and navigation.
                 <ion-col>
                     <p class="error" *ngIf="(!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt))||(!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt))"><ion-icon name="close-circle"></ion-icon> Incorrect Mobile or password</p>
                     <ion-item>
-                        <ion-label floating class="placeholder"> <ion-icon name="person"> </ion-icon>Mobile</ion-label>
+                        <ion-label floating class="placeholder">
+                        <img src="assets/login/mobile_icon.png">Mobile</ion-label>
                         <ion-input [class.invalid]="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt)" type="text" formControlName="username" name="email" [(ngModel)]="userCredentials.emailId">
                         </ion-input>
                     </ion-item>
@@ -58,10 +59,10 @@ Ionic pages and navigation.
         </ion-row>
         <ion-row>
             <ion-col text-center>
-                <img class="social-icons" src="assets/img/facebook.png" (click)="doFacebookLogin()">
+                <img class="social-icons" src="assets/login/facebook.png" (click)="doFacebookLogin()">
             </ion-col>
             <ion-col text-center>
-                <img class="social-icons"  src="assets/img/google.png" (click)="doGoogleLogin()">
+                <img class="social-icons"  src="assets/login/google.png" (click)="doGoogleLogin()">
             </ion-col>
         </ion-row>
     </div>

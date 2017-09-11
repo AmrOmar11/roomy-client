@@ -15,16 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class HowitworksPage {
 	slides =[
 	     {
-	        "image":"assets/img/hiw/screen1.png"
+	        "image":"assets/hiw/screen1.png"
 	     },
 	     {
-	        "image":"assets/img/hiw/screen2.png"
+	        "image":"assets/hiw/screen2.png"
 	     },
 	     {
-	     	"image":"assets/img/hiw/screen3.png"
+	     	"image":"assets/hiw/screen3.png"
 	     },
 	     {
-	     	"image":"assets/img/hiw/screen4.png"
+	     	"image":"assets/hiw/screen4.png"
 	     }
      ];
 

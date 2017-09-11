@@ -16,16 +16,16 @@ export class PreviewPage {
    @ViewChild(Slides) slider: Slides;
   slides =[
      {
-        "image":"assets/img/preview/screen1.png"
+        "image":"assets/preview/screen1.png"
      },
      {
-        "image":"assets/img/preview/screen2.png"
+        "image":"assets/preview/screen2.png"
      },
      {
-     	"image":"assets/img/preview/screen3.png"
+     	"image":"assets/preview/screen3.png"
      },
      {
-     	"image":"assets/img/preview/screen4.png"
+     	"image":"assets/preview/screen4.png"
      }
   ];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
