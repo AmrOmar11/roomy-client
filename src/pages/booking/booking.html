@@ -14,7 +14,7 @@
     <ion-list inset>
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/profile/user.png">
+          <img src="assets/booking/user.png">
         </ion-thumbnail>
         <ion-label stacked>Name</ion-label>
         <ion-label>{{userInfo.first_Name}}</ion-label>
@@ -22,7 +22,7 @@
 
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/profile/email.png">
+          <img src="assets/booking/email.png">
         </ion-thumbnail>      
         <ion-label stacked>EMail</ion-label>
         <ion-label>{{userInfo.emailAddress}}</ion-label>
@@ -30,7 +30,7 @@
 
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/profile/mobile.png">
+          <img src="assets/booking/phone.png">
         </ion-thumbnail>
         <ion-label>{{userInfo.contactNumber}}</ion-label>
       </ion-item>
@@ -42,7 +42,7 @@
       <ion-list inset>
         <ion-item>
           <ion-thumbnail item-start>
-            <img src="assets/profile/user.png">
+            <img src="assets/booking/user.png">
           </ion-thumbnail>
           <ion-input type="text" [class.invalid]= "!signUpForm.controls.firstName.valid && (signUpForm.controls.firstName.dirty || registerAttempt)" formControlName="firstName" name="firstName" [(ngModel)]="signUpData.first_Name">
           </ion-input>
@@ -50,18 +50,17 @@
 
         <ion-item>
           <ion-thumbnail item-start>
-            <img src="assets/profile/email.png">
+            <img src="assets/booking/email.png">
           </ion-thumbnail>
           <ion-input type="text"  [class.invalid]= "!signUpForm.controls.emailId.valid && (signUpForm.controls.emailId.dirty || registerAttempt)" formControlName="emailId" name="emailId" [(ngModel)]="signUpData.emailId"></ion-input> 
         </ion-item>
 
         <ion-item>
           <ion-thumbnail item-start>
-            <img src="assets/profile/mobile.png">
+            <img src="assets/booking/phone.png">
           </ion-thumbnail>
           <ion-input type="text" [class.invalid]= "!signUpForm.controls.contactNumber.valid && (signUpForm.controls.contactNumber.dirty || registerAttempt)"formControlName="contactNumber" name="contactNumber" [(ngModel)]="signUpData.contactNumber"></ion-input>
         </ion-item>
-
       </ion-list>
     </ion-card>
   </form>
