@@ -14,7 +14,55 @@
 
 
 <ion-content padding>
-  <div >    
+<ion-card>
+  <ion-list inset>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/profile/user.png">
+      </ion-avatar>
+      <ion-label stacked>Name</ion-label>
+      <ion-label>{{userInfo.first_Name}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/profile/calender.png">
+      </ion-avatar>      
+      <ion-label stacked>BirthDate</ion-label>
+      <ion-label>{{userInfo.dateOfBirth}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/profile/email.png">
+      </ion-avatar>      
+      <ion-label stacked>EMail</ion-label>
+      <ion-label>{{userInfo.emailAddress}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/profile/mobile.png">
+      </ion-avatar>
+      <ion-label stacked>Mobile
+        <ion-input type="tel" pattern="[0-9]*" minlength="10" maxlength="10" [(ngModel)]="userInfo.contactNumber" placeholder="Mobile"></ion-input>
+      </ion-label>      
+    </ion-item>
+  </ion-list>
+</ion-card>
+
+<ion-card>
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/profile/password.png">
+      </ion-avatar>
+      <ion-label>Chane Password</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-card>
+
+  <!-- <div >    
     <form (ngSubmit)="updateProfile()" [formGroup] = "profileForm">
       <ion-row>
         <ion-col>
@@ -54,5 +102,5 @@
           <button ion-button full (click)="logOut()">LogOut</button>
         </ion-col>
       </ion-row>
-  </div>
+  </div> -->
 </ion-content>
