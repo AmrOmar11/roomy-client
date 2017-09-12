@@ -162,7 +162,7 @@ export class VerifyNumberPage {
   }
 
   next(el) {
-    el.focus();
+    el.setFocus();
   }
 
   hideMobCharacter(MobileNumber){
@@ -201,7 +201,7 @@ export class VerifyNumberPage {
 
   getCountries(){
     return new Promise(resolve =>{
-      this.http.get(`../assets/data/countries.json`)
+      this.http.get(`assets/data/countries.json`)
       .subscribe(res => resolve(res.json()));
     });
   }
