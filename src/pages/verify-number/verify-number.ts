@@ -162,7 +162,7 @@ export class VerifyNumberPage {
   }
 
   next(el) {
-    el.setFocus();
+    el.focus();
   }
 
   hideMobCharacter(MobileNumber){
