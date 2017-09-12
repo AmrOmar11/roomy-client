@@ -50,6 +50,7 @@ export class RegisterPage {
                     this.signUpData.action ='OTP';
                     this.signUpData.customerToken = success.jwtToken;
                     this.signUpData.userId = success.result.userId;
+                    this.signUpData.contactNumber = success.result.contactNumber;
                     this.navCtrl.push('VerifyNumberPage',{'inputData':this.signUpData,'screen':'otp'});
                 }else if((success.status !== undefined)&&(success.status == '0002')){
                     this.authProvider.showError('Mobile Numer already exis');

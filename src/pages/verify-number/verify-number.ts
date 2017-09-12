@@ -140,7 +140,7 @@ export class VerifyNumberPage {
   		OTP = OTP + this.items[item];
   	}
   	this.inputData.otp = parseInt(OTP);
-    if(this.inputData.action == 'SIGNUP'){
+    if(this.inputData.action == 'SIGNUP' || this.inputData.action == 'OTP'){
       this.inputData.action ='OTP'
       this.verifyMobile(this.inputData);
     }else if(this.inputData.action == 'FORGETPASSWORD'){

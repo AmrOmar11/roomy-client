@@ -42,27 +42,27 @@
 		</div>
 		<ion-row>
 			<ion-col full bstyle="text-align: center;">
-		        <ion-input type="tel" #otp1 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[0]" (keyup)="next(otp2)">
+		        <ion-input type="tel" #otp1 class="otp" pattern="[0-9]*" maxlength="1" size="1" [(ngModel)]="items[0]" (keyup)="next(otp2)">
 		        </ion-input>
 		    </ion-col>
 		    <ion-col full bstyle="text-align: center;">
-		        <ion-input type="tel" #otp2 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[1]" (keyup)="next(otp3)">
+		        <ion-input type="tel" #otp2 class="otp" pattern="[0-9]*" maxlength="1" size="1" [(ngModel)]="items[1]" (keyup)="next(otp3)">
 		        </ion-input>
 		    </ion-col>
 		    <ion-col full bstyle="text-align: center;">
-		        <ion-input type="tel" #otp3 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[2]" (keyup)="next(otp4)">
+		        <ion-input type="tel" #otp3 class="otp" pattern="[0-9]*" maxlength="1" size="1" [(ngModel)]="items[2]" (keyup)="next(otp4)">
 		        </ion-input>
 		    </ion-col>
 		    <ion-col full bstyle="text-align: center;">
-		        <ion-input type="tel" #otp4 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[3]" (keyup)="next(otp5)">
+		        <ion-input type="tel" #otp4 class="otp" pattern="[0-9]*" maxlength="1" size="1" [(ngModel)]="items[3]" (keyup)="next(otp5)">
 		        </ion-input>
 		    </ion-col>
 		    <ion-col full bstyle="text-align: center;">
-		        <ion-input type="tel" #otp5 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[4]" (keyup)="next(otp6)">
+		        <ion-input type="tel" #otp5 class="otp" pattern="[0-9]*" maxlength="1" size="1" [(ngModel)]="items[4]" (keyup)="next(otp6)">
 		        </ion-input>
 		    </ion-col>
 			<ion-col full bstyle="text-align: center;">
-		        <ion-input type="tel" #otp6 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" [(ngModel)]="items[5]">
+		        <ion-input type="tel" #otp6 class="otp" pattern="[0-9]*" maxlength="1" size="1" [(ngModel)]="items[5]">
 		        </ion-input>
 		    </ion-col>
 		</ion-row>
