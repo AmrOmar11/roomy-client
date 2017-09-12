@@ -18,10 +18,6 @@ export class PoliciesPage {
 	}
 
 	ionViewDidLoad() {
-	console.log('ionViewDidLoad PoliciesPage');
-	}
-	
-	closePage(){
-	    this.navCtrl.pop();
+		console.log('ionViewDidLoad PoliciesPage');
 	}
 }

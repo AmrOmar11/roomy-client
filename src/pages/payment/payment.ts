@@ -15,13 +15,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PaymentPage {
 
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
+		
 	}
 
 	ionViewDidLoad() {
-	console.log('ionViewDidLoad PaymentPage');
+		console.log('ionViewDidLoad PaymentPage');
 	}
-	
-	closePage(){
-        this.navCtrl.pop();
-    }
 }

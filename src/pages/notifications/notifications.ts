@@ -22,7 +22,4 @@ export class NotificationsPage {
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad NotificationsPage');
 	}
-	closePage(){
-		this.navCtrl.pop();
-	}
 }

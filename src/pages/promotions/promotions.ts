@@ -19,9 +19,5 @@ export class PromotionsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PromotionsPage');
-  }
-  
-  closePage(){
-      this.navCtrl.pop();
-  }
+  }  
 }

@@ -53,9 +53,5 @@ export class SettingsPage {
     error => {
        
     });
-  }
-  
-  closePage(){
-      this.navCtrl.pop();
-  }
+  }  
 }

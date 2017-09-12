@@ -54,7 +54,9 @@ export class LoginPage {
     }
 
     forgetPassword(){
-        this.navCtrl.push('ForgotPasswordPage');
+        let inputData = new UserRequest();
+        inputData.action = 'FORGETPASSWORD';
+        this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'forgotpassword'});
     }
 
     doGoogleLogin() {

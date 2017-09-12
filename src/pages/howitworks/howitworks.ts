@@ -36,8 +36,4 @@ export class HowitworksPage {
 		console.log('ionViewDidLoad HowitworksPage');
 	}
 
-	closePage(){
-        this.navCtrl.pop();
-    }
-
 }

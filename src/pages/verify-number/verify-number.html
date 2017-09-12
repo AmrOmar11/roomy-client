@@ -14,9 +14,10 @@
 
 
 <ion-content padding>
+	<!--- collecting mobile during forgot password or socail login -->
 	<div id="VerifyMobileContainer" [hidden]="hideMobilePopUp">
 		<div class="otpImage">
-			<img src="assets/img/verify-number/OTP.png">
+			<img src="{{imageName}}">
 		</div>
 		<div class="input-group">
   			<div class="input-group-addon">+91</div>
@@ -30,6 +31,7 @@
             </ion-col>
         </ion-row>
 	</div>
+	<!--- otp screen -->
 	<div id="VerifyOTPContainer" [hidden]="hideOtpPopUp">
 		<div class="otpImage">
 			<img src="assets/img/verify-number/OTP.png">
@@ -75,4 +77,33 @@
             </ion-col>
         </ion-row>
 	</div>
+	<!--- reset/change password -->
+	<form [formGroup]="resetForm" [hidden]="hideResetForm">
+        <ion-item [class.invalid]="!password.valid && password.touched">
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" value="" [formControl]="password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('required') && password.touched" class="invalid">
+            <p>* Password is required!</p>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('minlength') && password.touched" class="invalid">
+            <p>* Minimum password length is 3!</p>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('maxlength') && password.touched" class="invalid">
+            <p>* Maximum password length is 25!</p>
+        </ion-item>
+
+        <ion-item [class.invalid]="!re_password.valid && re_password.touched">
+            <ion-label floating>Re-enter Password</ion-label>
+            <ion-input type="password" value="" [formControl]="re_password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="re_password.hasError('pw_mismatch') && re_password.touched" class="invalid">
+            <p>* Passwords do not match!</p>
+        </ion-item>
+        <button ion-button block medium (click)="changePassword()" [disabled]="(!resetForm.valid)">Submit</button>
+    </form>
 </ion-content>

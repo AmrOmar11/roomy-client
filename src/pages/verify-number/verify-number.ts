@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import { PasswordValidator } from  '../../validators/password';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
 
 /**
@@ -14,19 +16,41 @@ import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/
   templateUrl: 'verify-number.html',
 })
 export class VerifyNumberPage {
-  public inputData:UserRequest;
-  public hideMobilePopUp:boolean = true;
-  public hideOtpPopUp:boolean = true;
-  public HiddenMobNum:any = '';
-  public items = ['','','','','',''];
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthenticateProvider) {
+  private inputData:UserRequest;
+  private hideMobilePopUp:boolean = true;
+  private hideOtpPopUp:boolean = true;
+  private hideResetForm:boolean = true;
+  private HiddenMobNum:any = '';
+  private items = ['','','','','',''];
+  private imageName:string;
+  private resetForm: FormGroup;
+  private password: AbstractControl;
+  private re_password: AbstractControl;
+    
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private formBuilder: FormBuilder,
+    private authProvider: AuthenticateProvider) {
+    this.resetForm = formBuilder.group({
+        'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+        're_password': ['', [Validators.required]]
+        }, { 'validator': PasswordValidator.isMatching }
+    );
+    this.password = this.resetForm.controls['password'];
+    this.re_password = this.resetForm.controls['re_password'];
     this.inputData = this.navParams.get("inputData");
     let screen = this.navParams.get("screen");
     if(screen == 'mobile'){
       this.hideMobilePopUp = false;
+      this.imageName = 'assets/verify-number/otp.png';
     }else if(screen == 'otp'){
       this.hideOtpPopUp = false;
+      this.imageName = 'assets/verify-number/otp.png';
+    }else if(screen == 'forgotpassword'){
+      this.hideMobilePopUp = false;
+      this.imageName = 'assets/verify-number/forgotpassword.png';
+    }else if(screen == 'changepassword'){
+      this.hideResetForm = false;
     }
   }
 
@@ -35,21 +59,66 @@ export class VerifyNumberPage {
   }
 
   public generateOtp(){
-    this.authProvider.login(this.inputData).subscribe(success => {
-    	if((success.status !== undefined)&&(success.status == '0009')) {
-          this.hideMobilePopUp = true;
-          this.hideOtpPopUp = false;
-          this.inputData.action ='OTP';
-          this.inputData.customerToken = success.jwtToken;
-          this.inputData.userId = success.result.userId;
-          this.hideMobCharacter(this.inputData.contactNumber);
-        }else {
-            this.authProvider.showError(success.status);
-        }
+    if(this.inputData.action == 'SIGNUP'){
+      this.verifyMobile(this.inputData);
+    }else if(this.inputData.action == 'FORGETPASSWORD'){
+      this.forgotPassword(this.inputData);
+    }
+  }
+
+  private verifyMobile(inputData){
+    this.authProvider.login(inputData).subscribe(success => {      
+		  if((success.status !== undefined)&&(success.status == '0001')) {
+        this.authProvider.setCurrentUser(success);
+        this.authProvider.setUserData(success);
+        this.navCtrl.setRoot('HomePage');
+      }else if((success.status !== undefined)&&(success.status == '0009')) {
+        this.displayOTP(success);
+      }else {
+        this.authProvider.showError(success.status);
+      }
     },
     error => {
         this.authProvider.showError(error);
     });
+    this.inputData.action = 'SIGNUP';
+  }
+
+  private displayOTP(success){
+    this.hideMobilePopUp = true;
+    this.hideOtpPopUp = false;
+    this.inputData.customerToken = success.jwtToken;
+    this.inputData.userId = success.result.userId;
+    this.hideMobCharacter(this.inputData.contactNumber);
+  }
+
+  private forgotPassword(inputData){
+    this.authProvider.forgotPassword(inputData).subscribe(success => {      
+      if((success.status !== undefined)&&(success.status == '0001')) {
+          this.hideMobilePopUp = true;
+          this.hideOtpPopUp = true;
+          this.hideResetForm = false;
+      }else if((success.status !== undefined)&&(success.status == '0009')) {
+        this.displayOTP(success);
+      }else if((success.status !== undefined)&&(success.status == '0013')) {
+        this.authProvider.showError("User not found");
+      }else if((success.status !== undefined)&&(success.status == '0007')) {
+        this.authProvider.showError("OTP Does not match");
+      }else if((success.status !== undefined)&&(success.status == '0008')) {
+        this.authProvider.showError("OTP Expired");
+      }else if((success.status !== undefined)&&(success.status == '0017')) {
+          this.inputData.action = 'SIGNIN';
+          this.inputData.loginType = 'APP';
+          this.inputData.password = this.password.value;
+          this.verifyMobile(this.inputData);
+      }else {
+        this.authProvider.showError(success.status);
+      }
+    },
+    error => {
+      this.authProvider.showError(error);
+    });
+    this.inputData.action = 'FORGETPASSWORD';
   }
 
   public submitOtp(){
@@ -58,20 +127,22 @@ export class VerifyNumberPage {
   		OTP = OTP + this.items[item];
   	}
   	this.inputData.otp = parseInt(OTP);
-    this.authProvider.login(this.inputData).subscribe(success => {
-    	if((success.status !== undefined)&&(success.status == '0001')) {
-            this.authProvider.setCurrentUser(success);
-            this.authProvider.setUserData(success);
-            this.navCtrl.setRoot('HomePage');
-        }else {
-            this.authProvider.showError(success.status);
-        }
-    },
-    error => {
-        this.authProvider.showError(error);
-    });
+    if(this.inputData.action == 'SIGNUP'){
+      this.inputData.action ='OTP'
+      this.verifyMobile(this.inputData);
+    }else if(this.inputData.action == 'FORGETPASSWORD'){
+      this.inputData.action ='OTP'
+      this.forgotPassword(this.inputData);
+    }
   }
-
+  
+  changePassword(){
+    this.inputData.newPassword = this.password.value;
+    if(this.inputData.action == 'FORGETPASSWORD'){
+      this.inputData.action = 'SAVEPASSWORD';
+      this.forgotPassword(this.inputData);
+    }
+  }
 
   next(el) {
     el.setFocus();

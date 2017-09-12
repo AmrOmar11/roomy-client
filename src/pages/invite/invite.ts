@@ -18,10 +18,6 @@ export class InvitePage {
 	}
 
 	ionViewDidLoad() {
-	console.log('ionViewDidLoad InvitePage');
-	}
-	
-	closePage(){
-	    this.navCtrl.pop();
+		console.log('ionViewDidLoad InvitePage');
 	}
 }
