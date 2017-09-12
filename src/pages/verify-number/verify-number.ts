@@ -20,10 +20,12 @@ export class VerifyNumberPage {
   private hideMobilePopUp:boolean = true;
   private hideOtpPopUp:boolean = true;
   private hideResetForm:boolean = true;
+  private hideOldPassword:boolean = true;
   private HiddenMobNum:any = '';
   private items = ['','','','','',''];
   private imageName:string;
   private resetForm: FormGroup;
+  private oldPassword: AbstractControl;
   private password: AbstractControl;
   private re_password: AbstractControl;
     
@@ -32,10 +34,12 @@ export class VerifyNumberPage {
     private formBuilder: FormBuilder,
     private authProvider: AuthenticateProvider) {
     this.resetForm = formBuilder.group({
+        'oldPassword': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         're_password': ['', [Validators.required]]
         }, { 'validator': PasswordValidator.isMatching }
     );
+    this.oldPassword = this.resetForm.controls['oldPassword'];
     this.password = this.resetForm.controls['password'];
     this.re_password = this.resetForm.controls['re_password'];
     this.inputData = this.navParams.get("inputData");
@@ -51,6 +55,7 @@ export class VerifyNumberPage {
       this.imageName = 'assets/verify-number/forgotpassword.png';
     }else if(screen == 'changepassword'){
       this.hideResetForm = false;
+      this.hideOldPassword = false;
     }
   }
 
@@ -100,12 +105,6 @@ export class VerifyNumberPage {
           this.hideResetForm = false;
       }else if((success.status !== undefined)&&(success.status == '0009')) {
         this.displayOTP(success);
-      }else if((success.status !== undefined)&&(success.status == '0013')) {
-        this.authProvider.showError("User not found");
-      }else if((success.status !== undefined)&&(success.status == '0007')) {
-        this.authProvider.showError("OTP Does not match");
-      }else if((success.status !== undefined)&&(success.status == '0008')) {
-        this.authProvider.showError("OTP Expired");
       }else if((success.status !== undefined)&&(success.status == '0017')) {
           this.inputData.action = 'SIGNIN';
           this.inputData.loginType = 'APP';
@@ -137,9 +136,13 @@ export class VerifyNumberPage {
   }
   
   changePassword(){
-    this.inputData.newPassword = this.password.value;
     if(this.inputData.action == 'FORGETPASSWORD'){
       this.inputData.action = 'SAVEPASSWORD';
+      this.inputData.newPassword = this.password.value;
+      this.forgotPassword(this.inputData);
+    }if(this.inputData.action == 'CHANGEPASSWORD'){      
+      this.inputData.newPassword = this.password.value;
+      this.inputData.oldpassword = this.oldPassword.value;
       this.forgotPassword(this.inputData);
     }
   }

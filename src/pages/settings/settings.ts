@@ -37,21 +37,12 @@ export class SettingsPage {
   updateProfile(){
 
   }
-  
-  logOut(){
+
+  changePassword(){
     let inputData:UserRequest = new UserRequest();
-    inputData.action = 'LOGOUT';
-    inputData.loginType = 'APP';
+    inputData.action = 'CHANGEPASSWORD';
+    inputData.contactNumber = this.authProvider.getUserInfo().contactNumber;
     inputData.customerToken = this.authProvider.getUserInfo().customerToken;
-    inputData.userId = this.authProvider.getUserInfo().userID;
-    this.authProvider.logout(inputData).subscribe(success => {
-      if((success.statusCode !== undefined)&&(success.statusCode == 0)) {
-          this.authProvider.removeUser();
-          this.navCtrl.setRoot('PreviewPage');
-      }
-    },
-    error => {
-       
-    });
-  }  
+    this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'changepassword'});
+  }
 }
