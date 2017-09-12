@@ -5,20 +5,56 @@ page-verify-number {
     ion-input{
     	color:#777373;
     	float:left;
-    	width: 80%;
+    	width: 58%;
     	margin: 0 auto;
     	input{
     		margin: 5px 8px 5px 0 !important;
     		margin-left: 4px !important;
-    		font-size: 3.5vmax;
-    		text-align:center;
-    		letter-spacing: 3px;
+    		font-size: 17px;
     	}
     	input::placeholder {
-    		font-size: 3.2vmax !important;
+    		font-size: 14px !important;
     		letter-spacing: 0px;
     	}
 	}
+
+	.input-select-addon{
+	  margin: auto;
+	  width:15%;
+	  float:left;
+	}
+	#select-arrow{
+		width:5%;
+		float:left;
+		padding: 5px 0px;
+	}
+	i {
+	    border: solid #777373;
+	    border-width: 0 2px 2px 0;
+	    display: inline-block;
+	    padding: 2px;
+	}
+	.down {
+	    transform: rotate(45deg);
+	    -webkit-transform: rotate(45deg);
+	}
+	ul{
+	  width: 25px;
+	  height: auto;
+	  overflow-y:scroll;
+	  margin:0px auto;
+	  padding:7px 0px;
+	}
+	li{
+	  list-style: none;
+	  list-style-position: inside;  
+	}
+	li:not(:first-child){display: none;}
+	ul:hover{
+	  background: transparent;
+	}
+	ul:hover li{display: block;}
+
 	.otpImage{
 		width:75%;
 		margin:0 auto;
@@ -41,18 +77,20 @@ page-verify-number {
 		border: 2px solid #D8D8D8;
 	    border-radius: 7px;
 	    margin: 25px auto;
-	    height:45px;
+	    height:35px;
 	    width: 85%;
 	}
 	.input-group-addon
 	{
 	    background-color: transparent;
-	    font-size: 3.5vmax;
-	    color: #777373;
+	    font-size: 17px;
+	    //color: #777373;
 	    padding: 5px;
-	    border-right: 1px solid #dbd9d9;
-	    width:20%;
+	    border-left: 1px solid #dbd9d9;
+	    width:22%;
+	    height:33px;
 	    float:left;
+	    text-align:center;
 	}
 	.input-group .input-group-addon + .form-control
 	{
@@ -83,4 +121,5 @@ page-verify-number {
 			width: 100%;
 		}
 	}
+
 }

@@ -18,8 +18,14 @@
 			<img src="{{imageName}}">
 		</div>
 		<div class="input-group">
-  			<div class="input-group-addon">+91</div>
-			<ion-input type="tel" pattern="[0-9]*" minlength="10" maxlength="10" [(ngModel)]="inputData.contactNumber" placeholder="Your Mobile Number"></ion-input>
+			<div class="input-select-addon">
+			    <ul id="countryList">
+    				<li *ngFor="let country of countryList" attr.id="{{country.country}}" attr.data-code={{country.countryCode}} (click)="countryselected(country.country)"><img src={{country.countryImg}}></li>
+    			</ul>
+			</div>
+    		<div id="select-arrow" (click)="countryselected(countryList[0].country)"><i class="arrow down"></i></div> 						
+  			<div class="input-group-addon">{{countryCodeSelected}}</div>
+			<ion-input type="tel" pattern="[0-9]*" minlength="10" maxlength="10" placeholder="Your Mobile Number"></ion-input>
 		</div>
 		<div class="otpInfo"><span>We will send you One-Time-Password (OTP) via SMS. Please enter OTP in next step.</span></div>
 		<ion-row>

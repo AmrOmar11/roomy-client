@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { PasswordValidator } from  '../../validators/password';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
+import { Http, Response } from '@angular/http';
 
 /**
  * Generated class for the VerifyNumberPage page.
@@ -23,6 +24,9 @@ export class VerifyNumberPage {
   private hideOldPassword:boolean = true;
   private HiddenMobNum:any = '';
   private items = ['','','','','',''];
+  public countryList;
+  public countryCodeSelected = "+91";
+  public listToggle= false;
   private imageName:string;
   private screenTitle:string;
   private resetForm: FormGroup;
@@ -33,7 +37,8 @@ export class VerifyNumberPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private formBuilder: FormBuilder,
-    private authProvider: AuthenticateProvider) {
+    private authProvider: AuthenticateProvider,
+	private http:Http) {
     this.resetForm = formBuilder.group({
         'oldPassword': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
@@ -48,6 +53,10 @@ export class VerifyNumberPage {
     if(screen == 'mobile'){
       this.screenTitle = "Mobile";
       this.hideMobilePopUp = false;
+	  this.getCountries().then((data)=>{
+        console.log(data);
+        this.countryList = data;
+      });
       this.imageName = 'assets/verify-number/otp.png';
     }else if(screen == 'otp'){
       this.screenTitle = "OTP";
@@ -168,5 +177,32 @@ export class VerifyNumberPage {
 	        }
 		  }
 	  }
+  }
+
+  countryselected(country){
+    var countrycode = country;
+    var countrySelected = document.getElementById(countrycode);
+    var listElem = document.getElementsByTagName('li');
+    if(this.listToggle){
+      for(var i = 0; i < listElem.length; i++) {
+        listElem[i].style.display = 'none';
+      }
+      countrySelected.style.display='block';
+      this.listToggle = false;
+      this.countryCodeSelected = countrySelected.getAttribute('data-code');
+      console.log(this.countryCodeSelected);
+    }else{
+      for(var i = 0; i < listElem.length; i++) {
+        listElem[i].style.display = 'block';
+      }
+      this.listToggle = true;
+    } 
+  }
+
+  getCountries(){
+    return new Promise(resolve =>{
+      this.http.get(`../assets/data/countries.json`)
+      .subscribe(res => resolve(res.json()));
+    });
   }
 }

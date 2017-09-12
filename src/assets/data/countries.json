@@ -1,0 +1,12 @@
+[
+{
+    "country": "India",
+    "countryImg": "assets/img/countries/india.jpg",
+    "countryCode": "+91"
+  },
+  {
+    "country": "US",
+    "countryImg": "assets/img/countries/us.png",
+    "countryCode": "+1"
+  }
+]
