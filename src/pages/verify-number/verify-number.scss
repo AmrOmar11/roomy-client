@@ -1,15 +1,8 @@
 page-verify-number {
 	ion-header{
-        background: rgba(0,0,0,0);
+        background-color: map-get($colors, content-background);
     }
-    .toolbar-background{
-    	background: transparent !important;
-    	border: none !important;
-    }
-    ion-title .toolbar-title{
-    	color:#727272 !important;
-    }
-	ion-input{
+    ion-input{
     	color:#777373;
     	float:left;
     	width: 80%;

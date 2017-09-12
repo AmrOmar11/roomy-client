@@ -24,6 +24,7 @@ export class VerifyNumberPage {
   private HiddenMobNum:any = '';
   private items = ['','','','','',''];
   private imageName:string;
+  private screenTitle:string;
   private resetForm: FormGroup;
   private oldPassword: AbstractControl;
   private password: AbstractControl;
@@ -45,15 +46,19 @@ export class VerifyNumberPage {
     this.inputData = this.navParams.get("inputData");
     let screen = this.navParams.get("screen");
     if(screen == 'mobile'){
+      this.screenTitle = "Mobile";
       this.hideMobilePopUp = false;
       this.imageName = 'assets/verify-number/otp.png';
     }else if(screen == 'otp'){
+      this.screenTitle = "OTP";
       this.hideOtpPopUp = false;
       this.imageName = 'assets/verify-number/otp.png';
     }else if(screen == 'forgotpassword'){
+      this.screenTitle = "Forgot Password";
       this.hideMobilePopUp = false;
       this.imageName = 'assets/verify-number/forgotpassword.png';
     }else if(screen == 'changepassword'){
+      this.screenTitle = "Change Password";
       this.hideResetForm = false;
       this.hideOldPassword = false;
     }
