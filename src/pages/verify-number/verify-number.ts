@@ -33,12 +33,13 @@ export class VerifyNumberPage {
   private oldPassword: AbstractControl;
   private password: AbstractControl;
   private re_password: AbstractControl;
+  public countryselected:any = "";
     
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private formBuilder: FormBuilder,
     private authProvider: AuthenticateProvider,
-	private http:Http) {
+	  private http:Http) {
     this.resetForm = formBuilder.group({
         'oldPassword': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
@@ -179,25 +180,25 @@ export class VerifyNumberPage {
 	  }
   }
 
-  countryselected(country){
-    var countrycode = country;
-    var countrySelected = document.getElementById(countrycode);
-    var listElem = document.getElementsByTagName('li');
-    if(this.listToggle){
-      for(var i = 0; i < listElem.length; i++) {
-        listElem[i].style.display = 'none';
-      }
-      countrySelected.style.display='block';
-      this.listToggle = false;
-      this.countryCodeSelected = countrySelected.getAttribute('data-code');
-      console.log(this.countryCodeSelected);
-    }else{
-      for(var i = 0; i < listElem.length; i++) {
-        listElem[i].style.display = 'block';
-      }
-      this.listToggle = true;
-    } 
-  }
+  // countryselected(country){
+  //   var countrycode = country;
+  //   var countrySelected = document.getElementById(countrycode);
+  //   var listElem = document.getElementsByTagName('li');
+  //   if(this.listToggle){
+  //     for(var i = 0; i < listElem.length; i++) {
+  //       listElem[i].style.display = 'none';
+  //     }
+  //     countrySelected.style.display='block';
+  //     this.listToggle = false;
+  //     this.countryCodeSelected = countrySelected.getAttribute('data-code');
+  //     console.log(this.countryCodeSelected);
+  //   }else{
+  //     for(var i = 0; i < listElem.length; i++) {
+  //       listElem[i].style.display = 'block';
+  //     }
+  //     this.listToggle = true;
+  //   } 
+  // }
 
   getCountries(){
     return new Promise(resolve =>{
@@ -205,4 +206,19 @@ export class VerifyNumberPage {
       .subscribe(res => resolve(res.json()));
     });
   }
+
+  showSelect(){
+    document.getElementById('selectTag').click();
+  }
+
+  optionsFn(){
+    var countrySelected = document.getElementById(this.countryselected.countryAlpha);
+    var listElem = document.getElementsByTagName('li');
+    for(var i = 0; i < listElem.length; i++) {
+      listElem[i].style.display = 'none';
+    }
+    countrySelected.style.display='block';
+    this.countryCodeSelected =  this.countryselected.countryCode;
+  }
+
 }

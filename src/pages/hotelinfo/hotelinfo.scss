@@ -128,8 +128,8 @@ page-hotelinfo {
 		height:auto;	
 	}
 	.HotelyType{
-	    width: 45px;
-	    height: 45px;
+	    width: 25px;
+	    height: 25px;
 	    right: 5%;
 	    top: 20%;
 	    position: absolute;
@@ -306,22 +306,22 @@ page-hotelinfo {
 	.WIFI{
 		background: url('../assets/img/amenities.png') no-repeat 0 -7px;
 	}
-	.ac{
+	.AC{
 		background: url('../assets/img/amenities.png') no-repeat -55px -7px;
 	}
-	.longue,.PARKING{
+	.longue{
 		background: url('../assets/img/amenities.png') no-repeat -1129px -157px;
 	}
-	.alchol,.BAR{
+	.alchol,.BAR, .PARKING{
 		background: url('../assets/img/amenities.png') no-repeat -294px -3px;
 	}
 	.pool,.SWIMMINGPOOL{
 		background: url('../assets/img/amenities.png') no-repeat -179px -4px;
 	}
-	.shower{
+	.SHOWER{
 		background: url('../assets/img/amenities.png') no-repeat -115px 0;
 	}
-	.telivision{
+	.TELEVISION{
 		background: url('../assets/img/amenities.png') no-repeat -237px -1px;
 	}
 	.restuarant,.RESTAURANT{
@@ -329,16 +329,16 @@ page-hotelinfo {
 	}
 
 	.three {
-		background: url('../assets/img/stars.png') no-repeat 0 0;
+		background: url('../assets/img/Stars-slider.png') no-repeat 0 0;
 	}
 	.four{
-		background: url('../assets/img/stars.png') no-repeat -60px 0;
+		background: url('../assets/img/Stars-slider.png') no-repeat -33px 0;
 	}
 	.five{
-		background: url('../assets/img/stars.png') no-repeat -121px 0;
+		background: url('../assets/img/Stars-slider.png') no-repeat -67px 0;
 	}
 	.seven{
-		background: url('../assets/img/stars.png') no-repeat -182px 0;
+		background: url('../assets/img/Stars-slider.png') no-repeat -101px 0;
 	}
 
 	.inlineblock{
