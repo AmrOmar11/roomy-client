@@ -12,23 +12,22 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
 .pobyt-button {
     margin: 0px;
     background-color: map-get($colors, theme) !important;
 }
 
 .pobyt-button .button-inner {
-    font-size: 2rem;
-    font-family: $theme-font;
-    font-weight: bold;
+    font-size:2.8vmax;
+    font-family:$theme-font;
+    font-weight:bold;
     color: map-get($colors, whiteColor);
 }
 
-a {
-    color: map-get($colors, link-color);
-    text-decoration: none;
-    font-family: $theme-font;
-    font-size: 1.4rem
+.toolbar{
+    padding:0px;
+    background-color:map-get($colors, theme);
 }
 .toolbar-background {
     background: map-get($colors, theme);
@@ -59,12 +58,6 @@ ion-footer {
     font-size: 1.5rem;
 }
 
-.footer button {
-    margin-left: .4rem !important;
-    margin-right: .4rem !important;
-    width: 97.5%;
-    font-weight: bold;
-}
 
 @font-face {
     font-family: Opensans;

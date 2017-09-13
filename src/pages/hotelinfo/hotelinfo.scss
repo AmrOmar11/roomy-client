@@ -341,22 +341,6 @@ page-hotelinfo {
 		background: url('../assets/img/stars.png') no-repeat -182px 0;
 	}
 
-	.toolbar,.toolbar-md,.toolbar-ios{
-		padding:0px;
-		background-color:map-get($colors, theme);
-	}
-
-	.reserve-now button{
-		margin:0px;
-		background-color:map-get($colors, theme);
-	}
-
-	.reserve-now .button-inner{
-		font-size:2.8vmax;
-		font-family:$theme-font;
-		font-weight:bold;
-		color:$white;
-	}
 	.inlineblock{
 		display:inline-block;
 	}	

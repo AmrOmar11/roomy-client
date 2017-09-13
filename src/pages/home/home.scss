@@ -2,15 +2,17 @@ page-home {
    .menu-header{
         text-align:center;
         font-size:initial;
-
     }
     ion-header{
         background: rgba(255,255,255,0.4);
     }
+    .toolbar{
+        background-color: inherit;
+    }
     .bar-buttons,
     .toolbar-title {
         color: #323131 !important;
-      }
+    }
     .content .fixed-content{
         margin-top: 0px !important;
     }
@@ -20,11 +22,7 @@ page-home {
     .list-ios, .list-md{
         margin:0;
     }
-    ion-footer {
-        &.footer-md::before {
-            background-image: none;
-        }
-    }
+
     ion-title {
         position: absolute;
         top: 0;
