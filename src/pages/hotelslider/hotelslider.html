@@ -23,14 +23,16 @@
 				<div class="HotelDetails">
 		      		<div class="HotelFare">
 		      			<div class="HotelMinCost">
-		      				<span>{{hotel.pricePerMin}} </span><span class="farecurrency">{{hotel.currencyType}}/</span><span class="minumum"> Minute</span>
+		      				<span class="farecurrency">&#8377;.</span>
+							<span>{{hotel.pricePerMin}}</span>
+		      				<span class="minumum">/MINUTE</span>
 		      			</div>
-		      			<div class="MinDuration"><span>{{hotel.minDuration}} </span><span class="Hr">{{hotel.currencyType}}</span><span class="minumum"> MINIMUM</span></div>
+		      			<div class="MinDuration"><span>{{hotel.minDuration}} </span><span class="Hr">Hr</span><span class="minumum"> MINIMUM</span></div>
 		      		</div>
 		      	</div>
 		      	<div id="hotelrating" [ngClass]="getRating(hotel.starratingByHotel)"></div>
 		      	<div id="HotelDist" class="HotelBlank">{{hotel.distance}}</div>
-		      	<div class="HotelName">{{hotel.hotelname}}</div>
+		      	<div class="HotelName">{{hotel.hotelname.toUpperCase()}}</div>
 		      	<!-- <div class="HotelAddress"><span>{{hotel.hotelLocation+', '}}</span><span>{{hotel.hotelCity+', '}}</span><span>{{hotel.hotelState}}</span></div> -->
 	      	</div>
 	      </div>

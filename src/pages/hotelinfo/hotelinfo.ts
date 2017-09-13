@@ -15,7 +15,7 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
 })
 export class HotelinfoPage {
 
-  stayDuration:any = "01:00";
+  stayDuration:any;
   stayDurationInput:any;
   fareAmount:any;
   hotelInfo:any;
@@ -23,7 +23,12 @@ export class HotelinfoPage {
   hour :any = 1;
   min :any = 0;
 constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private authProvider: AuthenticateProvider) {
-    this.hotelInfo = this.navParams.get("hotelInfo");  
+    this.hotelInfo = this.navParams.get("hotelInfo");
+    if(this.hotelInfo.minmumDurationPin <10){
+        this.stayDuration = "0"+this.hotelInfo.minmumDurationPin+":00";
+    }else{
+        this.stayDuration = this.hotelInfo.minmumDurationPin+":00";
+    }    
     this.userInfo = this.authProvider.getUserInfo();
     this.calculatefare();
 }

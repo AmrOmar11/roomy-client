@@ -15,6 +15,7 @@
 
 .pobyt-button {
     margin: 0px;
+    text-transform: none;
     background-color: map-get($colors, theme) !important;
 }
 
@@ -37,6 +38,8 @@
 }
 .toolbar-title {
     color: map-get($colors, whiteColor);
+    text-align: center;
+    margin-right: 22%;
 }
 ion-footer {
     &.footer-md::before {

@@ -71,7 +71,6 @@ export class HotelsliderPage {
       {
         ratingString = "seven";
       }
-      console.log(rating+"rating"+"ratingString"+ratingString)
       return ratingString;
     }
 }

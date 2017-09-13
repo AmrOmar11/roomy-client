@@ -85,10 +85,11 @@ page-hotelslider {
 	}
 
 	.HotelName{
-		font-size: 4vmax;
+		font-size: 3vmax;
     	padding: 2px 8px;
     	position: absolute;
     	bottom: 3%;
+    	font-weight: bold;
 	}
 	#hotelrating{
 		width: 25px;
@@ -151,10 +152,12 @@ page-hotelslider {
 
 	.HotelMinCost{
 		left:3%;
+		border: 0.15px solid #ffffff;
 	}
 	.MinDuration{
 		right:7%;
 		background-color:#FFA30F;
+		border: 0.15px solid #ffffff;
 	}
 
 	.HotelRating{
@@ -179,7 +182,7 @@ page-hotelslider {
 	.HotelBlank{
 		background-color: #000;
 	    color: #fff;
-	    font-size: 1.5vmax;
+	    font-size: 1.7vmax;
 	    height: auto;
 	    width: auto;
 	    text-align: center;
@@ -188,6 +191,7 @@ page-hotelslider {
 	    position: absolute;
 	    bottom: 30%;
 	    right: 7%;
+	    border: 0.15px solid #ffffff;
 	}
 	.hourcost-bottom{
 		width:32%;
