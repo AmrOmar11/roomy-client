@@ -22,12 +22,12 @@ export class SettingsPage {
    private loadingCtrl: LoadingController,
    private authProvider: AuthenticateProvider) {
     this.userInfo = this.authProvider.getUserInfo();
-  	// this.profileForm = this.formBuilder.group({
-	  //     firstname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
-   //      lastname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
-   //      mobile: ['',Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]+'), Validators.required]),''],
-	  //     email: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'), Validators.required]),''],
-	  // });
+  	this.profileForm = this.formBuilder.group({
+	      // firstname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
+        // lastname: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
+        mobile: ['',Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]+$'), Validators.required]),''],
+	      // email: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'), Validators.required]),''],
+	  });
   }
 
   ionViewDidLoad() {
