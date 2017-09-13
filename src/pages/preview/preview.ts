@@ -35,11 +35,8 @@ export class PreviewPage {
     console.log('ionViewDidLoad PreviewPage');
   }
 
-  LoginIn(){
+  BookIn(){
   	this.navCtrl.setRoot('LoginPage');
   }
   
-  SignUp(){
-  	this.navCtrl.push('RegisterPage');
-  }
 }
