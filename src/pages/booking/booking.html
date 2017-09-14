@@ -5,90 +5,94 @@
    -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Booking</ion-title>
+    <ion-title>Confirm Booking</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <ion-card [hidden]="bookForUser">
-    <ion-list inset>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/booking/user.png">
-        </ion-thumbnail>
-        <ion-label stacked>Name</ion-label>
-        <ion-label>{{userInfo.first_Name}}</ion-label>
+   
+<ion-content padding class="bookingContent">
+<ion-card>
+            <ion-card-content>
+               <ion-item>
+                  <div item-left class="booking-hotelinfo">HOTEL AVASA</div>
+                  <div item-right class="booking-timeInfo" >6.20 Hrs</div>
+               </ion-item>
+            </ion-card-content>
+         </ion-card>
+ <ion-card  [hidden]="!bookForOther"  >
+            <ion-card-content>
+               <ion-item no-lines>
+                  <ion-icon name="person" item-start></ion-icon>
+                  <ion-label text-capitalize>{{userInfo.first_Name+' '+userInfo.last_Name}}</ion-label>
+               </ion-item>
+               <ion-item no-lines>
+                  <ion-icon name="mail" item-start></ion-icon>
+                  <ion-label>{{userInfo.emailAddress}}</ion-label>
+               </ion-item>
+               <ion-item no-lines>
+                  <ion-icon name="call" item-start></ion-icon>
+                  <ion-label>{{userInfo.contactNumber}}</ion-label>
+               </ion-item>
+			  
+            </ion-card-content>
+         </ion-card>
+		 <ion-card [hidden]="bookForOther" >
+    <ion-card-content>
+      <form>
+      <ion-item >
+        <ion-icon class="rightPadding"  name="person" item-start></ion-icon>
+        <ion-input type="text" class="inputField" placeholder="Name"></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/booking/email.png">
-        </ion-thumbnail>      
-        <ion-label stacked>EMail</ion-label>
-        <ion-label>{{userInfo.emailAddress}}</ion-label>
+ <ion-item no-lines>
+        <ion-icon class="rightPadding"  name="mail" item-start></ion-icon> &nbsp;
+        <ion-input type="number" class="inputField" placeholder="Email"></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/booking/phone.png">
-        </ion-thumbnail>
-        <ion-label>{{userInfo.contactNumber}}</ion-label>
+      <ion-item no-lines>
+        <ion-icon class="rightPadding"  name="call" item-start></ion-icon> &nbsp;
+        <ion-input type="number" class="inputField" placeholder="Mobile"></ion-input>
       </ion-item>
-    </ion-list>
+	   <ion-item>
+        <ion-icon class="rightPadding"  name="calendar" item-start></ion-icon> &nbsp;
+                   <ion-datetime displayFormat="MMM DD YYYY" ></ion-datetime>
+               </ion-item>
+              <ion-item>
+			   <ion-label floating>Share the city mentioned on your ID card</ion-label>
+                   <ion-input type="text" ></ion-input>
+				   </ion-item>
+      </form>
+    </ion-card-content>
   </ion-card>
-
-  <form [formGroup] = "signUpForm" [hidden]="bookForOther">
-    <ion-card>
-      <ion-list inset>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/booking/user.png">
-          </ion-thumbnail>
-          <ion-input type="text" [class.invalid]= "!signUpForm.controls.firstName.valid && (signUpForm.controls.firstName.dirty || registerAttempt)" formControlName="firstName" name="firstName" [(ngModel)]="signUpData.first_Name">
-          </ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/booking/email.png">
-          </ion-thumbnail>
-          <ion-input type="text"  [class.invalid]= "!signUpForm.controls.emailId.valid && (signUpForm.controls.emailId.dirty || registerAttempt)" formControlName="emailId" name="emailId" [(ngModel)]="signUpData.emailId"></ion-input> 
-        </ion-item>
-
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/booking/phone.png">
-          </ion-thumbnail>
-          <ion-input type="text" [class.invalid]= "!signUpForm.controls.contactNumber.valid && (signUpForm.controls.contactNumber.dirty || registerAttempt)"formControlName="contactNumber" name="contactNumber" [(ngModel)]="signUpData.contactNumber"></ion-input>
-        </ion-item>
-      </ion-list>
-    </ion-card>
-  </form>
+       <ion-row>
+  <h6 class="impLabel">IMPORTANT</h6>
+  </ion-row>
   <ion-card>
-    <ion-list>
-      <ion-item>
-        <ion-label>Issued city name of government id ?</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/booking/idproof.png">
-        </ion-thumbnail>
-        <ion-input type="text" placeholder="City Name"></ion-input>
-      </ion-item>    
-    </ion-list>
-    <ion-list type="disc">
-      <ion-item>
-        Guest should carry valid government id.
-      </ion-item>
-      <ion-item>
-        Max 2 guest allowed with a child aged under 12 years.
-      </ion-item>
-    </ion-list>
-    <ion-item>
-      <ion-label>I agree guest policy</ion-label>
-      <ion-checkbox checked="false"></ion-checkbox>
-    </ion-item>
-  </ion-card>
+            <ion-row >
+               <ion-col col-4>
+                  <div><img  src="assets/booking/guest.png"  style="width:60%"></div>
+               </ion-col>
+               <ion-col col-8 >
+                  <div class="termsHeading">Number of Guest</div>
+                  <div class="termsMsg">Maximum stay two guests</div>
+               </ion-col>
+            </ion-row>
+         </ion-card>
+  <ion-card>
+            <ion-row >
+               <ion-col col-4>
+                  <div><img  src="assets/img/booking/idProof.png"  style="width:60%"></div>
+               </ion-col>
+               <ion-col col-8 >
+                  <div class="termsHeading">ID Proof</div>
+                  <div class="termsMsg">Guest need valid address and ID proof with a different city than {{userInfo.idIssuedCity}}</div>
+               </ion-col>
+            </ion-row>
+         </ion-card>
+<ion-row>
+
+		    <h6 class="guestText">    <ion-checkbox [(ngModel)]="termsChecked"></ion-checkbox>
+By proceeding, you agree with our <a (click)="openTerms()">Guest Policies</a></h6>
+			</ion-row>
+			
+
 </ion-content>
 
 <ion-footer>
