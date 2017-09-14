@@ -20,8 +20,8 @@ export class VerifyNumberPage {
   private inputData:UserRequest;
   private hideMobilePopUp:boolean = true;
   private hideOtpPopUp:boolean = true;
+  private hideChangeForm:boolean = true;
   private hideResetForm:boolean = true;
-  private hideOldPassword:boolean = true;
   private HiddenMobNum:any = '';
   private items = ['','','','','',''];
   public countryList;
@@ -29,6 +29,7 @@ export class VerifyNumberPage {
   public listToggle= false;
   private imageName:string;
   private screenTitle:string;
+  private changeForm: FormGroup;
   private resetForm: FormGroup;
   private oldPassword: AbstractControl;
   private password: AbstractControl;
@@ -40,13 +41,20 @@ export class VerifyNumberPage {
     private formBuilder: FormBuilder,
     private authProvider: AuthenticateProvider,
 	  private http:Http) {
-    this.resetForm = formBuilder.group({
+    this.changeForm = formBuilder.group({
         'oldPassword': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         're_password': ['', [Validators.required]]
         }, { 'validator': PasswordValidator.isMatching }
     );
-    this.oldPassword = this.resetForm.controls['oldPassword'];
+    this.resetForm = formBuilder.group({
+        'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+        're_password': ['', [Validators.required]]
+        }, { 'validator': PasswordValidator.isMatching }
+    );
+    this.oldPassword = this.changeForm.controls['oldPassword'];
+    this.password = this.changeForm.controls['password'];
+    this.re_password = this.changeForm.controls['re_password'];
     this.password = this.resetForm.controls['password'];
     this.re_password = this.resetForm.controls['re_password'];
     this.inputData = this.navParams.get("inputData");
@@ -67,8 +75,7 @@ export class VerifyNumberPage {
         this.imageName = 'assets/verify-number/forgotpassword.png';
       }else if(screen == 'changepassword'){
         this.screenTitle = "Change Password";
-        this.hideResetForm = false;
-        this.hideOldPassword = false;
+        this.hideChangeForm = false;
       }
     });    
   }
