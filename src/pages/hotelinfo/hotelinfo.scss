@@ -118,6 +118,10 @@ page-hotelinfo {
     	height: auto;
     	font-weight:bold;
     	font-family:$theme-font;
+    	width:85%;
+    	white-space:nowrap;
+    	overflow:hidden;
+    	text-overflow: ellipsis;
 	}
 	.HotelAddress{
 		display: inline-block;

@@ -60,6 +60,7 @@ export class VerifyNumberPage {
       }else if(screen == 'otp'){
         this.screenTitle = "OTP";
         this.hideOtpPopUp = false;
+        this.hideMobCharacter(this.inputData.contactNumber);
         this.imageName = 'assets/verify-number/otp.png';
       }else if(screen == 'forgotpassword'){
         this.screenTitle = "Forgot Password";
@@ -178,26 +179,6 @@ export class VerifyNumberPage {
 		  }
 	  }
   }
-
-  // countryselected(country){
-  //   var countrycode = country;
-  //   var countrySelected = document.getElementById(countrycode);
-  //   var listElem = document.getElementsByTagName('li');
-  //   if(this.listToggle){
-  //     for(var i = 0; i < listElem.length; i++) {
-  //       listElem[i].style.display = 'none';
-  //     }
-  //     countrySelected.style.display='block';
-  //     this.listToggle = false;
-  //     this.countryCodeSelected = countrySelected.getAttribute('data-code');
-  //     console.log(this.countryCodeSelected);
-  //   }else{
-  //     for(var i = 0; i < listElem.length; i++) {
-  //       listElem[i].style.display = 'block';
-  //     }
-  //     this.listToggle = true;
-  //   } 
-  // }
 
   getCountries(){
     return new Promise(resolve =>{

@@ -91,6 +91,10 @@ page-hotelslider {
     	position: absolute;
     	bottom: 3%;
     	font-weight: bold;
+    	width:100%;
+    	white-space:nowrap;
+    	overflow:hidden;
+    	text-overflow: ellipsis;
 	}
 	#hotelrating{
 		width: 25px;
