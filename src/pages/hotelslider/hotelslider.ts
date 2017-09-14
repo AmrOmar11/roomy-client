@@ -18,7 +18,8 @@ export class HotelsliderPage {
     @ViewChild(Slides) slides: Slides;
     hotels:any;
     starRatingByHotel:any;
-    public hideCard:any = 'true';
+    public hideCard:boolean = true;
+    public hideSlide:boolean = true;
     constructor(
         public navCtrl: NavController,
         public authProvider: AuthenticateProvider,
@@ -27,9 +28,11 @@ export class HotelsliderPage {
         events.subscribe('hotels:list', (hotelsList) => {
           this.hotels = hotelsList;
           if(this.hotels.length == 0 ){
-            this.hideCard = 'false';
+            this.hideCard = false;
+            this.hideSlide = true;
           }else{
-            this.hideCard = 'true';
+            this.hideCard = true;
+            this.hideSlide = false;
             this.slides.slideTo(0);
           }          
           this.zone.run(() => {

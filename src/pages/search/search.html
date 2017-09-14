@@ -16,7 +16,7 @@
         [(ngModel)]="autocomplete.query" 
         (ionInput)="updateSearch()" 
         (ionCancel)="dismiss()"
-        placeholder="Start typing and select ...">
+        placeholder="City, neighborhood, or address">
     </ion-searchbar>
     <ion-list>
         <ion-item tappable *ngFor="let item of autocompleteItems" 

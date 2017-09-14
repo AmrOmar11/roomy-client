@@ -51,27 +51,26 @@ export class VerifyNumberPage {
     this.re_password = this.resetForm.controls['re_password'];
     this.inputData = this.navParams.get("inputData");
     let screen = this.navParams.get("screen");
-    if(screen == 'mobile'){
-      this.screenTitle = "Mobile";
-      this.hideMobilePopUp = false;
-	  this.getCountries().then((data)=>{
-        console.log(data);
-        this.countryList = data;
-      });
-      this.imageName = 'assets/verify-number/otp.png';
-    }else if(screen == 'otp'){
-      this.screenTitle = "OTP";
-      this.hideOtpPopUp = false;
-      this.imageName = 'assets/verify-number/otp.png';
-    }else if(screen == 'forgotpassword'){
-      this.screenTitle = "Forgot Password";
-      this.hideMobilePopUp = false;
-      this.imageName = 'assets/verify-number/forgotpassword.png';
-    }else if(screen == 'changepassword'){
-      this.screenTitle = "Change Password";
-      this.hideResetForm = false;
-      this.hideOldPassword = false;
-    }
+    this.getCountries().then((data)=>{
+      this.countryList = data;
+      if(screen == 'mobile'){
+        this.screenTitle = "Mobile";
+        this.hideMobilePopUp = false;
+        this.imageName = 'assets/verify-number/otp.png';
+      }else if(screen == 'otp'){
+        this.screenTitle = "OTP";
+        this.hideOtpPopUp = false;
+        this.imageName = 'assets/verify-number/otp.png';
+      }else if(screen == 'forgotpassword'){
+        this.screenTitle = "Forgot Password";
+        this.hideMobilePopUp = false;
+        this.imageName = 'assets/verify-number/forgotpassword.png';
+      }else if(screen == 'changepassword'){
+        this.screenTitle = "Change Password";
+        this.hideResetForm = false;
+        this.hideOldPassword = false;
+      }
+    });    
   }
 
   ionViewDidLoad() {

@@ -10,13 +10,22 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-card>
+    <ion-row>
+      <ion-col>
+        {{hotelName}}
+      </ion-col>
+      <ion-col>
+        {{duration}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
   <ion-card [hidden]="bookForUser">
     <ion-list inset>
       <ion-item>
         <ion-thumbnail item-start>
           <img src="assets/booking/user.png">
         </ion-thumbnail>
-        <ion-label stacked>Name</ion-label>
         <ion-label>{{userInfo.first_Name}}</ion-label>
       </ion-item>
 
@@ -24,7 +33,6 @@
         <ion-thumbnail item-start>
           <img src="assets/booking/email.png">
         </ion-thumbnail>      
-        <ion-label stacked>EMail</ion-label>
         <ion-label>{{userInfo.emailAddress}}</ion-label>
       </ion-item>
 
