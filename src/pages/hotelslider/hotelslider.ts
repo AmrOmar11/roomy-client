@@ -19,7 +19,7 @@ export class HotelsliderPage {
     hotels:any;
     starRatingByHotel:any;
     public hideCard:boolean = true;
-    public hideSlide:boolean = true;
+    public hideSlide:boolean = false;
     constructor(
         public navCtrl: NavController,
         public authProvider: AuthenticateProvider,
