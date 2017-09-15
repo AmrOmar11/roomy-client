@@ -1,10 +1,6 @@
 page-preview {
-	ion-footer {
-    	&.footer-md::before {
-        	background-image: none;
-    	}
-	}
-	.swiper-pagination-bullet-active{
-		background:map-get($colors, theme) !important;
+	img{
+		width:100% !important;
+		height:100% !important;
 	}
 }

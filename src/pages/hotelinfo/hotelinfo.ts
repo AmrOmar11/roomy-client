@@ -69,4 +69,19 @@ reserveNow(){
     confirm.present();
 }
 
+    getRating(rating){
+      let ratingString = '';
+      rating = parseInt(rating);
+      if(rating == undefined || rating <= 3)
+      {
+        ratingString = "three";
+      }else if(rating == 5)
+      {
+        ratingString = "five";
+      }else if(rating == 7)
+      {
+        ratingString = "seven";
+      }
+      return ratingString;
+    }
 }

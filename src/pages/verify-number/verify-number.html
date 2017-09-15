@@ -20,13 +20,19 @@
 		<div class="input-group">
 			<div class="input-select-addon">
 			    <ul id="countryList">
-    				<li *ngFor="let country of countryList" attr.id="{{country.country}}" attr.data-code={{country.countryCode}} (click)="countryselected(country.country)"><img src={{country.countryImg}}></li>
+    				<li *ngFor="let country of countryList" attr.id="{{country.countryAlpha}}" attr.data-code={{country.countryCode}} (click)="showSelect()"><img src={{country.countryImg}}></li>
     			</ul>
 			</div>
-    		<div id="select-arrow" (click)="countryselected(countryList[0].country)"><i class="arrow down"></i></div> 						
+    		<div id="select-arrow" (click)="showSelect()"><i class="arrow down"></i></div> 						
   			<div class="input-group-addon">{{countryCodeSelected}}</div>
-			<ion-input type="tel" pattern="[0-9]*" minlength="10" maxlength="10" placeholder="Your Mobile Number"></ion-input>
+			<ion-input type="tel" pattern="[0-9]*" minlength="10" maxlength="10" [(ngModel)]="inputData.contactNumber" placeholder="Your Mobile Number"></ion-input>
 		</div>
+		<ion-item class="hideselect">
+		  <ion-label>Select country</ion-label>
+		  <ion-select id="selectTag" (ionChange)="optionsFn()" [(ngModel)]="countryselected">
+		    <ion-option *ngFor="let country of countryList" [value]=country attr.data-code={{country.countryCode}}>{{country.country}} ({{country.countryCode}})</ion-option>
+		  </ion-select>
+		</ion-item>
 		<div class="otpInfo"><span>We will send you One-Time-Password (OTP) via SMS. Please enter OTP in next step.</span></div>
 		<ion-row>
             <ion-col full bstyle="text-align: center;">
@@ -68,7 +74,7 @@
 		</ion-row>
 		<div class="otpInfo">
 			<div class="verify">Verify OTP</div>
-			<div class="verifyInfo">Please enter 4 digit OTP sent to +91 {{HiddenMobNum}}</div>
+			<div class="verifyInfo">Please enter 6 digit OTP sent to +91 {{HiddenMobNum}}</div>
 		</div>
 		<ion-row>
             <ion-col full bstyle="text-align: center;">
@@ -81,9 +87,9 @@
             </ion-col>
         </ion-row>
 	</div>
-	<!--- reset/change password -->
-	<form [formGroup]="resetForm" [hidden]="hideResetForm">
-        <ion-item [class.invalid]="(!oldPassword.valid && password.touched)||hideOldPassword" [hidden]="hideOldPassword">
+	<!--- change password -->
+	<form [formGroup]="changeForm" [hidden]="hideChangeForm">
+        <ion-item [class.invalid]="!oldPassword.valid && password.touched">
             <ion-label floating>Old Password</ion-label>
             <ion-input type="password" value="" [formControl]="oldPassword"></ion-input>
         </ion-item>
@@ -102,7 +108,37 @@
         </ion-item>
 
         <ion-item *ngIf="password.hasError('maxlength') && password.touched" class="invalid">
-            <p>* Maximum password length is 25!</p>
+            <p>* Maximum password length is 10!</p>
+        </ion-item>
+
+        <ion-item [class.invalid]="!re_password.valid && re_password.touched">
+            <ion-label floating>Re-enter Password</ion-label>
+            <ion-input type="password" value="" [formControl]="re_password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="re_password.hasError('pw_mismatch') && re_password.touched" class="invalid">
+            <p>* Passwords do not match!</p>
+        </ion-item>
+        <button ion-button block medium (click)="changePassword()" [disabled]="(!changeForm.valid)">Submit</button>
+    </form>
+    <!--- reset password -->
+	<form [formGroup]="resetForm" [hidden]="hideResetForm">
+        
+        <ion-item [class.invalid]="!password.valid && password.touched">
+            <ion-label floating>New Password</ion-label>
+            <ion-input type="password" value="" [formControl]="password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('required') && password.touched" class="invalid">
+            <p>* Password is required!</p>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('minlength') && password.touched" class="invalid">
+            <p>* Minimum password length is 3!</p>
+        </ion-item>
+
+        <ion-item *ngIf="password.hasError('maxlength') && password.touched" class="invalid">
+            <p>* Maximum password length is 10!</p>
         </ion-item>
 
         <ion-item [class.invalid]="!re_password.valid && re_password.touched">

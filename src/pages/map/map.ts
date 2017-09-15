@@ -149,6 +149,15 @@ export class MapPage implements OnInit{
         ]
       },
       {
+        "featureType": "road",
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
         "featureType": "road.highway",
         "elementType": "geometry.fill",
         "stylers": [

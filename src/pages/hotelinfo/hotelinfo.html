@@ -20,7 +20,7 @@
       <span class="hotel-category-child">{{hotelInfo.hotelLocation}}, {{hotelInfo.hotelCity}}, {{hotelInfo.hotelState}}
       </span>
     </div>
-    <div class="HotelyType" ngClass={{hotelInfo.starRatingByHotel}}></div>
+    <div class="HotelyType" [ngClass]="getRating(hotelInfo.starRatingByHotel)"></div>
   </div>
   <div class="amenities">
       <ion-label>AMENITIES</ion-label>

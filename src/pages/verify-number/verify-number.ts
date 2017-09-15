@@ -20,8 +20,8 @@ export class VerifyNumberPage {
   private inputData:UserRequest;
   private hideMobilePopUp:boolean = true;
   private hideOtpPopUp:boolean = true;
+  private hideChangeForm:boolean = true;
   private hideResetForm:boolean = true;
-  private hideOldPassword:boolean = true;
   private HiddenMobNum:any = '';
   private items = ['','','','','',''];
   public countryList;
@@ -29,48 +29,56 @@ export class VerifyNumberPage {
   public listToggle= false;
   private imageName:string;
   private screenTitle:string;
+  private changeForm: FormGroup;
   private resetForm: FormGroup;
   private oldPassword: AbstractControl;
   private password: AbstractControl;
   private re_password: AbstractControl;
+  public countryselected:any = "";
     
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private formBuilder: FormBuilder,
     private authProvider: AuthenticateProvider,
-	private http:Http) {
-    this.resetForm = formBuilder.group({
+	  private http:Http) {
+    this.changeForm = formBuilder.group({
         'oldPassword': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         're_password': ['', [Validators.required]]
         }, { 'validator': PasswordValidator.isMatching }
     );
-    this.oldPassword = this.resetForm.controls['oldPassword'];
+    this.resetForm = formBuilder.group({
+        'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+        're_password': ['', [Validators.required]]
+        }, { 'validator': PasswordValidator.isMatching }
+    );
+    this.oldPassword = this.changeForm.controls['oldPassword'];
+    this.password = this.changeForm.controls['password'];
+    this.re_password = this.changeForm.controls['re_password'];
     this.password = this.resetForm.controls['password'];
     this.re_password = this.resetForm.controls['re_password'];
     this.inputData = this.navParams.get("inputData");
     let screen = this.navParams.get("screen");
-    if(screen == 'mobile'){
-      this.screenTitle = "Mobile";
-      this.hideMobilePopUp = false;
-	  this.getCountries().then((data)=>{
-        console.log(data);
-        this.countryList = data;
-      });
-      this.imageName = 'assets/verify-number/otp.png';
-    }else if(screen == 'otp'){
-      this.screenTitle = "OTP";
-      this.hideOtpPopUp = false;
-      this.imageName = 'assets/verify-number/otp.png';
-    }else if(screen == 'forgotpassword'){
-      this.screenTitle = "Forgot Password";
-      this.hideMobilePopUp = false;
-      this.imageName = 'assets/verify-number/forgotpassword.png';
-    }else if(screen == 'changepassword'){
-      this.screenTitle = "Change Password";
-      this.hideResetForm = false;
-      this.hideOldPassword = false;
-    }
+    this.getCountries().then((data)=>{
+      this.countryList = data;
+      if(screen == 'mobile'){
+        this.screenTitle = "Mobile";
+        this.hideMobilePopUp = false;
+        this.imageName = 'assets/verify-number/otp.png';
+      }else if(screen == 'otp'){
+        this.screenTitle = "OTP";
+        this.hideOtpPopUp = false;
+        this.hideMobCharacter(this.inputData.contactNumber);
+        this.imageName = 'assets/verify-number/otp.png';
+      }else if(screen == 'forgotpassword'){
+        this.screenTitle = "Forgot Password";
+        this.hideMobilePopUp = false;
+        this.imageName = 'assets/verify-number/forgotpassword.png';
+      }else if(screen == 'changepassword'){
+        this.screenTitle = "Change Password";
+        this.hideChangeForm = false;
+      }
+    });    
   }
 
   ionViewDidLoad() {
@@ -179,30 +187,25 @@ export class VerifyNumberPage {
 	  }
   }
 
-  countryselected(country){
-    var countrycode = country;
-    var countrySelected = document.getElementById(countrycode);
-    var listElem = document.getElementsByTagName('li');
-    if(this.listToggle){
-      for(var i = 0; i < listElem.length; i++) {
-        listElem[i].style.display = 'none';
-      }
-      countrySelected.style.display='block';
-      this.listToggle = false;
-      this.countryCodeSelected = countrySelected.getAttribute('data-code');
-      console.log(this.countryCodeSelected);
-    }else{
-      for(var i = 0; i < listElem.length; i++) {
-        listElem[i].style.display = 'block';
-      }
-      this.listToggle = true;
-    } 
-  }
-
   getCountries(){
     return new Promise(resolve =>{
       this.http.get(`assets/data/countries.json`)
       .subscribe(res => resolve(res.json()));
     });
   }
+
+  showSelect(){
+    document.getElementById('selectTag').click();
+  }
+
+  optionsFn(){
+    var countrySelected = document.getElementById(this.countryselected.countryAlpha);
+    var listElem = document.getElementsByTagName('li');
+    for(var i = 0; i < listElem.length; i++) {
+      listElem[i].style.display = 'none';
+    }
+    countrySelected.style.display='block';
+    this.countryCodeSelected =  this.countryselected.countryCode;
+  }
+
 }
