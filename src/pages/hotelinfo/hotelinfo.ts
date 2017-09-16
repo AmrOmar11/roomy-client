@@ -55,13 +55,25 @@ reserveNow(){
                 text: 'Other',
                 handler: () => {
                     console.log(this.authProvider);
-                    this.navCtrl.push('BookingPage',{for:"other"});
+                    this.navCtrl.push('BookingPage',{for:"other",
+                          hotelInfo:{
+                            hotelName:this.hotelInfo.hotelName,
+                            stayDuration:this.stayDuration
+                          }
+                        }
+                      );
                 }
             },
             {
                 text: 'Yes',
                 handler: () => {
-                    this.navCtrl.push('BookingPage',{for:"me"});
+                    this.navCtrl.push('BookingPage',{for:"me",
+                          hotelInfo:{
+                            hotelName:this.hotelInfo.hotelName,
+                            stayDuration:this.stayDuration
+                          }
+                        }
+                      );
                 }
             }
         ]

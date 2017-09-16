@@ -15,6 +15,7 @@ import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/
 })
 export class BookingPage {
     userInfo:any;
+    hotelInfo:any;
     bookForUser:boolean = true;
     bookForOther:boolean = true;
     signUpForm:FormGroup;
@@ -25,6 +26,7 @@ export class BookingPage {
         private authProvider: AuthenticateProvider) {
         this.signUpData = new UserRequest();
         let bookingFor = this.navParams.get("for");
+        this.hotelInfo = this.navParams.get("hotelInfo");
         if(bookingFor == 'me'){
           this.bookForUser = false;
         }else if(bookingFor == 'other'){

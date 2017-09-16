@@ -1,68 +1,58 @@
 page-booking {
-	ion-thumbnail{
-	    min-width: 30px !important;
-	    min-height: 60px !important;
-	}
-	ion-thumbnail img {
-	    width: 25px !important;
-	    height: 25px !important;
-	}
-	ion-label{
-		font-size: 2vmax !important;
-	}
-	.label-name{
-	  	margin: 11px 2px -27px 1px !important;
-	  	color: #cdcdcd;
-	}
 	
    .booking-hotelinfo
    {
-    font-family: 'Open sans';
-   	color: #767676;
-    font-size: 2.6vmax;
-    font-weight: bold;
-
+	    font-family: 'Open sans';
+	   	color: #767676;
+	    font-size: 2.6vmax;
+	    font-weight: bold;
 	}
 	.booking-timeInfo
-   {
-    font-family: 'Open sans';
-   	color: #0FACA5;
-    font-size: 2.6vmax;
-    font-weight: bold;
-
+	{
+		font-family: 'Open sans';
+		color: #0FACA5;
+		font-size: 2.6vmax;
+		font-weight: bold;
 	}
 	.bookingContent
 	{
-	background-color:#ECECEC
+		background-color:#ECECEC
 	}
-.termsHeading
-{
-color:#0FACA5;
-font-family: 'Open sans';
-font-size: 2.6vmax;
-    font-weight: bold;
-	margin-top:2%
-}
-.impLabel
-{
-    color: #92223A;
-    margin-left: 4%;
-	font-weight: bold;
-    
-}
-
-  .leftPadding{
-    padding-left: 4%;
-  }
-
-  .sub-headings{
-    color:grey;font-weight:bold
-  }
-.guestText
-{
-margin-left:4%
-}
-
-
+	.idcard{
+		margin: 0px;
+	    font-size: 2.0vmax;
+	    color: #92223A;
+	    font-weight: bold;
+	    ion-label{
+	    	white-space: unset;
+	    }
+	    
 	}
+	.termsHeading
+	{
+		color:#0FACA5;
+		font-family: 'Open sans';
+		font-size: 2.6vmax;
+	    font-weight: bold;
+		margin-top:2%
+	}
+	.impLabel
+	{
+	    color: #92223A;
+	    margin-left: 4%;
+		font-weight: bold;
+	}
+
+	.leftPadding{
+		padding-left: 4%;
+	}
+
+	.sub-headings{
+		color:grey;font-weight:bold
+	}
+	.guestText
+	{
+		margin-left:4%
+	}
+}
 
