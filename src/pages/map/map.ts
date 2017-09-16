@@ -47,8 +47,8 @@ export class MapPage implements OnInit{
 	constructor(
 		public geolocation: Geolocation,
 		public modalCtrl: ModalController,
-    public authProvider: AuthenticateProvider,
-    public events: Events) {
+        public authProvider: AuthenticateProvider,
+        public events: Events) {
 	}
 
 	ngOnInit() {
@@ -65,6 +65,13 @@ export class MapPage implements OnInit{
         this.map.setZoom(13);
         this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
     });
+    this.events.subscribe('map:resize',() => {
+        console.log('map:resize:');
+        if(this.map !== undefined){
+            google.maps.event.trigger(this.map, 'resize');
+        }        
+    });
+
   }
 
 	ngAfterViewInit() {

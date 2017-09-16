@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController} from 'ionic-angular';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the HomePage page.
  *
@@ -15,8 +16,9 @@ import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/
 export class HomePage {
     userInfo:any;
 constructor(
-    public navCtrl: NavController, 
-    public authProvider: AuthenticateProvider){
+        public navCtrl: NavController, 
+        public authProvider: AuthenticateProvider,
+        public events: Events){
         this.userInfo = this.authProvider.getUserInfo();
     }
     
@@ -59,5 +61,9 @@ constructor(
         error => {
            
         });
+    }
+    ionViewDidEnter() {
+        console.log('home:map:resize:');
+        this.events.publish('map:resize');
     }
 }

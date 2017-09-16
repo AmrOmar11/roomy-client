@@ -89,7 +89,7 @@ export class AuthenticateProvider {
     let body = JSON.stringify(inputData);
     console.log('authenticate:login:req:',inputData);
     this.showLoading();
-    return this.http.post('https://roomy-midtier.herokuapp.com/userRegistration',body,options).map(res => {
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/userRegistration',body,options).map(res => {
       console.log('authenticate:login:res:',res.json());
       this.hideLoading();
       return res.json();
@@ -104,7 +104,7 @@ export class AuthenticateProvider {
     let body = JSON.stringify(inputData);
     console.log('authenticate:logout:req:',inputData);
     this.showLoading();
-    return this.http.post('https://roomy-midtier.herokuapp.com/userLogout',body,options).map(res => {
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/userLogout',body,options).map(res => {
       console.log('authenticate:logout:res:',res.json());
       this.hideLoading();
       return res.json();
@@ -119,7 +119,7 @@ export class AuthenticateProvider {
     let body = JSON.stringify(inputData);
     console.log('authenticate:forgotPassword:req:',inputData);
     this.showLoading();
-    return this.http.post('https://roomy-midtier.herokuapp.com/forgetPassword',body,options).map(res => {
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/forgetPassword',body,options).map(res => {
       console.log('authenticate:forgotPassword:res:',res.json());
       this.hideLoading();
       return res.json();
@@ -190,7 +190,7 @@ export class AuthenticateProvider {
     let body = JSON.stringify(inputData);
     console.log('HotelsbyLocation:req:',inputData);
     this.showLoading('Fetching Hotels...');
-    return this.http.post('https://roomy-midtier.herokuapp.com/getHotelsbyLocation',body,options)
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/getHotelsbyLocation',body,options)
     .map(res => {
       console.log('HotelsbyLocation:res:',res.json());
       this.hideLoading();
@@ -206,7 +206,7 @@ export class AuthenticateProvider {
     let body = JSON.stringify(inputData);
     console.log('HotelDetails:req:',inputData);
     this.showLoading('Fetching Hotel...');
-    return this.http.post('https://roomy-midtier.herokuapp.com/getHotelDetails',body,options)
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/getHotelDetails',body,options)
     .map(res => {
       console.log('HotelDetails:res:',res.json());
       return res.json();
