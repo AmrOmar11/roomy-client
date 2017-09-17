@@ -62,8 +62,8 @@ export class MapPage implements OnInit{
         this.hotelMarkers[previousIndex].setMap(this.map);
         this.hotelMarkers[currentIndex].setMap(null);
         this.selectedHotelMarkers[currentIndex].setMap(this.map);
-        this.map.setZoom(13);
-        this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
+        //this.map.setZoom(13);
+        //this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
     });
     this.events.subscribe('map:resize',() => {
         console.log('map:resize:');
@@ -203,7 +203,7 @@ export class MapPage implements OnInit{
     ];
     let mapOptions = {
       center: this.userLocation,
-      zoom: 10,
+      zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
       zoomControl:false,
@@ -262,8 +262,8 @@ export class MapPage implements OnInit{
           for (var j = 0; j < hotels.length; j++) {
             if((hotels[j].latitude == marker.latLng.lat())){
                 this.events.publish('hotel:marker',j);
-                this.map.setZoom(13);
-                this.map.panTo(this.hotelMarkers[j].getPosition());
+                //this.map.setZoom(13);
+                //this.map.panTo(this.hotelMarkers[j].getPosition());
                break; 
             }
           }          
@@ -272,8 +272,8 @@ export class MapPage implements OnInit{
           for (var k = 0; k < hotels.length; k++) {
             if((hotels[k].latitude == marker.latLng.lat())){
                 this.events.publish('hotel:marker',k);
-                this.map.setZoom(13);
-                this.map.panTo(this.selectedHotelMarkers[k].getPosition());
+                //this.map.setZoom(13);
+                //this.map.panTo(this.selectedHotelMarkers[k].getPosition());
                break; 
             }
           }
@@ -319,7 +319,7 @@ export class MapPage implements OnInit{
       this.geolocation.getCurrentPosition(options).then((res) => {
           console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
-          this.map.setZoom(10);
+          this.map.setZoom(11);
           this.map.panTo(this.userLocation);
           this.addLocationMarker(false,this.userLocation);
           this.clearHotelMarkers();
@@ -356,7 +356,7 @@ export class MapPage implements OnInit{
               console.log('page > getPlaceDetail > place > ', place);
               // set place in map
               self.userLocation = place.geometry.location;
-              self.map.setZoom(10);
+              self.map.setZoom(11);
               self.map.panTo(place.geometry.location);
               self.addLocationMarker(false,place.geometry.location);
               self.clearHotelMarkers();
