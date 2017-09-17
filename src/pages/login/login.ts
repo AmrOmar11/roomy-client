@@ -47,7 +47,7 @@ export class LoginPage {
                 inputData.firstName = res.name;
                 env.authenticate(inputData); 
         }, function(err){
-            this.authProvider.hideLoading();
+            env.authProvider.hideLoading();
             console.log("Facebook Login error", err);
             env.authProvider.showError("Facebook Login error");
         });
@@ -71,7 +71,7 @@ export class LoginPage {
                 inputData.firstName = res.givenName;
                 env.authenticate(inputData);
         }, function(err){
-            this.authProvider.hideLoading();
+            env.authProvider.hideLoading();
             console.log("Google Login error", err);
             env.authProvider.showError("Google Login error");
         });

@@ -214,6 +214,27 @@ page-hotelslider {
     	}
     }
 	
-
+    #TempFullScreenContainer{
+    	width:100%;
+    	height:100%;
+    	background-color:rgba(0,0,0,0.7);
+    	position:absolute;
+    }
+    #TempFullParent{
+    	position:absolute;
+    	top:25%;
+    	width:100%;
+    }
+    #TempFullImg,#TempFullcontent{
+    	margin:0 auto;
+    }
+    #TempFullImg img{
+    	width:12%;
+    }
+    #TempFullcontent{
+	 color: #FFD800;
+	 font-size:3vmax;
+	 font-weight:bold;
+    }
 }
 

@@ -31,7 +31,13 @@
 		      	</div>
 		      	<div id="hotelrating" [ngClass]="getRating(hotel.starratingByHotel)"></div>
 		      	<div id="HotelDist" class="HotelBlank">{{hotel.distance}}</div>
-		      	<div class="HotelName">{{hotel.hotelname.toUpperCase()}}</div>
+		      	<div class="HotelName">{{hotel.hotelname.toUpperCase()}}</div>		      	
+	      	</div>
+	      	<div id="TempFullScreenContainer" [hidden]="hotel.isAviablity">
+	      		<div id="TempFullParent">
+	      			<div id="TempFullImg"><img src="assets/map/temporary_full.png"></div>
+	      			<div id="TempFullcontent"><span>Temporarily Full</span></div>
+	      		</div>
 	      	</div>
 	      </div>
 	    </ion-slide>
