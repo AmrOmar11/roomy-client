@@ -203,7 +203,7 @@ export class MapPage implements OnInit{
     ];
     let mapOptions = {
       center: this.userLocation,
-      zoom: 11,
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
       zoomControl:false,
@@ -258,6 +258,26 @@ export class MapPage implements OnInit{
           selectedHotelMarker.setMap(null);
         }
         hotels[i].distance = this.distanceInKm(this.userLocation.lat(),this.userLocation.lng(),hotels[i].latitude,hotels[i].longitude);
+        google.maps.event.addListener(this.hotelMarkers[i], 'click', (marker) => {
+          for (var j = 0; j < hotels.length; j++) {
+            if((hotels[j].latitude == marker.latLng.lat())){
+                this.events.publish('hotel:marker',j);
+                this.map.setZoom(13);
+                this.map.panTo(this.hotelMarkers[j].getPosition());
+               break; 
+            }
+          }          
+        });
+        google.maps.event.addListener(this.selectedHotelMarkers[i], 'click', (marker) => {
+          for (var k = 0; k < hotels.length; k++) {
+            if((hotels[k].latitude == marker.latLng.lat())){
+                this.events.publish('hotel:marker',k);
+                this.map.setZoom(13);
+                this.map.panTo(this.selectedHotelMarkers[k].getPosition());
+               break; 
+            }
+          }
+        });
       }
     }
     this.events.publish('hotels:list',hotels);
@@ -299,7 +319,7 @@ export class MapPage implements OnInit{
       this.geolocation.getCurrentPosition(options).then((res) => {
           console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
-          this.map.setZoom(11);
+          this.map.setZoom(10);
           this.map.panTo(this.userLocation);
           this.addLocationMarker(false,this.userLocation);
           this.clearHotelMarkers();
@@ -336,7 +356,7 @@ export class MapPage implements OnInit{
               console.log('page > getPlaceDetail > place > ', place);
               // set place in map
               self.userLocation = place.geometry.location;
-              self.map.setZoom(11);
+              self.map.setZoom(10);
               self.map.panTo(place.geometry.location);
               self.addLocationMarker(false,place.geometry.location);
               self.clearHotelMarkers();

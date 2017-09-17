@@ -39,6 +39,9 @@ export class HotelsliderPage {
             console.log('force refresh hotel silder');
           });
         });
+        events.subscribe('hotel:marker',(index)=>{
+          this.slides.slideTo(index);
+        });
     }
 
     ionViewDidLoad() {
