@@ -56,14 +56,13 @@ export class MapPage implements OnInit{
     this.loading = document.getElementById("loaderoverlay");
     this.loading.style.display="block";
     this.getCurrenLocation();
-    this.events.subscribe('hotel:slideChanged',(currentIndex,previousIndex) => {
-      console.log('hotelSlideChanged:',currentIndex,previousIndex);
-        this.selectedHotelMarkers[previousIndex].setMap(null);
-        this.hotelMarkers[previousIndex].setMap(this.map);
-        this.hotelMarkers[currentIndex].setMap(null);
-        this.selectedHotelMarkers[currentIndex].setMap(this.map);
-        //this.map.setZoom(13);
-        //this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
+    this.events.subscribe('hotel:slideChanged',(currentIndex) => {
+      for(var i = 0; i < this.hotelMarkers.length; i++){
+        this.hotelMarkers[i].setMap(this.map);
+      }
+      this.selectedHotelMarkers[currentIndex].setMap(this.map);
+      //this.map.setZoom(13);
+      //this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
     });
     this.events.subscribe('map:resize',() => {
         console.log('map:resize:');

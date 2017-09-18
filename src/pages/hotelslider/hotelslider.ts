@@ -48,10 +48,14 @@ export class HotelsliderPage {
       console.log('ionViewDidLoad PreviewPage');
     }
 
-    slideChanged($event){
-        if(this.hotels[$event._activeIndex] !== undefined){
-          this.events.publish('hotel:slideChanged',$event._activeIndex,$event._previousIndex);
-        }
+    slideChanged(){
+      let currentIndex = this.slides.getActiveIndex();
+      let previousIndex = this.slides.getPreviousIndex();
+      console.log('slideChanged:',previousIndex,currentIndex);
+      let length = this.slides.length();
+      if(currentIndex < length){
+        this.events.publish('hotel:slideChanged',currentIndex);
+      }
     }
 
     hotelDetailedInfo(hotelInfo){
