@@ -5,6 +5,12 @@ page-map {
     #map{
       height:70% !important;  
     }
+    .gmnoscreen{
+        display:none !important;
+    }
+    .gmnoprint{
+        display:none !important;
+    }
     .search,.compas { 
         position: absolute;
         top: 10%;
