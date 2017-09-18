@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController} from 'ionic-angular';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
-import { FacebookLoginService,GoogleLoginService }  from '../../providers/providers';
 import { Events } from 'ionic-angular';
 /**
  * Generated class for the HomePage page.
@@ -16,12 +15,10 @@ import { Events } from 'ionic-angular';
 })
 export class HomePage {
     userInfo:any;
-constructor(
-        public navCtrl: NavController, 
+    constructor(
+        public navCtrl: NavController,
         public authProvider: AuthenticateProvider,
-        public events: Events,
-        public FBLoginService:FacebookLoginService,
-        public GoogleLoginService:GoogleLoginService){
+        public events: Events){
         this.userInfo = this.authProvider.getUserInfo();
     }
     
@@ -62,10 +59,8 @@ constructor(
           }
         },
         error => {
-           
+           this.authProvider.removeUser();
         });
-        this.FBLoginService.doFacebookLogout();
-        this.GoogleLoginService.doGoogleLogout()
     }
     ionViewDidEnter() {
         console.log('home:map:resize:');

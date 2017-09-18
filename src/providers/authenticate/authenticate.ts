@@ -20,6 +20,7 @@ export class User {
   last_Name: string;
   dateOfBirth:string;
   userID:number;
+  referralCode:string;
   customerToken: string;
   constructor(){
     this.emailAddress='';
@@ -29,6 +30,7 @@ export class User {
     this.last_Name='';
     this.dateOfBirth='';
     this.userID=0;
+    this.referralCode='';
     this.customerToken='';
   }
 }
@@ -143,6 +145,7 @@ export class AuthenticateProvider {
     this.currentUser.last_Name = data.result.last_Name;
     this.currentUser.dateOfBirth = data.result.dateOfBirth;
     this.currentUser.userID = data.result.userID;
+    this.currentUser.referralCode = data.result.referralCode;
     this.currentUser.customerToken = data.jwtToken;
   }
 

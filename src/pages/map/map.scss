@@ -1,4 +1,10 @@
 page-map {
+    .content{
+        background-color: #dde3e3 !important;
+    }
+    #map{
+      height:70% !important;  
+    }
     .search,.compas { 
         position: absolute;
         top: 10%;
@@ -11,5 +17,3 @@ page-map {
         top: 45%;
     }
 }
-
-

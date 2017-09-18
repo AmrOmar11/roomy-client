@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage,NavController } from 'ionic-angular';
-
+import { AuthenticateProvider} from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the InvitePage page.
  *
@@ -13,8 +13,11 @@ import { IonicPage,NavController } from 'ionic-angular';
   templateUrl: 'invite.html',
 })
 export class InvitePage {
-
-	constructor(public navCtrl: NavController) {
+	userInfo:any;
+	
+	constructor(public navCtrl: NavController,
+        public authProvider: AuthenticateProvider) {
+		this.userInfo = this.authProvider.getUserInfo();
 	}
 
 	ionViewDidLoad() {
