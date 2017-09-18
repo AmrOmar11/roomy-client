@@ -34,6 +34,7 @@ export class HotelsliderPage {
             this.hideCard = true;
             this.hideSlide = false;
             this.slides.slideTo(0);
+            this.events.publish('hotel:slideChanged',0);
           }          
           this.zone.run(() => {
             console.log('force refresh hotel silder');

@@ -57,8 +57,8 @@ export class MapPage implements OnInit{
     this.loading.style.display="block";
     this.getCurrenLocation();
     this.events.subscribe('hotel:slideChanged',(currentIndex) => {
-      for(var i = 0; i < this.hotelMarkers.length; i++){
-        this.hotelMarkers[i].setMap(this.map);
+      for(var i = 0; i < this.selectedHotelMarkers.length; i++){
+        this.selectedHotelMarkers[i].setMap(null);
       }
       this.selectedHotelMarkers[currentIndex].setMap(this.map);
       //this.map.setZoom(13);
@@ -248,15 +248,10 @@ export class MapPage implements OnInit{
         this.hotelMarkers.push(hotelMarker);
         let selectedHotelMarker = new google.maps.Marker({
           position: location,
-          map: this.map,
+          map: null,
           icon:this.icons.selectedHotel
         });
         this.selectedHotelMarkers.push(selectedHotelMarker);
-        if(i==0){
-          hotelMarker.setMap(null);  
-        }else{
-          selectedHotelMarker.setMap(null);
-        }
         hotels[i].distance = this.distanceInKm(this.userLocation.lat(),this.userLocation.lng(),hotels[i].latitude,hotels[i].longitude);
         google.maps.event.addListener(this.hotelMarkers[i], 'click', (marker) => {
           for (var j = 0; j < hotels.length; j++) {
@@ -264,9 +259,9 @@ export class MapPage implements OnInit{
                 this.events.publish('hotel:marker',j);
                 //this.map.setZoom(13);
                 //this.map.panTo(this.hotelMarkers[j].getPosition());
-               break; 
+               break;
             }
-          }          
+          }
         });
         google.maps.event.addListener(this.selectedHotelMarkers[i], 'click', (marker) => {
           for (var k = 0; k < hotels.length; k++) {
