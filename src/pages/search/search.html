@@ -1,24 +1,19 @@
 <ion-header>
-  <ion-navbar>
-      <ion-buttons left>
-          <button ion-button icon-only (click)="dismiss()" class="search-modal">
-              <ion-icon name="close"></ion-icon>
-          </button>
-      </ion-buttons>
-      <ion-title>Search</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="dismiss()" class="search-modal">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Search</ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content> 
-    <ion-searchbar [focuser]
-        [(ngModel)]="autocomplete.query" 
-        (ionInput)="updateSearch()" 
-        (ionCancel)="dismiss()"
-        placeholder="City, neighborhood, or address">
+<ion-content>
+    <ion-searchbar [focuser] [(ngModel)]="autocomplete.query" (ionInput)="updateSearch()" (ionCancel)="dismiss()" placeholder="City, neighborhood, or address">
     </ion-searchbar>
     <ion-list>
-        <ion-item tappable *ngFor="let item of autocompleteItems" 
-            (click)="chooseItem(item)" text-wrap>
+        <ion-item tappable *ngFor="let item of autocompleteItems" (click)="chooseItem(item)" text-wrap>
             <ion-icon name="pin">
             </ion-icon>
             {{ item.description }}

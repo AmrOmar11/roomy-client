@@ -1,30 +1,31 @@
 page-login {
-    .toolbar,.toolbar-md,.toolbar-ios{
-        padding:0px;
-        background-color:map-get($colors, theme) ;
+    .toolbar,
+    .toolbar-md,
+    .toolbar-ios {
+        padding: 0px;
+        background-color: map-get($colors, theme);
     }
-    .logo{
+    .logo {
         height: 80px;
     }
-    .social-icons{
+    .social-icons {
         height: 40px;
     }
-    .sigin-btn{
+    .sigin-btn {
         padding-left: 35px !important;
         padding-right: 35px !important;
     }
-
-    .sign-in-with { 
+    .sign-in-with {
         color: map-get($colors, textcolor);
         font-family: "Open Sans";
         font-size: 28.27ppt;
-        width:100%; 
+        width: 100%;
         border-bottom: 1px solid rgba(199, 196, 196, 0.18);
-        line-height:0.1em; 
-        margin:10px 0 20px; 
+        line-height: 0.1em;
+        margin: 10px 0 20px;
     }
-    .sign-in-with span { 
-        background:#fff; 
-        padding:0 10px; 
+    .sign-in-with span {
+        background: #fff;
+        padding: 0 10px;
     }
 }

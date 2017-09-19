@@ -1,17 +1,16 @@
-
 ion-modal.invite-Model {
     @media (min-width: 300px) and (min-height: 500px) {
         ion-backdrop {
             visibility: visible;
         }
     }
-    .referalCode{
+    .referalCode {
         text-align: center;
         border: 1px dashed map-get($colors, placeholder-color);
         padding: 1rem;
         margin-top: 1rem;
     }
-    .charector{
+    .charector {
         margin-top: .5rem;
     }
     .modal-wrapper {
@@ -26,23 +25,23 @@ ion-modal.invite-Model {
         right: 0;
         margin: auto;
         border: 0;
-        box-shadow: 0 16px 20px rgba(0,0,0,.4);
+        box-shadow: 0 16px 20px rgba(0, 0, 0, .4);
         background-color: #fafafa;
     }
-    p{
+    p {
         color: map-get($colors, placeholder-color);
-    } 
-    p b{
+    }
+    p b {
         color: map-get($colors, textcolor);
     }
-    .text-input{
+    .text-input {
         padding: 1rem;
         background-color: map-get($colors, whiteColor);
         border: 1px solid map-get($colors, placeholder-color);
         border-radius: 5px;
     }
-    .button-outline{
-        background-color: map-get($colors,  placeholder-color);
+    .button-outline {
+        background-color: map-get($colors, placeholder-color);
         border: 1px solid map-get($colors, placeholder-color);
         color: map-get($colors, whiteColor);
     }

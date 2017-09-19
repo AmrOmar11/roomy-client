@@ -1,240 +1,233 @@
 page-hotelslider {
-
-	$white: #FFFFFF;
-	$black: rgba(#000000, .2);
-	$black-a: lighten($black, 10%);
-	$orange: #F39941;
-
-
-	width:100%;
-	height:30%;
-	position:absolute;
-	bottom:0;
-	text-align:left;
-
-	.slide-zoom{
-		height:100%;
-	}
-	.hotelStatusStatic{
-		height:14%;
-	}
-
-    ion-content,.scroll-content{
-        padding:8px !important;
-        background:none !important;
+    $white: #FFFFFF;
+    $black: rgba(#000000, .2);
+    $black-a: lighten($black, 10%);
+    $orange: #F39941;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+    .slide-zoom {
+        height: 100%;
     }
-	ion-slide{
-		border: 5px solid rgb(42,43,43) !important;
-    	border-radius: 5px;
-	}
-	.swiper-pagination{
-		bottom:-1.5% !important;
-	}
-	.swiper-pagination-bullet{
-	  background: white !important;
-	  opacity: 0.8;
-	  width: 6px;
-      height: 6px;
-	}
-
-	.swiper-pagination-bullet-active{
-	  background: map-get($colors, theme) !important;
-	}
-	.hotelStatus{
-		color:#fff;
-		text-align:left;
-		background-color:#1E2128;
-		width:60%;
-		font-size: 2.5vmax;
-    	text-align: center;
-	}
-	.HotelSlider{
-		background-color:#dde3e3;
-		width:100%;
-		height:100%;
-		background-size:100% 100%;
-		background-repeat:no-repeat;
-		position:relative;
-	}
-	.SliderBlackOverlay{
-		//background-color:$black;
-		width:100%;
-		height:100%;
-		background-size:100%;
-		background-repeat:no-repeat;
-		position: absolute;
-		background: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4)); /* For Safari 5.1 to 6.0 */
-	    background: -o-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.4)); /* For Opera 11.1 to 12.0 */
-	    background: -moz-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.4)); /* For Firefox 3.6 to 15 */
-	    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4)); /* Standard syntax (must be last) */
-	}
-	.sliderContent{
-		position: absolute;
-	    top: 0;
-	    width: 100%;
-    	height: 100%;
-
-	}
-	.hotels{
-		background:transparent;
-		padding-top:0;
-		padding-bottom:0;
-	}
-	.HotelName, .HotelCategory{
-		text-align:left;
-		color:$white;
-	}
-
-	.HotelName{
-		font-size: 3vmax;
-    	padding: 2px 8px;
-    	position: absolute;
-    	bottom: 3%;
-    	font-weight: bold;
-    	width:100%;
-    	white-space:nowrap;
-    	overflow:hidden;
-    	text-overflow: ellipsis;
-	}
-	#hotelrating{
-		width: 25px;
-	    height: 25px;
-	    position: absolute;
-	    bottom: 25%;
-	    left: 3%;
-	}
-	
-	.HotelDetails{
-		display:block;
-		height:25%
-	}
-
-	.HotelFare{
-		width: 32%;
-		padding: 5px 0;
-		height: auto;
-	}
-	.HotelMinCost,.MinDuration{
-		background-color: #08B6AD;
-	    color: #fff;
-	    font-size: 1.8vmax;
-	    font-weight:bold;
-	    height: auto;
-	    width: auto;
-	    text-align: center;
-	    padding: 1% 3%;
-	    border-radius: 20px;
-	    position: absolute;
-	    top: 5%;
-	}
-
-	.HotelMinCost{
-		left:3%;
-		border: 0.15px solid #ffffff;
-	}
-	.MinDuration{
-		right:7%;
-		border: 0.15px solid #ffffff;
-	}
-
-	.HotelRating{
-		height: 25px;
-	    width: 25px;
-	    position: absolute;
-	    bottom: 35%;
-	    left: 3%;
-	    background-repeat:no-repeat;
-	    background-size:100%;
+    .hotelStatusStatic {
+        height: 14%;
     }
-
-	.HotelBlank,.hourcost-bottom{
-		display:inline-block;
-	}
-		
-	.HotelBlank{
-		background-color: #000;
-	    color: #fff;
-	    font-size: 1.7vmax;
-	    height: auto;
-	    width: auto;
-	    text-align: center;
-	    padding: 1% 3%;
-	    border-radius: 20px;
-	    position: absolute;
-	    bottom: 30%;
-	    right: 7%;
-	    border: 0.15px solid #ffffff;
-	}
-	.hourcost-bottom{
-		width:32%;
-		height:100%;
-		background-color:map-get($colors, theme);
-		color:$white;
-		padding: 5px 5px;
-		font-size: 2.7vmax;
-    	font-weight: bold;
-    	float:right;
-	}
-	.three {
-		background: url('../assets/img/Stars-slider.png') no-repeat 0 0;
-	}
-	.four{
-		background: url('../assets/img/Stars-slider.png') no-repeat -33px 0;
-	}
-	.five{
-		background: url('../assets/img/Stars-slider.png') no-repeat -67px 0;
-	}
-	.seven{
-		background: url('../assets/img/Stars-slider.png') no-repeat -101px 0;
-	}
-	/*No Result style*/
-	ion-card {
-		background: map-get($colors, theme) !important;
-		border: 5px solid rgba(42, 43, 43, 0.37 ) !important;
-		border-radius: 5px;
-    	img{
-    		width: 50% !important;
-		    margin: 10px auto;
-    	}
-    	.card-content{
-    		padding: 0px 16px !important;
-    	}
-    	.card-title{
-    		color:map-get($colors, whiteColor) !important;
-    		font-size: 2.5vmax !important;
-    		font-weight: bold;
-    		text-align: center;
-    		padding: 2px 0 !important;
-    	}
-    	p{
-    		color:map-get($colors, whiteColor) !important;
-    		font-size: 2vmax !important;
-    		line-height: 1.0 !important;
-    		text-align: center;
-    	}
+    ion-content,
+    .scroll-content {
+        padding: 8px !important;
+        background: none !important;
     }
-	
-    #TempFullScreenContainer{
-    	width:100%;
-    	height:100%;
-    	background-color:rgba(0,0,0,0.7);
-    	position:absolute;
+    ion-slide {
+        border: 5px solid rgb(42, 43, 43) !important;
+        border-radius: 5px;
     }
-    #TempFullParent{
-    	position:absolute;
-    	top:25%;
-    	width:100%;
+    .swiper-pagination {
+        bottom: -1.5% !important;
     }
-    #TempFullImg,#TempFullcontent{
-    	margin:0 auto;
+    .swiper-pagination-bullet {
+        background: white !important;
+        opacity: 0.8;
+        width: 6px;
+        height: 6px;
     }
-    #TempFullImg img{
-    	width:12%;
+    .swiper-pagination-bullet-active {
+        background: map-get($colors, theme) !important;
     }
-    #TempFullcontent{
-	 color: #FFD800;
-	 font-size:3vmax;
-	 font-weight:bold;
+    .hotelStatus {
+        color: #fff;
+        text-align: left;
+        background-color: #1E2128;
+        width: 60%;
+        font-size: 2.5vmax;
+        text-align: center;
+    }
+    .HotelSlider {
+        background-color: #dde3e3;
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+    .SliderBlackOverlay {
+        //background-color:$black;
+        width: 100%;
+        height: 100%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        /* Standard syntax (must be last) */
+    }
+    .sliderContent {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .hotels {
+        background: transparent;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .HotelName,
+    .HotelCategory {
+        text-align: left;
+        color: $white;
+    }
+    .HotelName {
+        font-size: 3vmax;
+        padding: 2px 8px;
+        position: absolute;
+        bottom: 3%;
+        font-weight: bold;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #hotelrating {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        bottom: 25%;
+        left: 3%;
+    }
+    .HotelDetails {
+        display: block;
+        height: 25%
+    }
+    .HotelFare {
+        width: 32%;
+        padding: 5px 0;
+        height: auto;
+    }
+    .HotelMinCost,
+    .MinDuration {
+        background-color: #08B6AD;
+        color: #fff;
+        font-size: 1.8vmax;
+        font-weight: bold;
+        height: auto;
+        width: auto;
+        text-align: center;
+        padding: 1% 3%;
+        border-radius: 20px;
+        position: absolute;
+        top: 5%;
+    }
+    .HotelMinCost {
+        left: 3%;
+        border: 0.15px solid #ffffff;
+    }
+    .MinDuration {
+        right: 7%;
+        border: 0.15px solid #ffffff;
+    }
+    .HotelRating {
+        height: 25px;
+        width: 25px;
+        position: absolute;
+        bottom: 35%;
+        left: 3%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .HotelBlank,
+    .hourcost-bottom {
+        display: inline-block;
+    }
+    .HotelBlank {
+        background-color: #000;
+        color: #fff;
+        font-size: 1.7vmax;
+        height: auto;
+        width: auto;
+        text-align: center;
+        padding: 1% 3%;
+        border-radius: 20px;
+        position: absolute;
+        bottom: 30%;
+        right: 7%;
+        border: 0.15px solid #ffffff;
+    }
+    .hourcost-bottom {
+        width: 32%;
+        height: 100%;
+        background-color: map-get($colors, theme);
+        color: $white;
+        padding: 5px 5px;
+        font-size: 2.7vmax;
+        font-weight: bold;
+        float: right;
+    }
+    .three {
+        background: url('../assets/img/Stars-slider.png') no-repeat 0 0;
+    }
+    .four {
+        background: url('../assets/img/Stars-slider.png') no-repeat -33px 0;
+    }
+    .five {
+        background: url('../assets/img/Stars-slider.png') no-repeat -67px 0;
+    }
+    .seven {
+        background: url('../assets/img/Stars-slider.png') no-repeat -101px 0;
+    }
+    /*No Result style*/
+    ion-card {
+        background: map-get($colors, theme) !important;
+        border: 5px solid rgba(42, 43, 43, 0.37) !important;
+        border-radius: 5px;
+        img {
+            width: 50% !important;
+            margin: 10px auto;
+        }
+        .card-content {
+            padding: 0px 16px !important;
+        }
+        .card-title {
+            color: map-get($colors, whiteColor) !important;
+            font-size: 2.5vmax !important;
+            font-weight: bold;
+            text-align: center;
+            padding: 2px 0 !important;
+        }
+        p {
+            color: map-get($colors, whiteColor) !important;
+            font-size: 2vmax !important;
+            line-height: 1.0 !important;
+            text-align: center;
+        }
+    }
+    #TempFullScreenContainer {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: absolute;
+    }
+    #TempFullParent {
+        position: absolute;
+        top: 25%;
+        width: 100%;
+    }
+    #TempFullImg,
+    #TempFullcontent {
+        margin: 0 auto;
+    }
+    #TempFullImg img {
+        width: 12%;
+    }
+    #TempFullcontent {
+        color: #FFD800;
+        font-size: 3vmax;
+        font-weight: bold;
     }
 }
-

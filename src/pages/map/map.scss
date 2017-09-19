@@ -1,17 +1,18 @@
 page-map {
-    .content{
+    .content {
         background-color: #dde3e3 !important;
     }
-    #map{
-      height:70% !important;  
+    #map {
+        height: 70% !important;
     }
-    .gmnoscreen{
-        display:none !important;
+    .gmnoscreen {
+        display: none !important;
     }
-    .gmnoprint{
-        display:none !important;
+    .gmnoprint {
+        display: none !important;
     }
-    .search,.compas { 
+    .search,
+    .compas {
         position: absolute;
         top: 10%;
         right: 5px;
@@ -19,7 +20,7 @@ page-map {
         width: 16%;
         background: transparent;
     }
-    .compas{
+    .compas {
         top: 45%;
     }
 }

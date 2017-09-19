@@ -1,34 +1,33 @@
 page-home {
-   .menu-header{
-        text-align:center;
-        font-size:initial;
+    .menu-header {
+        text-align: center;
+        font-size: initial;
     }
-    .toolbar{
+    .toolbar {
         background-color: inherit;
     }
     .bar-buttons,
     .toolbar-title {
         color: map-get($colors, header-toolbar-background) !important;
     }
-    .content .fixed-content{
+    .content .fixed-content {
         margin-top: 0px !important;
     }
-    .content .scroll-content{
+    .content .scroll-content {
         padding-top: 0px !important;
     }
-    .item-inner{
-        background-image:none !important;
+    .item-inner {
+        background-image: none !important;
     }
-    ion-navbar ion-icon{
-        font-size:2.5em !important;
+    ion-navbar ion-icon {
+        font-size: 2.5em !important;
     }
-    .custom-spinner-container{
+    .custom-spinner-container {
         height: 100%;
         width: 100%;
         background-color: map-get($colors, theme);
     }
-
-    .custom-spinner-box{
+    .custom-spinner-box {
         background-image: url(../assets/img/Loading_Logo.png);
         background-repeat: no-repeat;
         width: 250px;
@@ -37,38 +36,40 @@ page-home {
         background-size: 100%;
         transform: translateY(100%);
     }
-    #loaderoverlay{
-        width:100%;
-        height:100%;
-        background-color:grey;
-        display:none;
-        position:absolute;
-        top:0;
-        left:0;
-        z-index:11;
+    #loaderoverlay {
+        width: 100%;
+        height: 100%;
+        background-color: grey;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 11;
     }
-    .show-menu .content,.show-menu .item{
+    .show-menu .content,
+    .show-menu .item {
         background: map-get($colors, header-toolbar-background);
         color: map-get($colors, whiteColor);
     }
-    .item img,.item ion-icon{
+    .item img,
+    .item ion-icon {
         width: 2.5rem;
         margin-right: 1rem;
         margin-top: 5px;
     }
-    .menu-header img{
+    .menu-header img {
         width: 25%;
     }
-    .item .label{
-        font-size:11pt;
+    .item .label {
+        font-size: 11pt;
     }
-    .label{
+    .label {
         font-weight: bold;
-        font-family:$theme-font;
+        font-family: $theme-font;
     }
 }
 
-.map-page #map{
-    width:100%;
-    height:100%;
+.map-page #map {
+    width: 100%;
+    height: 100%;
 }

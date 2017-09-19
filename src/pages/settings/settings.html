@@ -5,61 +5,60 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>Profile</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Profile</ion-title>
+    </ion-navbar>
 </ion-header>
 
-
 <ion-content>
-  <form [formGroup] ="profileForm">
-    <ion-card class="profile-card">
-      <ion-list inset>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/profile/user.png">
-          </ion-thumbnail>
-          <ion-label stacked class="stack-label">Name</ion-label>
-          <ion-label>{{userInfo.first_Name}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/profile/calender.png">
-          </ion-thumbnail>      
-        <ion-label stacked class="stack-label">Birth Date</ion-label>
-        <ion-label>{{userInfo.dateOfBirth}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/profile/email.png">
-        </ion-thumbnail>
-        <ion-label stacked class="stack-label">E-Mail</ion-label>
-          <ion-label>{{userInfo.emailAddress}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/profile/mobile.png">
-          </ion-thumbnail>
-          <ion-label stacked class="stack-label">Mobile</ion-label>
-          <ion-input type="tel" [(ngModel)]="userInfo.contactNumber" formControlName="mobile" name="mobile" placeholder="Mobile">Mobile</ion-input>
-        </ion-item>
-      </ion-list>
-      <p class="error" *ngIf="(!profileForm.controls.mobile.valid && profileForm.controls.mobile.dirty )"><ion-icon name="close-circle"></ion-icon> Incorrect Mobile</p>
-   </ion-card>
-  </form>
- <ion-card class="password-card">
-    <ion-list no-lines>
-      <ion-item (click)="changePassword()">
-        <ion-thumbnail item-start>
-          <img src="assets/profile/password.png">
-        </ion-thumbnail>
-        <ion-label>Change Password</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-card>  
-</ion-content> 
+    <form [formGroup]="profileForm">
+        <ion-card class="profile-card">
+            <ion-list inset>
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <img src="assets/profile/user.png">
+                    </ion-thumbnail>
+                    <ion-label stacked class="stack-label">Name</ion-label>
+                    <ion-label>{{userInfo.first_Name}}</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <img src="assets/profile/calender.png">
+                    </ion-thumbnail>
+                    <ion-label stacked class="stack-label">Birth Date</ion-label>
+                    <ion-label>{{userInfo.dateOfBirth}}</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <img src="assets/profile/email.png">
+                    </ion-thumbnail>
+                    <ion-label stacked class="stack-label">E-Mail</ion-label>
+                    <ion-label>{{userInfo.emailAddress}}</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-start>
+                        <img src="assets/profile/mobile.png">
+                    </ion-thumbnail>
+                    <ion-label stacked class="stack-label">Mobile</ion-label>
+                    <ion-input type="tel" [(ngModel)]="userInfo.contactNumber" formControlName="mobile" name="mobile" placeholder="Mobile">Mobile</ion-input>
+                </ion-item>
+            </ion-list>
+            <p class="error" *ngIf="(!profileForm.controls.mobile.valid && profileForm.controls.mobile.dirty )">
+                <ion-icon name="close-circle"></ion-icon> Incorrect Mobile</p>
+        </ion-card>
+    </form>
+    <ion-card class="password-card">
+        <ion-list no-lines>
+            <ion-item (click)="changePassword()">
+                <ion-thumbnail item-start>
+                    <img src="assets/profile/password.png">
+                </ion-thumbnail>
+                <ion-label>Change Password</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>
 <ion-footer>
-    <button ion-button full class='pobyt-button' (click)="updateProfile()"
-    [disabled]="(!profileForm.valid)">Save
+    <button ion-button full class='pobyt-button' (click)="updateProfile()" [disabled]="(!profileForm.valid)">Save
     </button>
 </ion-footer>
