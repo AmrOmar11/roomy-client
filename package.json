@@ -37,8 +37,8 @@
         "@ionic/storage": "2.0.1",
         "angularfire2": "^4.0.0-rc.1",
         "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.5.0",
         "cordova-plugin-compat": "^1.0.0",
-        "cordova-plugin-console": "^1.0.7",
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-facebook4": "^1.9.1",
         "cordova-plugin-geolocation": "^2.4.3",
@@ -78,7 +78,6 @@
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": " "
             },
-            "cordova-plugin-console": {},
             "cordova-plugin-device": {},
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
@@ -101,7 +100,8 @@
             "onesignal-cordova-plugin": {}
         },
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     }
 }
