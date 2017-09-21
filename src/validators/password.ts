@@ -4,12 +4,12 @@ export class PasswordValidator {
 
   static isMatching(group: FormGroup){
 
-    console.log("password check");
+    //console.log("password check");
 
     var firstPassword = group.controls['password'].value;
     var secondPassword = group.controls['re_password'].value;
     if((firstPassword && secondPassword) && (firstPassword != secondPassword)){
-      console.log("mismatch");
+      //console.log("mismatch");
       group.controls['re_password'].setErrors({"pw_mismatch": true});
       return { "pw_mismatch": true };      
     } else{

@@ -33,7 +33,7 @@ export class HowitworksPage {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad HowitworksPage');
+		//console.log('ionViewDidLoad HowitworksPage');
 	}
 
 }

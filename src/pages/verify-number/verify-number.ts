@@ -82,7 +82,7 @@ export class VerifyNumberPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VerifyNumberPage');
+    //console.log('ionViewDidLoad VerifyNumberPage');
   }
 
   public generateOtp(){

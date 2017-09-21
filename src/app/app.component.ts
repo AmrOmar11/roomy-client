@@ -34,7 +34,7 @@ export class RoomyApp {
     if(this.platform.is('cordova')){
       this.nativeStorage.getItem('userdata')
       .then(data => {
-          console.log(data);
+          //console.log(data);
           let inputData = {
             action: "TOKEN",
             loginType: "APP",
@@ -50,12 +50,12 @@ export class RoomyApp {
             }
           },
           error => {
-            console.log(error);
+            //console.log(error);
             this.rootPage = 'PreviewPage';
           });
         },
         error => {
-          console.log(error);
+          //console.log(error);
           this.rootPage = 'PreviewPage';
         }
       );

@@ -18,7 +18,7 @@ export class UsernameValidator {
 		}
 		if ((!username.match(mobileRegex)) && (!username.match(emailRegex)))
 	    {
-	        console.log("Enter valid user");
+	       // console.log("Enter valid user");
 	        return {"Enter valid user":true};
 	    }
 	    return null;

@@ -21,6 +21,6 @@ export class InvitePage {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad InvitePage');
+		//console.log('ionViewDidLoad InvitePage');
 	}
 }

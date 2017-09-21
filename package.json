@@ -39,7 +39,6 @@
         "cordova-android": "^6.2.3",
         "cordova-ios": "^4.5.0",
         "cordova-plugin-compat": "^1.0.0",
-        "cordova-plugin-console": "^1.0.7",
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-facebook4": "^1.9.1",
         "cordova-plugin-geolocation": "^2.4.3",
@@ -96,8 +95,7 @@
             "cordova-plugin-googleplus": {
                 "REVERSED_CLIENT_ID": "com.googleusercontent.apps.17668287249-8743taiejq71k4s5du31o2plfb5mpds4"
             },
-            "cordova-plugin-network-information": {},
-            "cordova-plugin-console": {}
+            "cordova-plugin-network-information": {}
         },
         "platforms": [
             "android",

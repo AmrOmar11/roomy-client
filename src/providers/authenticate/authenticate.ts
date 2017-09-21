@@ -89,10 +89,10 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('authenticate:login:req:',inputData);
+    //console.log('authenticate:login:req:',inputData);
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/userRegistration',body,options).map(res => {
-      console.log('authenticate:login:res:',res.json());
+      //console.log('authenticate:login:res:',res.json());
       this.hideLoading();
       return res.json();
     })
@@ -104,10 +104,10 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('authenticate:logout:req:',inputData);
+    //console.log('authenticate:logout:req:',inputData);
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/userLogout',body,options).map(res => {
-      console.log('authenticate:logout:res:',res.json());
+      //console.log('authenticate:logout:res:',res.json());
       this.hideLoading();
       return res.json();
     })
@@ -119,10 +119,10 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('authenticate:forgotPassword:req:',inputData);
+    //console.log('authenticate:forgotPassword:req:',inputData);
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/forgetPassword',body,options).map(res => {
-      console.log('authenticate:forgotPassword:res:',res.json());
+      //console.log('authenticate:forgotPassword:res:',res.json());
       this.hideLoading();
       return res.json();
     })
@@ -151,11 +151,14 @@ export class AuthenticateProvider {
 
   public setUserData(data){
     if(this.platform.is('cordova')){
-      this.nativeStorage.setItem('userdata', {customerToken: data.jwtToken})
-      .then(
-        () => console.log('Stored userdata in nativeStorage'),
-        error => console.error('Error storing item', error)
-      );
+      this.nativeStorage.setItem('userdata', {customerToken: data.jwtToken});
+      // .then(
+      //   () => {
+      //     console.log('Stored userdata in nativeStorage')
+      //   },
+      //   error =>{// console.error('Error storing item', error)
+      //   }
+      //);
     }
   }
 
@@ -174,11 +177,11 @@ export class AuthenticateProvider {
     let body = JSON.stringify({
       customerToken: inputData.customerToken
     });
-    console.log('authenticate:profile-update:req',inputData);
+    //console.log('authenticate:profile-update:req',inputData);
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/updateProfile',body,options)
     .map(res => {
-      console.log('authenticate:profile-update:res',res.json());
+      //console.log('authenticate:profile-update:res',res.json());
       this.setCurrentUser(res.json());
       this.hideLoading();
       return this.currentUser;
@@ -191,11 +194,11 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('HotelsbyLocation:req:',inputData);
+    //console.log('HotelsbyLocation:req:',inputData);
     this.showLoading('Fetching Hotels...');
     return this.http.post('http://pobyt-webapp.azurewebsites.net/getHotelsbyLocation',body,options)
     .map(res => {
-      console.log('HotelsbyLocation:res:',res.json());
+      //console.log('HotelsbyLocation:res:',res.json());
       this.hideLoading();
       return res.json();
     })
@@ -207,11 +210,11 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
-    console.log('HotelDetails:req:',inputData);
+    //console.log('HotelDetails:req:',inputData);
     this.showLoading('Fetching Hotel...');
     return this.http.post('http://pobyt-webapp.azurewebsites.net/getHotelDetails',body,options)
     .map(res => {
-      console.log('HotelDetails:res:',res.json());
+      //console.log('HotelDetails:res:',res.json());
       return res.json();
     })
     .catch(this.handleError);

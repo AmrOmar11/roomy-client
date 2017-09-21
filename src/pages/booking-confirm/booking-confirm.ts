@@ -19,7 +19,7 @@ export class BookingConfirmPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BookingConfirmPage');
+    //console.log('ionViewDidLoad BookingConfirmPage');
   }
 
 }
