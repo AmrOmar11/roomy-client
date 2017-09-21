@@ -99,4 +99,5 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <engine name="ios" spec="~4.5.0" />
+    <plugin name="cordova-plugin-console" spec="^1.0.7" />
 </widget>
