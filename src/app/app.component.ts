@@ -65,7 +65,7 @@ export class RoomyApp {
   }
 
   // startOnesignal(){
-  //   ifÂ (this.platform.is('cordova')){
+  //   if (this.platform.is('cordova')){
   //     this.oneSignal.startInit('1ae97439-f217-446d-9ae5-8fefcfb36ed7', '17668287249');
 
   //     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
