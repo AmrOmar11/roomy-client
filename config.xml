@@ -47,5 +47,4 @@
         <variable name="APP_NAME" value="Pobyt" />
     </plugin>
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <plugin name="onesignal-cordova-plugin" spec="^2.2.0" />
 </widget>

@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { AuthenticateProvider } from '../providers/authenticate/authenticate';
-import { OneSignal } from '@ionic-native/onesignal';
+// import { OneSignal } from '@ionic-native/onesignal';
 
 
 @Component({
@@ -16,8 +16,8 @@ export class RoomyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private nativeStorage: NativeStorage, 
-    public authProvider: AuthenticateProvider,
-    public oneSignal: OneSignal) {
+    public authProvider: AuthenticateProvider/*,
+    public oneSignal: OneSignal*/) {
       this.initializeApp();
   }
 
@@ -26,7 +26,7 @@ export class RoomyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.loginFromNativeStorage();
-      this.startOnesignal();
+      // this.startOnesignal();
     });
   }
 
@@ -64,23 +64,23 @@ export class RoomyApp {
     }
   }
 
-  startOnesignal(){
-    if (this.platform.is('cordova')){
-      this.oneSignal.startInit('1ae97439-f217-446d-9ae5-8fefcfb36ed7', '17668287249');
+  // startOnesignal(){
+  //   if (this.platform.is('cordova')){
+  //     this.oneSignal.startInit('1ae97439-f217-446d-9ae5-8fefcfb36ed7', '17668287249');
 
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+  //     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
-      this.oneSignal.handleNotificationReceived().subscribe(() => {
-       // do something when notification is received
-        // alert("recevied");
-      });
+  //     this.oneSignal.handleNotificationReceived().subscribe(() => {
+  //      // do something when notification is received
+  //       // alert("recevied");
+  //     });
 
-      this.oneSignal.handleNotificationOpened().subscribe(() => {
-        // do something when a notification is opened
-        // alert("opened");
-      });
-      this.oneSignal.endInit();
-    }
-  }
+  //     this.oneSignal.handleNotificationOpened().subscribe(() => {
+  //       // do something when a notification is opened
+  //       // alert("opened");
+  //     });
+  //     this.oneSignal.endInit();
+  //   }
+  // }
 
 }

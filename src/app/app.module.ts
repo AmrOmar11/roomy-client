@@ -13,7 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
-import { OneSignal } from '@ionic-native/onesignal';
+// import { OneSignal } from '@ionic-native/onesignal';
 
 const cloudSettings: CloudSettings = {
     'core': {
@@ -64,8 +64,8 @@ const cloudSettings: CloudSettings = {
         Facebook,
         GooglePlus,
         AuthenticateProvider,
-        Network,
-        OneSignal
+        Network/*,
+        OneSignal*/
     ]
 })
 export class AppModule {}
