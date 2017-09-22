@@ -32,9 +32,13 @@ page-home {
         background-repeat: no-repeat;
         width: 250px;
         height: 250px;
-        margin: 0 auto;
         background-size: 100%;
-        transform: translateY(100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
     }
     #loaderoverlay {
         width: 100%;
