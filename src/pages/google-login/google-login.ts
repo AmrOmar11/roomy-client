@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { IonicPage,NavController, LoadingController } from 'ionic-angular';
 
 import { GoogleUserModel } from './google-user.model';
 import { GoogleLoginService } from './google-login.service';
-
+@IonicPage()
 @Component({
   selector: 'google-login-page',
   templateUrl: 'google-login.html'

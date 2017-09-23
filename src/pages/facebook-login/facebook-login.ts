@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { IonicPage,NavController, LoadingController } from 'ionic-angular';
 
 import { FacebookUserModel } from './facebook-user.model';
 import { FacebookLoginService } from './facebook-login.service';
-
+@IonicPage()
 @Component({
   selector: 'facebook-login-page',
   templateUrl: 'facebook-login.html'
