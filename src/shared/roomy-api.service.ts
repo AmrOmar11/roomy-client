@@ -24,4 +24,11 @@ export class RoomyApi{
 			return this.currentHotel;
 		});
 	}
+
+	getBookingHistory(){
+    return new Promise(resolve =>{
+      this.http.get(`assets/data/BookingHistory.json`)
+      .subscribe(res => resolve(res.json()));
+    });
+  }
 }

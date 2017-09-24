@@ -1,0 +1,133 @@
+page-booking-history {
+
+	$black:rgba(0,0,0,0.5);
+	.pobythide{
+		display:none;
+	}
+	.bookingcompleted{
+		background:#56e043;
+	}
+	.bookinginprogress{
+		background:rgb(13, 193, 230);
+	}
+	.bookingscheduled{
+		background:#e29f2d;
+	}
+
+
+	.content{
+    	color: #fff;
+    	background-color: #4F4646;
+    }
+    .bookings-title{
+    	font-size: 2.8vmax;
+	    font-weight: bold;
+	    padding: 15px 0 0px 15px;
+    }
+    .bookings-list{
+    	height:100%;
+    	div{
+	    	padding: 5px;
+	    }
+    }
+    
+
+    
+    .booking-parent{
+    	height:100%;
+    	position:relative;
+    	.BlackOverlay{
+	        background-color:$black;
+	        width: 100%;
+		    height: inherit;
+		    background-size: 100%;
+		    position: absolute;
+		    z-index:1;
+	    }
+        .booking-status,.booking-amount{
+	        font-size: 4.2vmax;
+		    font-weight: bold;
+		    text-align: center;
+		    padding-top: 30px;
+		    z-index: 11;
+    		position: relative;
+        }	        
+        .booking-amount{
+	        font-size: 3.2vmax;
+	        padding-top: 5px;
+        }
+    	.bookedHotel-image{
+    		height: 120px;
+    		background-size: 100% 100%;
+    		padding: 0;
+    		position: relative;
+    	}
+    	.bookingDetail{
+    		height: 55px;
+    		background-color: #636363;
+    		.bookingTextContainer{
+    			float:left;
+    			width:70%;
+    			padding:0px;
+    			#hotelrating {
+			        width: 25px;
+			        height: 25px;
+			    }
+			    .bookingHotelName{
+			    	font-size:3vmax;
+			    	padding:0px;
+			    	white-space: nowrap;
+			        overflow: hidden;
+			        text-overflow: ellipsis;
+			    }
+    		}
+    		.bookingDate{
+		    	width: auto;
+			    float: right;
+			    padding: 3px 10px;
+			    text-align: center;
+			    font-weight: bold;
+			    border-radius: 10px;
+		    }    		
+    	}
+    }
+
+	/*No Result style*/
+    ion-card {
+        background: map-get($colors, theme) !important;
+        border: 5px solid rgba(42, 43, 43, 0.37) !important;
+        border-radius: 5px;
+        img {
+            width: 50% !important;
+            margin: 10px auto;
+        }
+        .card-content {
+            padding: 0px 16px !important;
+        }
+        .card-title {
+            color: map-get($colors, whiteColor) !important;
+            font-size: 2.5vmax !important;
+            font-weight: bold;
+            text-align: center;
+            padding: 2px 0 !important;
+        }
+        p {
+            color: map-get($colors, whiteColor) !important;
+            font-size: 2vmax !important;
+            line-height: 1.0 !important;
+            text-align: center;
+        }
+    }
+    .three {
+        background: url('../assets/img/Stars-slider.png') no-repeat 0 0;
+    }
+    .four {
+        background: url('../assets/img/Stars-slider.png') no-repeat -33px 0;
+    }
+    .five {
+        background: url('../assets/img/Stars-slider.png') no-repeat -67px 0;
+    }
+    .seven {
+        background: url('../assets/img/Stars-slider.png') no-repeat -101px 0;
+    }
+}

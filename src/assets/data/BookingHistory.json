@@ -1,0 +1,47 @@
+[
+{
+    "HotelName": "Hotel1",
+    "BookingId": "10001",
+    "HotelAddress":"Madhapur",
+    "hotelpicPath": "http://www.sunnyvillaholidays.com/pictures/jamaica/portantonio/trident/hotel/Trident%20Hotel%20Photographs-000.jpg",
+    "fareAmount": "-",
+    "bookingDate":"13-Dec-17",
+    "starratingByHotel":5,
+    "statusText": "In Progress",
+    "statusCode": 0
+  },
+  {
+    "HotelName": "Hotel2",
+    "BookingId": "10002",
+    "HotelAddress":"Hitech City",
+    "hotelpicPath": "https://www.tridenthotels.com/content/gallery/a3.jpg",
+    "fareAmount": "-",
+    "starratingByHotel":7,
+    "bookingDate":"11-Sep-17",
+    "statusText": "Scheduled",
+    "statusCode": 1
+  },
+  {
+    "HotelName": "Hotel3",
+    "BookingId": "10003",
+    "HotelAddress":"Gachibowli",
+    "hotelpicPath": "https://www.indianholiday.com/pictures/hotel/hotelgalleryn/trident-hilton-hotel-kochi-667-1.jpg",
+    "fareAmount": "2000",
+    "starratingByHotel":3,
+    "bookingDate":"10-Apr-17",
+    "statusText": "Completed",
+    "statusCode": 2
+  },
+  {
+    "HotelName": "Hotel4",
+    "BookingId": "10004",
+    "HotelAddress":"Bandra",
+    "hotelpicPath": "https://www.indianholiday.com/pictures/hotel/hotelgalleryn/trident-hilton-hotel-kochi-667-1.jpg",
+    "fareAmount": "2500",
+    "starratingByHotel":5,
+    "bookingDate":"29-Apr-17",
+    "statusText": "Completed",
+    "statusCode": 2
+  }
+
+]
