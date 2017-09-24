@@ -41,6 +41,10 @@ export class HomePage {
     goToInviteFriends(){
         this.navCtrl.push('InvitePage');
     }
+
+    goToBookings(){
+        this.navCtrl.push('BookingHistoryPage')
+    }
     
     contactUs(){
 
