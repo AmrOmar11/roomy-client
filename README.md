@@ -24,3 +24,28 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+1.below are common git commands
+check-out: git clone 'url'
+check-in:
+	git add .
+	git commit -m "comment"
+	git push -u origin master
+
+status: git status
+difference:git diff
+update: git pull origin master
+
+2.preparing production apk:https://ionicframework.com/docs/intro/deploying/
+
+ionic cordova build android --prod --release
+
+keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias
+
+set in below location in environament variables
+C:\Users\%user%\AppData\Local\Android\sdk\build-tools\26.0.0
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.jks android-release-unsigned.apk my-alias
+
+zipalign -v 4 android-release-unsigned.apk HelloWorld.apk
+
+apksigner verify HelloWorld.apk

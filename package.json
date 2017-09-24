@@ -61,7 +61,11 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
-            "ionic-plugin-keyboard": {}
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-facebook4": {
+                "APP_ID": "188141358385811",
+                "APP_NAME": "Pobyt"
+            }
         },
         "platforms": [
             "android",
