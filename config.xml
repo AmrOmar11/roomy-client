@@ -89,7 +89,7 @@
     </plugin>
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3" />
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
-        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.17668287249-8743taiejq71k4s5du31o2plfb5mpds4" />
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.730195618916-elfc0l7pvbgf1rc2loktd9vcnsdlcter" />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.2" />

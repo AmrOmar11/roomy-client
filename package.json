@@ -54,9 +54,6 @@
     "cordova": {
         "plugins": {
             "cordova-plugin-geolocation": {},
-            "cordova-plugin-googleplus": {
-                "REVERSED_CLIENT_ID": "com.googleusercontent.apps.17668287249-8743taiejq71k4s5du31o2plfb5mpds4"
-            },
             "cordova-plugin-device": {},
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
@@ -65,6 +62,9 @@
             "cordova-plugin-facebook4": {
                 "APP_ID": "188141358385811",
                 "APP_NAME": "Pobyt"
+            },
+            "cordova-plugin-googleplus": {
+                "REVERSED_CLIENT_ID": "com.googleusercontent.apps.730195618916-elfc0l7pvbgf1rc2loktd9vcnsdlcter"
             }
         },
         "platforms": [
