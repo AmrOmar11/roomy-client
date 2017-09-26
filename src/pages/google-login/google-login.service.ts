@@ -29,7 +29,7 @@ export class GoogleLoginService {
       .then(function (user) {
         env.setGoogleUser(user)
         .then(function(res){
-          //console.log(user);
+          console.log(user);
           resolve(user);
         });
       }, function (error) {

@@ -34,6 +34,7 @@ check-in:
 status: git status
 difference:git diff
 update: git pull origin master
+build in ionic pro:git push ionic master
 ```
 
 [publishing](https://ionicframework.com/docs/intro/deploying/).

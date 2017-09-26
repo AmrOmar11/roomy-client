@@ -29,7 +29,7 @@ export class GoogleLoginPage {
       env.user = user;
       env.loading.dismiss();
     }, function(error){
-      //console.log(error);
+      console.log(error);
       env.loading.dismiss();
     });
   }
@@ -41,7 +41,7 @@ export class GoogleLoginPage {
     .then(function(res) {
       env.user = new GoogleUserModel();
     }, function(error){
-      //console.log("Google logout error", error);
+      console.log("Google logout error", error);
     });
   }
 
@@ -50,10 +50,10 @@ export class GoogleLoginPage {
 
     this.googleLoginService.doGoogleLogin()
     .then(function(user){
-      //console.log("Login success",user);
+      console.log("Login success",user);
       env.user = user;
     }, function(err){
-      //console.log("Google Login error", err);
+      console.log("Google Login error", err);
     });
   }
 }

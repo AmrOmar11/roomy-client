@@ -37,7 +37,7 @@ export class HotelsliderPage {
             this.events.publish('hotel:slideChanged',0);
           }          
           this.zone.run(() => {
-            //console.log('force refresh hotel silder');
+            console.log('force refresh hotel silder');
           });
         });
         events.subscribe('hotel:marker',(index)=>{
@@ -46,13 +46,13 @@ export class HotelsliderPage {
     }
 
     ionViewDidLoad() {
-      //console.log('ionViewDidLoad PreviewPage');
+      console.log('ionViewDidLoad PreviewPage');
     }
 
     slideChanged(){
       let currentIndex = this.slides.getActiveIndex();
       let previousIndex = this.slides.getPreviousIndex();
-      //console.log('slideChanged:',previousIndex,currentIndex);
+      console.log('slideChanged:',previousIndex,currentIndex);
       let length = this.slides.length();
       if(currentIndex < length){
         this.events.publish('hotel:slideChanged',currentIndex);

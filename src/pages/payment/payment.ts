@@ -19,6 +19,6 @@ export class PaymentPage {
 	}
 
 	ionViewDidLoad() {
-		//console.log('ionViewDidLoad PaymentPage');
+		console.log('ionViewDidLoad PaymentPage');
 	}
 }

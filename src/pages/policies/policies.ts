@@ -18,6 +18,6 @@ export class PoliciesPage {
 	}
 
 	ionViewDidLoad() {
-		//console.log('ionViewDidLoad PoliciesPage');
+		console.log('ionViewDidLoad PoliciesPage');
 	}
 }

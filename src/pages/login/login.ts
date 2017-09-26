@@ -48,7 +48,7 @@ export class LoginPage {
                 env.authenticate(inputData); 
         }, function(err){
             env.authProvider.hideLoading();
-            //console.log("Facebook Login error", err);
+            console.log("Facebook Login error", err);
             env.authProvider.showError("Facebook Login error");
         });
     }
@@ -72,7 +72,7 @@ export class LoginPage {
                 env.authenticate(inputData);
         }, function(err){
             env.authProvider.hideLoading();
-            //console.log("Google Login error", err);
+            console.log("Google Login error", err);
             env.authProvider.showError("Google Login error");
         });
     }
@@ -109,11 +109,12 @@ export class LoginPage {
                 this.authProvider.showError('Invalid Credentials');
             }else if((success.status !== undefined)&&(success.status == '0013')) {
                 if(inputData.loginType == 'APP'){
+                    this.authProvider.hideLoading();
                     this.authProvider.showError(success.status);
                 }else{
                     inputData.action ='SIGNUP';
                     this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'mobile'});   
-                }                
+                }
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 inputData.action ='OTP';
                 inputData.token = success.jwtToken;

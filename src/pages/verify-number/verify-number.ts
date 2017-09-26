@@ -82,7 +82,7 @@ export class VerifyNumberPage {
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad VerifyNumberPage');
+    console.log('ionViewDidLoad VerifyNumberPage');
   }
 
   public generateOtp(){
@@ -100,6 +100,7 @@ export class VerifyNumberPage {
         this.authProvider.setUserData(success);
         this.navCtrl.setRoot('HomePage');
       }else if((success.status !== undefined)&&(success.status == '0009')) {
+        this.inputData.action = 'SIGNUP';
         this.displayOTP(success);
       }else {
         this.authProvider.showError(success.status);
@@ -108,7 +109,6 @@ export class VerifyNumberPage {
     error => {
         this.authProvider.showError(error);
     });
-    this.inputData.action = 'SIGNUP';
   }
 
   private displayOTP(success){
