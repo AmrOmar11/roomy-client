@@ -227,6 +227,7 @@ export class AuthenticateProvider {
   }
 
   public showError(text) {
+    this.hideLoading();
     let alert = this.alertCtrl.create({
         title: 'Error',
         message: text,

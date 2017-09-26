@@ -108,8 +108,12 @@ export class LoginPage {
             }else if((success.status !== undefined)&&(success.status == '0005')) {
                 this.authProvider.showError('Invalid Credentials');
             }else if((success.status !== undefined)&&(success.status == '0013')) {
-                inputData.action ='SIGNUP';
-                this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'mobile'});
+                if(inputData.loginType == 'APP'){
+                    this.authProvider.showError(success.status);
+                }else{
+                    inputData.action ='SIGNUP';
+                    this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'mobile'});   
+                }                
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 inputData.action ='OTP';
                 inputData.token = success.jwtToken;
