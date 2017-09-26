@@ -48,7 +48,7 @@ export class LoginPage {
                 env.authenticate(inputData); 
         }, function(err){
             env.authProvider.hideLoading();
-            console.log("Facebook Login error", err);
+            //console.log("Facebook Login error", err);
             env.authProvider.showError("Facebook Login error");
         });
     }
@@ -72,7 +72,7 @@ export class LoginPage {
                 env.authenticate(inputData);
         }, function(err){
             env.authProvider.hideLoading();
-            console.log("Google Login error", err);
+            //console.log("Google Login error", err);
             env.authProvider.showError("Google Login error");
         });
     }

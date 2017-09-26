@@ -41,7 +41,7 @@ export class BookingPage {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad BookingPage');
+        //console.log('ionViewDidLoad BookingPage');
     };
     openTerms() {
         this.navCtrl.push('PoliciesPage');

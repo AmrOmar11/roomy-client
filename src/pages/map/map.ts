@@ -52,7 +52,7 @@ export class MapPage implements OnInit{
 	}
 
 	ngOnInit() {
-    console.log('map:ngOnInit');
+    //console.log('map:ngOnInit');
     this.loading = document.getElementById("loaderoverlay");
     this.loading.style.display="block";
     this.getCurrenLocation();
@@ -65,7 +65,7 @@ export class MapPage implements OnInit{
       //this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
     });
     this.events.subscribe('map:resize',() => {
-        console.log('map:resize:');
+        //console.log('map:resize:');
         if(this.map !== undefined){
             google.maps.event.trigger(this.map, 'resize');
         }        
@@ -79,11 +79,11 @@ export class MapPage implements OnInit{
 	private getCurrenLocation(){
 		let options = {enableHighAccuracy: true};
 		this.geolocation.getCurrentPosition(options).then((res) => {
-			console.log(res);
+			//console.log(res);
 			this.loadMap(res);
 		})
 		.catch((error) =>{
-			console.log(error);
+			//console.log(error);
 		});
 	}
   
@@ -312,7 +312,7 @@ export class MapPage implements OnInit{
     if (this.map !== undefined) {
       let options = {enableHighAccuracy: true};
       this.geolocation.getCurrentPosition(options).then((res) => {
-          console.log(res);
+          //console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
           this.map.setZoom(11);
           this.map.panTo(this.userLocation);
@@ -321,7 +321,7 @@ export class MapPage implements OnInit{
           this.fetchHotels(this.userLocation);
       })
       .catch((error) =>{
-          console.log(error);
+          //console.log(error);
       });
     }
 	}
@@ -330,7 +330,7 @@ export class MapPage implements OnInit{
     // show modal
     let modal = this.modalCtrl.create('SearchPage');
     modal.onDidDismiss(data => {
-        console.log('search > modal dismissed > data > ', data);
+        //console.log('search > modal dismissed > data > ', data);
         if(data){
             // get details
             let place_id = data.place_id;
@@ -349,7 +349,7 @@ export class MapPage implements OnInit{
       this.placesService.getDetails(request, callback);
       function callback(place, status) {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
-              console.log('page > getPlaceDetail > place > ', place);
+              //console.log('page > getPlaceDetail > place > ', place);
               // set place in map
               self.userLocation = place.geometry.location;
               self.map.setZoom(11);
@@ -358,14 +358,14 @@ export class MapPage implements OnInit{
               self.clearHotelMarkers();
               self.fetchHotels(self.userLocation);
           }else{
-              console.log('page > getPlaceDetail > status > ', status);
+              //console.log('page > getPlaceDetail > status > ', status);
           }
       }
   }
 
   private distanceInKm(userLatitude,userLongitude,hotelLatitude,hotelLongitude) {
-    console.log('userLatitude:',userLatitude,'userLongitude:',userLongitude);
-    console.log('hotelLatitude:',hotelLatitude,'hotelLongitude:',hotelLongitude);
+    //console.log('userLatitude:',userLatitude,'userLongitude:',userLongitude);
+    //console.log('hotelLatitude:',hotelLatitude,'hotelLongitude:',hotelLongitude);
     var R = 6371; // Radius of the earth in km
     var dLat = this.deg2rad(hotelLatitude-userLatitude);  // deg2rad below
     var dLon = this.deg2rad(hotelLongitude-userLongitude); 

@@ -33,7 +33,7 @@ export class SearchPage implements OnInit{
     }
     
     ngAfterViewInit() {
-        console.log('ngAfterViewInit');        
+        //console.log('ngAfterViewInit');        
         //search bar is wrapped with a div so we get the child input
         let searchInput = this.elementRef.nativeElement.querySelector('input');
         if (!searchInput) {
@@ -49,12 +49,12 @@ export class SearchPage implements OnInit{
     }
 
     chooseItem(item: any) {
-        console.log('modal > chooseItem > item > ', item);
+        //console.log('modal > chooseItem > item > ', item);
         this.viewCtrl.dismiss(item);
     }
 
     updateSearch() {
-        console.log('modal > updateSearch');
+        //console.log('modal > updateSearch');
         if (this.autocomplete.query == '') {
             this.autocompleteItems = [];
             return;
@@ -66,7 +66,7 @@ export class SearchPage implements OnInit{
             input: this.autocomplete.query
         }
         this.acService.getPlacePredictions(config, function (predictions, status) {
-            console.log('modal > getPlacePredictions > status > ', status);
+            //console.log('modal > getPlacePredictions > status > ', status);
             self.autocompleteItems = [];
             self.zone.run(function(){
                 predictions.forEach(function (prediction) {

@@ -18,6 +18,6 @@ export class PromotionsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PromotionsPage');
+    //console.log('ionViewDidLoad PromotionsPage');
   }  
 }

@@ -20,6 +20,6 @@ export class NotificationsPage {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad NotificationsPage');
+		//console.log('ionViewDidLoad NotificationsPage');
 	}
 }

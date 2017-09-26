@@ -34,7 +34,7 @@ export class BookingHistoryPage {
 	}
 
 	ionViewDidLoad() {
-	console.log('ionViewDidLoad BookingHistoryPage');
+	//console.log('ionViewDidLoad BookingHistoryPage');
 	}
 
 	getBookingHistory(){

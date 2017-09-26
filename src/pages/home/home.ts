@@ -67,7 +67,7 @@ export class HomePage {
         });
     }
     ionViewDidEnter() {
-        console.log('home:map:resize:');
+        //console.log('home:map:resize:');
         this.events.publish('map:resize');
     }
 }

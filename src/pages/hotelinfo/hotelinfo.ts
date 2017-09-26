@@ -54,7 +54,7 @@ reserveNow(){
             {
                 text: 'Other',
                 handler: () => {
-                    console.log(this.authProvider);
+                    //console.log(this.authProvider);
                     this.navCtrl.push('BookingPage',{for:"other",
                           hotelInfo:{
                             hotelName:this.hotelInfo.hotelName,

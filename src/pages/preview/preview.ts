@@ -32,7 +32,7 @@ export class PreviewPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PreviewPage');
+    //console.log('ionViewDidLoad PreviewPage');
   }
 
   BookIn(){
