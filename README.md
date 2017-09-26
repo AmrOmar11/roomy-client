@@ -27,12 +27,10 @@ Substitute ios for android if not on a Mac.
 common git commands
 ```bash
 check-out: git clone 'url'
-
 check-in:
-git add .
-git commit -m "comment"
-git push -u origin master
-
+	git add .
+	git commit -m "comment"
+	git push -u origin master
 status: git status
 difference:git diff
 update: git pull origin master
@@ -44,7 +42,7 @@ ionic cordova build android --prod --release
 
 keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias
 
-set in below location in environament variables
+set below location in environament variables
 C:\Users\%user%\AppData\Local\Android\sdk\build-tools\26.0.0
 
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.jks android-release-unsigned.apk my-alias
@@ -56,7 +54,7 @@ apksigner verify HelloWorld.apk
 [facebook integration](http://ionicframework.com/docs/native/facebook/).
 ```bash
 $ keytool -exportcert -keystore <path-to-debug-or-production-keystore> -list -v -alias <alias-name>
-give  SHA1: from above command pass as input below tool
-[Key Hash](http://tomeko.net/online_tools/hex_to_base64.php?lang=en).
+copy SHA1 key from above command pass as input below tool
+Key Hash:http://tomeko.net/online_tools/hex_to_base64.php?lang=en
 ```
 [google integration](https://github.com/EddyVerbruggen/cordova-plugin-googleplus/).
