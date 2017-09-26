@@ -333,6 +333,7 @@ export class MapPage implements OnInit{
         //console.log('search > modal dismissed > data > ', data);
         if(data){
             // get details
+            let place_id = data.place_id;
             this.getPlaceDetail(data.place_id);
         }
     })
