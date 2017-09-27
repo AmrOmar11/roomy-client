@@ -34,12 +34,12 @@ import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '..
     HttpModule,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-        FacebookLoginService,
-        GoogleLoginService,
-        NativeStorage,
-        Facebook,
-        GooglePlus,
-        AuthenticateProvider
+    FacebookLoginService,
+    GoogleLoginService,
+    NativeStorage,
+    Facebook,
+    GooglePlus,
+    AuthenticateProvider
   ]
 })
 export class AppModule {}
