@@ -12,22 +12,25 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { SearchPage } from '../pages/pages';
 
 @NgModule({
   declarations: [
-    RoomyApp
+    RoomyApp,
+    SearchPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(RoomyApp,{
-            backButtonIcon: 'close',
-            backButtonText: '',
-        }),
+        backButtonIcon: 'close',
+        backButtonText: '',
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    RoomyApp
+    RoomyApp,
+    SearchPage
   ],
   providers: [
     StatusBar,

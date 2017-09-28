@@ -3,6 +3,7 @@ import { IonicPage,ModalController} from 'ionic-angular';
 import { Geolocation,Geoposition } from '@ionic-native/geolocation';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
+import { SearchPage } from '../pages';
 /**
  * Generated class for the MapPage page.
  *
@@ -336,7 +337,7 @@ export class MapPage implements OnInit{
 	
 	searchClicked(){
     // show modal
-    let modal = this.modalCtrl.create('SearchPage');
+    let modal = this.modalCtrl.create(SearchPage);
     modal.onDidDismiss(data => {
         //console.log('search > modal dismissed > data > ', data);
         if(data){

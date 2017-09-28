@@ -2,14 +2,9 @@ import { Component, OnInit, NgZone,Directive, Renderer, ElementRef } from '@angu
 import { IonicPage, ViewController } from 'ionic-angular';
 
 declare var google: any;
-
-@IonicPage()
 @Component({
     selector : 'search',
     templateUrl: 'search.html'
-})
-@Directive({
-  selector : '[focuser]'
 })
 export class SearchPage implements OnInit{
 

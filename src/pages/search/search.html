@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-searchbar [focuser] [(ngModel)]="autocomplete.query" (ionInput)="updateSearch()" (ionCancel)="dismiss()" placeholder="City, neighborhood, or address">
+    <ion-searchbar [(ngModel)]="autocomplete.query" (ionInput)="updateSearch()" (ionCancel)="dismiss()" placeholder="City, neighborhood, or address">
     </ion-searchbar>
     <ion-list>
         <ion-item tappable *ngFor="let item of autocompleteItems" (click)="chooseItem(item)" text-wrap>
