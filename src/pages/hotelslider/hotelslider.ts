@@ -51,7 +51,7 @@ export class HotelsliderPage {
 
     slideChanged(){
       let currentIndex = this.slides.getActiveIndex();
-      let previousIndex = this.slides.getPreviousIndex();
+      // let previousIndex = this.slides.getPreviousIndex();
       //console.log('slideChanged:',previousIndex,currentIndex);
       let length = this.slides.length();
       if(currentIndex < length){

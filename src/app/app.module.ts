@@ -11,6 +11,7 @@ import { RoomyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '..
     NativeStorage,
     Facebook,
     GooglePlus,
-    AuthenticateProvider
+    AuthenticateProvider,
+    SocialSharing
   ]
 })
 export class AppModule {}
