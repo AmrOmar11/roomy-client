@@ -14,6 +14,12 @@ page-hotelslider {
     .hotelStatusStatic {
         height: 14%;
     }
+    .swiper-slide {
+      width: 90% !important;
+        &:last-child {
+          width: 100% !important;
+        }
+    }
     ion-content,
     .scroll-content {
         padding: 8px !important;

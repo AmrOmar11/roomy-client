@@ -14,7 +14,7 @@ Ionic pages and navigation.
         </ion-row>
     </div>
     <div>
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" ng-submit="SignIn()">
             <ion-row>
                 <ion-col>
                     <p class="error" *ngIf="(!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt))||(!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt))">
@@ -34,6 +34,9 @@ Ionic pages and navigation.
                     </ion-item>
                 </ion-col>
             </ion-row>
+            <p text-center>
+                <button ion-button padding small class="pobyt-button sigin-btn" (click)="SignIn()" type="submit">Login</button>
+            </p>
         </form>
         <ion-row margin-bottom padding-top padding-bottom>
             <ion-col text-center>
@@ -47,9 +50,6 @@ Ionic pages and navigation.
                 </a>
             </ion-col>
         </ion-row>
-        <p text-center>
-            <button ion-button padding small class="pobyt-button sigin-btn" (click)="SignIn()">Login</button>
-        </p>
     </div>
     <div>
         <ion-row margin-top padding-top>
