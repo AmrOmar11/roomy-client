@@ -26,7 +26,7 @@ export class MapPage implements OnInit{
   private loading:any;
   private icons:any = { 
     userloc: {
-      url: "assets/map/position_marker.gif", // url
+      url: "assets/map/position_marker.png", // url
       scaledSize: new google.maps.Size(25, 25), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
@@ -102,7 +102,7 @@ export class MapPage implements OnInit{
         "elementType": "geometry.fill",
         "stylers": [
           {
-            "color": "#dde3e3"
+            "color": "#d7e8e8"
           }
         ]
       },
@@ -225,7 +225,7 @@ export class MapPage implements OnInit{
 	}
 
 	private mapLoaded(location){
-      // this.addLocationMarker(true,location);
+      this.addLocationMarker(true,location);
       this.map.panTo(this.userLocation);
       this.fetchHotels(location);
 	}
@@ -325,7 +325,7 @@ export class MapPage implements OnInit{
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
           this.map.setZoom(11);
           this.map.panTo(this.userLocation);
-          // this.addLocationMarker(false,this.userLocation);
+          this.addLocationMarker(false,this.userLocation);
           this.clearHotelMarkers();
           this.fetchHotels(this.userLocation);
       })
@@ -363,7 +363,7 @@ export class MapPage implements OnInit{
               self.userLocation = place.geometry.location;
               self.map.setZoom(11);
               self.map.panTo(place.geometry.location);
-              // self.addLocationMarker(false,place.geometry.location);
+              self.addLocationMarker(false,place.geometry.location);
               self.clearHotelMarkers();
               self.fetchHotels(self.userLocation);
           }else{
