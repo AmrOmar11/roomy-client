@@ -1,0 +1,48 @@
+<!--
+  Generated template for the BookingHistoryDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Booking History Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<div class="hotel-icon">
+	    <img class="logo" src="http://pabm.in/thehotel/hotels-512.png" />
+    </div>
+    <div class="detailsContainer">
+		<div class="UserDetailsContainer">
+			<div class="GuestTitle">Primary Guest</div>
+			<div class="userName">Sudharshan</div>
+			<div class="userMobile">8143509343</div>
+			<div class="bookingId">Booking ID: PB#22853706</div>
+		</div>
+		<div class="HotelDetailsContainer">
+			<div class="HotelName">{{booking.HotelName}}</div>
+			<div class="HotelFare">{{booking.fareAmount}}</div>
+			<div class="HotelStayDuration">Duration of stay: {{booking.stayDuration}}</div>
+		</div>
+    </div>
+    <div class="checkInDetailsContainer">
+    	<div class="checkInDetails">
+    		<div class="checkInText">CHECK IN</div>
+    		<div class="checkInDate">Aug 19 2017</div>
+    		<div class="checkInTime">12:00 PM</div>
+    	</div>
+    	<div class="Arrow">&#62;</div>
+    	<div class="checkOutDetails">
+    		<div class="checkInText">CHECK OUT</div>
+    		<div class="checkInDate">Aug 22 2017</div>
+    		<div class="checkInTime">11:00 AM</div>    		
+    	</div>
+    </div>
+    <div class="send-invoice" (click)="SendInvoice()"><u>Mail Invoice</u></div>
+    <button ion-button class='pobyt-button' (click)="OpenBookingPage()">Book Again</button>
+</ion-content>

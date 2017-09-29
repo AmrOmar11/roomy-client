@@ -1,0 +1,78 @@
+page-booking-history-details {
+	.hotel-icon{
+		width:45%;
+		margin:0 auto;
+	}
+	.content{
+		color: #fff;
+    	background-color: #4F4646;
+	}
+	.detailsContainer{
+		height: 15%;
+    	margin: 20px 0;
+		.UserDetailsContainer, .HotelDetailsContainer{
+			width: 49%;
+	    	float: left;
+	    	margin:0 auto;
+		}
+		.UserDetailsContainer{
+			border-right: 3px solid map-get($colors, theme);
+			padding:3px;
+			.GuestTitle{
+				font-size: 16px;
+				font-weight:bold;
+			}
+			.userName,.userMobile{
+				//text-align:center;
+			}
+		}
+		.HotelDetailsContainer{
+			padding-left: 15px;
+			.HotelName,.HotelFare,.HotelStayDuration{
+				//text-align:center
+			}
+			.HotelName{
+				font-size: 16px;
+				font-weight:bold;
+			}
+		}
+	}
+	.checkInDetailsContainer{
+		height:15%;
+		padding:10px;
+		background-color: #636363;
+		border-radius:5px;
+		box-shadow: 1px 1px 2px 3px #888888;
+		.checkInDetails{
+			width:45%;
+			float:left;
+		}
+		.Arrow{
+			width:10%;
+			float:left;
+			font-size: 4.5vmax;
+    		margin-top: 10px;
+		}
+		.checkOutDetails{
+			width:45%;
+			float:left;
+		}
+		.checkInText,checkInText{
+			font-size:2.5vmax;
+		}
+		.checkInDate{
+			font-size:3.5vmax;
+		}
+		.checkInTime{
+			font-size:3vmax;
+		}
+	}
+	.send-invoice{
+		margin: 25px;
+    	text-align: center;
+	}
+	.pobyt-button{
+		margin: 0 auto;
+    	width: 100%;
+	}
+}
