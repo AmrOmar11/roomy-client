@@ -386,7 +386,7 @@ export class MapPage implements OnInit{
     var d = R * c; // Distance in km
     let distance:any;      
     if((d%1) > 0)
-        distance = d.toFixed(2) + " KM Away";
+        distance = d.toFixed(2) + " Km";
     else
         distance = d + " KM Away";
     return distance;

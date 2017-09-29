@@ -15,7 +15,7 @@
             <p>Pobyt is currently unavailable in this location will notify you once we are available.Pobyt is currently available in Hyderabad, Chennai, and Mumbai</p>
         </ion-card-content>
     </ion-card>
-    <ion-slides [hidden]="hideSlide" spaceBetween="10" slidesPerView="auto" centeredSlides="true" (ionSlideDidChange)="slideChanged()">
+    <ion-slides [hidden]="hideSlide" spaceBetween="20" slidesPerView="auto" centeredSlides="true" (ionSlideDidChange)="slideChanged()">
         <ion-slide *ngFor="let hotel of hotels">
             <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotelpicPath + ')'}" (click)="hotelDetailedInfo(hotel)">
                 <!-- <div class="SliderBlackOverlay"></div> -->
@@ -26,9 +26,9 @@
                                 <span class="farecurrency">&#8377;</span>
                                 <span class="hotel-priceMin">{{hotel.pricePerMin}}</span>
                                 <span class="hotel-price-diff">/</span>
-                                <span class="minumum">MINUTE</span>
+                                <span class="minumum">Min</span>
                             </div>
-                            <div class="MinDuration"><span>{{hotel.minDuration}} </span><span class="Hr">Hr</span><span class="minumum"> MINIMUM</span></div>
+                            <div class="MinDuration"><span>{{hotel.minDuration}} </span><span class="Hr">hrs</span><span class="minumum"> Minimum</span></div>
                         </div>
                     </div>
                 </div>
