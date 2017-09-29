@@ -5,6 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-content>
+    <div class="white-bg"></div>
     <ion-card [hidden]="hideCard">
         <img src="assets/img/not_available.png">
         <ion-card-content>
@@ -14,24 +15,22 @@
             <p>Pobyt is currently unavailable in this location will notify you once we are available.Pobyt is currently available in Hyderabad, Chennai, and Mumbai</p>
         </ion-card-content>
     </ion-card>
-    <ion-slides [hidden]="hideSlide" spaceBetween="6" slidesPerView="auto" centeredSlides="true" (ionSlideDidChange)="slideChanged()">
+    <ion-slides [hidden]="hideSlide" spaceBetween="10" slidesPerView="auto" centeredSlides="true" (ionSlideDidChange)="slideChanged()">
         <ion-slide *ngFor="let hotel of hotels">
             <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotelpicPath + ')'}" (click)="hotelDetailedInfo(hotel)">
-                <div class="SliderBlackOverlay"></div>
+                <!-- <div class="SliderBlackOverlay"></div> -->
                 <div class="sliderContent">
                     <div class="HotelDetails">
                         <div class="HotelFare">
                             <div class="HotelMinCost">
                                 <span class="farecurrency">&#8377;</span>
-                                <span>{{hotel.pricePerMin}}</span>
-                                <span class="minumum">/MINUTE</span>
+                                <span class="hotel-priceMin">{{hotel.pricePerMin}}</span>
+                                <span class="hotel-price-diff">/</span>
+                                <span class="minumum">MINUTE</span>
                             </div>
                             <div class="MinDuration"><span>{{hotel.minDuration}} </span><span class="Hr">Hr</span><span class="minumum"> MINIMUM</span></div>
                         </div>
                     </div>
-                    <div id="hotelrating" [ngClass]="getRating(hotel.starratingByHotel)"></div>
-                    <div id="HotelDist" class="HotelBlank">{{hotel.distance}}</div>
-                    <div class="HotelName">{{hotel.hotelname.toUpperCase()}}</div>
                 </div>
                 <div id="TempFullScreenContainer" [hidden]="hotel.isAviablity">
                     <div id="TempFullParent">
@@ -39,6 +38,11 @@
                         <div id="TempFullcontent"><span>Temporarily Full</span></div>
                     </div>
                 </div>
+            </div>
+            <div class="h-info">
+                <div class="h-Name">{{hotel.hotelname.toUpperCase()}}</div>
+                <div id="h-Dist" class="h-Dist">{{hotel.distance}}</div>                
+                <div id="h-rating" [ngClass]="getRating(hotel.starratingByHotel)"></div>
             </div>
         </ion-slide>
     </ion-slides>

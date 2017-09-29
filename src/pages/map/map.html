@@ -13,9 +13,9 @@
     <!-- <button (click)="searchClicked()" class="search">
         <img src="assets/map/search.png" alt="logo">
     </button> -->
-    <div class="search_bar">
-      <img src="assets/map/seearch_icon.png">
-      <div>Nearby-Available now</div>
+    <div class="search_bar" (click)="searchClicked()">
+      <img src="assets/map/seearch_icon.png" class="search_icon">
+      <div class="search_label">Nearby-Available now</div>
     </div>
     <page-hotelslider></page-hotelslider>
 </ion-content>

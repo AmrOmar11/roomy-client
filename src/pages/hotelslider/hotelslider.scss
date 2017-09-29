@@ -17,18 +17,22 @@ page-hotelslider {
     .swiper-slide {
       width: 90% !important;
         &:last-child {
-          width: 100% !important;
+          width: 94% !important;
+          right: 0% !important;
+        }
+        &:first-child {          
+          left: 0% !important;
         }
     }
     ion-content,
     .scroll-content {
-        padding: 8px !important;
+        /*padding: 8px !important;*/
         background: none !important;
     }
-    ion-slide {
+    /*ion-slide {
         border: 5px solid rgb(42, 43, 43) !important;
         border-radius: 5px;
-    }
+    }*/
     .swiper-pagination {
         bottom: -1.5% !important;
     }
@@ -49,13 +53,28 @@ page-hotelslider {
         font-size: 2.5vmax;
         text-align: center;
     }
+    .white-bg{
+        display:none;
+        height: 30%;
+        width: 100%;
+        background-color: white;
+        bottom: 0;
+        position: absolute;
+        left: 0;
+    }
     .HotelSlider {
         background-color: #dde3e3;
         width: 100%;
-        height: 100%;
+        height: 78%;
         background-size: 100% 100%;
         background-repeat: no-repeat;
         position: relative;
+        border-radius: 10px;
+        box-shadow: inset 3px 3px 3px #888;
+    }
+    .h-info{
+        height : 22%;
+        background-color: white;
     }
     .SliderBlackOverlay {
         //background-color:$black;
@@ -116,27 +135,58 @@ page-hotelslider {
         padding: 5px 0;
         height: auto;
     }
-    .HotelMinCost,
     .MinDuration {
-        background-color: #08B6AD;
-        color: #fff;
-        font-size: 1.8vmax;
-        font-weight: bold;
+        background-color: #e7ded5;
+        color: black;
+        opacity: 0.9;
+        /* font-size: 1.8vmax; */
+        /* font-weight: bold; */
         height: auto;
         width: auto;
         text-align: center;
         padding: 1% 3%;
-        border-radius: 20px;
+        /* border-radius: 20px; */
+        position: absolute;
+        font-size: 3.2vmax;
+        top: 5%;
+    }
+   .HotelMinCost{
+        background-color: #e7ded5;
+        opacity: 0.8;
+        color: black;
+        height: auto;
+        width: auto;
+        text-align: center;
+/*      font-size: 3.8vmax;
+        font-weight: bold; 
+        padding: 6% 4%;
+        border-radius: 20px; */
         position: absolute;
         top: 5%;
     }
+
+    span.farecurrency {
+        font-size: 4vmax;
+    }
+
+    span.hotel-priceMin {
+        font-size: 6vmax;
+    }
+
+    span.hotel-price-diff {
+        font-size: 6vmax;
+        font-style: italic;
+    }
+
+    span.minumum {
+        font-size: 2vmax;
+    }
+
     .HotelMinCost {
-        left: 3%;
         border: 0.15px solid #ffffff;
     }
     .MinDuration {
-        right: 7%;
-        border: 0.15px solid #ffffff;
+        right: 0%;
     }
     .HotelRating {
         height: 25px;
@@ -176,16 +226,28 @@ page-hotelslider {
         float: right;
     }
     .three {
-        background: url('../assets/img/Stars-slider.png') no-repeat 0 0;
+        background: url(../assets/map/ratings.png) no-repeat 1px 20px;
+        height: 100%;
+        width: 100%;
+        background-size: 65px 14px;
     }
     .four {
-        background: url('../assets/img/Stars-slider.png') no-repeat -33px 0;
+        background: url(../assets/map/ratings.png) no-repeat 1px 20px;
+        height: 100%;
+        width: 100%;
+        background-size: 65px 14px;
     }
     .five {
-        background: url('../assets/img/Stars-slider.png') no-repeat -67px 0;
+        background: url(../assets/map/ratings.png) no-repeat 1px 20px;
+        height: 100%;
+        width: 100%;
+        background-size: 65px 14px;
     }
     .seven {
-        background: url('../assets/img/Stars-slider.png') no-repeat -101px 0;
+        background: url(../assets/map/ratings.png) no-repeat 1px 20px;
+        height: 100%;
+        width: 100%;
+        background-size: 65px 14px;
     }
     /*No Result style*/
     ion-card {
@@ -214,6 +276,7 @@ page-hotelslider {
         }
     }
     #TempFullScreenContainer {
+        border-radius: 5px;
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.7);
@@ -235,5 +298,13 @@ page-hotelslider {
         color: #FFD800;
         font-size: 3vmax;
         font-weight: bold;
+    }
+    .h-Name{
+        float: left;
+        font-size: 18px;
+    }
+    div#h-Dist{
+        float: right;
+        font-size: 15px;
     }
 }
