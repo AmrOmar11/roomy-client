@@ -94,6 +94,7 @@ export class VerifyNumberPage {
   }
 
   private verifyMobile(inputData){
+    this.inputData.contactNumber =  this.countryCodeSelected + this.inputData.contactNumber; 
     this.authProvider.login(inputData).subscribe(success => {      
 		  if((success.status !== undefined)&&(success.status == '0001')) {
         this.authProvider.setCurrentUser(success);
@@ -120,6 +121,7 @@ export class VerifyNumberPage {
   }
 
   private forgotPassword(inputData){
+    this.inputData.contactNumber =  this.countryCodeSelected + this.inputData.contactNumber; 
     this.authProvider.forgotPassword(inputData).subscribe(success => {      
       if((success.status !== undefined)&&(success.status == '0001')) {
           this.hideMobilePopUp = true;
