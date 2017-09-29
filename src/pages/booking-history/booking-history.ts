@@ -59,5 +59,8 @@ export class BookingHistoryPage {
       }
       return ratingString;
     }
+    BookingDetails(booking){
+    	this.navCtrl.push('BookingHistoryDetailsPage',{"bookingInfo":booking})
+    }
 
 }
