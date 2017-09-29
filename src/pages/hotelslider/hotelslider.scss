@@ -159,6 +159,7 @@ page-hotelslider {
         width: auto;
         text-align: center;
         position: absolute;
+        font-weight: 600;
         top: 5%;
         span{
             opacity: 0.8;
@@ -177,13 +178,9 @@ page-hotelslider {
     }
 
     span.hotel-price-diff {
-        font-size: 6vmax;
-        font-style: italic;
+        font-size: 4.5vmax;
     }
 
-    .HotelMinCost {
-        border: 0.15px solid #ffffff;
-    }
     .MinDuration {
         right: 0%;
     }
