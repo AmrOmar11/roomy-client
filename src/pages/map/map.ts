@@ -69,8 +69,8 @@ export class MapPage implements OnInit{
           this.hotelMarkers[i].setMap(this.map);
         }        
       }      
-      this.map.setZoom(this.zoomLevel);
-      this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
+      // this.map.setZoom(this.zoomLevel);
+      // this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
     });
     this.events.subscribe('map:resize',() => {
         //console.log('map:resize:');
@@ -247,6 +247,7 @@ export class MapPage implements OnInit{
 
   private addHotelMarkers(hotels,location){
     if(hotels !== undefined && hotels.length !== 0){
+     let bounds = new google.maps.LatLngBounds();
      for (var i = 0; i < hotels.length; i++) {
         let location = new google.maps.LatLng(hotels[i].latitude, hotels[i].longitude);
         let hotelMarker = new google.maps.Marker({
@@ -255,6 +256,7 @@ export class MapPage implements OnInit{
           icon:this.icons.hotel
         });
         this.hotelMarkers.push(hotelMarker);
+        bounds.extend(hotelMarker.position);
         let selectedHotelMarker = new google.maps.Marker({
           position: location,
           map: null,
@@ -284,6 +286,7 @@ export class MapPage implements OnInit{
           }
         });
       }
+      this.map.fitBounds(bounds);
     }
     this.events.publish('hotels:list',hotels);
   }
@@ -324,8 +327,8 @@ export class MapPage implements OnInit{
       this.geolocation.getCurrentPosition(options).then((res) => {
           //console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
-          this.map.setZoom(this.zoomLevel);
-          this.map.panTo(this.userLocation);
+          // this.map.setZoom(this.zoomLevel);
+          // this.map.panTo(this.userLocation);
           this.addLocationMarker(false,this.userLocation);
           this.clearHotelMarkers();
           this.fetchHotels(this.userLocation);
@@ -362,8 +365,8 @@ export class MapPage implements OnInit{
               //console.log('page > getPlaceDetail > place > ', place);
               // set place in map
               self.userLocation = place.geometry.location;
-              self.map.setZoom(self.zoomLevel);
-              self.map.panTo(place.geometry.location);
+              // self.map.setZoom(self.zoomLevel);
+              // self.map.panTo(place.geometry.location);
               self.addLocationMarker(false,place.geometry.location);
               self.clearHotelMarkers();
               self.fetchHotels(self.userLocation);
