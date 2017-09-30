@@ -19,6 +19,7 @@ declare var google:any;
 export class MapPage implements OnInit{
   private map:any;
   private userLocation:any;
+  private zoomLevel:any = 15;
   private locationMarker:any;
   private hotelMarkers = [];
   private selectedHotelMarkers = [];
@@ -62,14 +63,14 @@ export class MapPage implements OnInit{
         if(i == currentIndex){
             this.hotelMarkers[i].setMap(null);
             this.selectedHotelMarkers[i].setMap(this.map);
-            this.selectedHotelMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
+            // this.selectedHotelMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
         }else{
           this.selectedHotelMarkers[i].setMap(null);
           this.hotelMarkers[i].setMap(this.map);
         }        
       }      
-      //this.map.setZoom(13);
-      //this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
+      this.map.setZoom(this.zoomLevel);
+      this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
     });
     this.events.subscribe('map:resize',() => {
         //console.log('map:resize:');
@@ -209,7 +210,7 @@ export class MapPage implements OnInit{
     ];
     let mapOptions = {
       center: this.userLocation,
-      zoom: 16,
+      zoom: this.zoomLevel,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
       zoomControl:false,
@@ -247,7 +248,7 @@ export class MapPage implements OnInit{
   private addHotelMarkers(hotels,location){
     if(hotels !== undefined && hotels.length !== 0){
      for (var i = 0; i < hotels.length; i++) {
-        /*let location = new google.maps.LatLng(hotels[i].latitude, hotels[i].longitude);
+        let location = new google.maps.LatLng(hotels[i].latitude, hotels[i].longitude);
         let hotelMarker = new google.maps.Marker({
           position: location,
           map: this.map,
@@ -258,11 +259,11 @@ export class MapPage implements OnInit{
           position: location,
           map: null,
           icon:this.icons.selectedHotel,
-          animation: google.maps.Animation.BOUNCE
+          // animation: google.maps.Animation.BOUNCE
         });
-        this.selectedHotelMarkers.push(selectedHotelMarker);*/
+        this.selectedHotelMarkers.push(selectedHotelMarker);
         hotels[i].distance = this.distanceInKm(this.userLocation.lat(),this.userLocation.lng(),hotels[i].latitude,hotels[i].longitude);
-        /*google.maps.event.addListener(this.hotelMarkers[i], 'click', (marker) => {
+        google.maps.event.addListener(this.hotelMarkers[i], 'click', (marker) => {
           for (var j = 0; j < hotels.length; j++) {
             if((hotels[j].latitude == marker.latLng.lat())){
                 this.events.publish('hotel:marker',j);
@@ -281,7 +282,7 @@ export class MapPage implements OnInit{
                break; 
             }
           }
-        });*/
+        });
       }
     }
     this.events.publish('hotels:list',hotels);
@@ -323,7 +324,7 @@ export class MapPage implements OnInit{
       this.geolocation.getCurrentPosition(options).then((res) => {
           //console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
-          this.map.setZoom(16);
+          this.map.setZoom(this.zoomLevel);
           this.map.panTo(this.userLocation);
           this.addLocationMarker(false,this.userLocation);
           this.clearHotelMarkers();
@@ -361,7 +362,7 @@ export class MapPage implements OnInit{
               //console.log('page > getPlaceDetail > place > ', place);
               // set place in map
               self.userLocation = place.geometry.location;
-              self.map.setZoom(16);
+              self.map.setZoom(self.zoomLevel);
               self.map.panTo(place.geometry.location);
               self.addLocationMarker(false,place.geometry.location);
               self.clearHotelMarkers();
