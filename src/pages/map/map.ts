@@ -40,7 +40,7 @@ export class MapPage implements OnInit{
     },
     selectedHotel:{
       url: "assets/map/selected_hotel_marker.png", // url
-      scaledSize: new google.maps.Size(32, 32), // scaled size
+      scaledSize: new google.maps.Size(36, 36), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     }
@@ -287,6 +287,7 @@ export class MapPage implements OnInit{
         });
       }
       this.map.fitBounds(bounds);
+      // this.map.setCenter(bounds.getCenter());
     }
     this.events.publish('hotels:list',hotels);
   }
