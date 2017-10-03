@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '../providers/providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SearchPage } from '../pages/pages';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SearchPage } from '../pages/pages';
   imports: [
     BrowserModule,
     HttpModule,
+    SuperTabsModule.forRoot(),
     IonicModule.forRoot(RoomyApp,{
         backButtonIcon: 'close',
         backButtonText: '',

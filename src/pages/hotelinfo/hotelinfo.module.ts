@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HotelinfoPage } from './hotelinfo';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { HotelinfoPage } from './hotelinfo';
   ],
   imports: [
     IonicPageModule.forChild(HotelinfoPage),
+    SuperTabsModule
   ],
   exports: [
     HotelinfoPage

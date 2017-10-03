@@ -393,7 +393,7 @@ export class MapPage implements OnInit{
     if((d%1) > 0)
         distance = d.toFixed(2) + " Km";
     else
-        distance = d + " KM Away";
+        distance = d + " Km";
     return distance;
   }
   

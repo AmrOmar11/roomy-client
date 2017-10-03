@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage,NavParams,NavController,AlertController } from 'ionic-angular';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
-
 /**
  * Generated class for the HotelinfoPage page.
  *
@@ -22,6 +21,10 @@ export class HotelinfoPage {
   userInfo:any;
   hour :any = 1;
   min :any = 0;
+  page1: any = 'DurationPage';
+  page2: any = 'AmenitiesPage';
+  page3: any = 'HotelPloicyPage';
+
 constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private authProvider: AuthenticateProvider) {
     this.hotelInfo = this.navParams.get("hotelInfo");
     if(this.hotelInfo.minmumDurationPin <10){

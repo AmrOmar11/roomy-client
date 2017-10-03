@@ -2,15 +2,61 @@ page-hotelinfo {
 	$black: rgba(#000000, .4);
 	$orange: #F39941;
 	$white:#FFFFFF;
-	$theme-grey: #767676;
-	$theme-font:'Open Sans', sans-serif;
+
 	height:100%;
 
-	
 	.slide-zoom{
 		height:100%;
 	}
-	.item-inner{
+	.hotelSlides{
+		height:36%;
+		img{
+			width:100%;
+			height:100%;
+		}
+	}
+	.h-info{
+        height : 20%;
+        background-color: white;
+    }
+	.h-name{
+        font-size: 2.8vmax;
+        font-weight: 600;
+        margin-top: 1vmax;
+        margin-left: 1vmax;        
+    }
+    .h-address{
+        font-size: 2.0vmax;
+	    font-weight: 500;
+	    margin-top: 1vmax;
+	    margin-left: 1vmax;
+    }
+    .h-distance{
+        float: right;
+        font-size: 2.5vmax;
+        font-weight: 600;
+        margin-top: -4vmax;
+        margin-right: 1vmax
+    }
+    .h-rating{
+    	margin-top: 1vmax;
+	    margin-left: 1vmax;
+        width: 12vmax;
+    }
+    .h-min-stay{
+		font-size: 2.0vmax;
+		font-weight: 600;
+        margin-top: 1vmax;
+	    margin-left: 1vmax;
+    }
+    .h-min-cost{
+    	float: right;
+    	font-size: 2.0vmax;
+		font-weight: 600;
+        margin-top: -2vmax;
+	    margin-right: 1vmax
+    }
+	/*.item-inner{
 		border:0px !important;
 	}
 	.item-cover{
@@ -38,7 +84,7 @@ page-hotelinfo {
 	ion-icon.backbutton.icon.icon-ios.ion-ios-close {
 	    font-weight: bold;
 	    font-size: 6vmax;
-	    top: 5%;
+	    top: 4%;
 	}
 	.range-knob{
 		background-color:transparent !important;
@@ -66,7 +112,7 @@ page-hotelinfo {
 		padding-bottom:0;
 	}
 	.hotelSlides{
-		height:50%;
+		height:36%;
 	}
 	.swiper-slide img{
 		height:100% !important;
@@ -344,7 +390,7 @@ page-hotelinfo {
 
 	.inlineblock{
 		display:inline-block;
-	}	
+	}*/	
 }
 
 

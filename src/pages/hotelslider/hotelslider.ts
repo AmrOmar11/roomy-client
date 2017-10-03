@@ -17,7 +17,6 @@ import { NgZone  } from '@angular/core';
 export class HotelsliderPage {
     @ViewChild(Slides) slides: Slides;
     hotels:any;
-    starRatingByHotel:any;
     public hideCard:boolean = true;
     public hideSlide:boolean = false;
     constructor(

@@ -6,79 +6,44 @@
 -->
 
 <ion-content class="hotelInfo">
-  <ion-slides class="hotelSlides" pager="true" loop="false">
-    <ion-slide class="contact-slide" *ngFor="let image of hotelInfo.photos">
+  <ion-slides class="hotelSlides" pager="true">
+    <ion-slide *ngFor="let image of hotelInfo.photos">
         <img [src]="image">
-        <div class="SliderBlackOverlay"></div>
     </ion-slide>
   </ion-slides>
-  <ion-icon name="close" class="backbutton" (click)="dismiss()"></ion-icon>
-  <div class="sliderContent">
-    <div class="HotelName">{{hotelInfo.hotelName}}
-    </div>
-    <div class="HotelAddress">
-      <span class="hotel-category-child">{{hotelInfo.hotelLocation}}, {{hotelInfo.hotelCity}}, {{hotelInfo.hotelState}}
-      </span>
-    </div>
-    <div class="HotelyType" [ngClass]="getRating(hotelInfo.starRatingByHotel)"></div>
+  <!-- <ion-icon name="close" class="backbutton" (click)="dismiss()">
+  </ion-icon> -->
+  <div class="h-info">
+      <div class="h-name">{{hotelInfo.hotelName}}
+      </div>
+      <div class="h-address">
+        <span>{{hotelInfo.hotelLocation}}, {{hotelInfo.hotelCity}}, {{hotelInfo.hotelState}}
+        </span>
+      </div>
+      <div class="h-distance">13.45 KM
+      </div>
+      <div class="h-rating">
+          <img src="assets/map/ratings.png">
+      </div>
+      <div class="h-min-stay">
+          <span class="Hr">Minimum stay:</span>
+          <span>{{hotelInfo.minmumDurationPin}} </span>
+          <span class="Hr">Hours</span>
+      </div>
+      <div class="h-min-cost">
+          <span class="cost">Cost:</span>
+          <span class="symbol">&#8377;</span>
+          <span class="hotel-priceMin">{{hotelInfo.pricePerMin}}
+          </span>
+          <span class="price-diff">/</span>
+          <span class="minumum">Minute</span>
+      </div>
   </div>
-  <div class="amenities">
-      <ion-label>AMENITIES</ion-label>
-      <ion-row >
-        <ion-col *ngFor="let amenity of hotelInfo.amenities">
-          <div ngClass={{amenity}} class="amenity" ></div>
-        </ion-col>
-      </ion-row>
-  </div>
-  <div class="pricing">
-    <ion-row>
-        <ion-col>
-            <ion-label class="price">PRICING</ion-label>                    
-        </ion-col>
-        <ion-col style="text-align: right;">
-            <ion-label class="duration inlineblock">{{hotelInfo.minmumDurationPin}} {{hotelInfo.currencyType}} MINIMUM</ion-label>
-        </ion-col>
-     </ion-row>
-     <ion-row>
-       <div class="farecalculation">
-          <div class="durationparent inlineblock">
-              <div class="stayduration inlineblock"><ion-datetime min="{{minDuration}}" max="11:00" displayFormat="HH:mm" [(ngModel)]="stayDuration" (ionChange) = "calculatefare()" >
-  </ion-datetime></div><div class="durationtype inlineblock"><div class="arrow-down"></div></div>
-          </div>
-          <div class="plusymb inlineblock">+</div>
-          <div class="taxparent inlineblock">
-              <div class="taxpercentage inlineblock">{{hotelInfo.tax}}</div><div class="percemtsymb inlineblock">%</div>
-          </div>
-          <div class="equalsymb inlineblock">=</div>
-          <div class="fareparent inlineblock">
-               <div class="totalfare inlineblock">&#x20b9; {{fareAmount}}</div>
-          </div>
-        </div>
-     </ion-row>
-     <ion-row class="pricingsubinfo">
-        <ion-col>
-          <ion-label range-left>HH:MM</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label range-left>GST</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label range-left>(&#x20b9;{{hotelInfo.pricePerMin}}/min)</ion-label>         
-        </ion-col>
-     </ion-row>
-     <!-- <ion-row style="margin-top: 20px;">
-      <ion-item>
-        <ion-range min="60" max="720" step="1" class="range-ios"  [(ngModel)]="stayDuration" (ionChange) = "calculatefare()">
-          <ion-label range-left>1 Hr</ion-label>
-          <ion-label range-right>12 Hrs</ion-label>
-        </ion-range>
-      </ion-item>
-    </ion-row> -->
-  </div>
-  <div class="hoteldescription">
-      <ion-label>DESCRIPTION</ion-label>
-      <div class="descriptionContent"><span>{{hotelInfo.hotelDescription}}</span></div>
-  </div> 
+  <super-tabs>
+    <super-tab [root]="page1" [rootParams]="hotelInfo" title="Booking Hours"></super-tab>
+    <super-tab [root]="page2" [rootParams]="hotelInfo" title="Amenities"></super-tab>
+    <super-tab [root]="page3" [rootParams]="hotelInfo" title="Hotel policy"></super-tab>
+  </super-tabs>
 </ion-content>
 
 <ion-footer>

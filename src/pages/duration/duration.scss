@@ -1,0 +1,122 @@
+page-duration {
+	.pricing{
+		width: 95%;
+	    margin: 0 auto;
+		.price{
+			/*color:$theme-grey;*/
+			font-size: 2.6vmax;
+		    font-weight: bold;
+		}
+		.duration{
+			color: map-get($colors, theme);
+		    font-size: 7pt;
+		    font-weight: 200;
+		    margin: 15px 24px 10px 5px;
+		    text-align: right;
+		}
+		.farecalculation{
+			width: 90%;
+			margin:0 auto;
+		}
+	}
+	.durationparent, .taxparent, .fareparent{
+		width: 28%;
+		border-radius: 5px;
+	}
+	.taxparent{
+		width: 22%;
+	}
+	.fareparent{
+		width: 32%;
+	}	
+	.plusymb, .equalsymb{
+		width: 6%;
+		font-size: 3vmax;
+    	text-align: center;
+    	color: #C6C6C6;
+    	margin:5px 4px;
+	}
+	.stayduration, .taxpercentage{
+		width: 70%;
+		height:100%;
+	    font-size: 3vmax;
+	    padding: 5px 3px;
+	    background-color: #f2f2f2;
+	    text-align: center;
+	    border-radius: 5px 0 0 5px;
+	    color: #717171;
+	    font-family:$theme-font;
+    }
+    .stayduration{
+    	color: map-get($colors, theme);
+    }
+    .taxpercentage{
+    	padding: 3.5px 3px;
+    	color: #636363;
+    }
+    .totalfare{
+    	color: #636363;
+    }
+    .durationtype,.percemtsymb{
+    	width: 30%;
+    	height:34px;
+	    font-size: 2.2vmax;
+	    padding: 13px 0 5px 0;
+	    background-color: #8E8E8E;
+	    text-align: center;
+	    border-radius: 0 5px 5px 0;
+	    color: #FFFFFF;
+	    font-family:$theme-font;
+	    vertical-align: top;
+    }
+    .percemtsymb{
+    	padding: 7px 0 5px 0;
+    }
+    .arrow-down {
+		width: 0; 
+		height: 0; 
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 10px solid #fff;
+		margin: 0 auto;
+	}
+    .totalfare{
+    	width: 100%;
+    	height:100%;
+	    font-size: 3vmax;
+	    padding: 3px;
+	    background-color: #f2f2f2;
+	    text-align: center;
+	    border-radius: 5px;
+	    color: #717171;
+	    font-family:$theme-font;
+    }
+    .pricing .range{
+    	padding:0px;
+    }
+    .pricingsubinfo{
+    	height:25px;
+    }
+    .pricingsubinfo .col{
+    	text-align: center;
+	    font-size: 1.5vmax;
+	    height: 10px;
+	    padding: 0px;
+    }
+    .pricingsubinfo .col .label{
+    	margin: 0;
+    	/*color:$theme-grey;*/
+    }
+    .floatleft{
+		float:left;
+	}
+	.datetime-md,.datetime-ios{
+		padding:0px;
+	}
+	.toolbar-background-md{
+		background:transparent;
+	}
+	.button-md{
+		box-shadow:none;
+	}
+}

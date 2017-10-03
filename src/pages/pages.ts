@@ -9,3 +9,6 @@ export * from './hotelslider/hotelslider';
 export * from './login/login';
 export * from './facebook-login/facebook-login';
 export * from './google-login/google-login';
+export * from './amenities/amenities';
+export * from './duration/duration';
+export * from './hotel-ploicy/hotel-ploicy';
