@@ -75,7 +75,10 @@ page-hotelslider {
         }
     }
     span.farecurrency {
-        font-size: 4vmax;
+        font-size: .8em;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 8px;
     }
     span.hotel-priceMin {
         font-size: 5vmax;
@@ -85,8 +88,28 @@ page-hotelslider {
     }
 
     span.hotel-price-diff {
-        font-size: 4.5vmax;
+         font-size: 4.5vmax;
+            /* font-size: .7em; */
+        display: inline-block;
+        vertical-align: bottom;
+        -ms-transform: rotate(7deg);
+        /* -webkit-transform: rotate(7deg); */
+        transform: rotate(12deg);
+        margin: 0 0px -4px -2px;
+        font-family: Opensans-Light;
     }
+    .hotelMinCost .minumum {
+        font-size: .7em;
+        display: inline-block;
+        vertical-align: bottom;
+        margin-left: -7px;
+        margin-right: 5px;
+        font-weight: normal;
+       font-family: Opensans-Regular;
+
+    }
+
+
     .minDuration {
         background-color: #e7ded5;
         color: black;
@@ -100,9 +123,6 @@ page-hotelslider {
         font-size: 2.6vmax;
         top: 5%;
         right: 0%;
-        span{
-            opacity: 0.8;
-        }
     }
    
     .h-info{
