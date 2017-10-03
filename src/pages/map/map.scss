@@ -5,17 +5,13 @@ page-map {
     .gmnoprint {
         display: none !important;
     }
-    .search,
     .compas {
         position: absolute;
-        top: 10%;
+        top: 50%;
         right: -1vmax;
         opacity: 0.9;
         width: 20%;
         background: transparent;
-    }
-    .compas {
-        top: 50%;
     }
     .search_bar{
         background-color: #39a5a1;

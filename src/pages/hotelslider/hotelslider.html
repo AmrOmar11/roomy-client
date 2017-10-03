@@ -17,18 +17,22 @@
     </ion-card>
     <ion-slides [hidden]="hideSlide" spaceBetween="20" slidesPerView="auto" centeredSlides="true" (ionSlideDidChange)="slideChanged()">
         <ion-slide *ngFor="let hotel of hotels">
-            <div class="HotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotelpicPath + ')'}" (click)="hotelDetailedInfo(hotel)">
-                <!-- <div class="SliderBlackOverlay"></div> -->
+            <div class="hotelSlider" [ngStyle]="{ 'background-image': 'url(' + hotel.hotelpicPath + ')'}" (click)="hotelDetailedInfo(hotel)">
                 <div class="sliderContent">
-                    <div class="HotelDetails">
-                        <div class="HotelFare">
-                            <div class="HotelMinCost">
+                    <div class="hotelDetails">
+                        <div class="hotelFare">
+                            <div class="hotelMinCost">
                                 <span class="farecurrency">&#8377;</span>
-                                <span class="hotel-priceMin">{{hotel.pricePerMin}}</span>
+                                <span class="hotel-priceMin">{{hotel.pricePerMin}}
+                                </span>
                                 <span class="hotel-price-diff">/</span>
                                 <span class="minumum">Min</span>
                             </div>
-                            <div class="MinDuration"><span>{{hotel.minDuration}} </span><span class="Hr">hrs</span><span class="minumum"> Minimum</span></div>
+                            <div class="minDuration">
+                                <span>{{hotel.minDuration}} </span>
+                                <span class="Hr">hrs</span>
+                                <span class="minumum"> Minimum</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,9 +44,12 @@
                 </div>
             </div>
             <div class="h-info">
-                <div class="h-Name">{{hotel.hotelname.toUpperCase()}}</div>
-                <div id="h-Dist" class="h-Dist">{{hotel.distance}}</div>                
-                <div id="h-rating" [ngClass]="getRating(hotel.starratingByHotel)"></div>
+                <div class="h-Name">{{hotel.hotelname.toUpperCase()}}
+                </div>
+                <div id="h-Dist" class="h-Dist">{{hotel.distance}}
+                </div>
+                <div id="h-rating" [ngClass]="getRating(hotel.starratingByHotel)">
+                </div>
             </div>
         </ion-slide>
     </ion-slides>
