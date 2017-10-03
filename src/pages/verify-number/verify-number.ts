@@ -26,6 +26,7 @@ export class VerifyNumberPage {
   private items = ['','','','','',''];
   public countryList;
   public countryCodeSelected = "+91";
+  public contactNumber; 
   public listToggle= false;
   private imageName:string;
   private screenTitle:string;
@@ -40,7 +41,7 @@ export class VerifyNumberPage {
     public navParams: NavParams, 
     private formBuilder: FormBuilder,
     private authProvider: AuthenticateProvider,
-	  private http:Http) {
+    private http:Http) {
     this.changeForm = formBuilder.group({
         'oldPassword': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
         'password': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
@@ -94,9 +95,9 @@ export class VerifyNumberPage {
   }
 
   private verifyMobile(inputData){
-    this.inputData.contactNumber =  this.countryCodeSelected + this.inputData.contactNumber; 
+    this.inputData.contactNumber =  this.countryCodeSelected + this.contactNumber; 
     this.authProvider.login(inputData).subscribe(success => {      
-		  if((success.status !== undefined)&&(success.status == '0001')) {
+      if((success.status !== undefined)&&(success.status == '0001')) {
         this.authProvider.setCurrentUser(success);
         this.authProvider.setUserData(success);
         this.navCtrl.setRoot('HomePage');
@@ -117,11 +118,11 @@ export class VerifyNumberPage {
     this.hideOtpPopUp = false;
     this.inputData.customerToken = success.jwtToken;
     this.inputData.userId = success.result.userId;
-    this.hideMobCharacter(this.inputData.contactNumber);
+    this.hideMobCharacter(this.contactNumber);
   }
 
   private forgotPassword(inputData){
-    this.inputData.contactNumber =  this.countryCodeSelected + this.inputData.contactNumber; 
+    this.inputData.contactNumber =  this.countryCodeSelected + this.contactNumber; 
     this.authProvider.forgotPassword(inputData).subscribe(success => {      
       if((success.status !== undefined)&&(success.status == '0001')) {
           this.hideMobilePopUp = true;
@@ -145,11 +146,11 @@ export class VerifyNumberPage {
   }
 
   public submitOtp(){
-  	var OTP='';
-  	for(var item in this.items){
-  		OTP = OTP + this.items[item];
-  	}
-  	this.inputData.otp = parseInt(OTP);
+    var OTP='';
+    for(var item in this.items){
+      OTP = OTP + this.items[item];
+    }
+    this.inputData.otp = parseInt(OTP);
     if(this.inputData.action == 'SIGNUP' || this.inputData.action == 'OTP'){
       this.inputData.action ='OTP'
       this.verifyMobile(this.inputData);
@@ -176,17 +177,17 @@ export class VerifyNumberPage {
   }
 
   hideMobCharacter(MobileNumber){
-  	var i;
-  	MobileNumber = MobileNumber.split('');
-  	for(i=0; i<MobileNumber.length;i++){
-	    for(i=0; i<10;i++){
-		    if(i==0||i==(MobileNumber.length-2)||i==(MobileNumber.length-1)){
-	          this.HiddenMobNum= this.HiddenMobNum+MobileNumber[i];
-	        }else{
-	          this.HiddenMobNum= this.HiddenMobNum+'x';
-	        }
-		  }
-	  }
+    var i;
+    debugger;
+    MobileNumber = MobileNumber.replace(/\+/g, "");;
+    MobileNumber = MobileNumber.split('');
+    for(i=0; i<MobileNumber.length;i++){
+      if(i==(MobileNumber.length-4)||i==(MobileNumber.length-3)||i==(MobileNumber.length-2)||i==(MobileNumber.length-1)){
+        this.HiddenMobNum= this.HiddenMobNum+MobileNumber[i];
+      }else{
+        this.HiddenMobNum= this.HiddenMobNum+'x';
+      }
+    }
   }
 
   getCountries(){
