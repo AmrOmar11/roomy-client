@@ -1,3 +1,26 @@
 page-amenities {
-
+	font-size: 2.0vmax;
+    font-weight: 600;
+    font-family:Opensans-Semibold !important;
+	.row{
+		width:100%;
+	}
+	.col-50{
+		width:50%;
+		padding:10px;
+	}
+	.amenity-img{
+		width:15%;
+	}
+	.amenity-text{
+		width:80%;
+		font-family:Opensans-Semibold !important;
+		font-size: 2.5vmax;
+	}
+	.floatleft{
+		float:left;
+	}
+	.inlineblock{
+		display:inline-block;
+	}
 }
