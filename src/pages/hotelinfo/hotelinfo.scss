@@ -80,7 +80,16 @@ page-hotelinfo {
     	font-size: 1.20rem;
     	text-transform: capitalize;
     }
-
+    .buffer-info{
+        font-family: Opensans-Semibold !important;
+        font-size: 1.8vmax;
+        position: fixed;
+        bottom: 50px;
+        z-index: 111;
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+    }
 
 
 }
