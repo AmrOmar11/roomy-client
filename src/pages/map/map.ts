@@ -40,7 +40,7 @@ export class MapPage implements OnInit{
     },
     selectedHotel:{
       url: "assets/map/selected_hotel_marker.png", // url
-      scaledSize: new google.maps.Size(36, 36), // scaled size
+      scaledSize: new google.maps.Size(40, 40), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     }
@@ -61,14 +61,14 @@ export class MapPage implements OnInit{
     this.events.subscribe('hotel:slideChanged',(currentIndex) => {
       for(let i = 0; i < this.selectedHotelMarkers.length; i++){
         if(i == currentIndex){
-            this.hotelMarkers[i].setMap(null);
-            this.selectedHotelMarkers[i].setMap(this.map);
+            this.hotelMarkers[i].setVisible(false);
+            this.selectedHotelMarkers[i].setVisible(true);
             // this.selectedHotelMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
         }else{
-          this.selectedHotelMarkers[i].setMap(null);
-          this.hotelMarkers[i].setMap(this.map);
-        }        
-      }      
+          this.selectedHotelMarkers[i].setVisible(false);
+          this.hotelMarkers[i].setVisible(true);
+        }
+      }
       // this.map.setZoom(this.zoomLevel);
       // this.map.panTo(this.selectedHotelMarkers[currentIndex].getPosition());
     });
@@ -253,15 +253,18 @@ export class MapPage implements OnInit{
         let hotelMarker = new google.maps.Marker({
           position: location,
           map: this.map,
-          icon:this.icons.hotel
+          icon:this.icons.hotel,
+          visible: true,
+          clickable: true
         });
         this.hotelMarkers.push(hotelMarker);
         bounds.extend(hotelMarker.position);
         let selectedHotelMarker = new google.maps.Marker({
           position: location,
-          map: null,
+          map: this.map,
           icon:this.icons.selectedHotel,
-          // animation: google.maps.Animation.BOUNCE
+          visible: true,
+          clickable: true
         });
         this.selectedHotelMarkers.push(selectedHotelMarker);
         hotels[i].distance = this.distanceInKm(this.userLocation.lat(),this.userLocation.lng(),hotels[i].latitude,hotels[i].longitude);
