@@ -48,8 +48,8 @@
     <super-tab [root]="page3" [rootParams]="hotelInfo" title="Hotel policy">
     </super-tab>
   </super-tabs>
-  <div class="buffer-info">*You will have 1 hour buffer time to check-in from the time of booking.</div>
 </ion-content>
 <ion-footer>
+    <div class="buffer-info">*You will have 1 hour buffer time to check-in from the time of booking.</div>
     <button ion-button full class='pobyt-button' [disabled]="(!hotelInfo.isAvailable)" (click)="reserveNow()">Book Now</button>
 </ion-footer>

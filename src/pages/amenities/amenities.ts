@@ -14,14 +14,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'amenities.html',
 })
 export class AmenitiesPage {
-	public amenities:any = [{img:'assets/amenities/2_people.svg',text:'Max 2 people'},
-						{img:'assets/amenities/bed.svg',text:'1 Queen bed'},
-						{img:'assets/amenities/restaurant.svg',text:'Restaurant'},
-						{img:'assets/amenities/wifi.svg',text:'Wifi'},
-						{img:'assets/amenities/swimming.svg',text:'Swimming Pool'},
-						{img:'assets/amenities/bar.svg',text:'Bar'},
-						{img:'assets/amenities/TV.svg',text:'Television'},
-						{img:'assets/amenities/shower.svg',text:'Shower'}						
+	public amenities:any = [{img:'assets/amenities/2_people.png',text:'Max 2 people'},
+						{img:'assets/amenities/bed.png',text:'1 Queen bed'},
+						{img:'assets/amenities/restaurant.png',text:'Restaurant'},
+						{img:'assets/amenities/wifi.png',text:'Wifi'},
+						{img:'assets/amenities/swimming.png',text:'Swimming Pool'},
+						{img:'assets/amenities/glass.png',text:'Bar'},
+						{img:'assets/amenities/TV.png',text:'Television'},
+						{img:'assets/amenities/bath.png',text:'Shower'}						
 					];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
