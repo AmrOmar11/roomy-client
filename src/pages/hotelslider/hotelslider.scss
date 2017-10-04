@@ -25,15 +25,6 @@ page-hotelslider {
     .scroll-content {
         background: none !important;
     }
-    .white-bg{
-        display:none;
-        height: 35%;
-        width: 85%;
-        background-color: white;
-        bottom: 0;
-        position: absolute;
-        left: 0;
-    }
     .hotelSlider {
         background-color: #dde3e3;
         width: 100%;
@@ -88,12 +79,10 @@ page-hotelslider {
     }
 
     span.hotel-price-diff {
-         font-size: 4.5vmax;
-            /* font-size: .7em; */
+        font-size: 4.5vmax;
         display: inline-block;
         vertical-align: bottom;
         -ms-transform: rotate(7deg);
-        /* -webkit-transform: rotate(7deg); */
         transform: rotate(12deg);
         margin: 0 0px -4px -2px;
         font-family: Opensans-Light;
@@ -105,8 +94,7 @@ page-hotelslider {
         margin-left: -7px;
         margin-right: 5px;
         font-weight: normal;
-       font-family: Opensans-Regular;
-
+        font-family: Opensans-Regular;
     }
     .hotelDetails .minDuration {
         right: 0%;

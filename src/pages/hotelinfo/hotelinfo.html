@@ -40,12 +40,14 @@
       </div>
   </div>
   <super-tabs>
-    <super-tab [root]="page1" [rootParams]="hotelInfo" title="Booking Hours"></super-tab>
-    <super-tab [root]="page2" [rootParams]="hotelInfo" title="Amenities"></super-tab>
-    <super-tab [root]="page3" [rootParams]="hotelInfo" title="Hotel policy"></super-tab>
+    <super-tab [root]="page1" [rootParams]="hotelInfo" title="Booking Hours">
+    </super-tab>
+    <super-tab [root]="page2" [rootParams]="hotelInfo" title="Amenities">
+    </super-tab>
+    <super-tab [root]="page3" [rootParams]="hotelInfo" title="Hotel policy">
+    </super-tab>
   </super-tabs>
 </ion-content>
-
 <ion-footer>
     <button ion-button full class='pobyt-button' [disabled]="(!hotelInfo.isAvailable)" (click)="reserveNow()">RESERVE NOW</button>
 </ion-footer>
