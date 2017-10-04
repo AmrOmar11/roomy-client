@@ -22,4 +22,9 @@ export class HotelPloicyPage {
     console.log('ionViewDidLoad HotelPloicyPage');
   }
 
+  openTnC(){
+  	this.navCtrl.push('PoliciesPage');
+  	//window.open('https://www.pobyt.co/','_system');
+  }
+
 }
