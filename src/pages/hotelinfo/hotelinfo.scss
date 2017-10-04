@@ -1,4 +1,10 @@
 page-hotelinfo {
+
+	@mixin fontSize($amount) {
+	  font-size : $amount
+	}
+
+
 	$black: rgba(#000000, .4);
 	$orange: #F39941;
 	$white:#FFFFFF;
@@ -44,9 +50,9 @@ page-hotelinfo {
         width: 12vmax;
     }
     .h-min-stay{
-		font-size: 2.0vmax;
-		font-weight: 600;
-        margin-top: 1vmax;
+		font-size: 1.3rem;
+		font-family: Opensans-Semibold;
+        margin-top: 2vmax;
 	    margin-left: 1vmax;
     }
     .h-min-cost{
@@ -56,341 +62,27 @@ page-hotelinfo {
         margin-top: -2vmax;
 	    margin-right: 1vmax
     }
-	/*.item-inner{
-		border:0px !important;
-	}
-	.item-cover{
-		width: 0;
-    	height: 0;
-	}
-	.range-ios {
-		.range-slider{
-			height:32px;
-		}
-		.range-bar {
-		    top: 14px;
-		    height: 7px;
-		}
-		.range-knob-handle{
-			top: 17px !important;
-		}
-	}
-	.range-md {
-		.range-knob{
-			width: 35px;
-    		height: 35px;
-		}
-	}
-	ion-icon.backbutton.icon.icon-ios.ion-ios-close {
-	    font-weight: bold;
-	    font-size: 6vmax;
-	    top: 4%;
-	}
-	.range-knob{
-		background-color:transparent !important;
-		background-image: url('../assets/img/slider_knob.png') !important;
-		background-repeat:no-repeat !important;
-		background-size:100% !important;
-		box-shadow: none !important;
-		left: 7px !important;
-		top: 7px !important;
-		//width: inherit !important;
-    	//height: inherit !important;
-    	border:none !important;
-	}
-	.datetime-md,.datetime-ios{
-		padding:0px;
-	}
-	.toolbar-background-md{
-		background:transparent;
-	}
-	.button-md{
-		box-shadow:none;
-	}
-	.hotelInfo{
-		padding-top:0;
-		padding-bottom:0;
-	}
-	.hotelSlides{
-		height:36%;
-	}
-	.swiper-slide img{
-		height:100% !important;
-	}
-	.swiper-pagination-bullet{
-		background:#BABABA;
-		opacity: 1;
-	}
-	.HotelSlider{
-		background-color:#ffad33;
-		width:100%;
-		height:100%;
-		background-size:100%;
-		background-repeat:no-repeat;
-		position:relative;
-	}
-	.SliderBlackOverlay{
-		background-color:$black;
-		width:100%;
-		height:100%;
-		background-size:100%;
-		background-repeat:no-repeat;
-		position: absolute;
-		top:0px;
-	}
-	.backbutton{
-	    width: 10%;
-	    height: 6%;
-	    background-size: 100%;
-	    position: absolute;
-	    top: 3%;
-	    left: 1%;
-	    font-size: 5vmax;
-	    color: #fff;
-	    z-index: 1;
-	    text-align: center;
-	}
-	.sliderContent{
-		position: absolute;
-	    z-index: inherit;
-	    top: 35%;
-	    width: 95%;
-	    height: auto;
-	    left: 3%;
-	    color: $white;
-	}
-	.HotelName{
-		font-size: 4vmax;
-    	height: auto;
-    	font-weight:bold;
-    	font-family:$theme-font;
-    	width:85%;
-    	white-space:nowrap;
-    	overflow:hidden;
-    	text-overflow: ellipsis;
-	}
-	.HotelAddress{
-		display: inline-block;
-		width: 100%;
-		height:auto;	
-	}
-	.HotelyType{
-	    width: 25px;
-	    height: 25px;
-	    right: 5%;
-	    top: 20%;
-	    position: absolute;
-	    background-size:100%;
-	}
-	.hotel-category-child{
-	    font-size: 2.2vmax;
-	    display: inline-block;
-	    width: auto;
-	    height: 100%;
-	    text-align: center;
-	    padding: 1% 0;
-	    font-weight: 600;
-	    font-family:$theme-font;
-	}
+    .h-min-price,.h-min-hr{
+    	@include fontSize(1.7rem);
+    }
+    .h-info-divider{
+        border-bottom: 1px solid #C8C8C8;
+        margin: 0px 12px 5px 12px;
+    }
+    super-tabs{
+        height:44%;
+    }
+    super-tabs-toolbar .toolbar,.toolbar-background{
+		background-color: rgba(6, 131, 125, 0.2);
+    }
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-only .title{
+    	font-family: Opensans-Semibold;
+    	font-size: 1.20rem;
+    	text-transform: capitalize;
+    }
 
-	.amenity{
-		width:33px;
-		height:25px;
-		margin:0 auto;
-	}
 
-	
-	.amenities,.pricing,.hoteldescription{
-		width: 95%;
-	    margin: 0 auto;
-	    border-bottom: #F0F0F0 2px solid;
-	}
 
-	.amenities .label,.hoteldescription .label{
-		color: $theme-grey;
-	    font-size: 2.6vmax;
-	    font-weight: bold;
-	    margin: 16px 5px;
-	    font-family:$theme-font;
-	}
-	.amenities .row{
-		margin-bottom:15px;
-	}
-
-	.pricing 
-		{
-			.label{
-			    font-family: $theme-font;
-			}
-			.price{
-				color:$theme-grey;
-				font-size: 2.6vmax;
-			    font-weight: bold;
-			}
-			.duration{
-				color: map-get($colors, theme);
-			    font-size: 7pt;
-			    font-weight: 200;
-			    margin: 15px 24px 10px 5px;
-			    text-align: right;
-			}
-			.farecalculation{
-				width: 90%;
-				margin:0 auto;
-			}
-		}		
-	.durationparent, .taxparent, .fareparent{
-		width: 28%;
-		border-radius: 5px;
-	}
-	.taxparent{
-		width: 22%;
-	}
-	.fareparent{
-		width: 32%;
-	}	
-	.plusymb, .equalsymb{
-		width: 6%;
-		font-size: 3vmax;
-    	text-align: center;
-    	color: #C6C6C6;
-	}
-	.stayduration, .taxpercentage{
-		width: 70%;
-		height:100%;
-	    font-size: 3vmax;
-	    padding: 5px 3px;
-	    background-color: #f2f2f2;
-	    text-align: center;
-	    border-radius: 5px 0 0 5px;
-	    color: #717171;
-	    font-family:$theme-font;
-    }
-    .stayduration{
-    	color: map-get($colors, theme);
-    }
-    .taxpercentage{
-    	padding: 3.5px 3px;
-    	color: #636363;
-    }
-    .totalfare{
-    	color: #636363;
-    }
-    .durationtype,.percemtsymb{
-    	width: 30%;
-    	height:34px;
-	    font-size: 2.2vmax;
-	    padding: 13px 0 5px 0;
-	    background-color: #8E8E8E;
-	    text-align: center;
-	    border-radius: 0 5px 5px 0;
-	    color: #FFFFFF;
-	    font-family:$theme-font;
-	    vertical-align: top;
-    }
-    .percemtsymb{
-    	padding: 7px 0 5px 0;
-    }
-    .arrow-down {
-		width: 0; 
-		height: 0; 
-		border-left: 10px solid transparent;
-		border-right: 10px solid transparent;
-		border-top: 10px solid #fff;
-		margin: 0 auto;
-	}
-    .totalfare{
-    	width: 100%;
-    	height:100%;
-	    font-size: 3vmax;
-	    padding: 3px;
-	    background-color: #f2f2f2;
-	    text-align: center;
-	    border-radius: 5px;
-	    color: #717171;
-	    font-family:$theme-font;
-    }
-    .pricing .range{
-    	padding:0px;
-    }
-    .pricingsubinfo{
-    	height:25px;
-    }
-    .pricingsubinfo .col{
-    	text-align: center;
-	    font-size: 1.5vmax;
-	    height: 10px;
-	    padding: 0px;
-    }
-    .pricingsubinfo .col .label{
-    	margin: 0;
-    	color:$theme-grey;
-    }
-    .hoteldescription{
-    	.descriptionContent{
-    		text-align:justify;
-    		padding: 0 10px;
-    	}
-    }
-	.range .range-bar{
-		top:14px;
-		height: 10px;
-		background-color:$theme-grey;
-		border-radius:5px;
-	}
-	.range .range-bar-active{
-		background-color:map-get($colors, theme);
-	}
-
-	.range .range-tick{
-		top:20.5px;
-	}
-
-	.range .range-knob-handle{
-		top:13px;
-	}
-
-	.WIFI{
-		background: url('../assets/img/amenities.png') no-repeat 0 -7px;
-	}
-	.AC{
-		background: url('../assets/img/amenities.png') no-repeat -55px -7px;
-	}
-	.longue{
-		background: url('../assets/img/amenities.png') no-repeat -1129px -157px;
-	}
-	.alchol,.BAR, .PARKING{
-		background: url('../assets/img/amenities.png') no-repeat -294px -3px;
-	}
-	.pool,.SWIMMINGPOOL{
-		background: url('../assets/img/amenities.png') no-repeat -179px -4px;
-	}
-	.SHOWER{
-		background: url('../assets/img/amenities.png') no-repeat -115px 0;
-	}
-	.TELEVISION{
-		background: url('../assets/img/amenities.png') no-repeat -237px -1px;
-	}
-	.restuarant,.RESTAURANT{
-		background: url('../assets/img/amenities.png') no-repeat -343px -4px;
-	}
-
-	.three {
-		background: url('../assets/img/Stars-slider.png') no-repeat 0 0;
-	}
-	.four{
-		background: url('../assets/img/Stars-slider.png') no-repeat -33px 0;
-	}
-	.five{
-		background: url('../assets/img/Stars-slider.png') no-repeat -67px 0;
-	}
-	.seven{
-		background: url('../assets/img/Stars-slider.png') no-repeat -101px 0;
-	}
-
-	.inlineblock{
-		display:inline-block;
-	}*/	
 }
 
 

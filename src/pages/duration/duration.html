@@ -6,13 +6,12 @@
 -->
 <ion-content>
 	<div class="pricing">
-		<ion-row>
+		<!-- <ion-row>
 			<ion-col>
 				<ion-label class="price">PRICING</ion-label>
 			</ion-col>
-		</ion-row>
-	     <ion-row>
-	       <div class="farecalculation">
+		</ion-row> -->
+	     <ion-row class="farecalculation">
 	          <div class="durationparent floatleft">
 	            <div class="stayduration floatleft">
 	              	<ion-datetime min="{{minDuration}}" max="11:00" displayFormat="HH:mm" [(ngModel)]="stayDuration" (ionChange) = "calculatefare()" >
@@ -23,25 +22,34 @@
 					</div>
 				</div>
 	          </div>
-	          <div class="plusymb floatleft">+</div>
+	          <div class="plusymb floatleft">+
+	          </div>
 	          <div class="taxparent floatleft">
-	              <div class="taxpercentage floatleft">{{hotelInfo.tax}}</div><div class="percemtsymb floatleft">%</div>
+	              <div class="taxpercentage floatleft">{{hotelInfo.tax}}
+	              </div>
+	              <div class="percemtsymb floatleft">%
+	              </div>
 	          </div>
-	          <div class="equalsymb floatleft">=</div>
+	          <div class="equalsymb floatleft">=
+	          </div>
 	          <div class="fareparent floatleft">
-	               <div class="totalfare floatleft">&#x20b9; {{fareAmount}}</div>
+	           	<div class="totalfare floatleft">&#x20b9; {{fareAmount}}
+	           	</div>
 	          </div>
-	        </div>
 	     </ion-row>
 	     <ion-row class="pricingsubinfo">
 	        <ion-col>
-	          <ion-label range-left>HH:MM</ion-label>
+	          <ion-label range-left class="h-info-hours-label">
+	          	<span class="h-info-hours-label-hh">HH</span>
+	          	<span class="h-info-hours-label-sym">:</span>
+	          	<span class="h-info-hours-label-mm">MM</span>
+	         </ion-label> 
 	        </ion-col>
 	        <ion-col>
-	          <ion-label range-left>GST</ion-label>
+	          <ion-label class="h-info-hours-label-tax" range-left>GST</ion-label>
 	        </ion-col>
 	        <ion-col>
-	          <ion-label range-left>(&#x20b9;{{hotelInfo.pricePerMin}}/min)
+	          <ion-label class="h-info-hours-label-pay" range-left>You Pay
 	          </ion-label>     
 	        </ion-col>
 	     </ion-row>
