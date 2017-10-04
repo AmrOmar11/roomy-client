@@ -23,33 +23,29 @@ page-duration {
 	}	
 	.plusymb, .equalsymb{
 		width: 6%;
-		font-size: 3vmax;
+		font-size: 4vmax;
     	text-align: center;
     	color: rgb(0,0,0);
-    	margin:5px 4px;
+    	margin:0.3vmax 0.3vmax;
 	}
 	.stayduration, .taxpercentage{
 		width: 70%;
 		height:100%;
 	    font-size: 3vmax;
 	    padding: 5px 3px;
-	    background-color: #f2f2f2;
 	    text-align: center;
 	    border-radius: 5px 0 0 5px;
-	    color: #717171;
 	    font-family:Opensans-Semibold;
     }
     .stayduration{
     	color: rgb(0, 0 ,0);
     	background-color: rgba(6, 131 ,125,0.3);
+    	font-weight: 600;
     }
     .taxpercentage{
     	background-color: rgb(229,229,229);
     	color:rgb(0,0,0);
     	font-family:Opensans-Light;
-    }
-    .totalfare{
-    	color: #636363;
     }
     .durationtype,.percemtsymb{
     	width: 30%;
@@ -79,10 +75,11 @@ page-duration {
     	width: 100%;
     	height:100%;
 	    font-size: 3vmax;
-	    padding: 3px;
 	    text-align: center;
 	    border-radius: 5px;
 	    color: rgb(0,0,0);
+	    font-weight: 600;
+	    padding-top: 0.7vmax
     }
     .pricing .range{
     	padding:0px;
@@ -123,10 +120,10 @@ page-duration {
 	    margin-right: 1vmax !important;
 	}
 	.h-info-hours-label-tax{
-		margin-left: -7vmax !important;
+		margin-left: -8vmax !important;
 	}
 	.h-info-hours-label-pay{	
-	 	margin-left: -7vmax !important;   
+	 	margin-left: -10vmax !important;   
 	}
 
 }
