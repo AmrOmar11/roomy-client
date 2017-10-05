@@ -1,13 +1,17 @@
 page-duration {
 	.pricing{
+		width:100%;
+		height:100%;
 		.price{
 			font-size: 2.6vmax;
 		    font-weight: bold;
 		}
 		.farecalculation{
 			width: 90%;
-			margin-top:14vmax;
-		    margin-left: 2vmax;
+			position: absolute;
+		    top: 50%;
+		    left: 5%;
+		    margin-top: -5%;
 		}
 	}
 	.durationparent, .taxparent, .fareparent{
@@ -15,7 +19,7 @@ page-duration {
 		border-radius: 5px;
 	}
 	.taxparent{
-		width: 22%;
+		width: 25%;
 	}
 	.fareparent{
 		width: 32%;
@@ -79,7 +83,7 @@ page-duration {
 	    border-radius: 5px;
 	    color: rgb(0,0,0);
 	    font-weight: 600;
-	    padding-top: 0.7vmax
+	    padding-top: 1vmax
     }
     .pricing .range{
     	padding:0px;
@@ -87,6 +91,10 @@ page-duration {
     .pricingsubinfo{
     	height:25px;
     	margin-top: 1.5vmax;
+    	position: absolute;
+	    top: 58%;
+	    left: 5%;
+	    width: 100%;
     }
     .pricingsubinfo .col{
     	text-align: center;
