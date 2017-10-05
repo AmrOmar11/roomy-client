@@ -87,8 +87,21 @@ page-hotelinfo {
         margin: 0 auto;
         width: 100%;
     }
+    .swiper-pagination-bullet{
+        background:#f9f7f7;
+    }
 
 
+    .header{
+        background:none;
+    }
+    .scroll-content{
+        margin-top:0px !important;
+    }
+    .pobyt-close{
+        margin:3%;
+        width:5%;
+    }
 }
 
 
