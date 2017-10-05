@@ -19,7 +19,7 @@ declare var google:any;
 export class MapPage implements OnInit{
   private map:any;
   private userLocation:any;
-  private zoomLevel:any = 15;
+  private zoomLevel:any = 13;
   private locationMarker:any;
   private hotelMarkers = [];
   private selectedHotelMarkers = [];
@@ -222,13 +222,13 @@ export class MapPage implements OnInit{
       styles: mapStyles
     }
     this.map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-    google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this,this.userLocation));
+    google.maps.event.addListenerOnce(this.map,'tilesloaded',this.mapLoaded.bind(this));
 	}
 
-	private mapLoaded(location){
-      this.addLocationMarker(true,location);
+	private mapLoaded(){
+      this.addLocationMarker(this.userLocation);
       this.map.panTo(this.userLocation);
-      this.fetchHotels(location);
+      this.fetchHotels(this.userLocation);
 	}
 
   private fetchHotels(location){
@@ -289,7 +289,7 @@ export class MapPage implements OnInit{
           }
         });
       }
-      this.map.fitBounds(bounds);
+      // this.map.fitBounds(bounds);
       // this.map.setCenter(bounds.getCenter());
     }
     this.events.publish('hotels:list',hotels);
@@ -306,23 +306,17 @@ export class MapPage implements OnInit{
     this.selectedHotelMarkers = [];
   }
 	
-	private addLocationMarker(animate:boolean,location){
+	private addLocationMarker(location){
     if(this.locationMarker !== undefined){
-        this.locationMarker.setMap(null);
-    }        
-    let animationType:any = null;
-    if(animate == true){
-    	animationType = google.maps.Animation.DROP;
-    }
-    this.locationMarker = new google.maps.Marker({
-    	position: location,
-    	map: this.map,
-    	animation: animationType,
-    	// title: 'Drage me!',
-    	// draggable:true,
-    	icon:this.icons.userloc,
+        this.locationMarker.setPosition(location);
+    }else{
+      this.locationMarker = new google.maps.Marker({
+        position: location,
+        map: this.map,
+        icon:this.icons.userloc,
         optimized: false
-    });
+      });
+    }
   }
 	
 	compasClicked(){
@@ -331,9 +325,9 @@ export class MapPage implements OnInit{
       this.geolocation.getCurrentPosition(options).then((res) => {
           //console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
-          // this.map.setZoom(this.zoomLevel);
+          this.map.setZoom(this.zoomLevel);
           this.map.panTo(this.userLocation);
-          this.addLocationMarker(false,this.userLocation);
+          this.addLocationMarker(this.userLocation);
           this.clearHotelMarkers();
           this.fetchHotels(this.userLocation);
       })
@@ -369,9 +363,9 @@ export class MapPage implements OnInit{
               //console.log('page > getPlaceDetail > place > ', place);
               // set place in map
               self.userLocation = place.geometry.location;
-              // self.map.setZoom(self.zoomLevel);
-              self.map.panTo(place.geometry.location);
-              self.addLocationMarker(false,place.geometry.location);
+              self.map.setZoom(self.zoomLevel);
+              self.map.panTo(self.userLocation);
+              self.addLocationMarker(self.userLocation);
               self.clearHotelMarkers();
               self.fetchHotels(self.userLocation);
           }else{

@@ -13,13 +13,6 @@ page-hotelslider {
     }
     .swiper-slide {
       width: 80% !important;
-        &:last-child {
-          width: 95% !important;
-          right: 0% !important;
-        }
-        &:first-child {          
-          left: 0% !important;
-        }
     }
     ion-content,
     .scroll-content {
