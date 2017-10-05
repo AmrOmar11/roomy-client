@@ -227,7 +227,6 @@ export class MapPage implements OnInit{
 
 	private mapLoaded(){
       this.addLocationMarker(this.userLocation);
-      this.map.panTo(this.userLocation);
       this.fetchHotels(this.userLocation);
 	}
 
@@ -289,8 +288,7 @@ export class MapPage implements OnInit{
           }
         });
       }
-      // this.map.fitBounds(bounds);
-      // this.map.setCenter(bounds.getCenter());
+      this.map.fitBounds(bounds);
     }
     this.events.publish('hotels:list',hotels);
   }
@@ -325,8 +323,6 @@ export class MapPage implements OnInit{
       this.geolocation.getCurrentPosition(options).then((res) => {
           //console.log(res);
           this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
-          this.map.setZoom(this.zoomLevel);
-          this.map.panTo(this.userLocation);
           this.addLocationMarker(this.userLocation);
           this.clearHotelMarkers();
           this.fetchHotels(this.userLocation);
@@ -363,8 +359,6 @@ export class MapPage implements OnInit{
               //console.log('page > getPlaceDetail > place > ', place);
               // set place in map
               self.userLocation = place.geometry.location;
-              self.map.setZoom(self.zoomLevel);
-              self.map.panTo(self.userLocation);
               self.addLocationMarker(self.userLocation);
               self.clearHotelMarkers();
               self.fetchHotels(self.userLocation);
