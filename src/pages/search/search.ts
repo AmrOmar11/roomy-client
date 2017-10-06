@@ -12,11 +12,18 @@ export class SearchPage implements OnInit{
     autocomplete: any;
     acService:any;
     placesService: any;
+    places:any;
+    hideDefinedlist:any=false;
 
     constructor(public viewCtrl: ViewController,
         private zone:NgZone,
         public renderer: Renderer,
         public elementRef: ElementRef) {
+
+        this.places=[{name:"Hyderabad, Telangana",subtext: "Starting at Rs. 5/min"},
+                     {name:"Vijayawada, Andhra Pradesh",subtext: "Starting at Rs. 5/min"},
+                     {name:"Chennai, Tamilnadu",subtext: "Starting at Rs. 5/min"}
+        ]
     }
 
     ngOnInit() {
@@ -42,17 +49,46 @@ export class SearchPage implements OnInit{
     dismiss() {
         this.viewCtrl.dismiss();
     }
+    clear() {
+        console.log(this.hideDefinedlist);
+        this.hideDefinedlist =  false;
+    }
 
     chooseItem(item: any) {
         //console.log('modal > chooseItem > item > ', item);
+        // this.hideDefinedlist =  false;
+        console.log(this.hideDefinedlist);
         this.viewCtrl.dismiss(item);
+    }
+
+    definedItemSelected(place){
+        // let searchItems = [];
+        // this.autocomplete.query = place.name;
+        // let self = this;
+        // let config = { 
+        //     componentRestrictions: { country: 'IN' },
+        //     input: this.autocomplete.query
+        // }
+        // this.acService.getPlacePredictions(config, function (predictions, status) {
+        //     self.zone.run(function(){
+        //         predictions.forEach(function (prediction) {
+        //             searchItems.push(prediction);
+        //         });
+        //     });
+        // });
+        // if(searchItems.length>0){
+        //     this.chooseItem(searchItems[0]);
+        // }
     }
 
     updateSearch() {
         //console.log('modal > updateSearch');
         if (this.autocomplete.query == '') {
             this.autocompleteItems = [];
+            this.hideDefinedlist =  false;
             return;
+        }else{
+            this.hideDefinedlist =  true;                        
         }
         let self = this;
         let config = { 

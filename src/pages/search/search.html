@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-searchbar [(ngModel)]="autocomplete.query" (ionInput)="updateSearch()" (ionCancel)="dismiss()" placeholder="City, neighborhood, or address">
+    <ion-searchbar [(ngModel)]="autocomplete.query" (ionInput)="updateSearch()" (ionCancel)="dismiss()" placeholder="Nearby - Available Now">
     </ion-searchbar>
     <ion-list>
         <ion-item tappable *ngFor="let item of autocompleteItems" (click)="chooseItem(item)" text-wrap>
@@ -19,4 +19,14 @@
             {{ item.description }}
         </ion-item>
     </ion-list>
+    <div class="defined-places-list" [hidden]="hideDefinedlist">
+        <div class="defined-place near-me">
+            <ion-icon class="icon" name="locate-outline"></ion-icon>
+            <div class="place-name">Near me</div>
+        </div>
+        <div class="defined-place" *ngFor="let place of places" (click)="definedItemSelected(place)">
+            <div class="place-name">{{place.name}}</div>
+            <div class="place-subtext">{{place.subtext}}</div>
+        </div>
+    </div>
 </ion-content>
