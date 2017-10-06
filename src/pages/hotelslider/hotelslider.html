@@ -26,7 +26,7 @@
                                 <span class="hotel-priceMin">{{hotel.pricePerMin}}
                                 </span>
                                 <span class="hotel-price-diff">/</span>
-                                <span class="minumum">Min</span>
+                                <span class="minumum">MIN</span>
                             </div>
                             <div class="minDuration">
                                 <span>{{hotel.minDuration}} </span>
@@ -48,7 +48,8 @@
                 </div>
                 <div id="h-Dist" class="h-Dist">{{hotel.distance}}
                 </div>
-                <div id="h-rating" [ngClass]="getRating(hotel.starratingByHotel)">
+                <div class="h-rating">
+                    <img src="assets/map/ratings.png">
                 </div>
             </div>
         </ion-slide>

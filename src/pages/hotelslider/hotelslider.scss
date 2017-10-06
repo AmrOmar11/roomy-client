@@ -1,8 +1,5 @@
 page-hotelslider {
     $white: #FFFFFF;
-    $black: rgba(#000000, .2);
-    $black-a: lighten($black, 10%);
-    $orange: #F39941;
     width: 100%;
     height: 36%;
     position: absolute;
@@ -18,21 +15,28 @@ page-hotelslider {
     .scroll-content {
         background: none !important;
     }
+    .white-bg{
+        height: 25%;
+        width: 86%;
+        background-color: white;
+        bottom: 0;
+        position: absolute;
+        left: 0;
+    }
     .hotelSlider {
-        background-color: #dde3e3;
         width: 100%;
         height: 78%;
         background-size: 100% 100%;
         background-repeat: no-repeat;
+        background-color: rgb(216, 216, 216);
         position: relative;
-        border-radius: 10px;
-        box-shadow: inset 3px 3px 3px #888;
+        border-radius: 0.438em;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         .sliderContent {
             position: absolute;
             top: 0;
             width: 100%;
             height: 100%;
-            
         }
     }
     .hotelDetails {
@@ -45,67 +49,51 @@ page-hotelslider {
         height: auto;
     }
     .hotelMinCost{
-        background-color: #e7ded5;
-        opacity: 0.9;
-        color: black;
+        background-color: rgba(255,255,255,0.8);
+        color: rgb(0,0,0);
         height: auto;
         width: auto;
         text-align: center;
         position: absolute;
         font-weight: 600;
-        top: 5%;
-        span{
-            opacity: 0.8;
-        }
     }
     span.farecurrency {
         font-size: .8em;
         display: inline-block;
         vertical-align: top;
-        margin-top: 8px;
+        margin-top: 1.7vmax;
     }
     span.hotel-priceMin {
-        font-size: 5vmax;
+        font-size: 2.175em;
         font-weight: 600;
-        letter-spacing: -2px;
-        margin-left: -4px;
+        margin-left: -0.9vmax;
+        margin-right: -1.3vmax
     }
 
     span.hotel-price-diff {
-        font-size: 4.5vmax;
+        font-size: 2.175em;
         display: inline-block;
         vertical-align: bottom;
-        -ms-transform: rotate(7deg);
-        transform: rotate(12deg);
-        margin: 0 0px -4px -2px;
-        font-family: Opensans-Light;
+        transform: rotate(0deg);
+        margin: 0.0vmax -0.5vmax -0.8vmax -0.7vmax;
+        font-weight: 300;
     }
     .hotelMinCost .minumum {
-        font-size: .7em;
+        font-size: 0.625em;
         display: inline-block;
-        vertical-align: bottom;
-        margin-left: -7px;
-        margin-right: 5px;
-        font-weight: normal;
-        font-family: Opensans-Regular;
+        margin-left: -0.8vmax;
+        margin-right: 0.8vmax;
     }
-    .hotelDetails .minDuration {
-        right: 0%;
-        font-family: Opensans-Semibold;
-    }
-
     .minDuration {
-        background-color: #e7ded5;
-        color: black;
-        opacity: 0.9;
+        background-color: rgba(255,255,255,0.8);
+        color: rgb(0,0,0);
         font-weight: 600;
         height: auto;
         width: auto;
         text-align: center;
         padding: 1% 3%;
         position: absolute;
-        font-size: 2.6vmax;
-        top: 5%;
+        font-size: 0.83em;
         right: 0%;
     }
    
@@ -116,41 +104,22 @@ page-hotelslider {
     }
     .h-Name{
         float: left;
-        font-size: 2.8vmax;
-        margin-top: 1vmax;
+        font-size: 1.125em;
+        margin-top: 1.6vmax;
         margin-left: 1vmax;
         font-weight: 600;
+        margin-bottom: -1.0vmax;
     }
     div#h-Dist{
         float: right;
-        font-size: 2.5vmax;
+        font-size: 0.938em;
         font-weight: 600;
-        margin-top: 1vmax;
+        margin-top: 1.6vmax;
         margin-right: 1vmax
     }
-    .three {
-        background: url(../assets/map/ratings.png) no-repeat 1vmax 5vmax;
-        height: 100%;
-        width: 100%;
-        background-size: 65px 14px;
-    }
-    .four {
-        background: url(../assets/map/ratings.png) no-repeat 1vmax 5vmax;
-        height: 100%;
-        width: 100%;
-        background-size: 65px 14px;
-    }
-    .five {
-        background: url(../assets/map/ratings.png) no-repeat 1vmax 5vmax;
-        height: 100%;
-        width: 100%;
-        background-size: 65px 14px;
-    }
-    .seven {
-        background: url(../assets/map/ratings.png) no-repeat 1vmax 5vmax;
-        height: 100%;
-        width: 100%;
-        background-size: 65px 14px;
+    .h-rating{
+        margin-left: 1vmax;
+        width: 10vmax;
     }
     /*No Result style*/
     ion-card {

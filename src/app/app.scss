@@ -63,29 +63,6 @@ ion-footer {
     margin: 0;
     font-size: 1.5rem;
 }
-
-
-@font-face {
-    font-family: Opensans;
-    src: url('/assets/fonts/OpenSans-Regular.ttf') format('tff');
-}
-@font-face {
-    font-family: Opensans-Bold;
-    src: url('/assets/fonts/OpenSans-Bold.ttf') format('ttf');
-}
-@font-face {
-    font-family: Opensans-Regular;
-    src: url('/assets/fonts/OpenSans-Regular.ttf') format('ttf');
-}
-@font-face {
-    font-family: Opensans-Semibold;
-    src: url('/assets/fonts/OpenSans-Semibold.ttf') format('ttf');
-}
-@font-face {
-    font-family: Opensans-Light;
-    src: url('/assets/fonts/OpenSans-Light.ttf') format('ttf');
-}
-
 * {
-    font-family: Opensans, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
