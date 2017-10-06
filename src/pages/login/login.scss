@@ -1,43 +1,67 @@
 page-login {
-    .title-section {
-        height: 20%;
-        .logo {
-            height: 100px;
-        }
-        .col {
-            margin: 0px !important;
-            padding: 0px !important;
-        }
-    }
-    .socail-section {
-        height: 25%;
-        .row {
-            margin: 0px !important;
-        }
-        .col {
-            margin: 0px !important;
-        }
-        .sign-in-with {
-            color: map-get($colors, textcolor);
-            font-size: 28.27ppt;
-            width: 100%;
-            border-bottom: 1px solid rgba(199, 196, 196, 0.18);
-            line-height: 0.1em;
-            margin: 10px 0 20px;
-        }
-        .sign-in-with span {
-            background: #fff;
-            padding: 0 10px;
-        }
-        .social-icons {
-            height: 40px;
+    .login-header{
+        height: 45%;
+        background-color: rgb(38,207,198);
+        box-shadow: inset 0px -5px 13px rgba(0, 0, 0, 0.5);
+        .logo{
+            width: 50%;
+            margin-top: 15vmax;
+            margin-left: 14vmax;
         }
     }
-    .login-section {
+    .login-box{
+        border-radius: 13px;
+        box-shadow: 0px 2px 13px 3px rgba(0, 0, 0, 0.5);
         height: 55%;
-        .sigin-btn {
-            padding-left: 35px !important;
-            padding-right: 35px !important;
+        width: 85%;
+        margin-left: 4vmax;
+        margin-top: -6vmax;
+        background-color: white;
+        .login-label{
+            margin-left: 14px !important;
+            font-weight: 600;
+            font-size: 1.2em;
         }
+        .signup-label{
+            margin-right: 14px !important;
+            margin-top: 16px !important;
+            font-size: 0.9em;
+        }
+        .forgot-label{
+            margin-left: 14px !important;
+        }
+        .go{
+            text-align:right;
+            .go-label{                
+                margin-right: 2.0vmax;
+                background-color: rgb(55,55,55);
+                box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.5);
+            }
+        }
+        .continue-label{
+            margin-top: 0vmax !important;
+            text-align:center;
+        }
+        .google-label{
+            box-shadow: 0px 0px 9px 0px rgba(101, 101, 101, 0.5);
+            border-radius: 12px;
+            margin:0 15px;
+            text-align:center;
+            img{
+                width:55%;                
+            }
+        } 
+        .facebook-label{
+            box-shadow: 0px 0px 9px 0px rgba(101, 101, 101, 0.5);
+            border-radius: 12px;
+            margin:0 15px;
+            text-align:center;
+            img{
+                width:85%;
+            }
+        }
+    }
+    .social{
+        height:40px;
     }
 }
