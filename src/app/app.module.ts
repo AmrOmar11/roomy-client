@@ -27,6 +27,11 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
     IonicModule.forRoot(RoomyApp,{
         backButtonIcon: 'close',
         backButtonText: '',
+        platforms : {
+          scrollPadding:false,
+          scrollAssist:false,
+          autoFocusAssist:false
+        }
     }),
   ],
   bootstrap: [IonicApp],

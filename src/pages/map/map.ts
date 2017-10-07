@@ -239,12 +239,16 @@ export class MapPage implements OnInit{
     };
     this.authProvider.getHotels(inputData).subscribe(data => {
       this.clearHotelMarkers();
-      this.addHotelMarkers(data.result,location);
+      this.addHotelMarkers(data);
       this.loading.style.display="none";
     });
   }
 
-  private addHotelMarkers(hotels,location){
+  private addHotelMarkers(data){
+    let hotels = [];
+    if(data.status !== undefined && data.status == '0001'){
+        hotels = data.result;
+    }
     if(hotels !== undefined && hotels.length !== 0){
      let bounds = new google.maps.LatLngBounds();
      for (var i = 0; i < hotels.length; i++) {
@@ -289,6 +293,8 @@ export class MapPage implements OnInit{
         });
       }
       this.map.fitBounds(bounds);
+    }else{
+      this.map.panTo(location);
     }
     this.events.publish('hotels:list',hotels);
   }
