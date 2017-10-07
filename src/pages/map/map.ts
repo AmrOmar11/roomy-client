@@ -294,7 +294,7 @@ export class MapPage implements OnInit{
       }
       this.map.fitBounds(bounds);
     }else{
-      this.map.panTo(location);
+      this.map.panTo(this.userLocation);
     }
     this.events.publish('hotels:list',hotels);
   }
