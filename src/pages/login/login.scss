@@ -45,20 +45,22 @@ page-login {
         .continue-label{
             margin-top: 0vmax !important;
             text-align:center;
+            font-size:2vmax;
+            color:rgb(130,130,130);
         }
         .google-label{
             box-shadow: 0px 0px 9px 0px rgba(101, 101, 101, 0.5);
-            border-radius: 12px;
-            margin:0 15px;
+            border-radius: 7px;
+            margin:0 8px;
             text-align:center;
             img{
-                width:55%;                
+                width:65%;                
             }
         } 
         .facebook-label{
             box-shadow: 0px 0px 9px 0px rgba(101, 101, 101, 0.5);
-            border-radius: 12px;
-            margin:0 15px;
+            border-radius: 7px;
+            margin:0 8px;
             text-align:center;
             img{
                 width:85%;
@@ -66,7 +68,7 @@ page-login {
         }
     }
     .social{
-        height:40px;
+        height:35px;
     }
     .terms-label{
         text-align:center;

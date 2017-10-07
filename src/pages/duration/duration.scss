@@ -8,6 +8,7 @@ page-duration {
 		}
 		.farecalculation{
 			width: 90%;
+			height:18%;
 			position: absolute;
 		    top: 50%;
 		    left: 5%;
@@ -36,7 +37,7 @@ page-duration {
 		width: 70%;
 		height:100%;
 	    font-size: 3vmax;
-	    padding: 5px 3px;
+	    padding-top: 8%;
 	    text-align: center;
 	    border-radius: 5px 0 0 5px;
 	    font-family:Opensans-Semibold;
@@ -53,9 +54,9 @@ page-duration {
     }
     .durationtype,.percemtsymb{
     	width: 30%;
-    	height:34px;
+    	height:100%;
 	    font-size: 2.2vmax;
-	    padding: 13px 0 5px 0;
+	    padding-top: 15%;
 	    background-color: rgb(6, 131 ,125);
 	    text-align: center;
 	    border-radius: 0 5px 5px 0;
@@ -68,7 +69,7 @@ page-duration {
     	color:rgb(255,255,255);
     }
     .arrow-down, .percentage-img {
-		width: 100%; 
+		width: 85%; 
 		height: 100%;
 		margin: 0 auto;
 	}
