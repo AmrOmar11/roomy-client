@@ -51,7 +51,7 @@ page-hotelinfo {
     }
     .h-min-stay{
 		font-size: 1.3rem;
-		font-family: Opensans-Semibold;
+        font-weight:600;
         margin-top: 2vmax;
 	    margin-left: 1vmax;
     }
@@ -76,13 +76,12 @@ page-hotelinfo {
 		background-color: rgba(6, 131, 125, 0.2);
     }
     super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-only .title{
-    	font-family: Opensans-Semibold;
+    	font-weight:600;
     	font-size: 1.20rem;
     	text-transform: capitalize;
     }
     .buffer-info{
-        font-family: Opensans-Semibold !important;
-        font-size: 1.8vmax;
+        font-size: 1.6vmax;
         text-align: center;
         margin: 0 auto;
         width: 100%;
