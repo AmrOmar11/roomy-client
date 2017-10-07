@@ -27,9 +27,11 @@ export class HotelsliderPage {
         events.subscribe('hotels:list', (hotelsList) => {
           this.hotels = hotelsList;
           if(this.hotels.length == 0 ){
+            document.getElementById("white-footer").style.display = "none"
             this.hideCard = false;
             this.hideSlide = true;
           }else{
+            document.getElementById("white-footer").style.display = "block";
             this.hideCard = true;
             this.hideSlide = false;
             this.slides.slideTo(0);
