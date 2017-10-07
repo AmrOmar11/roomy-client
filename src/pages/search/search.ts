@@ -62,23 +62,24 @@ export class SearchPage implements OnInit{
     }
 
     definedItemSelected(place){
-        // let searchItems = [];
-        // this.autocomplete.query = place.name;
-        // let self = this;
-        // let config = { 
-        //     componentRestrictions: { country: 'IN' },
-        //     input: this.autocomplete.query
-        // }
-        // this.acService.getPlacePredictions(config, function (predictions, status) {
-        //     self.zone.run(function(){
-        //         predictions.forEach(function (prediction) {
-        //             searchItems.push(prediction);
-        //         });
-        //     });
-        // });
-        // if(searchItems.length>0){
-        //     this.chooseItem(searchItems[0]);
-        // }
+        let searchItems:any;
+        this.autocomplete.query = place.name;
+        let self = this;
+        let config = { 
+            componentRestrictions: { country: 'IN' },
+            input: this.autocomplete.query
+        }
+        this.acService.getPlacePredictions(config, function (predictions, status) {
+            self.zone.run(function(){
+                searchItems = [];
+                predictions.forEach(function (prediction) {
+                    searchItems.push(prediction);
+                });
+                if(searchItems.length>0){
+                    self.chooseItem(searchItems[0]);
+                }
+            });
+        });
     }
 
     updateSearch() {
