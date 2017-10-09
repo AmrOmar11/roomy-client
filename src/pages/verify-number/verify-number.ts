@@ -69,6 +69,8 @@ export class VerifyNumberPage {
       }else if(screen == 'otp'){
         this.screenTitle = "OTP";
         this.hideOtpPopUp = false;
+        this.contactNumber = this.inputData.contactNumber;
+        this.countryCodeSelected = this.inputData.countryCodeSelected;
         this.hideMobCharacter(this.inputData.contactNumber);
         this.imageName = 'assets/verify-number/otp.png';
       }else if(screen == 'forgotpassword'){
@@ -95,7 +97,11 @@ export class VerifyNumberPage {
   }
 
   private verifyMobile(inputData){
-    this.inputData.contactNumber =  this.countryCodeSelected + this.contactNumber; 
+    if(this.inputData.action == 'OTP'){
+      this.inputData.contactNumber =  this.contactNumber;
+    }else{
+      this.inputData.contactNumber =  this.countryCodeSelected + this.contactNumber;
+    }
     this.authProvider.login(inputData).subscribe(success => {      
       if((success.status !== undefined)&&(success.status == '0001')) {
         this.authProvider.setCurrentUser(success);
@@ -178,14 +184,14 @@ export class VerifyNumberPage {
 
   hideMobCharacter(MobileNumber){
     var i;
-    debugger;
     MobileNumber = MobileNumber.replace(/\+/g, "");;
     MobileNumber = MobileNumber.split('');
+    this.HiddenMobNum = "";
     for(i=0; i<MobileNumber.length;i++){
-      if(i==(MobileNumber.length-4)||i==(MobileNumber.length-3)||i==(MobileNumber.length-2)||i==(MobileNumber.length-1)){
+      if(i>=(MobileNumber.length-4)){
         this.HiddenMobNum= this.HiddenMobNum+MobileNumber[i];
       }else{
-        this.HiddenMobNum= this.HiddenMobNum+'x';
+        this.HiddenMobNum= this.HiddenMobNum+'X';
       }
     }
   }
