@@ -70,7 +70,7 @@ export class VerifyNumberPage {
         this.screenTitle = "OTP";
         this.hideOtpPopUp = false;
         this.contactNumber = this.inputData.contactNumber;
-        this.countryCodeSelected = this.inputData.countryCodeSelected;
+        // this.countryCodeSelected = this.inputData.countryCodeSelected;
         this.hideMobCharacter(this.inputData.contactNumber);
         this.imageName = 'assets/verify-number/otp.png';
       }else if(screen == 'forgotpassword'){

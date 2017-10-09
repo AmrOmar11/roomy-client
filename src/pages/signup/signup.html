@@ -17,40 +17,42 @@ Ionic pages and navigation.
                     What's your name?
                 </ion-label>
             </ion-row>
-            <ion-row class='names-row'>
-                <ion-item>
-                    <ion-label floating>FIRST NAME</ion-label>
-                    <ion-input>
-                    </ion-input>
-                </ion-item>
-            </ion-row>
-            <ion-row class='names-row'>
-                <ion-item>
-                    <ion-label floating>LAST NAME</ion-label>
-                    <ion-input>
-                    </ion-input>
-                </ion-item>
-            </ion-row>
-            <ion-row class='gender-row'>
-                <ion-label>GENDER (Optional)</ion-label>
-            </ion-row>
-            <ion-row class='gender-images-row'>
-                <ion-col col-2>
-                    <div class="male">
-                        <img src='assets/signup/male.png' class="gender-img">
+            <form [formGroup]="namesForm" ng-submit="namesGoClicked()">
+                <ion-row class='names-row'>
+                    <ion-item>
+                        <ion-label floating>FIRST NAME</ion-label>
+                        <ion-input type="text" [class.invalid]="!namesForm.controls.firstName.valid && (namesForm.controls.firstName.dirty || registerAttempt)" formControlName="firstName" name="firstName" [(ngModel)]="signUpData.firstName">
+                        </ion-input>
+                    </ion-item>
+                </ion-row>
+                <ion-row class='names-row'>
+                    <ion-item>
+                        <ion-label floating>LAST NAME</ion-label>
+                        <ion-input type="text" [class.invalid]="!namesForm.controls.lastName.valid && (namesForm.controls.lastName.dirty || registerAttempt)" formControlName="lastName" name="lastName" [(ngModel)]="signUpData.lastName">
+                        </ion-input>
+                    </ion-item>
+                </ion-row>
+                <ion-row class='gender-row'>
+                    <ion-label>GENDER (Optional)</ion-label>
+                </ion-row>
+                <ion-row class='gender-images-row'>
+                    <ion-col col-2>
+                        <div class="male">
+                            <img src='assets/signup/male.png' class="gender-img">
+                        </div>
+                    </ion-col>
+                    <ion-col col-2>
+                        <div class="female">
+                            <img src='assets/signup/female.png' class="gender-img">
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="go-row" (click)="namesGoClicked()">
+                    <div class="go-btn">
+                        <img src='assets/signup/go.png' class="go-img">
                     </div>
-                </ion-col>
-                <ion-col col-2>
-                    <div class="female">
-                        <img src='assets/signup/female.png' class="gender-img">
-                    </div>
-                </ion-col>
-            </ion-row>
-            <ion-row class="go-row" (click)="goClicked()">
-                <div class="go-btn">
-                    <img src='assets/signup/go.png' class="go-img">
-                </div>
-            </ion-row>
+                </ion-row>
+            </form>
         </ion-slide>
         
         <ion-slide class='email-slide'>
@@ -59,25 +61,27 @@ Ionic pages and navigation.
                     What's is your email?
                 </ion-label>
             </ion-row>
-            <ion-row class='names-row'>
-                <ion-item>
-                    <ion-label floating>EMAIL</ion-label>
-                    <ion-input>
-                    </ion-input>
-                </ion-item>
-            </ion-row>
-            <ion-row class='names-row'>
-                <ion-item>
-                    <ion-label floating>DATE OF BIRTH</ion-label>
-                    <ion-input>
-                    </ion-input>
-                </ion-item>
-            </ion-row>
-            <ion-row class="go-row" (click)="goClicked()">
-                <div class="go-btn">
-                    <img src='assets/signup/go.png' class="go-img">
-                </div>
-            </ion-row>
+            <form [formGroup]="emailForm" ng-submit="emailGoClicked()">
+                <ion-row class='names-row'>
+                    <ion-item>
+                        <ion-label floating>EMAIL</ion-label>
+                        <ion-input type="text" [class.invalid]="!emailForm.controls.emailId.valid && (emailForm.controls.emailId.dirty || registerAttempt)" formControlName="emailId" name="emailId" [(ngModel)]="signUpData.emailId">
+                        </ion-input>
+                    </ion-item>
+                </ion-row>
+                <ion-row class='names-row'>
+                    <ion-item>
+                        <ion-label floating>DATE OF BIRTH</ion-label>
+                        <ion-input>
+                        </ion-input>
+                    </ion-item>
+                </ion-row>
+                <ion-row class="go-row" (click)="emailGoClicked()">
+                    <div class="go-btn">
+                        <img src='assets/signup/go.png' class="go-img">
+                    </div>
+                </ion-row>
+            </form>
         </ion-slide>
 
         <ion-slide class='mobile-slide'>
@@ -86,21 +90,23 @@ Ionic pages and navigation.
                     What's is your mobile number
                 </ion-label>
             </ion-row>
-            <ion-row class='mobile-row'>
-                <ion-col col-3 class='country-col'>
-                    <ion-label class='country-label'>+91
-                    </ion-label>
-                </ion-col>
-                <ion-col col-9 class='mobile-input'>
-                    <ion-input placeholder='Enter Mobile Number' type='number'> 
-                    </ion-input>
-                </ion-col>
-            </ion-row>
-            <ion-row class="go-row" (click)="goClicked()">
-                <div class="go-btn">
-                    <img src='assets/signup/go.png' class="go-img">
-                </div>
-            </ion-row>
+            <form [formGroup]="mobileForm" ng-submit="mobileGoClicked()">
+                <ion-row class='mobile-row'>
+                    <ion-col col-3 class='country-col'>
+                        <ion-label class='country-label'>+91
+                        </ion-label>
+                    </ion-col>
+                    <ion-col col-9 class='mobile-input'>
+                        <ion-input placeholder='Enter Mobile Number' type='number'[class.invalid]="!mobileForm.controls.contactNumber.valid && (mobileForm.controls.contactNumber.dirty || registerAttempt)" formControlName="contactNumber" name="contactNumber" [(ngModel)]="contactNumber"> 
+                        </ion-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="go-row" (click)="mobileGoClicked()">
+                    <div class="go-btn">
+                        <img src='assets/signup/go.png' class="go-img">
+                    </div>
+                </ion-row>
+            </form>
         </ion-slide>
         <ion-slide class='otp-slide'>
             <ion-row class='info-row'>
@@ -158,18 +164,20 @@ Ionic pages and navigation.
                     Choose a password for this account
                 </ion-label>
             </ion-row>
-            <ion-row class='names-row'>
-                <ion-item>
-                    <ion-label floating>PASSWORD</ion-label>
-                    <ion-input>
-                    </ion-input>
-                </ion-item>
-            </ion-row>
-            <ion-row class="go-row" (click)="goClicked()">
-                <div class="go-btn">
-                    <img src='assets/signup/go.png' class="go-img">
-                </div>
-            </ion-row>
+            <form [formGroup]="passwordForm" ng-submit="passwordGoClicked()">
+                <ion-row class='names-row'>
+                    <ion-item>
+                        <ion-label floating>PASSWORD</ion-label>
+                        <ion-input type="password" [class.invalid]="!passwordForm.controls.password.valid && (passwordForm.controls.password.dirty || registerAttempt)" formControlName="password" name="password" [(ngModel)]="signUpData.password">
+                        </ion-input>
+                    </ion-item>
+                </ion-row>
+                <ion-row class="go-row" (click)="passwordGoClicked()">
+                    <div class="go-btn">
+                        <img src='assets/signup/go.png' class="go-img">
+                    </div>
+                </ion-row>
+            </form>
         </ion-slide>
     </ion-slides>
 </ion-content>
