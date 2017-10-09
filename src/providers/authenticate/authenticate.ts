@@ -93,7 +93,6 @@ export class AuthenticateProvider {
     var env = this;
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/userRegistration',body,options).map(res => {
-      //console.log('authenticate:login:res:',res.json());
       env.hideLoading();
       return res.json();
     })
