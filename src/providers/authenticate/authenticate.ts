@@ -90,10 +90,11 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     //console.log('authenticate:login:req:',inputData);
+    var env = this;
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/userRegistration',body,options).map(res => {
       //console.log('authenticate:login:res:',res.json());
-      this.hideLoading();
+      env.hideLoading();
       return res.json();
     })
     .catch(this.handleError);
