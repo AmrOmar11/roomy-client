@@ -220,6 +220,20 @@ export class AuthenticateProvider {
     .catch(this.handleError);
   }
 
+  public mobileOrEmailExist(inputData) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(inputData);
+    //console.log('HotelsbyLocation:req:',inputData);
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/mobileOrEmailExist',body,options)
+    .map(res => {
+      //console.log('HotelsbyLocation:res:',res.json());
+      return res.json();
+    })
+    .catch(this.handleError);
+  }
+
   public handleError(error) {
     console.error(error);
     this.hideLoading();
