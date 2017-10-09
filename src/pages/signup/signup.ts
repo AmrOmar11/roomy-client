@@ -41,6 +41,14 @@ export class SignupPage {
         this.passwordForm = this.formBuilder.group({
             password: ['',Validators.compose([Validators.required]),'']
         });
+        this.otpForm = this.formBuilder.group({
+            number1: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number2: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number3: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number4: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number5: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number6: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),'']
+        });
 	}
 
 	ionViewDidLoad() {

@@ -155,26 +155,28 @@ Ionic pages and navigation.
             <ion-row class='resend-row'>
                 <ion-label>resend OTP</ion-label>
             </ion-row>
-            <ion-row class='otp-row'>
-                <ion-col col-2>
-                    <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1"></ion-input>
-                </ion-col>
-                <ion-col col-2>
-                    <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1"></ion-input>
-                </ion-col>
-                <ion-col col-2>
-                    <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1"></ion-input>
-                </ion-col>
-                <ion-col col-2>
-                    <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1"></ion-input>
-                </ion-col>
-                <ion-col col-2>
-                    <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1"></ion-input>
-                </ion-col>
-                <ion-col col-2>
-                    <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1"></ion-input>
-                </ion-col>
-            </ion-row>
+            <form [formGroup]="otpForm" ng-submit="otpSubmit()">
+                <ion-row class='otp-row'>                
+                    <ion-col col-2>
+                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number1.valid && (otpForm.controls.number1.dirty || registerAttempt)" formControlName="number1" name="number1" [(ngModel)]="number1"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number2.valid && (otpForm.controls.number2.dirty || registerAttempt)" formControlName="number2" name="number2" [(ngModel)]="number2"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number3.valid && (otpForm.controls.number3.dirty || registerAttempt)" formControlName="number3" name="number3" [(ngModel)]="number3"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number4.valid && (otpForm.controls.number4.dirty || registerAttempt)" formControlName="number4" name="number4" [(ngModel)]="number4"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number5.valid && (otpForm.controls.number5.dirty || registerAttempt)" formControlName="number5" name="number5" [(ngModel)]="number5"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number6.valid && (otpForm.controls.number6.dirty || registerAttempt)" formControlName="number6" name="number6" [(ngModel)]="number6"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </form>
             <ion-row class="go-row" (click)="otpSubmit()">
                 <div class="go-btn">
                     <img src='assets/signup/go.png' class="go-img">
