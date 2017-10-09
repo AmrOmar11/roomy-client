@@ -4,20 +4,23 @@ Generated template for the RegisterPage page.
 See http://ionicframework.com/docs/components/#navigation for more info on
 Ionic pages and navigation.
 -->
+<ion-header no-border>
+    <img src="assets/booking-info/close.png" class="pobyt-close" (click)="this.navCtrl.pop()">
+</ion-header>
 <ion-content>
     <ion-slides>
         <ion-slide class='mobile-slide'>
-            <ion-row class='welcome-row'>
-                <ion-label class='welcome-label'>
-                    Welcome to Pobyt.
-                </ion-label>
-            </ion-row>
-            <ion-row class='info-row'>
-                <ion-label class='info-label'>
-                    What's is your mobile number?
-                </ion-label>
-            </ion-row>
-            <form [formGroup]="mobileForm" ng-submit="mobileSubmit()">
+            <form [formGroup]="mobileForm" ng-submit="mobileSubmit()">            
+                <ion-row class='welcome-row'>
+                    <ion-label class='welcome-label'>
+                        Welcome to Pobyt.
+                    </ion-label>
+                </ion-row>
+                <ion-row class='info-row'>
+                    <ion-label class='info-label'>
+                        What's is your mobile number?
+                    </ion-label>
+                </ion-row>
                 <ion-row class='mobile-row'>
                     <ion-col col-3 class='country-col'>
                         <ion-label class='country-label'>+91
@@ -37,12 +40,12 @@ Ionic pages and navigation.
         </ion-slide>
         
         <ion-slide class='email-slide'>
-            <ion-row class='info-row'>
-                <ion-label class='info-label'>
-                    What's is your email?
-                </ion-label>
-            </ion-row>
             <form [formGroup]="emailForm" ng-submit="emailSubmit()">
+                <ion-row class='info-row'>
+                    <ion-label class='info-label'>
+                        What's is your email?
+                    </ion-label>
+                </ion-row>            
                 <ion-row class='names-row'>
                     <ion-item>
                         <ion-label floating>EMAIL</ion-label>
@@ -66,12 +69,12 @@ Ionic pages and navigation.
         </ion-slide>
         
         <ion-slide class='names-slide'>            
-            <ion-row class='info-row'>
-                <ion-label class='info-label'>
-                    What's your name?
-                </ion-label>
-            </ion-row>
             <form [formGroup]="namesForm" ng-submit="namesSubmit()">
+                <ion-row class='info-row'>
+                    <ion-label class='info-label'>
+                        What's your name?
+                    </ion-label>
+                </ion-row>            
                 <ion-row class='names-row'>
                     <ion-item>
                         <ion-label floating>FIRST NAME</ion-label>
@@ -110,17 +113,17 @@ Ionic pages and navigation.
         </ion-slide>
 
         <ion-slide class='password-slide'>
-            <ion-row class='welcome-row'>
-                <ion-label class='welcome-label'>
-                    Almost done.
-                </ion-label>
-            </ion-row>
-            <ion-row class='info-row'>
-                <ion-label class='info-label'>
-                    Choose a password for this account
-                </ion-label>
-            </ion-row>
             <form [formGroup]="passwordForm" ng-submit="passwordSubmit()">
+                <ion-row class='welcome-row'>
+                    <ion-label class='welcome-label'>
+                        Almost done.
+                    </ion-label>
+                </ion-row>
+                <ion-row class='info-row'>
+                    <ion-label class='info-label'>
+                        Choose a password for this account
+                    </ion-label>
+                </ion-row>            
                 <ion-row class='names-row'>
                     <ion-item>
                         <ion-label floating>PASSWORD</ion-label>
@@ -137,51 +140,51 @@ Ionic pages and navigation.
         </ion-slide>
         
         <ion-slide class='otp-slide'>
-            <ion-row class='info-row'>
-                <ion-label class='info-label'>
-                    Verify your number
-                </ion-label>
-            </ion-row>
-            <ion-row class='mobile-row'>
-                <ion-col col-3 class='country-col'>
-                    <ion-label class='country-label'>+91
-                    </ion-label>
-                </ion-col>
-                <ion-col col-9 class='mobile-input'>
-                    <ion-label>9700008822 
-                    </ion-label>
-                </ion-col>
-            </ion-row>
-            <ion-row class='resend-row'>
-                <ion-label>resend OTP</ion-label>
-            </ion-row>
             <form [formGroup]="otpForm" ng-submit="otpSubmit()">
-                <ion-row class='otp-row'>                
-                    <ion-col col-2>
-                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number1.valid && (otpForm.controls.number1.dirty || registerAttempt)" formControlName="number1" name="number1" [(ngModel)]="number1"></ion-input>
+                <ion-row class='info-row'>
+                    <ion-label class='info-label'>
+                        Verify your number
+                    </ion-label>
+                </ion-row>
+                <ion-row class='mobile-row'>
+                    <ion-col col-3 class='country-col'>
+                        <ion-label class='country-label'>+91
+                        </ion-label>
                     </ion-col>
-                    <ion-col col-2>
-                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number2.valid && (otpForm.controls.number2.dirty || registerAttempt)" formControlName="number2" name="number2" [(ngModel)]="number2"></ion-input>
-                    </ion-col>
-                    <ion-col col-2>
-                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number3.valid && (otpForm.controls.number3.dirty || registerAttempt)" formControlName="number3" name="number3" [(ngModel)]="number3"></ion-input>
-                    </ion-col>
-                    <ion-col col-2>
-                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number4.valid && (otpForm.controls.number4.dirty || registerAttempt)" formControlName="number4" name="number4" [(ngModel)]="number4"></ion-input>
-                    </ion-col>
-                    <ion-col col-2>
-                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number5.valid && (otpForm.controls.number5.dirty || registerAttempt)" formControlName="number5" name="number5" [(ngModel)]="number5"></ion-input>
-                    </ion-col>
-                    <ion-col col-2>
-                        <ion-input class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number6.valid && (otpForm.controls.number6.dirty || registerAttempt)" formControlName="number6" name="number6" [(ngModel)]="number6"></ion-input>
+                    <ion-col col-9 class='mobile-input'>
+                        <ion-label>{{contactNumber}} 
+                        </ion-label>
                     </ion-col>
                 </ion-row>
+                <ion-row class='resend-row'>
+                    <ion-label>resend OTP</ion-label>
+                </ion-row>            
+                <ion-row class='otp-row'>                
+                    <ion-col col-2>
+                        <ion-input #otp1 class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number1.valid && (otpForm.controls.number1.dirty || registerAttempt)" formControlName="number1" name="number1" [(ngModel)]="items[0]"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input #otp2 class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number2.valid && (otpForm.controls.number2.dirty || registerAttempt)" formControlName="number2" name="number2" [(ngModel)]="items[1]"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input #otp3 class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number3.valid && (otpForm.controls.number3.dirty || registerAttempt)" formControlName="number3" name="number3" [(ngModel)]="items[2]"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input #otp4 class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number4.valid && (otpForm.controls.number4.dirty || registerAttempt)" formControlName="number4" name="number4" [(ngModel)]="items[3]"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input #otp5 class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number5.valid && (otpForm.controls.number5.dirty || registerAttempt)" formControlName="number5" name="number5" [(ngModel)]="items[4]"></ion-input>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-input #otp6 class='otp-input' type='tel' pattern="[0-9]*" minlength="1" maxlength="1" [class.invalid]="!otpForm.controls.number6.valid && (otpForm.controls.number6.dirty || registerAttempt)" formControlName="number6" name="number6" [(ngModel)]="items[5]"></ion-input>
+                    </ion-col>
+                </ion-row>            
+                <ion-row class="go-row" (click)="otpSubmit()">
+                    <div class="go-btn">
+                        <img src='assets/signup/go.png' class="go-img">
+                    </div>
+                </ion-row>
             </form>
-            <ion-row class="go-row" (click)="otpSubmit()">
-                <div class="go-btn">
-                    <img src='assets/signup/go.png' class="go-img">
-                </div>
-            </ion-row>
         </ion-slide>
 
     </ion-slides>
