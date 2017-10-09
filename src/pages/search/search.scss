@@ -8,33 +8,43 @@ search {
     }
     .searchbar{
     	border:0px !important;
-    	background:#0CA39E !important;
-    	margin-top:10px;
-    	box-shadow: inset 0px 3px 10px #888, 0px 3px 10px #888;
-    }
-    .searchbar .searchbar-input{
-    	color:#fff;
-    	background:#0CA39E !important;
-    }
-    .searchbar .searchbar-input::placeholder{
-    	color:#fff;
-    }
-    .searchbar .searchbar-search-icon{
-    	background-image:url(../assets/map/seearch_icon.png);
-    }
-    .searchbar .searchbar-clear-icon{
-        width: 15px;
-        background-size: 15px;
-    	background-image:url(../assets/booking-info/close.png);	
+    	background:#fff !important;
+    	margin-top:10px !important;
+    	box-shadow: 0 1pt 5pt 0 rgba(0,0,0,0.5);
+        min-height: 60px;    
+        .searchbar-input{
+            color:rgb(93,93,93);
+        	font-weight:600;
+            box-shadow:none !important;
+            font-size:3vmax;
+        }
+        .searchbar-input::placeholder{
+            color:rgb(93,93,93);
+            font-weight:600;
+        }
+        .searchbar-search-icon{
+            height:18px;
+        	background-image:url(../assets/map/search.png);
+        }
+        .searchbar-clear-icon{
+            width: 15px;
+            background-size: 15px;
+        	background-image:url(../assets/map/cross.png);	
+        }
     }
 
     .defined-places-list{
-    	margin: 0 20px;
-    	color: #fff;
+        background:#EBF8F8 !important;
+        .recentText{
+            color:rgb(93,93,93);
+            padding: 10px 0 10px 10px;
+            font-size: 1.8vmax;
+            font-weight: 600;
+        }
     }
     .near-me{
     	margin-top:5%;
-    	border-top:2px solid rgba(255,255,255,0.4);
+    	//border-top:2px solid rgba(255,255,255,0.4);
     	.icon{
     		display:inline-block;
     	}
@@ -43,35 +53,53 @@ search {
     	}
     }
     .defined-place{
-    	padding:10px;
-    	border-bottom:2px solid rgba(255,255,255,0.4);
+    	padding:15px 10px;
+        margin:0 10px;
+    	border-bottom: 0.55px solid #c8c7cc;
+        ion-icon{
+            color: #61B1AE;
+            margin-right:10px !important;
+        }
+        font-size: 2vmax;
+        color: #5d5d5d;
+    }
+    .defined-place:last-child{
+        border:0px;
     }
     .place-name{
-	    font-size: 3vmax;
-	    font-weight: 600;
+        display:inline-block;
     }
     .place-subtext{
     	font-size: 2vmax;
     }
-    .item{
-    	padding:0 16px !important;
+    ion-list{
+        margin-top: 10px !important;
+    }
+    .list{
+        margin:0px;
     }
     .header .toolbar:last-child .toolbar-background{
     	border:0px !important;
     }
-    .searchbar-md .searchbar-input{
-    	box-shadow:none !important;
-    }
     .scroll-content{
     	background:#61B1AE !important;
     	ion-item{
-    		background:#61B1AE !important;
-    		color:#fff;
+    		background:#EBF8F8 !important;
+            padding:0 16px !important;
     		font-size:2.5vmax;
     		border:0px !important;
-    	}
+            .item-inner{
+                ion-label{
+                    font-size: 2vmax;
+                    ion-icon{
+                        color: #61B1AE;
+                        margin-right:10px !important;
+                    }
+                }
+            }
+        }
     	.item-inner{
-    		border-bottom: 2px solid rgba(255,255,255,0.4) !important;    	
+    		//border-bottom: 2px solid rgba(255,255,255,0.4) !important;    	
     	}
     }
 }
