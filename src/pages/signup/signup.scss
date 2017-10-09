@@ -1,4 +1,5 @@
 page-signup {
+    height:100%;
 	.scroll-content { padding-bottom: 0!important; }
     .slide-zoom{
         width:100%;
@@ -110,5 +111,10 @@ page-signup {
     .resend-row{
         text-align: right;
         margin-right: 3vmax !important;
+    }
+    .pobyt-close{
+        margin:5%;
+        width:5%;
+        background-color: black;
     }
 }
