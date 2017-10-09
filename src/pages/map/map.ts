@@ -34,13 +34,13 @@ export class MapPage implements OnInit{
     },
     hotel:{
       url: "assets/map/hotel_marker.png", // url
-      scaledSize: new google.maps.Size(32, 32), // scaled size
+      scaledSize: new google.maps.Size(26, 26), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     },
     selectedHotel:{
       url: "assets/map/selected_hotel_marker.png", // url
-      scaledSize: new google.maps.Size(40, 40), // scaled size
+      scaledSize: new google.maps.Size(32, 32), // scaled size
       origin: new google.maps.Point(0,0), // origin
       anchor: new google.maps.Point(0, 0) // anchor
     }

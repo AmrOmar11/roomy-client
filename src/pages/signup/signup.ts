@@ -23,6 +23,8 @@ export class SignupPage {
     public otpForm:FormGroup;
 	public signUpData:UserRequest;
 	public contactNumber:any;
+    public countryCodeSelected = "+91";
+    private items = ['','','','','',''];
 	constructor(public navCtrl: NavController,
 	 	public navParams: NavParams,
         public formBuilder: FormBuilder,
@@ -57,50 +59,46 @@ export class SignupPage {
 	}
 	
     mobileSubmit(){
-        this.goClicked();
         if(this.mobileForm.valid){
-            this.authProvider.mobileOrEmailExist(this.signUpData).subscribe(success => {
-                if((success.status !== undefined)&&(success.status == '0001')) {
+            // this.authProvider.mobileOrEmailExist(this.signUpData).subscribe(success => {
+            //     if((success.status !== undefined)&&(success.status == '0001')) {
                     this.goClicked();
-                }else {
-                    this.authProvider.showError(success.status);
-                }
-            },
-            error => {
-                this.authProvider.showError(error);
-            });
+            //     }else {
+            //         this.authProvider.showError(success.status);
+            //     }
+            // },
+            // error => {
+            //     this.authProvider.showError(error);
+            // });
         }
     }
 	
 	emailSubmit(){
-		this.goClicked();
 		if(this.emailForm.valid){
-            this.authProvider.mobileOrEmailExist(this.signUpData).subscribe(success => {
-                if((success.status !== undefined)&&(success.status == '0001')) {
+            // this.authProvider.mobileOrEmailExist(this.signUpData).subscribe(success => {
+            //     if((success.status !== undefined)&&(success.status == '0001')) {
                     this.goClicked();
-                }else {
-                    this.authProvider.showError(success.status);
-                }
-            },
-            error => {
-                this.authProvider.showError(error);
-            });
+            //     }else {
+            //         this.authProvider.showError(success.status);
+            //     }
+            // },
+            // error => {
+            //     this.authProvider.showError(error);
+            // });
         }
 	}
     
     namesSubmit(){
-        this.goClicked();
         if(this.namesForm.valid){
             this.goClicked();
         }
     }
 	
 	passwordSubmit(){
-        this.goClicked();
     	if(this.passwordForm.valid){
             this.signUpData.action = 'SIGNUP';
             this.signUpData.loginType = 'APP';
-            // this.signUpData.contactNumber = this.countryCodeSelected + this.contactNumber;
+            this.signUpData.contactNumber =  this.countryCodeSelected+this.contactNumber;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
                     this.signUpData.action ='OTP';
@@ -120,9 +118,14 @@ export class SignupPage {
 	
 	otpSubmit(){
 		if(this.otpForm.valid){
-            this.signUpData.action = 'SIGNUP';
-            this.signUpData.loginType = 'APP';
-            // this.signUpData.contactNumber = this.countryCodeSelected + this.contactNumber;
+            var otp = '';
+            for(var item in this.items){
+              otp = otp + this.items[item];
+            }
+            this.signUpData.otp = parseInt(otp);
+            this.signUpData.action = 'OTP';
+            this.signUpData.loginType = 'APP';            
+            this.signUpData.contactNumber = this.countryCodeSelected+this.contactNumber;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0001')) {
                     this.authProvider.setCurrentUser(success);

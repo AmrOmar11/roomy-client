@@ -9,16 +9,15 @@ Ionic pages and navigation.
     <div class='login-header'>
         <img class="logo" src="assets/login/logo.png" />
     </div>
-    <div class="login-box">
+    <form [formGroup]="loginForm" ng-submit="SignIn()" class="login-box">
         <ion-row>
-            <ion-col>
-                <ion-label class='login-label'>Login</ion-label>
+            <ion-col class='login-label'>
+                <ion-label>Login</ion-label>
             </ion-col>
-            <ion-col>
-                <ion-label class='signup-label' (click)="SignUp()">New user? Signup here.</ion-label>
+            <ion-col class='signup-label'>
+                <ion-label (click)="SignUp()">New user? Signup here.</ion-label>
             </ion-col>
         </ion-row>
-        <form [formGroup]="loginForm" ng-submit="SignIn()">
         <ion-row class='mobile-label'>
             <ion-col>
                 <ion-item>
@@ -47,11 +46,10 @@ Ionic pages and navigation.
                 </button>
             </ion-col>
         </ion-row>
-        </form>
         <ion-row>
             <ion-label class='continue-label'>- - Continue with - -</ion-label>
         </ion-row>
-        <ion-row class="social">
+        <ion-row>
             <ion-col class='google-label'>
                 <img src='assets/login/google.png' (click)="doGoogleLogin()">
             </ion-col>
@@ -59,7 +57,7 @@ Ionic pages and navigation.
                 <img  src='assets/login/facebook.png' (click)="doFacebookLogin()">
             </ion-col>
         </ion-row>
-    </div>
+    </form>
     <ion-row class='terms-label'>
         <ion-label>
             Terms of use.Privacy policy
