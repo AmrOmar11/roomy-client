@@ -20,11 +20,13 @@ export class SignupPage {
 	public emailForm:FormGroup;
 	public mobileForm:FormGroup;
 	public passwordForm:FormGroup;
+    public otpForm:FormGroup;
 	public signUpData:UserRequest;
 	public contactNumber:any;
 	constructor(public navCtrl: NavController,
 	 	public navParams: NavParams,
-        public formBuilder: FormBuilder) {
+        public formBuilder: FormBuilder,
+        private authProvider: AuthenticateProvider) {
 		this.signUpData = new UserRequest();
 		this.namesForm = this.formBuilder.group({
             firstName: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
@@ -39,25 +41,103 @@ export class SignupPage {
         this.passwordForm = this.formBuilder.group({
             password: ['',Validators.compose([Validators.required]),'']
         });
+        this.otpForm = this.formBuilder.group({
+            number1: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number2: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number3: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number4: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number5: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
+            number6: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),'']
+        });
 	}
 
 	ionViewDidLoad() {
+        this.slides.lockSwipes(true);
 		console.log('ionViewDidLoad SignupPage');
 	}
 	
-	namesGoClicked(){
+    mobileSubmit(){
+        this.goClicked();
+        if(this.mobileForm.valid){
+            this.authProvider.mobileOrEmailExist(this.signUpData).subscribe(success => {
+                if((success.status !== undefined)&&(success.status == '0001')) {
+                    this.goClicked();
+                }else {
+                    this.authProvider.showError(success.status);
+                }
+            },
+            error => {
+                this.authProvider.showError(error);
+            });
+        }
+    }
+	
+	emailSubmit(){
 		this.goClicked();
+		if(this.emailForm.valid){
+            this.authProvider.mobileOrEmailExist(this.signUpData).subscribe(success => {
+                if((success.status !== undefined)&&(success.status == '0001')) {
+                    this.goClicked();
+                }else {
+                    this.authProvider.showError(success.status);
+                }
+            },
+            error => {
+                this.authProvider.showError(error);
+            });
+        }
+	}
+    
+    namesSubmit(){
+        this.goClicked();
+        if(this.namesForm.valid){
+            this.goClicked();
+        }
+    }
+	
+	passwordSubmit(){
+        this.goClicked();
+    	if(this.passwordForm.valid){
+            this.signUpData.action = 'SIGNUP';
+            this.signUpData.loginType = 'APP';
+            // this.signUpData.contactNumber = this.countryCodeSelected + this.contactNumber;
+            this.authProvider.login(this.signUpData).subscribe(success => {
+                if((success.status !== undefined)&&(success.status == '0009')) {
+                    this.signUpData.action ='OTP';
+                    this.signUpData.customerToken = success.jwtToken;
+                    this.signUpData.userId = success.result.userId;
+                    this.signUpData.contactNumber = success.result.contactNumber;
+                    this.goClicked();
+                }else {
+                    this.authProvider.showError(success.status);
+                }
+            },
+            error => {
+                this.authProvider.showError(error);
+            });
+        }
 	}
 	
-	emailGoClicked(){
-		this.goClicked();
+	otpSubmit(){
+		if(this.otpForm.valid){
+            this.signUpData.action = 'SIGNUP';
+            this.signUpData.loginType = 'APP';
+            // this.signUpData.contactNumber = this.countryCodeSelected + this.contactNumber;
+            this.authProvider.login(this.signUpData).subscribe(success => {
+                if((success.status !== undefined)&&(success.status == '0001')) {
+                    this.authProvider.setCurrentUser(success);
+                    this.authProvider.setUserData(success);
+                    this.navCtrl.setRoot('HomePage');
+                }else {
+                    this.authProvider.showError(success.status);
+                }
+            },
+            error => {
+                this.authProvider.showError(error);
+            });
+        }	
 	}
-	mobileGoClicked(){
-		this.goClicked();
-	}
-	passwordGoClicked(){
-		this.goClicked();	
-	}
+
 	goClicked(){
 	    this.slides.lockSwipeToNext(false);
 	    this.slides.slideNext();
