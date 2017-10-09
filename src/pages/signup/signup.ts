@@ -20,6 +20,7 @@ export class SignupPage {
 	public emailForm:FormGroup;
 	public mobileForm:FormGroup;
 	public passwordForm:FormGroup;
+    public otpForm:FormGroup;
 	public signUpData:UserRequest;
 	public contactNumber:any;
 	constructor(public navCtrl: NavController,
@@ -109,16 +110,15 @@ export class SignupPage {
 	}
 	
 	otpSubmit(){
-		if(this.passwordForm.valid){
+		if(this.otpForm.valid){
             this.signUpData.action = 'SIGNUP';
             this.signUpData.loginType = 'APP';
             // this.signUpData.contactNumber = this.countryCodeSelected + this.contactNumber;
             this.authProvider.login(this.signUpData).subscribe(success => {
-                if((success.status !== undefined)&&(success.status == '0009')) {
-                    this.signUpData.action ='OTP';
-                    this.signUpData.customerToken = success.jwtToken;
-                    this.signUpData.userId = success.result.userId;
-                    this.signUpData.contactNumber = success.result.contactNumber;
+                if((success.status !== undefined)&&(success.status == '0001')) {
+                    this.authProvider.setCurrentUser(success);
+                    this.authProvider.setUserData(success);
+                    this.navCtrl.setRoot('HomePage');
                 }else {
                     this.authProvider.showError(success.status);
                 }
