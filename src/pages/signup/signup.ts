@@ -52,6 +52,7 @@ export class SignupPage {
 	}
 
 	ionViewDidLoad() {
+        this.slides.lockSwipes(true);
 		console.log('ionViewDidLoad SignupPage');
 	}
 	
