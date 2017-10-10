@@ -70,18 +70,12 @@ export class ForgotPasswordPage {
                 }                
             }else if((success.status !== undefined)&&(success.status == '0009')) {
                 this.showOtpPoup(success);
-            }else if((success.status !== undefined)&&(success.status == '0013')) {
-                this.authProvider.showError("User not found");
-            }else if((success.status !== undefined)&&(success.status == '0007')) {
-                this.authProvider.showError("OTP Does not match");
-            }else if((success.status !== undefined)&&(success.status == '0008')) {
-                this.authProvider.showError("OTP Expired");
             }else {
-                this.authProvider.showError(success.status);
+                this.authProvider.showError(success.statusMessage);
             }
         },
         error => {
-            this.authProvider.showError("Service Error");
+            this.authProvider.showError("Service Error. Please try again!");
         });        
     }
 
@@ -117,9 +111,9 @@ export class ForgotPasswordPage {
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
             }else if((success.status !== undefined)&&(success.status == '0005')) {
-                this.authProvider.showError('Invalid Credentials');
+                this.authProvider.showError(success.statusMessage);
             }else {
-                this.authProvider.showError('error');
+                this.authProvider.showError('Service error. Please try again!');
             }
         },
         error => {

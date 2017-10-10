@@ -63,12 +63,8 @@ export class RegisterPage {
                     this.signUpData.userId = success.result.userId;
                     this.signUpData.contactNumber = success.result.contactNumber;
                     this.navCtrl.push('VerifyNumberPage',{'inputData':this.signUpData,'screen':'otp'});
-                }else if((success.status !== undefined)&&(success.status == '0002')){
-                    this.authProvider.showError('Mobile Numer already exis');
-                }else if((success.status !== undefined)&&(success.status == '0003')){
-                    this.authProvider.showError('Email ID already exit');
-                } else {
-                    this.authProvider.showError(success.status);
+                }else {
+                    this.authProvider.showError(success.statusMessage);
                 }
             },
             error => {
@@ -83,12 +79,8 @@ export class RegisterPage {
                 this.authProvider.setCurrentUser(success);
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
-            }else if((success.status !== undefined)&&(success.status == '0007')){
-                this.authProvider.showError('OTP does not match');
-            }else if((success.status !== undefined)&&(success.status == '0008')){
-                this.authProvider.showError('OTP Expried');
             }else{
-                this.authProvider.showError(success.status);
+                this.authProvider.showError(success.statusMessage);
             }
         },
         error => {

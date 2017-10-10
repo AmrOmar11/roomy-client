@@ -105,12 +105,10 @@ export class LoginPage {
                 this.authProvider.setCurrentUser(success);
                 this.authProvider.setUserData(success);
                 this.navCtrl.setRoot('HomePage');
-            }else if((success.status !== undefined)&&(success.status == '0005')) {
-                this.authProvider.showError('Invalid Credentials');
             }else if((success.status !== undefined)&&(success.status == '0013')) {
                 if(inputData.loginType == 'APP'){
                     this.authProvider.hideLoading();
-                    this.authProvider.showError(success.status);
+                    this.authProvider.showError(success.statusMessage);
                 }else{
                     inputData.action ='SIGNUP';
                     this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'mobile'});   
@@ -121,7 +119,7 @@ export class LoginPage {
                 inputData.userId = success.result.userId;
                 this.navCtrl.push('VerifyNumberPage',{'inputData':inputData,'screen':'otp'});
             }else {
-                this.authProvider.showError(success.status);
+                this.authProvider.showError(success.statusMessage);
             }
         },
         error => {

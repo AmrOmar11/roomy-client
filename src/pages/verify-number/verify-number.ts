@@ -108,7 +108,7 @@ export class VerifyNumberPage {
         this.inputData.action = 'SIGNUP';
         this.displayOTP(success);
       }else {
-        this.authProvider.showError(success.status);
+        this.authProvider.showError(success.statusMessage);
       }
     },
     error => {
@@ -140,7 +140,7 @@ export class VerifyNumberPage {
           this.inputData.password = this.password.value;
           this.verifyMobile(this.inputData);
       }else {
-        this.authProvider.showError(success.status);
+        this.authProvider.showError(success.statusMessage);
       }
     },
     error => {

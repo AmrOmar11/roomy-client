@@ -244,7 +244,7 @@ export class AuthenticateProvider {
 
   public showError(text) {
     let alert = this.alertCtrl.create({
-        title: 'Error',
+        title: 'Oops!',
         message: text,
         buttons: [
             {
