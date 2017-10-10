@@ -22,7 +22,7 @@ page-hotelinfo {
 		}
 	}
 	.h-info{
-        height : 20%;
+        height : 18%;
         background-color: white;
     }
 	.h-name{
@@ -34,7 +34,6 @@ page-hotelinfo {
     .h-address{
         font-size: 2.0vmax;
 	    font-weight: 500;
-	    margin-top: 1vmax;
 	    margin-left: 1vmax;
     }
     .h-distance{
@@ -45,25 +44,31 @@ page-hotelinfo {
         margin-right: 1vmax
     }
     .h-rating{
-    	margin-top: 1vmax;
 	    margin-left: 1vmax;
         width: 12vmax;
     }
-    .h-min-stay{
-		font-size: 1.3rem;
-        font-weight:600;
-        margin-top: 2vmax;
-	    margin-left: 1vmax;
-    }
-    .h-min-cost{
-    	float: right;
-    	font-size: 2.0vmax;
-		font-weight: 600;
-        margin-top: -2vmax;
-	    margin-right: 1vmax
-    }
-    .h-min-price,.h-min-hr{
-    	@include fontSize(1.7rem);
+    .h-stay-cost{
+        width:94%;
+        height:20%;
+        margin:0 10px;
+        padding-top:10px;
+        .h-min-stay{
+            float:left;
+            width:50%;
+            font-size: 2.3vmax;
+            .h-min-price,.h-min-hr{
+                font-weight:600;
+            }
+        }
+        .h-min-cost{
+            float:left;
+            text-align:right;
+            width:50%;
+            font-size: 2.3vmax;
+            .symbol,.hotel-priceMin,.price-diff,.minumum{
+                font-weight: 600;
+            }
+        }
     }
     .h-info-divider{
         border-bottom: 1px solid #C8C8C8;
