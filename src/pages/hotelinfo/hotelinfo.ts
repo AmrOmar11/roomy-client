@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage,NavParams,NavController,AlertController } from 'ionic-angular';
+import { IonicPage,NavParams,NavController,AlertController, Events } from 'ionic-angular';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the HotelinfoPage page.
@@ -25,7 +25,7 @@ export class HotelinfoPage {
     page2: any = 'AmenitiesPage';
     page3: any = 'HotelPloicyPage';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private authProvider: AuthenticateProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private authProvider: AuthenticateProvider, public events: Events) {
       this.hotelInfo = this.navParams.get("hotelInfo");
       if(this.hotelInfo.minmumDurationPin <10){
           this.stayDuration = "0"+this.hotelInfo.minmumDurationPin+":00";
@@ -35,6 +35,9 @@ export class HotelinfoPage {
       this.minDuration = this.stayDuration;
       this.userInfo = this.authProvider.getUserInfo();
       this.calculatefare();
+      events.subscribe('PoliciesPage:open', () => {
+        this.navCtrl.push('PoliciesPage');
+      });
   }
 
   calculatefare(){
