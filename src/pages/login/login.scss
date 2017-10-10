@@ -1,5 +1,5 @@
 page-login {
-    .scroll-content { padding-bottom: 0!important; }
+    /*.scroll-content { padding-bottom: 0!important; }*/
     .login-header{
         height: 35%;
         background-color: rgb(38,207,198);
@@ -51,6 +51,9 @@ page-login {
         }
         .go{
             text-align:right;
+            padding: 0px !important;
+            margin-top: 1vmax !important;
+            margin-right: 2.5vmax !important;
             .go-label{                
                 margin-right: 2.0vmax;
                 background-color: rgb(55,55,55);
@@ -69,6 +72,8 @@ page-login {
             margin-left:4vmax;
             margin-right:1vmax;
             text-align:center;
+            padding: 0px !important;
+            padding-top: 1vmax !important;
             img{
                 width: 65%;
                 margin-top: 0.9vmax;
@@ -80,6 +85,8 @@ page-login {
             margin-right:4vmax;
             margin-left:1vmax;
             text-align:center;
+            padding: 0px !important;
+            padding-top: 1vmax !important;
             img{
                 width: 75%;
                 margin-top: 0.9vmax;

@@ -228,7 +228,7 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     //console.log('HotelsbyLocation:req:',inputData);
-    return this.http.post('http://pobyt-webapp.azurewebsites.net/mobileOrEmailExist',body,options)
+    return this.http.post('http://pobyt-webapp.azurewebsites.net/checkUserExistOrNot',body,options)
     .map(res => {
       //console.log('HotelsbyLocation:res:',res.json());
       return res.json();

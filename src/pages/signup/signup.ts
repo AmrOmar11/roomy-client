@@ -22,7 +22,6 @@ export class SignupPage {
 	public passwordForm:FormGroup;
     public otpForm:FormGroup;
 	public signUpData:UserRequest;
-	public contactNumber:any;
     public countryCode = "+91";
     private items = ['','','','','',''];
 	constructor(public navCtrl: NavController,
@@ -32,7 +31,8 @@ export class SignupPage {
 		this.signUpData = new UserRequest();
 		this.namesForm = this.formBuilder.group({
             firstName: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
-            lastName: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),'']
+            lastName: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
+            gender: ['',Validators.compose([Validators.required]),''],
         });
         this.emailForm = this.formBuilder.group({
             emailId: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'), Validators.required]),'']
@@ -60,31 +60,39 @@ export class SignupPage {
 	
     mobileSubmit(){
         if(this.mobileForm.valid){
-            // this.authProvider.mobileOrEmailExist(this.signUpData).subscribe(success => {
-            //     if((success.status !== undefined)&&(success.status == '0001')) {
+            let inputData = {
+                contactNumber:this.signUpData.contactNumber,
+                emailId:''
+            };
+            this.authProvider.mobileOrEmailExist(inputData).subscribe(success => {
+                if((success.status !== undefined)&&(success.status == '0001')) {
                     this.goClicked();
-            //     }else {
-            //         this.authProvider.showError(success.status);
-            //     }
-            // },
-            // error => {
-            //     this.authProvider.showError(error);
-            // });
+                }else {
+                    this.authProvider.showError(success.statusMessage);
+                }
+            },
+            error => {
+                this.authProvider.showError(error);
+            });
         }
     }
 	
 	emailSubmit(){
 		if(this.emailForm.valid){
-            // this.authProvider.mobileOrEmailExist(this.signUpData).subscribe(success => {
-            //     if((success.status !== undefined)&&(success.status == '0001')) {
+            let inputData = {
+                contactNumber:'',
+                emailId:this.signUpData.emailId
+            };
+            this.authProvider.mobileOrEmailExist(inputData).subscribe(success => {
+                if((success.status !== undefined)&&(success.status == '0001')) {
                     this.goClicked();
-            //     }else {
-            //         this.authProvider.showError(success.status);
-            //     }
-            // },
-            // error => {
-            //     this.authProvider.showError(error);
-            // });
+                }else {
+                    this.authProvider.showError(success.statusMessage);
+                }
+            },
+            error => {
+                this.authProvider.showError(error);
+            });
         }
 	}
     
@@ -99,16 +107,14 @@ export class SignupPage {
             this.signUpData.action = 'SIGNUP';
             this.signUpData.loginType = 'APP';
             this.signUpData.countryCode = this.countryCode;
-            this.signUpData.contactNumber =  this.contactNumber;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
                     this.signUpData.action ='OTP';
                     this.signUpData.customerToken = success.jwtToken;
                     this.signUpData.userId = success.result.userId;
-                    this.signUpData.contactNumber = success.result.contactNumber;
                     this.goClicked();
                 }else {
-                    this.authProvider.showError(success.status);
+                    this.authProvider.showError(success.statusMessage);
                 }
             },
             error => {
@@ -127,14 +133,13 @@ export class SignupPage {
             this.signUpData.action = 'OTP';
             this.signUpData.loginType = 'APP';
             this.signUpData.countryCode = this.countryCode;
-            this.signUpData.contactNumber = this.contactNumber;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0001')) {
                     this.authProvider.setCurrentUser(success);
                     this.authProvider.setUserData(success);
                     this.navCtrl.setRoot('HomePage');
                 }else {
-                    this.authProvider.showError(success.status);
+                    this.authProvider.showError(success.statusMessage);
                 }
             },
             error => {
@@ -148,4 +153,8 @@ export class SignupPage {
 	    this.slides.slideNext();
 	    this.slides.lockSwipeToNext(true);
 	}
+
+    next(el) {
+        el.setFocus();
+    }
 }
