@@ -27,19 +27,22 @@
       <div class="h-rating">
           <img src="assets/map/ratings.png">
       </div>
-      <div class="h-min-stay">
-          <span class="Hr">Minimum stay:</span>
-          <span class="h-min-price">{{hotelInfo.minmumDurationPin}} </span>
-          <span class="h-min-hr Hr">Hours</span>
+      <div class="h-stay-cost"> 
+        <div class="h-min-stay">
+            <span class="h-min-stay-text Hr">Minimum stay:</span>
+            <span class="h-min-price">{{hotelInfo.minmumDurationPin}} </span>
+            <span class="h-min-hr Hr">Hours</span>
+        </div>
+        <div class="h-min-cost">
+            <span class="cost">Cost:</span>
+            <span class="symbol">&#8377;</span>
+            <span class="hotel-priceMin">{{hotelInfo.pricePerMin}}
+            </span>
+            <span class="price-diff">/</span>
+            <span class="minumum">Minute</span>
+        </div>
       </div>
-      <div class="h-min-cost">
-          <span class="cost">Cost:</span>
-          <span class="symbol">&#8377;</span>
-          <span class="hotel-priceMin">{{hotelInfo.pricePerMin}}
-          </span>
-          <span class="price-diff">/</span>
-          <span class="minumum">Minute</span>
-      </div>
+      
   </div>
   <div class="h-info-divider"></div>
   <super-tabs scrollTabs="true">
