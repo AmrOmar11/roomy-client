@@ -98,7 +98,7 @@ export class AuthenticateProvider {
       env.hideLoading();
       return res.json();
     })
-    .catch(this.handleError);
+    .catch(this.handleError.bind(env));
   }
   
   public logout(inputData){
@@ -107,13 +107,14 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     //console.log('authenticate:logout:req:',inputData);
+    var env = this;
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/userLogout',body,options).map(res => {
       //console.log('authenticate:logout:res:',res.json());
       this.hideLoading();
       return res.json();
     })
-    .catch(this.handleError);
+    .catch(this.handleError.bind(env));
   }
 
   public forgotPassword(inputData){
@@ -122,13 +123,13 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     //console.log('authenticate:forgotPassword:req:',inputData);
-    this.showLoading();
+    var env = this;this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/forgetPassword',body,options).map(res => {
       //console.log('authenticate:forgotPassword:res:',res.json());
       this.hideLoading();
       return res.json();
     })
-    .catch(this.handleError);
+    .catch(this.handleError.bind(env));
   }
 
   public getUserInfo() : User {
@@ -180,7 +181,7 @@ export class AuthenticateProvider {
       customerToken: inputData.customerToken
     });
     //console.log('authenticate:profile-update:req',inputData);
-    this.showLoading();
+    var env = this;this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/updateProfile',body,options)
     .map(res => {
       //console.log('authenticate:profile-update:res',res.json());
@@ -188,7 +189,7 @@ export class AuthenticateProvider {
       this.hideLoading();
       return this.currentUser;
     })
-    .catch(this.handleError);
+    .catch(this.handleError.bind(env));
   }  
   
   public getHotels(inputData) {
@@ -197,6 +198,7 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     //console.log('HotelsbyLocation:req:',inputData);
+    var env = this;
     this.showLoading('Fetching Hotels...');
     return this.http.post('http://pobyt-webapp.azurewebsites.net/getHotelsbyLocation',body,options)
     .map(res => {
@@ -204,7 +206,7 @@ export class AuthenticateProvider {
       this.hideLoading();
       return res.json();
     })
-    .catch(this.handleError);
+    .catch(this.handleError.bind(env));
   }
 
   public getHotelDetails(inputData) {
@@ -213,13 +215,14 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     //console.log('HotelDetails:req:',inputData);
+    var env = this;
     this.showLoading('Fetching Hotel...');
     return this.http.post('http://pobyt-webapp.azurewebsites.net/getHotelDetails',body,options)
     .map(res => {
       //console.log('HotelDetails:res:',res.json());
       return res.json();
     })
-    .catch(this.handleError);
+    .catch(this.handleError.bind(env));
   }
 
   public mobileOrEmailExist(inputData) {
@@ -227,13 +230,15 @@ export class AuthenticateProvider {
     headers.append('Content-Type', 'application/json' );
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
+    var env = this;
+    this.showLoading('');
     //console.log('HotelsbyLocation:req:',inputData);
     return this.http.post('http://pobyt-webapp.azurewebsites.net/checkUserExistOrNot',body,options)
     .map(res => {
       //console.log('HotelsbyLocation:res:',res.json());
       return res.json();
     })
-    .catch(this.handleError);
+    .catch(this.handleError.bind(env));
   }
 
   public handleError(error) {
@@ -244,7 +249,7 @@ export class AuthenticateProvider {
 
   public showError(text) {
     let alert = this.alertCtrl.create({
-        title: 'Oops!',
+        title: ':( Oops!',
         message: text,
         buttons: [
             {
