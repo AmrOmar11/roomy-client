@@ -78,7 +78,7 @@ export class LoginPage {
     }
 
     SignUp() {
-        this.navCtrl.push('RegisterPage');
+        this.navCtrl.push('SignupPage');
     }
 
     SignIn() {

@@ -38,6 +38,7 @@ export class User {
 export class UserRequest {
   action: string;
   contactNumber: string;
+  countryCode : string;
   customerToken: string;
   dob: string;
   emailId: string;
@@ -53,6 +54,7 @@ export class UserRequest {
   constructor(){
     this.action = '';
     this.contactNumber = '';
+    this.countryCode = '';
     this.customerToken = '';
     this.dob = '';
     this.emailId = '';

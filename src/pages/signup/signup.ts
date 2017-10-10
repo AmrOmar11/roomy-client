@@ -23,7 +23,7 @@ export class SignupPage {
     public otpForm:FormGroup;
 	public signUpData:UserRequest;
 	public contactNumber:any;
-    public countryCodeSelected = "+91";
+    public countryCode = "+91";
     private items = ['','','','','',''];
 	constructor(public navCtrl: NavController,
 	 	public navParams: NavParams,
@@ -98,7 +98,8 @@ export class SignupPage {
     	if(this.passwordForm.valid){
             this.signUpData.action = 'SIGNUP';
             this.signUpData.loginType = 'APP';
-            this.signUpData.contactNumber =  this.countryCodeSelected+this.contactNumber;
+            this.signUpData.countryCode = this.countryCode;
+            this.signUpData.contactNumber =  this.contactNumber;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
                     this.signUpData.action ='OTP';
@@ -124,8 +125,9 @@ export class SignupPage {
             }
             this.signUpData.otp = parseInt(otp);
             this.signUpData.action = 'OTP';
-            this.signUpData.loginType = 'APP';            
-            this.signUpData.contactNumber = this.countryCodeSelected+this.contactNumber;
+            this.signUpData.loginType = 'APP';
+            this.signUpData.countryCode = this.countryCode;
+            this.signUpData.contactNumber = this.contactNumber;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0001')) {
                     this.authProvider.setCurrentUser(success);

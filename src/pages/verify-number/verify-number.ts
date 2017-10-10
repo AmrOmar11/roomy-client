@@ -25,7 +25,7 @@ export class VerifyNumberPage {
   private HiddenMobNum:any = '';
   private items = ['','','','','',''];
   public countryList;
-  public countryCodeSelected = "+91";
+  public countryCode = "+91";
   public contactNumber; 
   public listToggle= false;
   private imageName:string;
@@ -70,7 +70,7 @@ export class VerifyNumberPage {
         this.screenTitle = "OTP";
         this.hideOtpPopUp = false;
         this.contactNumber = this.inputData.contactNumber;
-        // this.countryCodeSelected = this.inputData.countryCodeSelected;
+        this.countryCode = this.inputData.countryCode;
         this.hideMobCharacter(this.inputData.contactNumber);
         this.imageName = 'assets/verify-number/otp.png';
       }else if(screen == 'forgotpassword'){
@@ -97,11 +97,8 @@ export class VerifyNumberPage {
   }
 
   private verifyMobile(inputData){
-    if(this.inputData.action == 'OTP'){
-      this.inputData.contactNumber =  this.contactNumber;
-    }else{
-      this.inputData.contactNumber =  this.countryCodeSelected + this.contactNumber;
-    }
+    this.inputData.contactNumber =  this.contactNumber;
+    this.inputData.countryCode =  this.countryCode;
     this.authProvider.login(inputData).subscribe(success => {      
       if((success.status !== undefined)&&(success.status == '0001')) {
         this.authProvider.setCurrentUser(success);
@@ -128,7 +125,8 @@ export class VerifyNumberPage {
   }
 
   private forgotPassword(inputData){
-    this.inputData.contactNumber =  this.countryCodeSelected + this.contactNumber; 
+    this.inputData.countryCode =  this.countryCode;
+    this.inputData.contactNumber =  this.contactNumber; 
     this.authProvider.forgotPassword(inputData).subscribe(success => {      
       if((success.status !== undefined)&&(success.status == '0001')) {
           this.hideMobilePopUp = true;
@@ -214,7 +212,7 @@ export class VerifyNumberPage {
       listElem[i].style.display = 'none';
     }
     countrySelected.style.display='block';
-    this.countryCodeSelected =  this.countryselected.countryCode;
+    this.countryCode =  this.countryselected.countryCode;
   }
 
 }
