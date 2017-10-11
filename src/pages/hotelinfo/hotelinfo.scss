@@ -82,7 +82,7 @@ page-hotelinfo {
     }
     super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-only .title{
     	font-weight:600;
-    	font-size: 1.20rem;
+    	font-size: 1.4rem;
     	text-transform: capitalize;
     }
     .buffer-info{
@@ -97,7 +97,6 @@ page-hotelinfo {
         background:#f9f7f7;
     }
 
-
     .header{
         background:none;
     }
@@ -107,6 +106,13 @@ page-hotelinfo {
     .pobyt-close{
         margin:5%;
         width:5%;
+    }
+    super-tab-button.selected .title{
+        text-decoration: underline !important;
+        text-decoration-color: rgb(6, 131, 125) !important;
+    }
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .indicator {
+      background-color: transparent !important;
     }
 }
 

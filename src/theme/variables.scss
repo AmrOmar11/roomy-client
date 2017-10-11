@@ -58,14 +58,21 @@ $theme-font:'Open Sans', sans-serif;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
+$label-ios-text-color:rgb(46,46,46);
+$label-ios-text-color-focused:black;
+$text-input-ios-highlight-color-valid: #47C3BD;
+$text-input-ios-highlight-color: #47C3BD;
+$text-input-ios-show-valid-highlight: #47C3BD;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$label-md-text-color:rgb(46,46,46);
+$label-md-text-color-focused:black;
+$text-input-md-highlight-color-valid: #47C3BD;
+$text-input-md-highlight-color: #47C3BD;
+$text-input-md-show-valid-highlight: #47C3BD;
 
 
 

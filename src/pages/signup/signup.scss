@@ -24,15 +24,6 @@ page-signup {
             font-size: 4vmax;
         }
     }
-    .mobile-slide{
-        .info-row{
-            margin-top:1vmax;
-        }
-        .info-label{
-            margin:0vmax !important;
-            font-size: 3vmax;
-        }
-    }
     .password-slide{
         .info-label{
             font-size: 2.8vmax;
@@ -60,8 +51,11 @@ page-signup {
                 padding:0 !important;
             }
         }
+        .segment-button{
+            border-color: rgb(71, 195, 189) !important;
+        }
         .male{
-            background-color: rgb(71,195,189);
+            background-color: rgb(216,216,216);
             width: 8vmax;
             height: 8vmax;
             margin-right: 1vmax;
@@ -90,7 +84,7 @@ page-signup {
         .country-flag{
             border-top-left-radius: 13px;
             border-bottom-left-radius: 13px;
-            padding-top: 3.0vmax !important;
+            padding-top: 2.0vmax !important;
             padding-left: 1vmax !important;
         }
         .country-arrow{
@@ -99,6 +93,17 @@ page-signup {
         }
         .country-label{
             padding-top: 0.5vmax !important;
+        }
+        .mobile-input{
+            .text-input{
+                padding:0vmax !important;
+                margin-top: 3vmax;
+            }
+            .label{
+                margin:3.0vmax 0 0 0 !important;
+                text-align: left;
+                padding-left: 2vmax;
+            }
         }
     }    
     .go-row{
@@ -143,4 +148,16 @@ page-signup {
     .hideselect {
         display: none;
     }
+    .mobile-slide{
+        .info-row{
+            margin-top:1vmax;
+        }
+        .info-label{
+            margin:0vmax !important;
+            font-size: 3vmax;
+        }
+        .country-flag{
+            padding-top: 3.0vmax !important;
+        }
+    }    
 }

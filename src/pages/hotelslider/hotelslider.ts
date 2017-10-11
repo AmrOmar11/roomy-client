@@ -52,7 +52,6 @@ export class HotelsliderPage {
 
     slideChanged(){
       let currentIndex = this.slides.getActiveIndex();
-      // let previousIndex = this.slides.getPreviousIndex();
       //console.log('slideChanged:',previousIndex,currentIndex);
       let length = this.slides.length();
       if(currentIndex < length){
@@ -65,8 +64,11 @@ export class HotelsliderPage {
         hotelId:hotelInfo.hotelId,
         customerToken : this.authProvider.getUserInfo().customerToken
       };
-      this.authProvider.getHotelDetails(inputData).subscribe(data => {
-          this.navCtrl.push('HotelinfoPage',{"hotelInfo":data.result} );
+      this.authProvider.getHotelDetails(inputData).subscribe(success => {
+          if((success.status !== undefined)&&(success.status == '0001')) {
+            success.result.distance = hotelInfo.distance;
+            this.navCtrl.push('HotelinfoPage',{"hotelInfo":success.result} );
+          }
       });
     }
 

@@ -7,14 +7,12 @@
 <ion-header no-border>
     <img src="assets/booking-info/close.png" class="pobyt-close" (click)="this.navCtrl.pop()">
 </ion-header>
-<ion-content class="hotelInfo">
+<ion-content class="hotelInfo" fixed-content>
   <ion-slides class="hotelSlides" pager="true">
     <ion-slide *ngFor="let image of hotelInfo.photos">
         <img [src]="image">
     </ion-slide>
   </ion-slides>
-  <!-- <ion-icon name="close" class="backbutton" (click)="dismiss()">
-  </ion-icon> -->
   <div class="h-info">
       <div class="h-name">{{hotelInfo.hotelName}}
       </div>
@@ -22,7 +20,7 @@
         <span>{{hotelInfo.hotelLocation}}, {{hotelInfo.hotelCity}}, {{hotelInfo.hotelState}}
         </span>
       </div>
-      <div class="h-distance">13.45 KM
+      <div class="h-distance">{{hotelInfo.distance}}
       </div>
       <div class="h-rating">
           <img src="assets/map/ratings.png">

@@ -1,6 +1,6 @@
 search {
 	.toolbar,.toolbar-background{
-		background:#61B1AE !important;
+		background: rgb(59, 191, 184) !important;
 	}
     ion-buttons button[icon-only].search-modal {
         margin: 0 6px;
@@ -8,7 +8,7 @@ search {
     }
     .searchbar{
     	border:0px !important;
-    	background:#fff !important;
+    	background:rgb(255,255,255) !important;
     	margin-top:10px !important;
     	box-shadow: 0 1pt 5pt 0 rgba(0,0,0,0.5);
         min-height: 60px;    
@@ -34,7 +34,7 @@ search {
     }
 
     .defined-places-list{
-        background:#EBF8F8 !important;
+        background: rgba(255, 255, 255, 0.9) !important;
         .recentText{
             color:rgb(93,93,93);
             padding: 10px 0 10px 10px;
@@ -82,9 +82,9 @@ search {
     	border:0px !important;
     }
     .scroll-content{
-    	background:#61B1AE !important;
+        background: rgb(59, 191, 184) !important;
     	ion-item{
-    		background:#EBF8F8 !important;
+    		background: rgba(255, 255, 255, 0.9) !important;
             padding:0 16px !important;
     		font-size:2.5vmax;
     		border:0px !important;
