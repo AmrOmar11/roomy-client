@@ -107,7 +107,6 @@ export class LoginPage {
                 this.navCtrl.setRoot('HomePage');
             }else if((success.status !== undefined)&&(success.status == '0013')) {
                 if(inputData.loginType == 'APP'){
-                    this.authProvider.hideLoading();
                     this.authProvider.showError(success.statusMessage);
                 }else{
                     inputData.action ='SIGNUP';
