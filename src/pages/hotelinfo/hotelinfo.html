@@ -7,7 +7,7 @@
 <ion-header no-border>
     <img src="assets/booking-info/close.png" class="pobyt-close" (click)="this.navCtrl.pop()">
 </ion-header>
-<ion-content class="hotelInfo" fixed-content>
+<ion-content class="hotelInfo" >
   <ion-slides class="hotelSlides" pager="true">
     <ion-slide *ngFor="let image of hotelInfo.photos">
         <img [src]="image">
