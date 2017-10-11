@@ -111,7 +111,7 @@ export class AuthenticateProvider {
     this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/userLogout',body,options).map(res => {
       //console.log('authenticate:logout:res:',res.json());
-      this.hideLoading();
+      env.hideLoading();
       return res.json();
     })
     .catch(this.handleError.bind(env));
@@ -123,10 +123,11 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     //console.log('authenticate:forgotPassword:req:',inputData);
-    var env = this;this.showLoading();
+    var env = this;
+    this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/forgetPassword',body,options).map(res => {
       //console.log('authenticate:forgotPassword:res:',res.json());
-      this.hideLoading();
+      env.hideLoading();
       return res.json();
     })
     .catch(this.handleError.bind(env));
@@ -181,12 +182,13 @@ export class AuthenticateProvider {
       customerToken: inputData.customerToken
     });
     //console.log('authenticate:profile-update:req',inputData);
-    var env = this;this.showLoading();
+    var env = this;
+    this.showLoading();
     return this.http.post('http://pobyt-webapp.azurewebsites.net/updateProfile',body,options)
     .map(res => {
       //console.log('authenticate:profile-update:res',res.json());
-      this.setCurrentUser(res.json());
-      this.hideLoading();
+      env.setCurrentUser(res.json());
+      env.hideLoading();
       return this.currentUser;
     })
     .catch(this.handleError.bind(env));
@@ -203,7 +205,7 @@ export class AuthenticateProvider {
     return this.http.post('http://pobyt-webapp.azurewebsites.net/getHotelsbyLocation',body,options)
     .map(res => {
       //console.log('HotelsbyLocation:res:',res.json());
-      this.hideLoading();
+      env.hideLoading();
       return res.json();
     })
     .catch(this.handleError.bind(env));
@@ -220,6 +222,7 @@ export class AuthenticateProvider {
     return this.http.post('http://pobyt-webapp.azurewebsites.net/getHotelDetails',body,options)
     .map(res => {
       //console.log('HotelDetails:res:',res.json());
+      env.hideLoading();
       return res.json();
     })
     .catch(this.handleError.bind(env));
@@ -231,11 +234,12 @@ export class AuthenticateProvider {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(inputData);
     var env = this;
-    // this.showLoading('');
-    //console.log('HotelsbyLocation:req:',inputData);
+    this.showLoading('');
+    //console.log('checkUserExistOrNot:req:',inputData);
     return this.http.post('http://pobyt-webapp.azurewebsites.net/checkUserExistOrNot',body,options)
     .map(res => {
-      //console.log('HotelsbyLocation:res:',res.json());
+      //console.log('checkUserExistOrNot:res:',res.json());
+      env.hideLoading();
       return res.json();
     })
     .catch(this.handleError.bind(env));
@@ -248,7 +252,6 @@ export class AuthenticateProvider {
   }
 
   public showError(text) {
-    var env = this;
     let alert = this.alertCtrl.create({
         title: ':( Oops!',
         message: text,
@@ -256,7 +259,6 @@ export class AuthenticateProvider {
             {
                 text: 'OK',
                 handler: data => {
-                  env.hideLoading();
                 }
             }
         ]
