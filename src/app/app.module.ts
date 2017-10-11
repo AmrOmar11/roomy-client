@@ -14,6 +14,7 @@ import { AuthenticateProvider,FacebookLoginService,GoogleLoginService } from '..
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SearchPage } from '../pages/pages';
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
     Facebook,
     GooglePlus,
     AuthenticateProvider,
-    SocialSharing
+    SocialSharing,
+    Keyboard
   ]
 })
 export class AppModule {}

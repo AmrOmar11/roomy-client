@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { AuthenticateProvider } from '../providers/authenticate/authenticate';
 // import { OneSignal } from '@ionic-native/onesignal';
-
+import { Keyboard } from '@ionic-native/keyboard';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +16,8 @@ export class RoomyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private nativeStorage: NativeStorage, 
-    public authProvider: AuthenticateProvider/*,
+    public authProvider: AuthenticateProvider,
+    public keyboard:Keyboard,/*
     public oneSignal: OneSignal*/) {
       this.initializeApp();
   }
@@ -25,6 +26,7 @@ export class RoomyApp {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.keyboard.disableScroll(true);
       this.loginFromNativeStorage();
       // this.startOnesignal();
     });

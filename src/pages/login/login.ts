@@ -4,7 +4,7 @@ import { IonicPage, NavController} from 'ionic-angular';
 import { AuthenticateProvider,UserRequest } from '../../providers/authenticate/authenticate';
 import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
 import { UsernameValidator } from  '../../validators/username';
-
+import { Keyboard } from '@ionic-native/keyboard';
 /**
  * Generated class for the LoginPage page.
  *
@@ -26,12 +26,18 @@ export class LoginPage {
             private authProvider: AuthenticateProvider, 
             public facebookLoginService: FacebookLoginService,
             public googleLoginService: GoogleLoginService,
-            public formBuilder:  FormBuilder
+            public formBuilder:  FormBuilder,
+            public keyboard:Keyboard
            ) {
         this.loginForm = this.formBuilder.group({
             username: ['',Validators.compose([Validators.maxLength(10), Validators.pattern('^[0-9]+$'), Validators.required]),''],
             password: ['',Validators.compose([Validators.maxLength(10),Validators.required]),'']
         });
+    }
+
+    
+    ionViewDidEnter(){
+        this.keyboard.disableScroll(true);
     }
 
     doFacebookLogin() {
