@@ -248,6 +248,7 @@ export class AuthenticateProvider {
   }
 
   public showError(text) {
+    var env = this;
     let alert = this.alertCtrl.create({
         title: ':( Oops!',
         message: text,
@@ -255,6 +256,7 @@ export class AuthenticateProvider {
             {
                 text: 'OK',
                 handler: data => {
+                  env.hideLoading();
                 }
             }
         ]

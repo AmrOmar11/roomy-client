@@ -80,13 +80,25 @@ page-signup {
         margin-left: 4vmax;
         margin-top: 6vmax;
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.5);
-        .country-col{
+        .col{
+            padding:0vmax !important;
+        }
+        .country-flag,.country-label,.country-arrow{
+            padding:0vmax;
+            background-color: rgba(38,207,198,0.3) !important;
+        }
+        .country-flag{
             border-top-left-radius: 13px;
             border-bottom-left-radius: 13px;
-            background-color: rgba(38,207,198,0.3);
-            img{
-                width:1vmax;
-            }
+            padding-top: 3.0vmax !important;
+            padding-left: 1vmax !important;
+        }
+        .country-arrow{
+            padding-top: 3.0vmax !important;
+            padding-left: 0vmax !important;
+        }
+        .country-label{
+            padding-top: 0.5vmax !important;
         }
     }    
     .go-row{
@@ -127,5 +139,8 @@ page-signup {
         margin:5%;
         width:5%;
         background-color: black;
+    }
+    .hideselect {
+        display: none;
     }
 }

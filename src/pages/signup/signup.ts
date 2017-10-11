@@ -2,6 +2,7 @@ import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,Slides } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
+import { Http } from '@angular/http';
 /**
  * Generated class for the SignupPage page.
  *
@@ -22,12 +23,14 @@ export class SignupPage {
 	public passwordForm:FormGroup;
     public otpForm:FormGroup;
 	public signUpData:UserRequest;
-    public countryCode = "+91";
     private items = ['','','','','',''];
+    public countryList:any='';
+    public countryselected:any = "";
 	constructor(public navCtrl: NavController,
 	 	public navParams: NavParams,
         public formBuilder: FormBuilder,
-        private authProvider: AuthenticateProvider) {
+        private authProvider: AuthenticateProvider,
+        private http:Http) {
 		this.signUpData = new UserRequest();
 		this.namesForm = this.formBuilder.group({
             firstName: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]+'), Validators.required]),''],
@@ -50,6 +53,10 @@ export class SignupPage {
             number4: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
             number5: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),''],
             number6: ['',Validators.compose([Validators.maxLength(1), Validators.pattern('[0-9]+'), Validators.required]),'']
+        });
+        this.getCountries().then((data)=>{
+          this.countryList = data;
+          this.countryselected = this.countryList[0];
         });
 	}
 
@@ -106,7 +113,7 @@ export class SignupPage {
     	if(this.passwordForm.valid){
             this.signUpData.action = 'SIGNUP';
             this.signUpData.loginType = 'APP';
-            this.signUpData.countryCode = this.countryCode;
+            this.signUpData.countryCode = this.countryselected.countryCode;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0009')) {
                     this.signUpData.action ='OTP';
@@ -132,7 +139,7 @@ export class SignupPage {
             this.signUpData.otp = parseInt(otp);
             this.signUpData.action = 'OTP';
             this.signUpData.loginType = 'APP';
-            this.signUpData.countryCode = this.countryCode;
+            this.signUpData.countryCode = this.countryselected.countryCode;
             this.authProvider.login(this.signUpData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0001')) {
                     this.authProvider.setCurrentUser(success);
@@ -156,5 +163,16 @@ export class SignupPage {
 
     next(el) {
         el.setFocus();
+    }
+
+    getCountries(){
+        return new Promise(resolve =>{
+            this.http.get(`assets/data/countries.json`)
+            .subscribe(res => resolve(res.json()));
+        });
+    }
+
+    selectCountry(){
+        document.getElementById('selectTag').click();
     }
 }
