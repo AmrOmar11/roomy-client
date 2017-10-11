@@ -9,7 +9,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content no-bounce>
     <ion-searchbar [(ngModel)]="autocomplete.query" (ionInput)="updateSearch()" (ionCancel)="dismiss()" placeholder="Nearby - Available Now">
     </ion-searchbar>
     <ion-list>
