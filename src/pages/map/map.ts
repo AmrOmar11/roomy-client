@@ -1,9 +1,10 @@
 import { Component,OnInit } from '@angular/core';
 import { IonicPage,ModalController} from 'ionic-angular';
-import { Geolocation,Geoposition } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
 import { SearchPage } from '../pages';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 /**
  * Generated class for the MapPage page.
  *
@@ -50,7 +51,8 @@ export class MapPage implements OnInit{
 		public geolocation: Geolocation,
 		public modalCtrl: ModalController,
     public authProvider: AuthenticateProvider,
-    public events: Events) {
+    public events: Events,
+    private locationAccuracy: LocationAccuracy) {
 	}
 
 	ngOnInit() {
@@ -94,6 +96,15 @@ export class MapPage implements OnInit{
 		})
 		.catch((error) =>{
 			// console.log(error);
+      this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+        if(canRequest) {
+          // the accuracy option will be ignored by iOS
+          this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+          () => console.log('Request successful'),
+          error => console.log('Error requesting location permissions', error)
+          );
+        }
+      });
 		});
 	}
   

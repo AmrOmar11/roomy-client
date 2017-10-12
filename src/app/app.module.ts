@@ -15,6 +15,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { SearchPage } from '../pages/pages';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Keyboard } from '@ionic-native/keyboard';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { Keyboard } from '@ionic-native/keyboard';
     GooglePlus,
     AuthenticateProvider,
     SocialSharing,
-    Keyboard
+    Keyboard,
+    LocationAccuracy
   ]
 })
 export class AppModule {}
