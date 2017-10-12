@@ -50,14 +50,14 @@ export class SearchPage implements OnInit{
         this.viewCtrl.dismiss();
     }
     clear() {
-        console.log(this.hideDefinedlist);
+        // console.log(this.hideDefinedlist);
         this.hideDefinedlist =  false;
     }
 
     chooseItem(item: any) {
         //console.log('modal > chooseItem > item > ', item);
         // this.hideDefinedlist =  false;
-        console.log(this.hideDefinedlist);
+        // console.log(this.hideDefinedlist);
         this.viewCtrl.dismiss(item);
     }
 

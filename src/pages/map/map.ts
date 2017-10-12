@@ -19,7 +19,7 @@ declare var google:any;
 export class MapPage implements OnInit{
   private map:any;
   private userLocation:any;
-  private zoomLevel:any = 13;
+  private zoomLevel:any = 5;
   private locationMarker:any;
   private hotelMarkers = [];
   private selectedHotelMarkers = [];
@@ -57,7 +57,6 @@ export class MapPage implements OnInit{
     //console.log('map:ngOnInit');
     this.loading = document.getElementById("loaderoverlay");
     this.loading.style.display="block";
-    this.getCurrenLocation();
     this.events.subscribe('hotel:slideChanged',(currentIndex) => {
       for(let i = 0; i < this.selectedHotelMarkers.length; i++){
         if(i == currentIndex){
@@ -78,7 +77,7 @@ export class MapPage implements OnInit{
             google.maps.event.trigger(this.map, 'resize');
         }        
     });
-
+    this.loadMap();
   }
 
 	ngAfterViewInit() {
@@ -87,16 +86,19 @@ export class MapPage implements OnInit{
 	private getCurrenLocation(){
 		let options = {enableHighAccuracy: true};
 		this.geolocation.getCurrentPosition(options).then((res) => {
-			//console.log(res);
-			this.loadMap(res);
+			// console.log(res);
+			this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
+			this.addLocationMarker(this.userLocation);
+			this.clearHotelMarkers();
+			this.fetchHotels(this.userLocation);
 		})
 		.catch((error) =>{
-			//console.log(error);
+			// console.log(error);
 		});
 	}
   
-  private loadMap(position: Geoposition){
-    this.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);		
+  private loadMap(){
+    this.userLocation = new google.maps.LatLng('20.5937','78.9629');		
     let mapStyles =[
       {
         "featureType": "landscape",
@@ -226,8 +228,8 @@ export class MapPage implements OnInit{
 	}
 
 	private mapLoaded(){
-      this.addLocationMarker(this.userLocation);
-      this.fetchHotels(this.userLocation);
+      this.loading.style.display="none";
+      this.getCurrenLocation();
 	}
 
   private fetchHotels(location){
@@ -240,7 +242,6 @@ export class MapPage implements OnInit{
     this.authProvider.getHotels(inputData).subscribe(data => {
       this.clearHotelMarkers();
       this.addHotelMarkers(data);
-      this.loading.style.display="none";
     });
   }
 
@@ -324,19 +325,7 @@ export class MapPage implements OnInit{
   }
 	
 	compasClicked(){
-    if (this.map !== undefined) {
-      let options = {enableHighAccuracy: true};
-      this.geolocation.getCurrentPosition(options).then((res) => {
-          //console.log(res);
-          this.userLocation = new google.maps.LatLng(res.coords.latitude, res.coords.longitude);
-          this.addLocationMarker(this.userLocation);
-          this.clearHotelMarkers();
-          this.fetchHotels(this.userLocation);
-      })
-      .catch((error) =>{
-          //console.log(error);
-      });
-    }
+    this.getCurrenLocation();
 	}
 	
 	searchClicked(){
