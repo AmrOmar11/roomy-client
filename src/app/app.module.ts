@@ -15,7 +15,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { SearchPage } from '../pages/pages';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Keyboard } from '@ionic-native/keyboard';
-import { LocationAccuracy } from '@ionic-native/location-accuracy';
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy';
     AuthenticateProvider,
     SocialSharing,
     Keyboard,
-    LocationAccuracy
+    Diagnostic
   ]
 })
 export class AppModule {}

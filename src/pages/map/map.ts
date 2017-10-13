@@ -4,7 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
 import { SearchPage } from '../pages';
-import { LocationAccuracy } from '@ionic-native/location-accuracy';
+import { Diagnostic } from '@ionic-native/diagnostic';
 /**
  * Generated class for the MapPage page.
  *
@@ -52,7 +52,7 @@ export class MapPage implements OnInit{
 		public modalCtrl: ModalController,
     public authProvider: AuthenticateProvider,
     public events: Events,
-    private locationAccuracy: LocationAccuracy) {
+    private diagnostic: Diagnostic) {
 	}
 
 	ngOnInit() {
@@ -85,6 +85,19 @@ export class MapPage implements OnInit{
 	ngAfterViewInit() {
 	}
   
+  private checkSettings(){
+    if(!this.diagnostic.isLocationEnabled()){
+      this.diagnostic.switchToSettings().then((res)=>{
+         this.getCurrenLocation();
+      })
+      .catch((error)=>{
+
+      });
+    }else{
+       this.getCurrenLocation();
+    }
+  }
+  
 	private getCurrenLocation(){
 		let options = {enableHighAccuracy: true};
 		this.geolocation.getCurrentPosition(options).then((res) => {
@@ -96,15 +109,6 @@ export class MapPage implements OnInit{
 		})
 		.catch((error) =>{
 			// console.log(error);
-      this.locationAccuracy.canRequest().then((canRequest: boolean) => {
-        if(canRequest) {
-          // the accuracy option will be ignored by iOS
-          this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
-          () => console.log('Request successful'),
-          error => console.log('Error requesting location permissions', error)
-          );
-        }
-      });
 		});
 	}
   
@@ -240,7 +244,7 @@ export class MapPage implements OnInit{
 
 	private mapLoaded(){
       this.loading.style.display="none";
-      this.getCurrenLocation();
+      this.checkSettings();
 	}
 
   private fetchHotels(location){
@@ -336,7 +340,7 @@ export class MapPage implements OnInit{
   }
 	
 	compasClicked(){
-    this.getCurrenLocation();
+    this.checkSettings();
 	}
 	
 	searchClicked(){
