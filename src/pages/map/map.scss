@@ -13,7 +13,7 @@ page-map {
         width: 20%;
         background: transparent;
     }
-    .search_bar{
+    .search_bar {
         background-color: rgb(71, 195, 189);
         border-radius: 5px;
         position: absolute;
@@ -23,11 +23,12 @@ page-map {
         /*opacity: 0.9;*/
         padding: 2% 2% 2% 4%;
         box-shadow: 0px 2px 5px #888;
-        .search_icon{
+        .search_icon {
             width: 5%;
             float: left;
+            margin-top: .3rem;
         }
-        .search_label{
+        .search_label {
             float: left;
             font-size: 2.5vmax;
             color: white;

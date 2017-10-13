@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,7 +12,6 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
 .pobyt-button {
     margin: 0px;
     text-transform: none;
@@ -23,37 +20,47 @@
 }
 
 .pobyt-button .button-inner {
-    font-size:2.8vmax;
+    font-size: 2.8vmax;
     color: map-get($colors, whiteColor);
 }
 
-.toolbar{
-    padding:0px;
-    background-color:map-get($colors, theme);
+.toolbar {
+    padding: 0px;
+    background-color: map-get($colors, theme);
 }
+
 .toolbar-background {
     background: map-get($colors, theme);
 }
-.toolbar button{
+
+.toolbar button {
     color: map-get($colors, whiteColor);
 }
+
 .toolbar-title {
     color: map-get($colors, whiteColor);
     text-align: center;
 }
+
 ion-footer {
     &.footer-md::before {
         background-image: none;
     }
 }
-.swiper-pagination-bullet-active{
-  background: map-get($colors, theme) !important;
+
+.swiper-pagination-bullet-active {
+    background: map-get($colors, theme) !important;
 }
+
 .placeholder {
     color: map-get($colors, textcolor);
     text-decoration: none;
     font-family: $theme-font;
     font-size: 1.5rem
+}
+
+.back-button.show-back-button {
+    margin-left: 1rem;
 }
 
 .error {
@@ -63,38 +70,41 @@ ion-footer {
     margin: 0;
     font-size: 1.5rem;
 }
+
 * {
     font-family: 'Open Sans', sans-serif;
 }
 
 //Alert box styles
-.alert-wrapper{
-    border-radius:10px !important;
+.alert-wrapper {
+    border-radius: 10px !important;
     background: #61B1AE !important;
 }
-.alert-head{
-    color:#fff;
+
+.alert-head {
+    color: #fff;
     text-align: center !important;
-    font-weight:600 !important;
-    .alert-title{
-        font-size:4.5vmax;
+    font-weight: 600 !important;
+    .alert-title {
+        font-size: 4.5vmax;
         font-weight: 600;
     }
 }
-.alert-message{
-    color:#fff !important;
+
+.alert-message {
+    color: #fff !important;
     font-size: 2.5vmax;
 }
 
-.alert-button-group{
+.alert-button-group {
     text-align: center !important;
     display: block;
     padding-left: 8px !important;
     border-radius: 0 0 10px 10px;
-    background:#fff;
-    button{
+    background: #fff;
+    button {
         margin: 0 auto !important;
-        color: rgb(93,93,93) !important;
+        color: rgb(93, 93, 93) !important;
         font-size: 3vmax;
         font-weight: bold !important;
     }
