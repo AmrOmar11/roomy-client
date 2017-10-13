@@ -86,18 +86,29 @@ export class MapPage implements OnInit{
 	}
   
   private checkSettings(){
-    if(!this.diagnostic.isLocationEnabled()){
-      this.diagnostic.switchToSettings().then((res)=>{
-         this.getCurrenLocation();
-      })
-      .catch((error)=>{
-
-      });
-    }else{
-       this.getCurrenLocation();
-    }
+    this.diagnostic.isLocationEnabled().then((res)=>{
+      if(res == true){
+        this.getCurrenLocation();
+      }else{
+        this.authProvider.showError('isLocationEnabled:false');
+        this.openSettings();
+      }
+    })
+    .catch((error) =>{
+      this.authProvider.showError('isLocationEnabled:catch');
+      this.openSettings();
+    });
   }
   
+  private openSettings(){
+    this.diagnostic.switchToSettings().then((res) =>{
+       this.getCurrenLocation();
+    })
+    .catch((error) =>{
+      this.authProvider.showError('switchToSettings:catch');
+    });
+  }
+
 	private getCurrenLocation(){
 		let options = {enableHighAccuracy: true};
 		this.geolocation.getCurrentPosition(options).then((res) => {
