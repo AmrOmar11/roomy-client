@@ -16,6 +16,7 @@ import { SearchPage } from '../pages/pages';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Diagnostic } from '@ionic-native/diagnostic';
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { Diagnostic } from '@ionic-native/diagnostic';
     AuthenticateProvider,
     SocialSharing,
     Keyboard,
-    Diagnostic
+    Diagnostic,
+    Network
   ]
 })
 export class AppModule {}
