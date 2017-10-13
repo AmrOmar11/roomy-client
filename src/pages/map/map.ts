@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-import { IonicPage,ModalController} from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
+import { IonicPage,ModalController,AlertController} from 'ionic-angular';
+import { Geolocation,PositionError } from '@ionic-native/geolocation';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { Events } from 'ionic-angular';
 import { SearchPage } from '../pages';
@@ -52,7 +52,8 @@ export class MapPage implements OnInit{
 		public modalCtrl: ModalController,
     public authProvider: AuthenticateProvider,
     public events: Events,
-    private diagnostic: Diagnostic) {
+    private diagnostic: Diagnostic,
+    private alertCtrl: AlertController) {
 	}
 
 	ngOnInit() {
@@ -149,6 +150,22 @@ export class MapPage implements OnInit{
     });
   }
 
+  private showError(text) {
+    let alert = this.alertCtrl.create({
+        title: ':( Oops!',
+        message: text,
+        buttons: [
+            {
+                text: 'OK',
+                handler: data => {
+                  this.openSettings();
+                }
+            }
+        ]
+    });
+    alert.present(prompt);
+  }
+
 	private getCurrenLocation(){
 		let options = {enableHighAccuracy: true};
 		this.geolocation.getCurrentPosition(options).then((res) => {
@@ -158,8 +175,11 @@ export class MapPage implements OnInit{
 			this.clearHotelMarkers();
 			this.fetchHotels(this.userLocation);
 		})
-		.catch((error) =>{
+		.catch((error:PositionError) =>{
 			// console.log(error);
+	      if(error.code ==1){
+	        this.showError('please allow location service');
+	      }
 		});
 	}
   
@@ -295,7 +315,7 @@ export class MapPage implements OnInit{
 
 	private mapLoaded(){
       this.loading.style.display="none";
-      this.isLocationEnabled();
+      this.getCurrenLocation();
 	}
 
   private fetchHotels(location){
@@ -391,7 +411,7 @@ export class MapPage implements OnInit{
   }
 	
 	compasClicked(){
-    this.isLocationEnabled();
+    this.getCurrenLocation();
 	}
 	
 	searchClicked(){
