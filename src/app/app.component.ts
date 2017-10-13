@@ -1,25 +1,31 @@
 import { Component} from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, ToastController,Toast } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { AuthenticateProvider } from '../providers/authenticate/authenticate';
 // import { OneSignal } from '@ionic-native/onesignal';
 import { Keyboard } from '@ionic-native/keyboard';
+import { Network } from '@ionic-native/network';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class RoomyApp {  
   rootPage: any;
+  isOnline:boolean = false;
+  connectionStatus = "";
   constructor(public platform: Platform, 
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private nativeStorage: NativeStorage, 
     public authProvider: AuthenticateProvider,
-    public keyboard:Keyboard,/*
+    public keyboard:Keyboard,
+    public toastCtrl: ToastController,
+    public network: Network,/*
     public oneSignal: OneSignal*/) {
       this.initializeApp();
+      this.connectionStatus = (this.network.type=='none'? 'Oops! Sorry your are not connected to Internet.':'Great! You are connected to Internet.');
   }
 
   initializeApp() {
@@ -28,6 +34,8 @@ export class RoomyApp {
       this.splashScreen.hide();
       this.keyboard.disableScroll(true);
       this.loginFromNativeStorage();
+      this.checkNetwork();
+      this.displayNetworkUpdate(this.connectionStatus);
       // this.startOnesignal();
     });
   }
@@ -65,6 +73,41 @@ export class RoomyApp {
       this.rootPage = 'PreviewPage';
     }
   }
+
+  displayNetworkUpdate(connectionState: string){
+    this.toastCtrl.create({
+      message: `${connectionState}`,
+      duration: 3000,
+    }).present(); 
+  }
+
+  checkNetwork(){
+        let env = this;
+        // this.network.onchange().subscribe(env.connHandler.bind(env));
+        this.network.onConnect().subscribe(env.connHandler.bind(env));
+        this.network.onDisconnect().subscribe(env.connHandler.bind(env));
+        
+        this.platform.pause.subscribe(()=>{
+          console.log('*******APP IS IN BACKGROUND*******');
+        });
+
+        this.platform.resume.subscribe(()=>{
+          console.log('******APP IS IN FOREGROUND*******');
+          this.displayNetworkUpdate(this.connectionStatus);
+        });
+  }
+
+  connHandler(data){
+    if(data.type == 'online') {
+      this.isOnline = true;
+      this.connectionStatus = "Great! You are connected to Internet."
+    }
+    else {
+      this.isOnline = false
+      this.connectionStatus = "Oops! Sorry your are not connected to Internet."
+    }
+  }
+
 
   // startOnesignal(){
   //   if (this.platform.is('cordova')){
