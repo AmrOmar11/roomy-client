@@ -85,18 +85,62 @@ export class MapPage implements OnInit{
 	ngAfterViewInit() {
 	}
   
-  private checkSettings(){
-    this.diagnostic.isLocationEnabled().then((res)=>{
-      if(res == true){
+  private isLocationEnabled(){
+    this.diagnostic.isLocationEnabled().then((available)=>{
+      if(available){
         this.getCurrenLocation();
       }else{
-        this.openSettings();
+        this.isLocationAuthorized();
       }
     })
     .catch((error) =>{
     });
   }
-  
+
+  private isLocationAuthorized(){
+    this.diagnostic.isLocationAuthorized().then((authorized)=>{
+      if(authorized){
+        this.getCurrenLocation();
+      }else{
+        this.requestLocationAuthorization();
+      }
+    })
+    .catch((error) =>{
+    });
+  }
+
+  private requestLocationAuthorization(){
+     this.diagnostic.requestLocationAuthorization().then((status)=>{
+      let granted = false;
+      switch(status){
+        case this.diagnostic.permissionStatus.NOT_REQUESTED:
+            console.log("Permission not requested");
+            break;
+        case this.diagnostic.permissionStatus.DENIED:
+            console.log("Permission denied");
+            break;
+        case this.diagnostic.permissionStatus.GRANTED:
+            console.log("Permission granted always");
+            granted = true;
+            break;
+        case this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE:
+            console.log("Permission granted only when in use");
+            granted = true;
+            break;
+        case this.diagnostic.permissionStatus.DENIED_ALWAYS:
+            console.log("Permission granted only when in use");
+            break;
+      }
+      if(granted){
+        this.getCurrenLocation();
+      }else{
+         this.authProvider.showError('please allow location service');
+      }
+    })
+    .catch((error) =>{
+
+    }); 
+  }
   private openSettings(){
     this.diagnostic.switchToSettings().then((res) =>{
        this.getCurrenLocation();
@@ -251,7 +295,7 @@ export class MapPage implements OnInit{
 
 	private mapLoaded(){
       this.loading.style.display="none";
-      this.checkSettings();
+      this.isLocationEnabled();
 	}
 
   private fetchHotels(location){
@@ -347,7 +391,7 @@ export class MapPage implements OnInit{
   }
 	
 	compasClicked(){
-    this.checkSettings();
+    this.isLocationEnabled();
 	}
 	
 	searchClicked(){
