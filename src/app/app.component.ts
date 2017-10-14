@@ -34,8 +34,8 @@ export class RoomyApp {
       this.splashScreen.hide();
       this.keyboard.disableScroll(true);
       this.loginFromNativeStorage();
-      this.checkNetwork();
-      this.displayNetworkUpdate(this.connectionStatus);
+      // this.checkNetwork();
+      // this.displayNetworkUpdate(this.connectionStatus);
       // this.startOnesignal();
     });
   }
