@@ -151,6 +151,7 @@ export class MapPage implements OnInit{
   }
 
   private showError(text) {
+    let env = this;
     let alert = this.alertCtrl.create({
         title: ':( Oops!',
         message: text,
@@ -158,7 +159,7 @@ export class MapPage implements OnInit{
             {
                 text: 'OK',
                 handler: data => {
-                  this.openSettings();
+                  env.openSettings();
                 }
             }
         ]
