@@ -109,3 +109,28 @@ ion-footer {
         font-weight: bold !important;
     }
 }
+
+#network-status{
+    height: auto;
+    width: 100%;
+    position: relative;
+    color: #fff;
+    font-size: 2.5vmax;
+    padding: 10px 15px;
+    display:none;
+    #network-status-txt{
+        width: 83%;
+        display:inline-block;
+    }
+    #network-status-close{
+        width: 15%;
+        display:inline-block;
+    }
+}
+
+.toast-custom-changes-error{
+    background-color:red;
+}
+.toast-custom-changes-noerror{
+    background-color:green;
+}

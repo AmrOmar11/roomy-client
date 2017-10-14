@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { Platform, ToastController,Toast } from 'ionic-angular';
+import { Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -21,11 +21,10 @@ export class RoomyApp {
     private nativeStorage: NativeStorage, 
     public authProvider: AuthenticateProvider,
     public keyboard:Keyboard,
-    public toastCtrl: ToastController,
     public network: Network,/*
     public oneSignal: OneSignal*/) {
       this.initializeApp();
-      this.connectionStatus = (this.network.type=='none'? 'Oops! Sorry your are not connected to Internet.':'Great! You are connected to Internet.');
+      this.connectionStatus = ((this.network.type=='none' || this.network.type== null)? 'Oops! Sorry your are not connected to Internet.':'Great! You are connected to Internet.');
   }
 
   initializeApp() {
@@ -34,8 +33,10 @@ export class RoomyApp {
       this.splashScreen.hide();
       this.keyboard.disableScroll(true);
       this.loginFromNativeStorage();
-      // this.checkNetwork();
-      // this.displayNetworkUpdate(this.connectionStatus);
+      this.checkNetwork();
+      if(this.network.type=='none' || this.network.type== null){
+        this.displayNetworkUpdate(this.connectionStatus,0, "toast-custom-changes-error");
+      }
       // this.startOnesignal();
     });
   }
@@ -74,11 +75,17 @@ export class RoomyApp {
     }
   }
 
-  displayNetworkUpdate(connectionState: string){
-    this.toastCtrl.create({
-      message: `${connectionState}`,
-      duration: 3000,
-    }).present(); 
+  displayNetworkUpdate(connectionState: string, toastduration:number, customClass: string){
+      let networkStatus = document.getElementById("network-status");
+      let networkStatusText = document.getElementById("network-status-txt");
+      networkStatusText.innerHTML = connectionState;
+      networkStatus.setAttribute('class',customClass);
+      networkStatus.style.display='block';
+      if(toastduration > 0){
+        setTimeout(function(){
+          networkStatus.style.display='none';
+        },toastduration);
+      }
   }
 
   checkNetwork(){
@@ -93,21 +100,29 @@ export class RoomyApp {
 
         this.platform.resume.subscribe(()=>{
           console.log('******APP IS IN FOREGROUND*******');
-          this.displayNetworkUpdate(this.connectionStatus);
+          if(this.isOnline == false){
+            this.displayNetworkUpdate(this.connectionStatus, 0, "toast-custom-changes-error");
+          }
         });
   }
 
   connHandler(data){
     if(data.type == 'online') {
       this.isOnline = true;
-      this.connectionStatus = "Great! You are connected to Internet."
+      this.connectionStatus = "Great! You are now connected to Internet.";
+      this.displayNetworkUpdate(this.connectionStatus,2000,"toast-custom-changes-noerror");      
     }
     else {
       this.isOnline = false
-      this.connectionStatus = "Oops! Sorry your are not connected to Internet."
+      this.connectionStatus = "Oops! Your are not connected to Internet."
+      this.displayNetworkUpdate(this.connectionStatus,0, "toast-custom-changes-error");
     }
   }
 
+  hideNetworkStatus(){
+    let networkStatus = document.getElementById("network-status");
+      networkStatus.style.display='none';
+  }
 
   // startOnesignal(){
   //   if (this.platform.is('cordova')){
