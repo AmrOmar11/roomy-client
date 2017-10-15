@@ -24,7 +24,9 @@ export class RoomyApp {
     public network: Network,/*
     public oneSignal: OneSignal*/) {
       this.initializeApp();
-      this.connectionStatus = ((this.network.type=='none' || this.network.type== null)? 'Oops! Sorry your are not connected to Internet.':'Great! You are connected to Internet.');
+      setTimeout(
+        this.connectionStatus = ((this.network.type=='none' || this.network.type== null)? 'Oops! Sorry your are not connected to Internet.':'Great! You are connected to Internet.')
+      ,3000);
   }
 
   initializeApp() {
@@ -37,7 +39,7 @@ export class RoomyApp {
       if(this.network.type=='none' || this.network.type== null){
         setTimeout(
           this.displayNetworkUpdate(this.connectionStatus,0, "toast-custom-changes-error")
-        ,2000);       
+        ,3000);       
       }
       // this.startOnesignal();
     });
