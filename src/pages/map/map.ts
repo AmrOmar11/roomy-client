@@ -135,7 +135,7 @@ export class MapPage implements OnInit{
       if(granted){
         this.getCurrenLocation();
       }else{
-         this.authProvider.showError('please allow location service');
+         this.authProvider.showError('Allow "Pobyt" to access your location while you use the app');
       }
     })
     .catch((error) =>{
@@ -179,7 +179,7 @@ export class MapPage implements OnInit{
 		.catch((error:PositionError) =>{
 			// console.log(error);
 	      if(error.code ==1){
-	        this.showError('please allow location service');
+	        this.showError('Allow "Pobyt" to access your location while you use the app');
 	      }
 		});
 	}
