@@ -35,7 +35,9 @@ export class RoomyApp {
       this.loginFromNativeStorage();
       this.checkNetwork();
       if(this.network.type=='none' || this.network.type== null){
-        this.displayNetworkUpdate(this.connectionStatus,0, "toast-custom-changes-error");
+        setTimeout(
+          this.displayNetworkUpdate(this.connectionStatus,0, "toast-custom-changes-error")
+        ,2000);       
       }
       // this.startOnesignal();
     });
