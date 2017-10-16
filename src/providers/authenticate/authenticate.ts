@@ -15,9 +15,9 @@ import { FacebookLoginService,GoogleLoginService } from '../../providers/provide
 export class User {
   emailAddress: string;
   contactNumber: string;
-  first_Name: string;
-  midle_Name: string;
-  last_Name: string;
+  firstName: string;
+  midleName: string;
+  lastName: string;
   dateOfBirth:string;
   userID:number;
   referralCode:string;
@@ -25,9 +25,9 @@ export class User {
   constructor(){
     this.emailAddress='';
     this.contactNumber='';
-    this.first_Name='';
-    this.midle_Name='';
-    this.last_Name='';
+    this.firstName='';
+    this.midleName='';
+    this.lastName='';
     this.dateOfBirth='';
     this.userID=0;
     this.referralCode='';
@@ -144,9 +144,9 @@ export class AuthenticateProvider {
     this.currentUser = new User();
     this.currentUser.emailAddress = data.result.emailAddress;
     this.currentUser.contactNumber = data.result.contactNumber;
-    this.currentUser.first_Name = data.result.first_Name;
-    this.currentUser.midle_Name = data.result.midle_Name;
-    this.currentUser.last_Name = data.result.last_Name;
+    this.currentUser.firstName = data.result.firstName;
+    this.currentUser.midleName = data.result.midleName;
+    this.currentUser.lastName = data.result.lastName;
     this.currentUser.dateOfBirth = data.result.dateOfBirth;
     this.currentUser.userID = data.result.userID;
     this.currentUser.referralCode = data.result.referralCode;

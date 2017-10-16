@@ -55,7 +55,7 @@ export class HotelinfoPage {
 
   reserveNow(){
     let confirm = this.alertCtrl.create({
-        message: 'Booking For '+this.userInfo.first_Name+" ?",
+        message: 'Booking For '+this.userInfo.firstName+" ?",
         buttons: [
             {
                 text: 'Other',
