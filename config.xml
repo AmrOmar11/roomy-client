@@ -25,7 +25,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
     <platform name="android">
-        <preference name="android-manifest/application/activity/@android:windowSoftInputMode" value="adjustPan" />
+        <preference name="android-manifest/application/activity/@android:windowSoftInputMode" value="adjustResize|adjustPan" />
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
@@ -106,4 +106,5 @@
         <variable name="CHANNEL_NAME" value="Master" />
         <variable name="UPDATE_METHOD" value="background" />
     </plugin>
+    <plugin name="cordova-custom-config" spec="^4.0.2" />
 </widget>
