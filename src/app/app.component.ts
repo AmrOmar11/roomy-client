@@ -34,9 +34,13 @@ export class RoomyApp {
       this.loginFromNativeStorage();
       this.checkNetwork();
       if(this.network.type=='none' || this.network.type== null){
-        setTimeout(
-          this.displayNetworkUpdate(this.connectionStatus,0, "toast-custom-changes-error")
-        ,3000);       
+        this.connectionStatus = 'Oops! Sorry your are not connected to Internet.';
+        let env = this;
+        setTimeout(function(){
+          env.displayNetworkUpdate(env.connectionStatus,0, "toast-custom-changes-error")
+        },3000);       
+      }else{
+       this.isOnline = true; 
       }
       // this.startOnesignal();
     });
@@ -101,6 +105,7 @@ export class RoomyApp {
         this.platform.resume.subscribe(()=>{
           console.log('******APP IS IN FOREGROUND*******');
           if(this.isOnline == false){
+            this.connectionStatus = "Oops! Your are not connected to Internet."
             this.displayNetworkUpdate(this.connectionStatus, 0, "toast-custom-changes-error");
           }
         });
