@@ -3,7 +3,7 @@ import { Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeStorage } from '@ionic-native/native-storage';
-import { AuthenticateProvider } from '../providers/authenticate/authenticate';
+import { AuthenticateProvider,UserRequest } from '../providers/authenticate/authenticate';
 // import { OneSignal } from '@ionic-native/onesignal';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Network } from '@ionic-native/network';
@@ -47,11 +47,10 @@ export class RoomyApp {
       this.nativeStorage.getItem('userdata')
       .then(data => {
           //console.log(data);
-          let inputData = {
-            action: "SIGNIN",
-            loginType: "TOKEN",
-            token: data.customerToken
-          };
+          let inputData:UserRequest = new UserRequest();
+          inputData.action = "SIGNIN";
+          inputData.loginType = "TOKEN";
+          inputData.customerToken = data.customerToken;
           this.authProvider.login(inputData).subscribe(success => {
           if((success.status !== undefined)&&(success.status == '0001')) {
               this.authProvider.setCurrentUser(success);
