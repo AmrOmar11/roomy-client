@@ -1,21 +1,20 @@
 page-signup {
-    height:100%;
-	/*.scroll-content { padding-bottom: 0!important; }*/
-    .close-col{
-        padding:0 !important;
-        margin-top: 5vmax;
-        .close-img{
-            height: 5vmax;
-            margin-left: 4vmax;
-        }
-        .back-img{
-            height: 5vmax;
-            float: right;
-            margin-right: 4vmax;
+    /*.scroll-content { padding-bottom: 0!important; }*/
+    .close-row{
+        margin-top: 6vmax;
+        margin-left: 4vmax;
+        margin-right: 4vmax;
+        .close-col{
+            padding:0 !important;
+            img{
+                height: 3vmax;
+            }
+            .back-img{
+                float: right;
+            }
         }
     }
     .slides{
-        height:95%;
         .slide-zoom{
             width:100%;
             height:100%;
@@ -33,17 +32,12 @@ page-signup {
         }
     }
     .info-row{
-        margin-top:4vmax;
+        margin-top:6vmax;
         margin-left: 4vmax;
         .info-label{
             margin:0vmax !important;
             text-align: left;
-            font-size: 4vmax;
-        }
-    }
-    .password-slide{
-        .info-label{
-            font-size: 2.8vmax;
+            font-size: 3.0vmax;
         }
     }
     .names-row{
@@ -87,37 +81,33 @@ page-signup {
     }
     .mobile-row{
         border-radius: 13px;
-        width: 87%;
+        width: 85%;
         margin-left: 4vmax;
-        margin-top: 6vmax;
+        margin-top: 10vmax;
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.5);
         .col{
             padding:0vmax !important;
         }
-        .country-flag,.country-label,.country-arrow{
+        .country-label{
             padding:0vmax;
+            width:15%;
             background-color: rgba(38,207,198,0.3) !important;
-        }
-        .country-flag{
             border-top-left-radius: 13px;
             border-bottom-left-radius: 13px;
-            padding-top: 2.0vmax !important;
-            padding-left: 1vmax !important;
-        }
-        .country-arrow{
-            padding-top: 3.0vmax !important;
-            padding-left: 0vmax !important;
-        }
-        .country-label{
-            padding-top: 0.5vmax !important;
+            .label{
+                margin: 2vmax 1vmax 0vmax 1vmax !important;
+                font-size: 3.0vmax;
+            }
         }
         .mobile-input{
             .text-input{
-                padding:0vmax !important;
-                margin-top: 3vmax;
+                padding: 0 0 0 2vmax !important;
+                margin-top: 2vmax;
+                font-size: 3vmax;
             }
             .label{
-                margin:3.0vmax 0 0 0 !important;
+                margin:2.0vmax 0 0 0 !important;
+                font-size: 3vmax;
                 text-align: left;
                 padding-left: 2vmax;
             }
@@ -126,41 +116,49 @@ page-signup {
     .go-row{
         text-align: right;
         float: right;
-        margin-top: 4vmax;
+        margin-top: 6vmax;
         margin-right: 4vmax;
         .go-btn{
-            background-color: rgb(38,207,198);
+            background-color: rgb(38, 207, 198);
             box-shadow: 0px 2px 7px 2px rgba(0, 0, 0, 0.5);
-            width: 10vmax;
-            height: 10vmax;
-            opacity:0.74;
+            width: 9vmax;
+            height: 9vmax;
+            border-radius: 9px;
         }
         .go-img{
-            width: 5vmax;
-            height: 5vmax;
+            width: 3.0vmax;
+            height: 4vmax;
             margin-top: 2.5vmax;
-            margin-right: 2.5vmax;
+            margin-right: 3vmax;
         }
     }
-    .names-slide {
-        .go-row{    
-            margin-top: -2vmax;
+    .otp-row{
+        margin-top: 4vmax;
+        width: 85%;
+        margin-left: 4vmax;
+        .otp-input{
+            box-shadow: 0px 2px 13px 3px rgba(143, 143, 143, 0.5);
+            .text-input{
+                text-align:center;
+            }
         }
     }
-    .otp-input{
-        box-shadow: 0px 2px 13px 3px rgba(143, 143, 143, 0.5);
-        .text-input{
-            text-align:center;
+    .otp-label{
+        .label{
+            margin: 2vmax 2vmax 2vmax 2vmax !important;
+            padding-left: 2vmax;
+            padding-right: 2vmax;
+            font-size: 2vmax;
         }
     }
     .resend-row{
-        text-align: right;
-        margin-right: 3vmax !important;
+        text-align: left;
+        margin-left: 5vmax !important;
     }
     .hideselect {
         display: none;
     }
-    .mobile-slide{
+    .names-slide,.mobile-slide{
         .info-row{
             margin-top:1vmax;
         }
@@ -168,8 +166,38 @@ page-signup {
             margin:0vmax !important;
             font-size: 3vmax;
         }
-        .country-flag{
-            padding-top: 3.0vmax !important;
+    }
+    .names-slide{
+        .go-row{
+            margin-top: -4vmax;
         }
-    }    
+    }
+    .mobile-slide{
+        .info-label{
+            font-size: 2.8vmax;
+        }
+        .welcome-label{
+            font-weight: 500;
+            font-size: 4vmax;
+        }
+    }
+    .otp-slide{
+        .country-label{
+            .label{
+                margin: 1.5vmax 1vmax 1vmax 1vmax !important;
+            }
+        }
+        .mobile-label{
+            .label{
+                text-align: left;
+                padding-left: 2vmax;
+                font-size: 3vmax;
+            }
+        }
+        .go-row{
+            margin-top: -5vmax;
+        }
+    }
+        
+    
 }

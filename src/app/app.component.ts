@@ -38,7 +38,7 @@ export class RoomyApp {
         let env = this;
         setTimeout(function(){
           env.displayNetworkUpdate(env.connectionStatus,0, "toast-custom-changes-error")
-        },3000);       
+        },3000);
       }else{
        this.isOnline = true; 
       }

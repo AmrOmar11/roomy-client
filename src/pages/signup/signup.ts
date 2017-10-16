@@ -61,11 +61,11 @@ export class SignupPage {
 	}
 
 	ionViewDidEnter() {
+        this.slides.lockSwipes(true);
         let currentIndex = this.slides.getActiveIndex();
-        this.slides.lockSwipes(true);        
         if(currentIndex == 0){
-            document.getElementById("backimg").style.display = "none"    
-        }        
+            document.getElementById("backimg").style.display = "none"
+        }
 		console.log('ionViewDidLoad SignupPage');
 	}
 	
@@ -77,7 +77,7 @@ export class SignupPage {
             };
             this.authProvider.mobileOrEmailExist(inputData).subscribe(success => {
                 if((success.status !== undefined)&&(success.status == '0001')) {
-                    this.goClicked();
+                    this.userRegRequest();
                 }else {
                     this.authProvider.showError(success.statusMessage);
                 }
@@ -115,22 +115,7 @@ export class SignupPage {
 	
 	passwordSubmit(){
     	if(this.passwordForm.valid){
-            this.signUpData.action = 'SIGNUP';
-            this.signUpData.loginType = 'APP';
-            this.signUpData.countryCode = this.countryselected.countryCode;
-            this.authProvider.login(this.signUpData).subscribe(success => {
-                if((success.status !== undefined)&&(success.status == '0009')) {
-                    this.signUpData.action ='OTP';
-                    this.signUpData.customerToken = success.jwtToken;
-                    this.signUpData.userId = success.result.userId;
-                    this.goClicked();
-                }else {
-                    this.authProvider.showError(success.statusMessage);
-                }
-            },
-            error => {
-                this.authProvider.showError(error);
-            });
+            this.goClicked();
         }
 	}
 	
@@ -159,19 +144,56 @@ export class SignupPage {
         }	
 	}
 
+    reSendOtp(){
+        this.userRegRequest();
+    }
+
+    userRegRequest(){
+        this.signUpData.action = 'SIGNUP';
+        this.signUpData.loginType = 'APP';
+        this.signUpData.countryCode = this.countryselected.countryCode;
+        this.authProvider.login(this.signUpData).subscribe(success => {
+            if((success.status !== undefined)&&(success.status == '0009')) {
+                this.signUpData.action ='OTP';
+                this.signUpData.customerToken = success.jwtToken;
+                this.signUpData.userId = success.result.userId;
+                this.goClicked();
+            }else {
+                this.authProvider.showError(success.statusMessage);
+            }
+        },
+        error => {
+            this.authProvider.showError(error);
+        });
+    }
+
     closeClicked(){
         this.navCtrl.pop();
     }
-    
-    backClicked(){
 
-    }
-	
     goClicked(){
 	    this.slides.lockSwipeToNext(false);
 	    this.slides.slideNext();
 	    this.slides.lockSwipeToNext(true);
+        let currentIndex = this.slides.getActiveIndex();
+        if((currentIndex == 0)||(currentIndex == 4)){
+            document.getElementById("backimg").style.display = "none"
+        }else{
+            document.getElementById("backimg").style.display = "block"
+        }
 	}
+
+    backClicked(){
+        this.slides.lockSwipeToPrev(false);
+        this.slides.slidePrev();
+        this.slides.lockSwipeToPrev(true);
+        let currentIndex = this.slides.getActiveIndex();
+        if((currentIndex == 0)||(currentIndex == 4)){
+            document.getElementById("backimg").style.display = "none"
+        }else{
+            document.getElementById("backimg").style.display = "block"
+        }
+    }
 
     next(el) {
         el.setFocus();
