@@ -54,6 +54,8 @@ export class HotelinfoPage {
   }
 
   reserveNow(){
+      this.hotelInfo.stayDuration=this.stayDuration
+      this.hotelInfo.planned= {hour:this.hour,min:this.min, stayDuration: this.stayDuration, fareAmount: this.fareAmount}
     let confirm = this.alertCtrl.create({
         message: 'Booking For '+this.userInfo.firstName+" ?",
         buttons: [
@@ -62,10 +64,7 @@ export class HotelinfoPage {
                 handler: () => {
                   //console.log(this.authProvider);
                   this.navCtrl.push('BookingPage',{for:"other",
-                      hotelInfo:{
-                        hotelName:this.hotelInfo.hotelName,
-                        stayDuration:this.stayDuration
-                      }
+                      hotelInfo:this.hotelInfo
                     }
                   );
                 }
@@ -74,10 +73,7 @@ export class HotelinfoPage {
                 text: 'Yes',
                 handler: () => {
                   this.navCtrl.push('BookingPage',{for:"me",
-                      hotelInfo:{
-                        hotelName:this.hotelInfo.hotelName,
-                        stayDuration:this.stayDuration
-                      }
+                      hotelInfo:this.hotelInfo
                     }
                   );
                 }

@@ -1,9 +1,40 @@
 page-booking {
     .booking-hotelinfo {
         font-family: 'Open sans';
-        color: #767676;
-        font-size: 2.6vmax;
+        font-size: 22pt;
         font-weight: bold;
+    }
+    .booking-address {
+        font-family: 'Open sans';
+        font-size: 11pt;
+    }
+    .buffer-info {
+        font-size: 1.6vmax;
+        font-weight: 600;
+        text-align: center;
+        margin: 0 auto;
+        padding: 3px 0;
+        width: 100%;
+    }
+    .booking-lable {
+        text-align: right;
+    }
+    .booking-imp {
+        font-family: 'Open sans';
+        font-size: 9pt;
+        font-weight: bold;
+    }
+    .booking-lable,
+    .booking-lable-content {
+        font-family: 'Open sans';
+        font-size: 11pt;
+    }
+    .booking-lable-content {
+        font-weight: bold;
+        text-transform: capitalize;
+        color: rgb(47, 187, 180);
+        font-size: 14pt;
+        padding-top: 3px;
     }
     .booking-timeInfo {
         font-family: 'Open sans';
@@ -12,7 +43,11 @@ page-booking {
         font-weight: bold;
     }
     .bookingContent {
-        background-color: #ECECEC
+        background-color: #FFF
+    }
+    .card {
+        -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
     }
     .idcard {
         margin: 0px;
