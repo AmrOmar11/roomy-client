@@ -1,24 +1,121 @@
 page-booking-confirm {
-    .booking-icon {
-        background-repeat: no-repeat !important;
+    color:#fff;
+    .confirm-customerdetail-container{
+        color:#fff;
+        background-color:rgb(47,187,180);
+        height:50%;
+        box-shadow:0 4px 7px rgba(48, 48, 48, 0.5);
+        border-radius: 0 0 3px 3px;
+        padding: 0 5%;
+        .confirm-header-container{
+            height: 13%;
+            padding-top: 5%;
+            .confirm-header-text{
+                font-size: 3vmax;
+                font-weight: 600;
+            }
+        }
+        .confirm-text{
+            height: 15%;
+            padding: 2% 0;
+            font-size: 2vmax;
+            font-weight: 600;
+        }
+        .customer-details-card{
+            background: #fff;
+            color: rgb(11, 10, 10);
+            padding: 4% 6%;
+            border-radius: 5px;
+            .c-hotel-name{
+                font-size: 3.5vmax;
+                font-weight: 600;
+            }
+            .c-hotel-address{
+                font-size: 1.8vmax;
+                font-weight: 600;
+            }
+            .c-booking-details{
+                padding-top: 2%;
+                font-size: 2vmax;
+            }
+        }
+        .c-requirements-container{
+            height: 13%;
+            width:100%;
+            padding: 3.5% 0;
+            .c-max2-container{
+                background: #fff;
+                color: #000;
+                float: left;
+                padding: 2%;
+                width: 35%;
+                margin: 0 7%;
+                border-radius: 4px;
+                .c-max2-img{
+                    width:20%;
+                }
+                .c-max2-text{
+                    width:80%;
+                    font-size: 1.5vmax;
+                }
+
+            }
+            .c-govtid-container{
+                background: #fff;
+                color: #000;
+                float: left;
+                padding: 2%;
+                width: 35%;
+                margin: 0 7%;
+                border-radius: 4px;
+                .c-govtid-img{
+                    width:20%;
+                }
+                .c-govtid-text{
+                    width:80%;
+                    font-size: 1.5vmax;
+                }
+            }
+        }
     }
-    .booking-message {
-        color: map-get($colors, theme);
+    .c-bufferdetails-container{
+        padding: 5% 3%;
+        height:50%;
+        .c-bufferInfo{
+            font-size: 1.8vmax;
+            font-weight: 600;
+            height: 15%;
+        }
+        .c-bufferTimer-container{
+            height: 70%;
+        }
+        .c-buffer-enddetails{
+            height: 15%;
+            width:100%;
+            padding: 3.5% 0;
+            .c-call-hotel-button,.c-directions-button{
+                background: rgb(47, 187, 180);
+                color: #fff;
+                float: left;
+                padding: 2%;
+                width: 35%;
+                margin: 0 7%;
+                border-radius: 4px;
+                .callhotel-img,.c-directions-img{
+                    width:20%;
+                }
+                .callhotel-text,.c-directions-text{
+                    width:80%;
+                    font-size: 2.2vmax;
+                    font-weight:600;
+                }
+            }
+        }
     }
-    .info-content {
-        border: 1px solid #dbdbdb;
-        background-color: map-get($colors, theme);
-        color: white;
-    }
-    .detail-content {
-        border: 1px solid #dbdbdb;
-        background-color: #676568;
-        color: white;
-    }
-    .status-info {
-        color: #81241D;
-    }
-    .hotelInfo-table {
-        border: 1px solid #dbdbdb
-    }
+
+    .tg  {border-collapse:collapse;border-spacing:0; margin:0 auto;}
+    .tg td{font-family:Arial, sans-serif;padding:5px 5px;overflow:hidden;word-break:normal;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;overflow:hidden;word-break:normal;}
+    .tg .tg-lqy6{text-align:right;vertical-align:top}
+    .tg .tg-9hbo{font-weight:600;vertical-align:top}
 }
