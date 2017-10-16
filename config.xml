@@ -96,7 +96,7 @@
     <plugin name="cordova-plugin-nativestorage" spec="^2.2.2" />
     <plugin name="cordova.plugins.diagnostic" spec="^3.7.1" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.0" />
-    <plugin name="cordova-plugin-facebook4" spec="^1.7.4">
+    <plugin name="cordova-plugin-facebook4" spec="1.7.4">
         <variable name="APP_ID" value="188141358385811" />
         <variable name="APP_NAME" value="Pobyt" />
     </plugin>
