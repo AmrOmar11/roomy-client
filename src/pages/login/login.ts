@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { IonicPage, NavController} from 'ionic-angular';
 import { AuthenticateProvider,UserRequest } from '../../providers/authenticate/authenticate';
 import { FacebookLoginService,GoogleLoginService } from '../../providers/providers';
-import { UsernameValidator } from  '../../validators/username';
 import { Keyboard } from '@ionic-native/keyboard';
 /**
  * Generated class for the LoginPage page.

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { IonicPage, NavController} from 'ionic-angular';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 /**
  * Generated class for the RegisterPage page.
  *

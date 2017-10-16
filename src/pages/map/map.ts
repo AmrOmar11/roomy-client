@@ -151,15 +151,20 @@ export class MapPage implements OnInit{
   }
 
   private showError(text) {
-    let env = this;
     let alert = this.alertCtrl.create({
         title: ':( Oops!',
         message: text,
         buttons: [
             {
-                text: 'OK',
+                text: 'Allow',
                 handler: data => {
-                  env.openSettings();
+                  // user has clicked the alert button
+                  // begin the alert's dismiss transition
+                  const navTransition = alert.dismiss();
+                  navTransition.then(() => {
+                   this.openSettings();
+                  });
+                  return false;
                 }
             }
         ]
@@ -185,7 +190,7 @@ export class MapPage implements OnInit{
 	}
   
   private loadMap(){
-    this.userLocation = new google.maps.LatLng('20.5937','78.9629');		
+    this.userLocation = new google.maps.LatLng('20.5937','78.9629');
     let mapStyles =[
       {
         "featureType": "landscape",

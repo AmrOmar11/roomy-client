@@ -103,6 +103,7 @@ ion-footer {
     border-radius: 0 0 10px 10px;
     background: #fff;
     button {
+        text-transform: capitalize !important;
         margin: 0 auto !important;
         color: rgb(93, 93, 93) !important;
         font-size: 3vmax;

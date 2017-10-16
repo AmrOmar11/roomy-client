@@ -1,5 +1,5 @@
-import { Component, OnInit, NgZone,Directive, Renderer, ElementRef } from '@angular/core';
-import { IonicPage, ViewController } from 'ionic-angular';
+import { Component, OnInit, NgZone, Renderer, ElementRef } from '@angular/core';
+import { ViewController } from 'ionic-angular';
 
 declare var google: any;
 @Component({
