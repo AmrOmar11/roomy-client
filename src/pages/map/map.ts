@@ -396,8 +396,8 @@ export class MapPage implements OnInit{
     for (var i = 0; i < this.hotelMarkers.length; i++) {
       this.hotelMarkers[i].setMap(null);
     }
-    for (var i = 0; i < this.selectedHotelMarkers.length; i++) {
-      this.selectedHotelMarkers[i].setMap(null);
+    for (var j = 0; j < this.selectedHotelMarkers.length; j++) {
+      this.selectedHotelMarkers[j].setMap(null);
     }
     this.hotelMarkers = [];
     this.selectedHotelMarkers = [];
