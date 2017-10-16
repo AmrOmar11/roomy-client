@@ -24,9 +24,6 @@ export class RoomyApp {
     public network: Network,/*
     public oneSignal: OneSignal*/) {
       this.initializeApp();
-      setTimeout(
-        this.connectionStatus = ((this.network.type=='none' || this.network.type== null)? 'Oops! Sorry your are not connected to Internet.':'Great! You are connected to Internet.')
-      ,3000);
   }
 
   initializeApp() {

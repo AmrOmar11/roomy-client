@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { PasswordValidator } from  '../../validators/password';
 import { AuthenticateProvider, UserRequest } from '../../providers/authenticate/authenticate';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 
 /**
  * Generated class for the VerifyNumberPage page.

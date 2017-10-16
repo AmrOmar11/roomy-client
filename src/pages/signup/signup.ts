@@ -60,8 +60,12 @@ export class SignupPage {
         });
 	}
 
-	ionViewDidLoad() {
-        this.slides.lockSwipes(true);
+	ionViewDidEnter() {
+        let currentIndex = this.slides.getActiveIndex();
+        this.slides.lockSwipes(true);        
+        if(currentIndex == 0){
+            document.getElementById("backimg").style.display = "none"    
+        }        
 		console.log('ionViewDidLoad SignupPage');
 	}
 	
@@ -155,7 +159,15 @@ export class SignupPage {
         }	
 	}
 
-	goClicked(){
+    closeClicked(){
+        this.navCtrl.pop();
+    }
+    
+    backClicked(){
+
+    }
+	
+    goClicked(){
 	    this.slides.lockSwipeToNext(false);
 	    this.slides.slideNext();
 	    this.slides.lockSwipeToNext(true);

@@ -31,7 +31,6 @@ import { Network } from '@ionic-native/network';
         backButtonIcon: 'close',
         backButtonText: '',
         platforms : {
-          scrollPadding:false,
           scrollAssist:false,
           autoFocusAssist:false
         }

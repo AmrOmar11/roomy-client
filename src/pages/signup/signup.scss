@@ -1,10 +1,27 @@
 page-signup {
     height:100%;
-	.scroll-content { padding-bottom: 0!important; }
-    .slide-zoom{
-        width:100%;
-        height:100%;
+	/*.scroll-content { padding-bottom: 0!important; }*/
+    .close-col{
+        padding:0 !important;
+        margin-top: 5vmax;
+        .close-img{
+            height: 5vmax;
+            margin-left: 4vmax;
+        }
+        .back-img{
+            height: 5vmax;
+            float: right;
+            margin-right: 4vmax;
+        }
     }
+    .slides{
+        height:95%;
+        .slide-zoom{
+            width:100%;
+            height:100%;
+        }
+    }
+    
     .welcome-row{
         margin-top:5vmax;
         margin-left: 4vmax;
@@ -139,11 +156,6 @@ page-signup {
     .resend-row{
         text-align: right;
         margin-right: 3vmax !important;
-    }
-    .pobyt-close{
-        margin:5%;
-        width:5%;
-        background-color: black;
     }
     .hideselect {
         display: none;
