@@ -177,4 +177,16 @@ page-booking-confirm {
     .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;overflow:hidden;word-break:normal;}
     .tg .tg-lqy6{text-align:right;vertical-align:top}
     .tg .tg-9hbo{font-weight:600;vertical-align:top}
+
+    a.nostyle {
+        text-decoration: inherit;
+        color: inherit;
+        cursor: auto;
+    }
+
+    a.nostyle:visited {
+        text-decoration: inherit;
+        color: inherit;
+        cursor: auto;
+    }
 }

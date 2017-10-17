@@ -60,11 +60,12 @@
         <div class="c-buffer-enddetails">
             <div class="c-call-hotel-button">
                 <div class="callhotel-img"><img src="assets/confirm/mobile.png" class="confirm-mobile"></div>
-                <div class="callhotel-text">Call Hotel</div>
+                <div class="callhotel-text"><a class="nostyle" [attr.href]="'tel:' + hotelphonenumber">Call Hotel</a></div>
             </div>
             <div class="c-directions-button">
                 <div class="c-directions-img"><img src="assets/confirm/location-arrow.png" class="confirm-location"></div>
-                <div class="c-directions-text">Directions</div>
+                <!-- <div class="c-directions-text" >Directions</div> -->
+                <div class="c-directions-text" (click)="startExternalMap()">Directions</div>
             </div>
         </div>
     </div>
