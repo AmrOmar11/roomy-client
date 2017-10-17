@@ -26,6 +26,7 @@ export class MapPage implements OnInit{
   private selectedHotelMarkers = [];
   private placesService:any;
   private loading:any;
+  private usersearchitem:any= "Nearby - Available now";
   private icons:any = { 
     userloc: {
       url: "assets/map/position_marker.png", // url
@@ -446,6 +447,7 @@ export class MapPage implements OnInit{
               //console.log('page > getPlaceDetail > place > ', place);
               // set place in map
               self.userLocation = place.geometry.location;
+              self.usersearchitem = place.name;
               self.addLocationMarker(self.userLocation);
               self.clearHotelMarkers();
               self.fetchHotels(self.userLocation);

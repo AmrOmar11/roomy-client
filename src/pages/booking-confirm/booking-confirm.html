@@ -9,10 +9,12 @@
     <div class="confirm-customerdetail-container">
         <div class="confirm-header-container">
             <div class="confirm-header">
-                <div class="confirm-header-img"></div>
-                <div class="confirm-header-text">Booking Confirmed</div>
+                <div class="confirm-header-img"><img src="assets/confirm/success.png" class="confirm-success"></div>
+                <div class="confirm-header-text">Booking Confirmed!</div>
             </div>
-            <div class="confirm-close"></div>            
+            <div class="confirm-close">
+                <img src="assets/booking-info/close.png" class="pobyt-close" (click)="this.navCtrl.pop()">
+            </div>            
         </div>
         <div class="confirm-text">Your room is ready now. You can pickup the keys at the front desk.</div>
         <div class="customer-details-card">
@@ -41,11 +43,11 @@
         </div>
         <div class="c-requirements-container">
             <div class="c-max2-container">
-                <div class="c-max2-img"></div>
+                <div class="c-max2-img"><img src="assets/confirm/success.png" class="confirm-success"></div>
                 <div class="c-max2-text">Max 2 people</div>
             </div>
             <div class="c-govtid-container">
-                <div class="c-govtid-img"></div>
+                <div class="c-govtid-img"><img src="assets/confirm/success.png" class="confirm-success"></div>
                 <div class="c-govtid-text">Valid Govt ID</div>
             </div>
         </div>
@@ -57,11 +59,11 @@
         <div class="c-bufferTimer-container"></div>
         <div class="c-buffer-enddetails">
             <div class="c-call-hotel-button">
-                <div class="callhotel-img"></div>
+                <div class="callhotel-img"><img src="assets/confirm/mobile.png" class="confirm-mobile"></div>
                 <div class="callhotel-text">Call Hotel</div>
             </div>
             <div class="c-directions-button">
-                <div class="c-directions-img"></div>
+                <div class="c-directions-img"><img src="assets/confirm/location-arrow.png" class="confirm-location"></div>
                 <div class="c-directions-text">Directions</div>
             </div>
         </div>
