@@ -36,6 +36,12 @@ page-booking {
         font-size: 14pt;
         padding-top: 3px;
     }
+    .booking-lable-content-light {
+        text-transform: capitalize;
+        color: rgb(47, 187, 180);
+        font-size: 14pt;
+        padding-top: 3px;
+    }
     .booking-timeInfo {
         font-family: 'Open sans';
         color: #0FACA5;
@@ -46,8 +52,8 @@ page-booking {
         background-color: #FFF
     }
     .card {
-        -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
-        box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0px 1px 16px 1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 1px 16px 1px rgba(0, 0, 0, 0.3);
     }
     .idcard {
         margin: 0px;
@@ -65,10 +71,20 @@ page-booking {
         font-weight: bold;
         margin-top: 2%
     }
+    .max2 {
+        margin-left: 1rem;
+    }
+    .impBtn {
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+        font-family: 'Open sans';
+        background-color: rgba(186, 232, 229, .3);
+        margin-right: 1rem;
+        border-radius: 27pt;
+        color: rgb(92, 92, 92);
+    }
     .impLabel {
-        color: #92223A;
-        margin-left: 4%;
-        font-weight: bold;
+        font-weight: 600;
     }
     .leftPadding {
         padding-left: 4%;

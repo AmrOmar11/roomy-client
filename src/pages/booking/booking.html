@@ -25,7 +25,7 @@
                 <ion-row>
                     <ion-col col-5 class="booking-lable">Booking For:</ion-col>
                     <ion-col col-7 class="booking-lable-content">{{userInfo.firstName+' '+userInfo.lastName}}
-                        <ion-icon name="create"></ion-icon>
+                         <ion-icon ios="ios-create" md="md-create"></ion-icon>
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -36,17 +36,17 @@
 
             <ion-grid>
                 <ion-row>
-                    <ion-col col-5 class="booking-lable">Booking Hours:</ion-col>
-                    <ion-col col-7 class="booking-lable-content">{{hotelInfo.planned.stayDuration}} </ion-col>
-                    <ion-col col-5 class="booking-lable">Amount Payable:</ion-col>
-                    <ion-col col-7 class="booking-lable-content">{{hotelInfo.planned.fareAmount}}/-</ion-col>
+                    <ion-col col-6 class="booking-lable">Booking Hours:</ion-col>
+                    <ion-col col-6 ><span class="booking-lable-content-light">{{hotelInfo.stayDurationHrs}}</span>HRS<span class="booking-lable-content-light"> : {{hotelInfo.stayDurationMin}}</span> MINS</ion-col>
+                    <ion-col col-6 class="booking-lable">Amount Payable:</ion-col>
+                    <ion-col col-6 class="booking-lable-content">{{hotelInfo.planned.fareAmount}}/-</ion-col>
                 </ion-row>
                 <ion-row>
                     <h6 class="impLabel">IMPORTANT</h6>
                 </ion-row>
                 <ion-row>
-                    <ion-col col-6 class="max2">Max 2 people</ion-col>
-                    <ion-col col-6 class="govtId">Valid govt. ID</ion-col>
+                    <ion-col col-5 class="max2 impBtn"> <ion-icon ios="ios-contacts" md="md-contacts" class="booking-lable-content-light"></ion-icon> Max 2 people</ion-col>
+                    <ion-col col-5 class="govtId impBtn"><ion-icon ios="ios-card" md="md-card" class="booking-lable-content-light"></ion-icon> Valid govt. ID</ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card-content>
@@ -77,5 +77,5 @@
 </ion-content>
 
 <ion-footer>
-    <button ion-button full class='pobyt-button' [disabled]="(!termsChecked)" (click)="confirmbooking()">BOOK NOW</button>
+    <button ion-button full class='pobyt-button' [disabled]="(!termsChecked)" (click)="confirmbooking()">Pay {{hotelInfo.planned.fareAmount}}/-</button>
 </ion-footer>

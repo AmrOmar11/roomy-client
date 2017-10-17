@@ -54,7 +54,9 @@ export class HotelinfoPage {
   }
 
   reserveNow(){
-      this.hotelInfo.stayDuration=this.stayDuration
+      this.hotelInfo.stayDuration=this.stayDuration.split(":");
+      this.hotelInfo.stayDurationHrs = this.hotelInfo.stayDuration[0]
+      this.hotelInfo.stayDurationMin = this.hotelInfo.stayDuration[1]
       this.hotelInfo.planned= {hour:this.hour,min:this.min, stayDuration: this.stayDuration, fareAmount: this.fareAmount}
     let confirm = this.alertCtrl.create({
         message: 'Booking For '+this.userInfo.firstName+" ?",
