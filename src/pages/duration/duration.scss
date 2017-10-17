@@ -2,139 +2,25 @@ page-duration {
 	.pricing{
 		width:100%;
 		height:100%;
-		.price{
-			font-size: 2.6vmax;
-		    font-weight: bold;
+		.slide-label{
+		    writing-mode: vertical-lr;
+		    text-orientation: upright;
+		    font-size: 1vmax;
+		    margin: 2vmax 0vmax 0vmax 0vmax;
 		}
-		.farecalculation{
-			width: 90%;
-			height:18%;
-			position: absolute;
-		    top: 50%;
-		    left: 5%;
-		    margin-top: -5%;
+		.calculation-label{
+			height:40%;
+			.col{
+			    padding:0vmax !important;
+			    margin-top: 5vmax !important;
+    			font-size: 2.5vmax;
+			}
 		}
-	}
-	.durationparent, .taxparent, .fareparent{
-		width: 28%;
-		border-radius: 5px;
-		height:100%;
-		position: relative;
-	}
-	.taxparent{
-		width: 25%;
-	}
-	.fareparent{
-		width: 32%;
-		background-color: rgba(6, 131 ,125,0.3);
-	}	
-	.plusymb, .equalsymb{
-		width: 6%;
-		font-size: 4vmax;
-    	text-align: center;
-    	color: rgb(0,0,0);
-    	margin:0.3vmax 0.3vmax;
-	}
-	.stayduration, .taxpercentage{
-		width: 70%;
-		height:100%;
-	    font-size: 3vmax;
-	    padding-top: 8%;
-	    text-align: center;
-	    border-radius: 5px 0 0 5px;
-	    font-family:Opensans-Semibold;
-    }
-    .stayduration{
-    	color: rgb(0, 0 ,0);
-    	background-color: rgba(6, 131 ,125,0.3);
-    	font-weight: 600;
-    }
-    .taxpercentage{
-    	background-color: rgb(229,229,229);
-    	color:rgb(0,0,0);
-    	font-family:Opensans-Light;
-    }
-    .durationtype,.percemtsymb{
-    	width: 30%;
-    	height:100%;
-	    font-size: 2.2vmax;
-	    padding-top: 15%;
-	    background-color: rgb(6, 131 ,125);
-	    text-align: center;
-	    border-radius: 0 5px 5px 0;
-	    color: #FFFFFF;
-	    font-family:Opensans-Semibold;
-	    vertical-align: top;
-    }
-    .percemtsymb{
-    	background-color: rgb(82,82,82);
-    	color:rgb(255,255,255);
-    }
-    .arrow-down, .percentage-img {
-		width: 85%; 
-		height: 100%;
-		margin: 0 auto;
-	}
-	.percentage-img {
-		width:60%;
-	}
-    .totalfare{
-    	width: 100%;
-    	height:100%;
-	    font-size: 3vmax;
-	    text-align: center;
-	    border-radius: 5px;
-	    color: rgb(0,0,0);
-	    font-weight: 600;
-	    padding-top: 1vmax
-    }
-    .pricing .range{
-    	padding:0px;
-    }
-    .pricingsubinfo{
-    	height:25px;
-    	margin-top: 1.5vmax;
-    	position: absolute;
-	    top: 58%;
-	    left: 5%;
-	    width: 100%;
-    }
-    .pricingsubinfo .col{
-    	text-align: center;
-	    font-size: 1.5vmax;
-	    height: 10px;
-	    padding: 0px;
-    }
-    .pricingsubinfo .col .label{
-    	margin: 0;
-    }
-    .floatleft{
-		float:left;
-	}
-	.datetime-md,.datetime-ios{
-		padding:0px;
-	}
-	.toolbar-background-md{
-		background:transparent;
-	}
-	.button-md{
-		box-shadow:none;
-	}
-	.h-info-hours-label{
-		margin-left: 3.5vmax !important;
-    	float: left;
-	}
-	span.h-info-hours-label-hh {
-	    margin-right: 1vmax !important;
-	}
-	span.h-info-hours-label-sym {
-	    margin-right: 1vmax !important;
-	}
-	.h-info-hours-label-tax{
-		margin-left: -8vmax !important;
-	}
-	.h-info-hours-label-pay{	
-	 	margin-left: -10vmax !important;   
+		.calculation{
+			.col{
+				padding:0vmax !important;
+			}
+		}
 	}
 
 }

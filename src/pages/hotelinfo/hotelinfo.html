@@ -22,9 +22,10 @@
       </div>
       <div class="h-distance">{{hotelInfo.distance}}
       </div>
-      <div class="h-rating">
+      <!-- <div class="h-rating">
           <img src="assets/map/ratings.png">
-      </div>
+      </div> -->
+      <div class="h-info-divider"></div>
       <div class="h-stay-cost"> 
         <div class="h-min-stay">
             <span class="h-min-stay-text Hr">Minimum stay:</span>
@@ -39,10 +40,8 @@
             <span class="price-diff">/</span>
             <span class="minumum">Minute</span>
         </div>
-      </div>
-      
-  </div>
-  <div class="h-info-divider"></div>
+      </div>      
+  </div>  
   <super-tabs scrollTabs="true">
     <super-tab [root]="page1" [rootParams]="hotelInfo" title="Choose Booking Hours">
     </super-tab>
@@ -52,7 +51,6 @@
     </super-tab>
   </super-tabs>
 </ion-content>
-<ion-footer>
-    <div class="buffer-info">*You will have 1 hour buffer time to check-in from the time of booking.</div>
+<ion-footer>    
     <button ion-button full class='pobyt-button' [disabled]="(!hotelInfo.isAvailable)" (click)="reserveNow()">Book Now</button>
 </ion-footer>

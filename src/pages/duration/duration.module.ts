@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { DurationPage } from './duration';
+import { InlinePicker} from './inlinepicker';
 
 @NgModule({
   declarations: [
     DurationPage,
+    InlinePicker
   ],
   imports: [
     IonicPageModule.forChild(DurationPage),

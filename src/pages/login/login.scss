@@ -1,23 +1,23 @@
 page-login {
     /*.scroll-content { padding-bottom: 0!important; }*/
     .login-header{
-        height: 35%;
+        height: 45%;
         background-color: rgb(38,207,198);
         box-shadow: inset 0px -5px 13px rgba(0, 0, 0, 0.5);
         .logo{
             width: 50%;
-            margin-top: 10vmax;
+            margin-top: 15vmax;
             margin-left: 13vmax;
         }
     }
     .login-box{
-        border-radius: 13px;
-        box-shadow: 0px 2px 13px 3px rgba(0, 0, 0, 0.5);
-        height: 64%;
-        width: 85%;
-        margin-left: 4vmax;
+        border-radius: 2vmax;
+        box-shadow: 0px 2px 13px 3px rgba(75, 74, 74, 0.5);
+        height: 54%;
+        width: 80%;
+        margin-left: 6vmax;
         margin-top: -6vmax;
-        background-color: white;
+        background-color: rgb(255,255,255);
         /*.col{
             position:initial !important; 
         }*/
@@ -25,22 +25,27 @@ page-login {
             .col{
                 padding: 0 !important;
             }
-            margin-left: 4vmax !important;
-            font-weight: 600;
-            font-size: 1.2em;
+            margin-left: 3vmax !important;
+            .label{
+                font-weight: 600;
+                font-size: 3vmax;
+                color: rgb(120,120,120);
+                margin: 2vmax 1vmax 1vmax 0vmax;
+            }            
         }
         .signup-label{
             .col{
                 padding: 0 !important;
             }
-            margin-right: 3vmax !important;
-            margin-top: 1vmax !important;
-            font-size: 0.9em;
+            margin-right: 1vmax !important;
+            margin-top: 0vmax !important;
+            .label{
+                font-size: 2vmax;
+                color: rgb(120,120,120);
+                margin: 2vmax 1vmax 1vmax 0vmax !important;
+            }
         }
         .mobile-label,.password-label{
-            .col{
-                padding: 0 !important;
-            }
             .item{
                 padding-left:4vmax !important;
                 padding-right:4vmax !important;
@@ -94,6 +99,9 @@ page-login {
         }
     }
     .terms-label{
-        text-align:center;
+        text-align: center;
+        margin-top: 2vmax;
+        font-size: 2vmax;
+        font-weight: 600;
     }
 }
