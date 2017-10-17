@@ -1,91 +1,91 @@
 page-hotelinfo {
-
-	@mixin fontSize($amount) {
-	  font-size : $amount
-	}
-
-
-	$black: rgba(#000000, .4);
-	$orange: #F39941;
-	$white:#FFFFFF;
-
-	height:100%;
-
-	.slide-zoom{
-		height:100%;
-	}
-	.hotelSlides{
-		height:36%;
-		img{
-			width:100%;
-			height:100%;
-		}
-	}
-	.h-info{
-        height : 18%;
+    @mixin fontSize($amount) {
+        font-size: $amount
+    }
+    $black: rgba(#000000, .4);
+    $orange: #F39941;
+    $white:#FFFFFF;
+    height:100%;
+    .slide-zoom {
+        height: 100%;
+    }
+    .hotelSlides {
+        height: 36%;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .h-info {
+        height: 18%;
         background-color: white;
     }
-	.h-name{
+    .h-name {
         font-size: 2.8vmax;
         font-weight: 600;
         margin-top: 1vmax;
-        margin-left: 1vmax;        
+        margin-left: 1vmax;
     }
-    .h-address{
+    .h-address {
         font-size: 2.0vmax;
-	    font-weight: 500;
-	    margin-left: 1vmax;
+        font-weight: 500;
+        margin-left: 1vmax;
     }
-    .h-distance{
+    .h-distance {
         float: right;
         font-size: 2.5vmax;
         font-weight: 600;
         margin-top: -4vmax;
         margin-right: 1vmax
     }
-    .h-rating{
-	    margin-left: 1vmax;
+    .h-rating {
+        margin-left: 1vmax;
         width: 12vmax;
     }
-    .h-stay-cost{
-        width:94%;
-        height:20%;
-        margin:0 10px;
-        padding-top:10px;
-        .h-min-stay{
-            float:left;
-            width:50%;
+    .h-stay-cost {
+        width: 94%;
+        height: 20%;
+        margin: 0 10px;
+        padding-top: 10px;
+        .h-min-stay {
+            float: left;
+            width: 50%;
             font-size: 2.3vmax;
-            .h-min-price,.h-min-hr{
-                font-weight:600;
+            .h-min-price,
+            .h-min-hr {
+                font-weight: 600;
             }
         }
-        .h-min-cost{
-            float:left;
-            text-align:right;
-            width:50%;
+        .h-min-cost {
+            float: left;
+            text-align: right;
+            width: 50%;
             font-size: 2.3vmax;
-            .symbol,.hotel-priceMin,.price-diff,.minumum{
+            .symbol,
+            .hotel-priceMin,
+            .price-diff,
+            .minumum {
                 font-weight: 600;
             }
         }
     }
-    .h-info-divider{
+    .h-info-divider {
         border-bottom: 1px solid #C8C8C8;
         margin: 0px 12px 5px 12px;
     }
-    super-tabs{
-        height:44%;
+    super-tabs {
+        height: 44%;
     }
-    super-tabs-toolbar .toolbar,.toolbar-background{
-		background-color: rgba(6, 131, 125, 0.2);
+    super-tabs-toolbar .toolbar,
+    .toolbar-background {
+        background-color: rgba(6, 131, 125, 0.2);
     }
-    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-only .title{
-    	font-weight:600;
-    	font-size: 1.4rem;
-    	text-transform: capitalize;
-    }
-    .buffer-info{
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-only .title {
+        font-weight: 600;
+        font-size: 1.4rem;
+        text-transform: capitalize;
+    }    
+    .buffer-info {
         font-size: 1.6vmax;
         font-weight: 600;
         text-align: center;
@@ -93,27 +93,24 @@ page-hotelinfo {
         padding: 3px 0;
         width: 100%;
     }
-    .swiper-pagination-bullet{
-        background:#f9f7f7;
+    .swiper-pagination-bullet {
+        background: #f9f7f7;
     }
-
-    .header{
-        background:none;
+    .header {
+        background: none;
     }
-    .scroll-content{
-        margin-top:0px !important;
+    .scroll-content {
+        margin-top: 0px !important;
     }
-    .pobyt-close{
-        margin:5%;
-        width:5%;
+    .pobyt-close {
+        margin: 5%;
+        width: 5%;
     }
-    super-tab-button.selected .title{
+    super-tab-button.selected .title {
         text-decoration: underline !important;
         text-decoration-color: rgb(6, 131, 125) !important;
     }
     super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .indicator {
-      background-color: transparent !important;
+        background-color: transparent !important;
     }
 }
-
-

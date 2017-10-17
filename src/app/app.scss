@@ -75,6 +75,28 @@ ion-footer {
     font-family: 'Open Sans', sans-serif;
 }
 
+.alert-wrapper {
+    border-radius: 3pt !important;
+    text-transform: capitalize;
+}
+
+.alert-button .button-inner {
+    color: rgb (69, 69, 69) !important;
+}
+
+.alert-button {
+    border: none !important;
+    background-color: rgba(121, 121, 121, 0.5) !important;
+}
+
+.alert-ios .alert-button:last-child {
+    border-right: 0;
+    background-color: rgb(170, 227, 224) !important;
+    font-weight: normal;
+}
+
+
+/*
 //Alert box styles
 .alert-wrapper {
     border-radius: 10px !important;
@@ -110,28 +132,30 @@ ion-footer {
         font-weight: bold !important;
     }
 }
+*/
 
-#network-status{
+#network-status {
     height: auto;
     width: 100%;
     position: relative;
     color: #fff;
     font-size: 2.5vmax;
     padding: 10px 15px;
-    display:none;
-    #network-status-txt{
+    display: none;
+    #network-status-txt {
         width: 83%;
-        display:inline-block;
+        display: inline-block;
     }
-    #network-status-close{
+    #network-status-close {
         width: 15%;
-        display:inline-block;
+        display: inline-block;
     }
 }
 
-.toast-custom-changes-error{
-    background-color:red;
+.toast-custom-changes-error {
+    background-color: red;
 }
-.toast-custom-changes-noerror{
-    background-color:green;
+
+.toast-custom-changes-noerror {
+    background-color: green;
 }
