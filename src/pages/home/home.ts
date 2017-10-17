@@ -23,7 +23,7 @@ export class HomePage {
     }
     
     goToPayment(){
-        this.navCtrl.push('PaymentPage');
+        this.navCtrl.push('BookingConfirmPage');
     }
 
     goToPromotions(){

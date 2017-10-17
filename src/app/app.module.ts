@@ -17,6 +17,7 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { Network } from '@ionic-native/network';
+import { AppAvailability } from '@ionic-native/app-availability';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { Network } from '@ionic-native/network';
     SocialSharing,
     Keyboard,
     Diagnostic,
-    Network
+    Network,
+    AppAvailability
   ]
 })
 export class AppModule {}
