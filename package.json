@@ -26,6 +26,7 @@
         "@ionic-native/facebook": "^4.3.1",
         "@ionic-native/geolocation": "^4.3.1",
         "@ionic-native/google-plus": "^4.3.1",
+        "@ionic-native/in-app-browser": "^4.3.1",
         "@ionic-native/keyboard": "^4.3.1",
         "@ionic-native/native-storage": "^4.3.1",
         "@ionic-native/network": "^4.3.1",
@@ -92,7 +93,8 @@
                 "UPDATE_METHOD": "background"
             },
             "cordova-custom-config": {},
-            "cordova-plugin-appavailability": {}
+            "cordova-plugin-appavailability": {},
+            "cordova-plugin-inappbrowser": {}
         },
         "platforms": [
             "android",

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Geolocation,PositionError } from '@ionic-native/geolocation';
 import { AppAvailability } from '@ionic-native/app-availability';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the BookingConfirmPage page.
@@ -19,7 +20,7 @@ export class BookingConfirmPage {
   public userInfo:any;
   public location:any;
   public hotelphonenumber: any = "8143509343";
-  constructor(public navCtrl: NavController, public navParams: NavParams,private appAvailability: AppAvailability, public platform:Platform, public geolocation:Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private appAvailability: AppAvailability, public platform:Platform, public geolocation:Geolocation,private iab: InAppBrowser) {
   	this.userInfo = this.navParams.get("userInfo"); 
   }
 
@@ -37,16 +38,21 @@ export class BookingConfirmPage {
 			  this.appAvailability.check("comgooglemaps://")
 			  .then(
 			    (res) => window.open('maps://?q=' + this.location.name + '&saddr=' + position.coords.latitude + ',' + position.coords.longitude + '&daddr=' + this.location.latitude + ',' + this.location.longitude, '_system'),
-			    (error) => window.open('https://www.google.co.in/maps/place/'+ position.coords.latitude + ',' + position.coords.longitude,'_system')
+			    // (error) => {
+			    // 	this.appAvailability.check("com.apple.ios.apps.maps")
+			    // 	.then(
+			    // 		(res)=>{window.open('http://maps.apple.com/?sll='+position.coords.latitude+','+position.coords.longitude+'&z=10&t=s','_system');},
+			    		(error)=>{this.iab.create('https://www.google.co.in/maps/place/'+ position.coords.latitude + ',' + position.coords.longitude,'_system')}
+			    //	)}
 			  );
 			} else if (this.platform.is('android')) {
 			  this.appAvailability.check("com.google.android.apps.maps")
 			  .then(
 			    (res) => window.open('geo://' + position.coords.latitude + ',' + position.coords.longitude + '?q=' + this.location.latitude + ',' + this.location.longitude + '(' + this.location.name + ')', '_system'),
-			    (error) => window.open('https://www.google.co.in/maps/place/'+ position.coords.latitude + ',' + position.coords.longitude,'_system')
+			    (error) => this.iab.create('https://www.google.co.in/maps/place/'+ position.coords.latitude + ',' + position.coords.longitude,'_system')
 			  );
 			}else{
-	        	window.open('https://www.google.co.in/maps/place/'+ position.coords.latitude + ',' + position.coords.longitude);
+	        	const browser = this.iab.create('https://www.google.co.in/maps/place/'+ position.coords.latitude + ',' + position.coords.longitude,'_system');
 	        };
 
 	      });

@@ -18,6 +18,7 @@ import { Keyboard } from '@ionic-native/keyboard';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { Network } from '@ionic-native/network';
 import { AppAvailability } from '@ionic-native/app-availability';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AppAvailability } from '@ionic-native/app-availability';
     Keyboard,
     Diagnostic,
     Network,
-    AppAvailability
+    AppAvailability,
+    InAppBrowser
   ]
 })
 export class AppModule {}
