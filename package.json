@@ -40,7 +40,6 @@
     "cordova-plugin-facebook4": "1.7.4",
     "cordova-plugin-geolocation": "^2.4.3",
     "cordova-plugin-googleplus": "^5.1.1",
-    "cordova-plugin-ionic": "~1.1.9",
     "cordova-plugin-nativestorage": "^2.2.2",
     "cordova-plugin-network-information": "^1.3.3",
     "cordova-plugin-splashscreen": "^4.0.3",
@@ -48,7 +47,7 @@
     "cordova-plugin-whitelist": "^1.3.2",
     "cordova-plugin-x-socialsharing": "^5.2.0",
     "cordova.plugins.diagnostic": "^3.7.1",
-    "es6-promise-plugin": "^4.1.1",
+    "es6-promise-plugin": "^4.1.0",
     "ionic-angular": "3.6.1",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionic2-super-tabs": "^4.1.0",
@@ -59,7 +58,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "2.1.4",
-    "ionic": "3.12.0",
+    "ionic": "3.13.1",
     "typescript": "2.3.4"
   },
   "description": "An Ionic project",
@@ -82,11 +81,6 @@
         "APP_NAME": "Pobyt"
       },
       "cordova-plugin-network-information": {},
-      "cordova-plugin-ionic": {
-        "APP_ID": "46fb7ec0",
-        "CHANNEL_NAME": "Master",
-        "UPDATE_METHOD": "background"
-      },
       "cordova-custom-config": {}
     },
     "platforms": [
