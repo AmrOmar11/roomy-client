@@ -19,11 +19,18 @@ export class HotelinfoPage {
     page2: any = 'AmenitiesPage';
     page3: any = 'HotelPloicyPage';
 
-    constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private authProvider: AuthenticateProvider, public events: Events) {
+    constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+     public alertCtrl: AlertController,
+     private authProvider: AuthenticateProvider,
+     public events: Events) {
         this.hotelInfo = this.navParams.get("hotelInfo");
         this.userInfo = this.authProvider.getUserInfo();
         events.subscribe('PoliciesPage:open', () => {
           this.navCtrl.push('PoliciesPage');
+        });
+        events.subscribe('user:stayDetails', (details) => {
+          this.hotelInfo.stayDetails = details;
         });
     }
     
