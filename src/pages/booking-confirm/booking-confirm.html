@@ -8,8 +8,8 @@
 <ion-content no-bounce>
     <div class="confirm-customerdetail-container">
         <div class="confirm-header-container">
-            <div class="confirm-close">
-                <img src="assets/booking-info/close.png" class="pobyt-close" (click)="this.navCtrl.pop()">
+            <div class="confirm-close" (click)="this.navCtrl.popToRoot()">
+                <img src="assets/booking-info/close.png" class="pobyt-close">
             </div>
             <div class="confirm-header">
                 <div class="confirm-header-img"><img src="assets/confirm/success.png" class="confirm-success"></div>
@@ -43,11 +43,11 @@
         </div>
         <div class="c-requirements-container">
             <div class="c-max2-container">
-                <div class="c-max2-img"><img src="assets/confirm/success.png" class="confirm-success"></div>
+                <div class="c-max2-img"><img src="assets/confirm/people.png" class="confirm-success"></div>
                 <div class="c-max2-text">Max 2 people</div>
             </div>
             <div class="c-govtid-container">
-                <div class="c-govtid-img"><img src="assets/confirm/success.png" class="confirm-success"></div>
+                <div class="c-govtid-img"><img src="assets/confirm/id-card.png" class="confirm-success"></div>
                 <div class="c-govtid-text">Valid Govt ID</div>
             </div>
         </div>
@@ -56,16 +56,41 @@
         <div class="c-bufferInfo">
             Additionally, You will have 1 hour of buffer time to reach the hotel. Your check-in time begins when you collect the keys. 
         </div>
-        <div class="c-bufferTimer-container"></div>
-        <div class="c-buffer-enddetails">
-            <div class="c-call-hotel-button">
-                <div class="callhotel-img"><img src="assets/confirm/mobile.png" class="confirm-mobile"></div>
-                <div class="callhotel-text"><a class="nostyle" [attr.href]="'tel:' + hotelphonenumber">Call Hotel</a></div>
+        <div class="c-bufferTimer-container">
+            <div class="bufferTimer-txt1">BUFFER TIME REMAINING</div>
+            <div class="bufferTimer-svg">              
+                <div class="item html">
+                    <div class="timer-details-container">
+                      <div class="timer-hours-c">
+                          <div class="timer-hour">{{bufferTimeHours}}</div>
+                          <div class="timer-hourtext">HR</div>
+                      </div>
+                       <div class="timer-colon">:</div>
+                      <div class="timer-mins-c">
+                          <div class="timer-mins">{{bufferTimeMinutes}}</div>
+                          <div class="timer-minstext">MIN</div>
+                      </div>
+                    </div>
+                    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+                     <g>
+                      <title>Layer 1</title>
+                      <circle id="circle_parent" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#A3A3A3" fill="none"/>
+                      <circle id="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="9" stroke="#24D5CB" fill="none"/>
+                     </g>
+                     </svg>
+                </div>
             </div>
-            <div class="c-directions-button">
+            <div class="bufferTimer-txt2">TO CHECK-IN</div>
+        </div>
+        <div class="c-buffer-enddetails">
+            <div class="c-call-hotel-button"><a class="nostyle" [attr.href]="'tel:' + hotelphonenumber">
+                <div class="callhotel-img"><img src="assets/confirm/mobile.png" class="confirm-mobile"></div>
+                <div class="callhotel-text">Call Hotel</div></a>
+            </div>
+            <div class="c-directions-button" (click)="startExternalMap()">
                 <div class="c-directions-img"><img src="assets/confirm/location-arrow.png" class="confirm-location"></div>
                 <!-- <div class="c-directions-text" >Directions</div> -->
-                <div class="c-directions-text" (click)="startExternalMap()">Directions</div>
+                <div class="c-directions-text">Directions</div>
             </div>
         </div>
     </div>
